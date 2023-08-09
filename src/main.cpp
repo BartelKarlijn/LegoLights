@@ -14,7 +14,25 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  // strip conecteren
   // strip aan/uit
+  ledstrip[0] = CRGB::Blue;
+  ledstrip[1] = CRGB::Black;
+  FastLED.show();
+  delay(500);
+
+  ledstrip[0] = CRGB::Black;
+  ledstrip[1] = CRGB::Red;
+  FastLED.show();
+  delay(500);
+
+  ledstrip[0] = CRGB::Beige;
+  ledstrip[1] = CRGB::Black;
+  FastLED.show();
+  delay(500);
+
+  ledstrip[0] = CRGB::Black;
+  ledstrip[1] = CRGB::DeepPink;
+  FastLED.show();
+  delay(500);
 
 }
