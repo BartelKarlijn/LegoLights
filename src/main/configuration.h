@@ -12,12 +12,7 @@
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
-#define NAME_DESC_MASTER "KloKlok_masterX000"
-#define NAME_DESC_SLAVE1 "KloKlok_slave_0X00" 
-#define NAME_DESC_SLAVE2 "KloKlok_slave_00X0" 
-#define NAME_DESC_SLAVE3 "KloKlok_slave_000X" 
-#define NAME_DESC_COUNT 4
-String nameTbl[NAME_DESC_COUNT] = {NAME_DESC_MASTER, NAME_DESC_SLAVE1, NAME_DESC_SLAVE2, NAME_DESC_SLAVE3};
+#define NAME_ACCESSPOINT "DiagonAlley"
 
 ///////////////// movement modes  //////////////////////////////
 // Describing how much action is shown when moving from one to another digit

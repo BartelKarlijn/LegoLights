@@ -5,8 +5,8 @@
 // =======================================================================================
 void setup() {
   setupSerial();
-  delay(1000);
   get_datafrom_eeprom (); // parameters uit eeprom halen (oa ssid/pw en PID)
+  startWifi();
 
   SetupFinished();
 }

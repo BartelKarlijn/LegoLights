@@ -3,12 +3,11 @@
 
 
 void get_datafrom_eeprom () {
-  /*
-  // Open Preferences with KlokKlok namespace. Each application module, library, etc
+  // Open Preferences with DiagonAlley namespace. Each application module, library, etc
   // has to use a namespace name to prevent key name collisions. We will open storage in
   // RW-mode (second parameter has to be false).
   // Note: Namespace name is limited to 15 chars.
-  pref_eeprom.begin("KlokKlok", false);
+  pref_eeprom.begin("DiagonAlley", false);
 
   String ssid_eeprom = pref_eeprom.getString("ssid_eeprom","");
   String pwd_eeprom = pref_eeprom.getString("pwd_eeprom","");
@@ -22,50 +21,19 @@ void get_datafrom_eeprom () {
   Serial.print("Uit eprom uitgelezen waarde voor PWD = ");
   Serial.println("*****");
   
-  uint8_t OperationMode_eeprom = pref_eeprom.getUInt("mode_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor operationMode = ");
-  Serial.println(OperationMode_eeprom);
+//  uint8_t OperationMode_eeprom = pref_eeprom.getUInt("mode_eeprom", 0);
+//  Serial.print("Uit eprom uitgelezen waarde voor operationMode = ");
+//  Serial.println(OperationMode_eeprom);
 
-  uint8_t namePtr_eeprom = pref_eeprom.getUInt("namePtr_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor namePtr = ");
-  Serial.println(namePtr_eeprom);
-
-  uint16_t waitDelay_eeprom = pref_eeprom.getUInt("waitDel_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor waitDelay = ");
-  Serial.println(waitDelay_eeprom);
-
-  uint16_t rot_eeprom = pref_eeprom.getUInt("rot0_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor rot = ");
-  Serial.println(rot_eeprom);
-
-  uint16_t movementMode_eeprom = pref_eeprom.getUInt("move_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor movementMode = ");
-  Serial.println(movementMode_eeprom);
-
-  uint8_t random_eeprom = pref_eeprom.getUInt("random_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor random = ");
-  Serial.println(random_eeprom);
 
   bool flag_read = pref_eeprom.getBool("flag_read", false);
 
   if (flag_read) {   //preventing error when eeprom not yet initialised
-    operationMode = OperationMode_eeprom;
-    namePtr       = namePtr_eeprom;
-    waitDelay     = waitDelay_eeprom;
-    clockRotation = rot_eeprom;
-    movementMode  = movementMode_eeprom;
-    randomMode    = random_eeprom;
   }
 }
 
 void save_ConfigToEeprom () {
-  pref_eeprom.putUInt("mode_eeprom", operationMode);
-  pref_eeprom.putUInt("namePtr_eeprom", namePtr);
-  pref_eeprom.putUInt("waitDel_eeprom", waitDelay);
-  pref_eeprom.putUInt("rot0_eeprom", clockRotation);
-  pref_eeprom.putUInt("move_eeprom", movementMode);
-  pref_eeprom.putUInt("random_eeprom", randomMode);
-  pref_eeprom.putBool("flag_read", true);
+//  pref_eeprom.putUInt("mode_eeprom", operationMode);
   
   Println("Config saved");
 }
@@ -84,5 +52,4 @@ void save_WIFIdatato_eeprom () {
   String pwd_eeprom = pref_eeprom.getString("pwd_eeprom","");
   Serial.print("Uit eprom uitgelezen waarde voor PWD = ");
   Println(pwd_eeprom);
-*/
 }
