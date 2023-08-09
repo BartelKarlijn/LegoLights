@@ -2,7 +2,7 @@ String html_processorRoot(const String& var){
 // Replaces placeholder with button section in your web page
   if(var == "BUTTONPLACEHOLDER"){
     String buttons = "";
-//    buttons += "<h1>" + nameTbl[namePtr] + "</h1><table>";
+    buttons += "<h1>" + String(NAME_ACCESSPOINT) + "</h1><table>";
 
 //    buttons += html_buttonUpDown(oms_mode, id_Modeup, id_Modedo, operationMode, operationTbl[operationMode]);
 //    buttons += html_buttonUpDown(oms_namePtr, id_namePtrup, id_namePtrdo, namePtr, nameTbl[namePtr]);
@@ -10,18 +10,18 @@ String html_processorRoot(const String& var){
 //    buttons += html_buttonUpDown(oms_Rot, id_Rotup, id_Rotdo, clockRotation, String(rotationTbl[clockRotation]));
 //    buttons += html_buttonUpDown(oms_mvmt, id_Mvmtup, id_Mvmtdo, movementMode, String(movementTbl[movementMode]));
 //    buttons += html_buttonUpDown(oms_rand, id_Randup, id_Randdo, randomMode, String(randomTbl[randomMode]));
-//    buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
-//    buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
-//    buttons += "</table>";
+    buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
+    buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
+    buttons += "</table>";
 //    buttons += html_doubleInput(oms_TimeSave, PARAM_HH, PARAM_MM, 2, hdlTimeSave);
-//
-//    buttons += html_buttonLink("Wifi Management", hdlWifiPWD);
-//    buttons += html_buttonLink("WebSerial", hdlWebSerial);
-//    buttons += html_buttonLink("Firmware update", hdlUpdate);
-//    
-//    buttons += "<p>Build commit= " + String(AUTO_COMMITPT);
-//    buttons += ", Compilation date= " + String(__DATE__) ;
-//    buttons += ",  time= " + String(__TIME__) + "</p>";
+
+    buttons += html_buttonLink("Wifi Management", hdlWifiPWD);
+    buttons += html_buttonLink("WebSerial", hdlWebSerial);
+    buttons += html_buttonLink("Firmware update", hdlUpdate);
+    
+    buttons += "<p>Build commit= " + String(AUTO_COMMITPT);
+    buttons += ", Compilation date= " + String(__DATE__) ;
+    buttons += ",  time= " + String(__TIME__) + "</p>";
 
     return buttons;
   }
