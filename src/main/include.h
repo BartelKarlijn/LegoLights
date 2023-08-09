@@ -11,6 +11,9 @@
 #include <AsyncElegantOTA.h>
 #include <WebSerial.h>
 
+// Ledstrip
+#include <FastLED.h>
+
 // Own libraries
 // variables
 #include <main/configuration.h>
@@ -21,6 +24,7 @@
 #include <main/setupSerial.h>
 #include <main/print.h>
 #include <main/save_eprom.h>
+#include <main/setupLedstrip.h>
 
 //wifi
 #include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton

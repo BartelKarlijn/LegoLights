@@ -61,3 +61,6 @@ const uint16_t   id_SaveConfig = 22;
 
 const char* oms_Restart = "Restart";
 const uint16_t   id_Restart = 23;
+
+//////// ledStrip //////////
+CRGB ledstrip[NUM_LEDS_IN_STRIP];

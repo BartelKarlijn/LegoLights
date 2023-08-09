@@ -13,3 +13,10 @@
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
 #define NAME_ACCESSPOINT "DiagonAlley"
+
+///////////////// ledstrip  //////////////////////////////
+// gegevens over de ledstrip
+#define PIN_STRIP 13
+#define STRIP_BRIGHTNESS 150
+
+#define NUM_LEDS_IN_STRIP 32
