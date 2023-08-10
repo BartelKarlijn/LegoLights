@@ -1,3 +1,4 @@
+#pragma once
 void Print(String TXT){
 #ifdef PRINTWEBSERIAL
   if (flagWifiOn) {

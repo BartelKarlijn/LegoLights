@@ -1,3 +1,4 @@
+#pragma once
 void setupSerial () {
   Serial.begin(SERIALSPEED);
   delay(100);

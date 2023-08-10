@@ -1,3 +1,4 @@
+#pragma once
 void setupLedstrip() {
 
   FastLED.addLeds< NEOPIXEL, STR_PIN >(ledstrip, STR_NUM_LEDS);  // GRB ordering is assumed

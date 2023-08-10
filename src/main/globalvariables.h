@@ -1,4 +1,4 @@
-
+#pragma once
 //////////////// OPERATION ///////////////////////
 Preferences pref_eeprom;           // to store & read parameters from eprom
 

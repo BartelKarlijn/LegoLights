@@ -1,3 +1,4 @@
+#pragma once
 // Complete project details at https://RandomNerdTutorials.com/esp32-save-data-permanently-preferences/
 // Start instance of Preferences
 
