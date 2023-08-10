@@ -15,7 +15,8 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   // strip aan/uit
-  ledstrip[0] = CRGB::Blue;
+  Println("vast rondje");
+  ledstrip[0] = CRGB::Red;
   ledstrip[1] = CRGB::Black;
   FastLED.show();
   delay(500);
@@ -25,7 +26,7 @@ void loop() {
   FastLED.show();
   delay(500);
 
-  ledstrip[0] = CRGB::Beige;
+  ledstrip[0] = CRGB::DeepPink;
   ledstrip[1] = CRGB::Black;
   FastLED.show();
   delay(500);
@@ -35,5 +36,15 @@ void loop() {
   FastLED.show();
   delay(500);
 
-  Println("Rondje gedaan");
+  Println("OLI_PLAF");
+  aan(STR_OLI_0PLAF);
+  uit(STR_OLI_0TRAP);
+  FastLED.show();
+  delay(1500);
+  
+  Println("OLI_TRAP");
+  uit(STR_OLI_0PLAF);
+  aan(STR_OLI_0TRAP);
+  FastLED.show();
+  delay(1500);
 }

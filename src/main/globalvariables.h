@@ -73,9 +73,9 @@ int str_stopled[] = {
       STR_OLI_0PLAF_STOPLED,
       STR_OLI_0TRAP_STOPLED,
     };
-CRGB str_color[] = {
-      STR_OLI_0PLAF_COLOR,
-      STR_OLI_0TRAP_COLOR,
+CRGB str_color1[] = {
+      STR_OLI_0PLAF_COLOR1,
+      STR_OLI_0TRAP_COLOR1,
     };
 int str_brightn[] = {
       STR_OLI_0PLAF_BRIGHTN,

@@ -17,19 +17,26 @@
 ///////////////// ledstrip  //////////////////////////////
 // gegevens over de ledstrip
 #define STR_PIN 12
-#define STR_BRIGHTNESS 150 
-#define STR_NUM_LEDS 32
+#define STR_BRIGHTNESS 50 
 
 #define STR_OLI_0PLAF          0
 #define STR_OLI_0PLAF_STARTLED 0
-#define STR_OLI_0PLAF_STOPLED  1
-#define STR_OLI_0PLAF_COLOR CRGB::Beige
+#define STR_OLI_0PLAF_STOPLED  2
+#define STR_OLI_0PLAF_COLOR1 CRGB::Beige
+#define STR_OLI_0PLAF_COLOR2 CRGB::Black
+#define STR_OLI_0PLAF_COLOR3 CRGB::Black
+#define STR_OLI_0PLAF_COLOR4 CRGB::Black
 #define STR_OLI_0PLAF_BRIGHTN 120
 
 #define STR_OLI_0TRAP          1
-#define STR_OLI_0TRAP_STARTLED 2
-#define STR_OLI_0TRAP_STOPLED  2
-#define STR_OLI_0TRAP_COLOR CRGB::Blue
+#define STR_OLI_0TRAP_STARTLED 3
+#define STR_OLI_0TRAP_STOPLED  4
+#define STR_OLI_0TRAP_COLOR1 CRGB::Blue
+#define STR_OLI_0TRAP_COLOR2 CRGB::Black
+#define STR_OLI_0TRAP_COLOR3 CRGB::Black
+#define STR_OLI_0TRAP_COLOR4 CRGB::Black
 #define STR_OLI_0TRAP_BRIGHTN 120
 
-#define STR_NR_ITEMS STR_OLI_0PLAF
+//laatste item definieren
+#define STR_NR_ITEMS STR_OLI_0TRAP
+#define STR_NUM_LEDS STR_OLI_0TRAP_STOPLED + 1

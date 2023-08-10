@@ -38,3 +38,7 @@
 #include <wifi/setup_ConnectKnownWifi.h>
 #include <wifi/setup_CreateAccessPoint.h>
 #include <wifi/startWifi.h>
+
+//ledstrip
+#include <ledstrip/aan.h>
+#include <ledstrip/uit.h>
