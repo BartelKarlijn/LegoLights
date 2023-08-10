@@ -16,7 +16,7 @@
 
 ///////////////// ledstrip  //////////////////////////////
 // gegevens over de ledstrip
-#define PIN_STRIP 13
-#define STRIP_BRIGHTNESS 150
+#define STR_PIN 12
+#define STR_BRIGHTNESS 150 
 
-#define NUM_LEDS_IN_STRIP 32
+#define STR_NUM_LEDS 32

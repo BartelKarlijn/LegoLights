@@ -35,4 +35,5 @@ void loop() {
   FastLED.show();
   delay(500);
 
+  Println("Rondje gedaan");
 }

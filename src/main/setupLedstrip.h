@@ -1,8 +1,9 @@
 void setupLedstrip() {
 
-  FastLED.addLeds<NEOPIXEL, PIN_STRIP>(ledstrip, NUM_LEDS_IN_STRIP);  // GRB ordering is assumed
+  FastLED.addLeds< NEOPIXEL, STR_PIN >(ledstrip, STR_NUM_LEDS);  // GRB ordering is assumed
+
   // set master brightness control
-  FastLED.setBrightness(STRIP_BRIGHTNESS);
+  FastLED.setBrightness(STR_BRIGHTNESS);
   FastLED.clear();  // clear all pixel data
 
 }
