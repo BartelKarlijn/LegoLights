@@ -13,7 +13,8 @@ void setup() {
 }
 void loop() {
   // put your main code here, to run repeatedly:
-
+  currentMillis = millis();
+  
   // strip aan/uit
   Println("OLI_PLAF");
   str_aan(STR_OLI_0PLAF);

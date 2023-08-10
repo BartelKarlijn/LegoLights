@@ -32,9 +32,9 @@
 #define STR_OLI_0PLAF_FADE3       0
 #define STR_OLI_0PLAF_FADE4       0
 #define STR_OLI_0PLAF_EVERY       2
-#define STR_OLI_0PLAF_TIM_CHANG   0
+#define STR_OLI_0PLAF_TIME1    2000  //(ms) aan: tijd op
+#define STR_OLI_0PLAF_TIME2     500  // (ms) aan: tijd uit
 #define STR_OLI_0PLAF_TIM_FLICK   0
-#define STR_OLI_0PLAF_TIM_COOLD   0
 #define STR_OLI_0PLAF_DIRECTION   false
 
 #define STR_OLI_0TRAP             1
@@ -49,9 +49,9 @@
 #define STR_OLI_0TRAP_FADE3       0
 #define STR_OLI_0TRAP_FADE4       0
 #define STR_OLI_0TRAP_EVERY       3
-#define STR_OLI_0TRAP_TIM_CHANG   0
+#define STR_OLI_0TRAP_TIME1    1500  //aan: tijd op
+#define STR_OLI_0TRAP_TIME2    1000  //aan: tijd uit
 #define STR_OLI_0TRAP_TIM_FLICK   0
-#define STR_OLI_0TRAP_TIM_COOLD   0
 #define STR_OLI_0TRAP_DIRECTION   false
 
 //laatste item definieren
