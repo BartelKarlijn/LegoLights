@@ -64,3 +64,20 @@ const uint16_t   id_Restart = 23;
 
 //////// ledStrip //////////
 CRGB ledstrip[STR_NUM_LEDS];
+
+int str_startled[] = {
+      STR_OLI_0PLAF_STARTLED,
+      STR_OLI_0TRAP_STARTLED
+    };
+int str_stopled[] = {
+      STR_OLI_0PLAF_STOPLED,
+      STR_OLI_0TRAP_STOPLED,
+    };
+CRGB str_color[] = {
+      STR_OLI_0PLAF_COLOR,
+      STR_OLI_0TRAP_COLOR,
+    };
+int str_brightn[] = {
+      STR_OLI_0PLAF_BRIGHTN,
+      STR_OLI_0TRAP_BRIGHTN,
+    };
