@@ -16,14 +16,14 @@ void loop() {
 
   // strip aan/uit
   Println("OLI_PLAF");
-  aan(STR_OLI_0PLAF);
-  uit(STR_OLI_0TRAP);
+  str_aan(STR_OLI_0PLAF);
+  str_uit(STR_OLI_0TRAP);
   FastLED.show();
   delay(1500);
   
   Println("OLI_TRAP");
-  uit(STR_OLI_0PLAF);
-  aan(STR_OLI_0TRAP);
+  str_uit(STR_OLI_0PLAF);
+  str_aan(STR_OLI_0TRAP);
   FastLED.show();
   delay(1500);
 }

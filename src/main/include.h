@@ -40,5 +40,5 @@
 #include <wifi/startWifi.h>
 
 //ledstrip
-#include <ledstrip/aan.h>
-#include <ledstrip/uit.h>
+#include <ledstrip/str_aan.h>
+#include <ledstrip/str_uit.h>
