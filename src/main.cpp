@@ -14,17 +14,11 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   currentMillis = millis();
-  
+
   // strip aan/uit
-  Println("OLI_PLAF");
   str_aan(STR_OLI_0PLAF);
   str_aan(STR_OLI_0TRAP);
   FastLED.show();
-  delay(1500);
-  
-  Println("OLI_TRAP");
-  str_uit(STR_OLI_0PLAF);
-  str_uit(STR_OLI_0TRAP);
-  FastLED.show();
-  delay(1000);
+  delay(500);
+
 }

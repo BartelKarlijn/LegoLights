@@ -27,11 +27,11 @@
 #define STR_OLI_0PLAF_COLOR2 CRGB::Black
 #define STR_OLI_0PLAF_COLOR3 CRGB::Black
 #define STR_OLI_0PLAF_COLOR4 CRGB::Black
-#define STR_OLI_0PLAF_FADE1      220
+#define STR_OLI_0PLAF_FADE1      150
 #define STR_OLI_0PLAF_FADE2       0
 #define STR_OLI_0PLAF_FADE3       0
 #define STR_OLI_0PLAF_FADE4       0
-#define STR_OLI_0PLAF_EVERY       2
+#define STR_OLI_0PLAF_EVERY       5
 #define STR_OLI_0PLAF_TIME1    2000  //(ms) aan: tijd op
 #define STR_OLI_0PLAF_TIME2     500  // (ms) aan: tijd uit
 #define STR_OLI_0PLAF_TIM_FLICK   0
@@ -55,5 +55,5 @@
 #define STR_OLI_0TRAP_DIRECTION   false
 
 //laatste item definieren
-#define STR_NR_ITEMS STR_OLI_0TRAP
+#define STR_NR_ITEMS 1+ STR_OLI_0TRAP  //om arrays te definieren
 #define STR_NUM_LEDS STR_OLI_0TRAP_STOPLED + 1

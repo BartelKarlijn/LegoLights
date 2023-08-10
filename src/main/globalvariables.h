@@ -89,10 +89,11 @@ int str_time1[] = {
       STR_OLI_0PLAF_TIME1,
       STR_OLI_0TRAP_TIME1,
     };
-int str_time2[] = {
+int str_time2[STR_NR_ITEMS] = {
       STR_OLI_0PLAF_TIME2,
       STR_OLI_0TRAP_TIME2,
     };
 
 // timings
 unsigned long currentMillis;
+unsigned long timer_str_aan[STR_NR_ITEMS];
