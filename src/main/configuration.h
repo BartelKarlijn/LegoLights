@@ -19,14 +19,22 @@
 #define STR_PIN 12
 #define STR_BRIGHTNESS 50 
 
-#define STR_OLI_0PLAF          0
-#define STR_OLI_0PLAF_STARTLED 0
-#define STR_OLI_0PLAF_STOPLED  2
+#define STR_OLI_0PLAF             0
+#define STR_OLI_0PLAF_STARTLED    0
+#define STR_OLI_0PLAF_STOPLED     2
 #define STR_OLI_0PLAF_COLOR1 CRGB::Beige
 #define STR_OLI_0PLAF_COLOR2 CRGB::Black
 #define STR_OLI_0PLAF_COLOR3 CRGB::Black
 #define STR_OLI_0PLAF_COLOR4 CRGB::Black
-#define STR_OLI_0PLAF_BRIGHTN 120
+#define STR_OLI_0PLAF_FADE1      20
+#define STR_OLI_0PLAF_FADE2       0
+#define STR_OLI_0PLAF_FADE3       0
+#define STR_OLI_0PLAF_FADE4       0
+#define STR_OLI_0PLAF_EVERY       1
+#define STR_OLI_0PLAF_TIM_CHANG   0
+#define STR_OLI_0PLAF_TIM_FLICK   0
+#define STR_OLI_0PLAF_TIM_COOLD   0
+#define STR_OLI_0PLAF_DIRECTION   false
 
 #define STR_OLI_0TRAP          1
 #define STR_OLI_0TRAP_STARTLED 3
@@ -35,7 +43,15 @@
 #define STR_OLI_0TRAP_COLOR2 CRGB::Black
 #define STR_OLI_0TRAP_COLOR3 CRGB::Black
 #define STR_OLI_0TRAP_COLOR4 CRGB::Black
-#define STR_OLI_0TRAP_BRIGHTN 120
+#define STR_OLI_0TRAP_FADE1    0
+#define STR_OLI_0TRAP_FADE2       0
+#define STR_OLI_0TRAP_FADE3       0
+#define STR_OLI_0TRAP_FADE4       0
+#define STR_OLI_0TRAP_EVERY       1
+#define STR_OLI_0TRAP_TIM_CHANG   0
+#define STR_OLI_0TRAP_TIM_FLICK   0
+#define STR_OLI_0TRAP_TIM_COOLD   0
+#define STR_OLI_0TRAP_DIRECTION   false
 
 //laatste item definieren
 #define STR_NR_ITEMS STR_OLI_0TRAP

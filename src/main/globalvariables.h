@@ -77,7 +77,11 @@ CRGB str_color1[] = {
       STR_OLI_0PLAF_COLOR1,
       STR_OLI_0TRAP_COLOR1,
     };
-int str_brightn[] = {
-      STR_OLI_0PLAF_BRIGHTN,
-      STR_OLI_0TRAP_BRIGHTN,
+int str_fade1[] = {
+      STR_OLI_0PLAF_FADE1,
+      STR_OLI_0TRAP_FADE1,
+    };
+int str_every[] = {
+      STR_OLI_0PLAF_EVERY,
+      STR_OLI_0TRAP_EVERY,
     };
