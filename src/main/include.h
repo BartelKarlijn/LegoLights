@@ -42,5 +42,6 @@
 
 //ledstrip
 #include <ledstrip/str_aan.h>
+#include <ledstrip/str_fire.h>
 #include <ledstrip/str_glow.h>
 #include <ledstrip/str_uit.h>
