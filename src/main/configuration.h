@@ -59,16 +59,16 @@
 #define STR_OLI_1PLAF_STOPLED     2
 #define STR_OLI_1PLAF_HUE1        1  //0:red, 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red'
 #define STR_OLI_1PLAF_BRIGHT1     0
-#define STR_OLI_1PLAF_HUE2       64
+#define STR_OLI_1PLAF_HUE2       20
 #define STR_OLI_1PLAF_BRIGHT2     0
-#define STR_OLI_1PLAF_HUE3      128
+#define STR_OLI_1PLAF_HUE3        1
 #define STR_OLI_1PLAF_BRIGHT3     0
-#define STR_OLI_1PLAF_HUE4      192
+#define STR_OLI_1PLAF_HUE4       32
 #define STR_OLI_1PLAF_BRIGHT4     0
 #define STR_OLI_1PLAF_EVERY       1
 #define STR_OLI_1PLAF_TIME1   10000  //(ms) aan: tijd op
 #define STR_OLI_1PLAF_TIME2    1000  //(ms) aan: tijd uit
-#define STR_OLI_1PLAF_TIM_FLICK 1000
+#define STR_OLI_1PLAF_TIM_FLICK 150
 #define STR_OLI_1PLAF_DIRECTION   false
 
 //laatste item definieren
