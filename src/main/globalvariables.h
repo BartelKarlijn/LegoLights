@@ -85,11 +85,11 @@ int str_every[] = {
       STR_OLI_0PLAF_EVERY,
       STR_OLI_0TRAP_EVERY,
     };
-int str_time1[] = {
+unsigned long str_time1[] = {
       STR_OLI_0PLAF_TIME1,
       STR_OLI_0TRAP_TIME1,
     };
-int str_time2[STR_NR_ITEMS] = {
+unsigned long str_time2[STR_NR_ITEMS] = {
       STR_OLI_0PLAF_TIME2,
       STR_OLI_0TRAP_TIME2,
     };
