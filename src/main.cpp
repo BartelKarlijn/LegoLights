@@ -12,13 +12,12 @@ void setup() {
   SetupFinished();
 }
 void loop() {
-  // put your main code here, to run repeatedly:
   currentMillis = millis();
 
   // strip aan/uit
   str_aan(STR_OLI_0PLAF);
-  str_aan(STR_OLI_0TRAP);
+  str_glow(STR_OLI_0TRAP);
+  str_fire(STR_OLI_1PLAF);
   FastLED.show();
-  delay(500);
-
+  
 }
