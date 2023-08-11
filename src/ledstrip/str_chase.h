@@ -20,7 +20,7 @@ void str_chase(int kring) {
     flamestrhueidx[kring] = 0;
     flamestrbright[kring] = str_bright1[kring];
     timer_str_flicker[kring] = currentMillis + str_time_flick[kring] ; //reset flikkertimer
-    str_startled[kring] = (str_startled[kring] + 1 ) % (str_stopled[kring] - str_startled[kring] + 1)
+    str_startled[kring] = (str_startled[kring] + 1 ) % (str_stopled[kring] - str_startled[kring] + 1);
   }
   else {
     // gewoon verder doen, laat lampje maar branden
