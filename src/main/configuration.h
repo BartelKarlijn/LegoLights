@@ -23,31 +23,31 @@
 #define STR_OLI_0PLAF             0
 #define STR_OLI_0PLAF_STARTLED    0
 #define STR_OLI_0PLAF_STOPLED     0
-#define STR_OLI_0PLAF_COLOR1 CRGB::Red
-#define STR_OLI_0PLAF_COLOR2 CRGB::Black
-#define STR_OLI_0PLAF_COLOR3 CRGB::Black
-#define STR_OLI_0PLAF_COLOR4 CRGB::Black
-#define STR_OLI_0PLAF_FADE1     240
-#define STR_OLI_0PLAF_FADE2       0
-#define STR_OLI_0PLAF_FADE3       0
-#define STR_OLI_0PLAF_FADE4       0
+#define STR_OLI_0PLAF_HUE1       64  //0:red, 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red'
+#define STR_OLI_0PLAF_BRIGHT1   128
+#define STR_OLI_0PLAF_HUE2        0
+#define STR_OLI_0PLAF_BRIGHT2     0
+#define STR_OLI_0PLAF_HUE3        0
+#define STR_OLI_0PLAF_BRIGHT3     0
+#define STR_OLI_0PLAF_HUE4        0
+#define STR_OLI_0PLAF_BRIGHT4     0
 #define STR_OLI_0PLAF_EVERY       1
 #define STR_OLI_0PLAF_TIME1    2000  //(ms) aan: tijd op
-#define STR_OLI_0PLAF_TIME2     500  // (ms) aan: tijd uit
+#define STR_OLI_0PLAF_TIME2     500  //(ms) aan: tijd uit
 #define STR_OLI_0PLAF_TIM_FLICK   0
 #define STR_OLI_0PLAF_DIRECTION   false
 
 #define STR_OLI_0TRAP             1
 #define STR_OLI_0TRAP_STARTLED    1
 #define STR_OLI_0TRAP_STOPLED     1
-#define STR_OLI_0TRAP_COLOR1 CRGB::Red
-#define STR_OLI_0TRAP_COLOR2 CRGB::Black
-#define STR_OLI_0TRAP_COLOR3 CRGB::Black
-#define STR_OLI_0TRAP_COLOR4 CRGB::Black
-#define STR_OLI_0TRAP_FADE1       0
-#define STR_OLI_0TRAP_FADE2       0
-#define STR_OLI_0TRAP_FADE3       0
-#define STR_OLI_0TRAP_FADE4       0
+#define STR_OLI_0TRAP_HUE1       64
+#define STR_OLI_0TRAP_BRIGHT1   128
+#define STR_OLI_0TRAP_HUE2        0
+#define STR_OLI_0TRAP_BRIGHT2     0
+#define STR_OLI_0TRAP_HUE3        0
+#define STR_OLI_0TRAP_BRIGHT3     0
+#define STR_OLI_0TRAP_HUE4        0
+#define STR_OLI_0TRAP_BRIGHT4     0
 #define STR_OLI_0TRAP_EVERY       1
 #define STR_OLI_0TRAP_TIME1    1500  //aan: tijd op
 #define STR_OLI_0TRAP_TIME2    1000  //aan: tijd uit

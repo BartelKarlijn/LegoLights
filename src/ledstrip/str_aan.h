@@ -2,11 +2,15 @@
 
 void str_aan(int kring) {
   bool fl_on;
-  if( (currentMillis - timer_str_aan[kring]) > (str_time1[kring] + str_time2[kring]) ) {   // lang genoeg uit geweest.  Nu aanzetten
+  unsigned long timeBezig;
+
+  timeBezig = currentMillis - timer_str_aan[kring];
+
+  if( timeBezig > (str_time1[kring] + str_time2[kring]) ) {   // lang genoeg uit geweest.  Nu aanzetten
     fl_on = true;
     timer_str_aan[kring] = currentMillis; //reset timer
   }
-  else  if ((currentMillis - timer_str_aan[kring]) > str_time1[kring]) { // lang genoeg aan geweest
+  else  if (timeBezig > str_time1[kring]) { // lang genoeg aan geweest
     fl_on = false;
   }
   else {     //laat nog maar tijdje aan.
@@ -18,8 +22,7 @@ void str_aan(int kring) {
     // aan of uit zetten?
     if (fl_on) {
       if( ( (i - str_startled[kring]) % str_every[kring] ) == 0 ) {  // check every
-        ledstrip[i] = str_color1[kring];
-        ledstrip[i].fadeToBlackBy(str_fade1[kring]);
+        ledstrip[i] = CHSV(str_hue1[kring], 255, str_bright1[kring] );
       }
       else {
         ledstrip[i] = CRGB::Black;

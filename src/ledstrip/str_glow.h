@@ -4,7 +4,7 @@ void str_glow(int kring) {
   bool fl_on;
   bool fl_up;
   unsigned long timeBezig;
-  int  glowfade;
+  int  brightn_glow;
 
 timeBezig = currentMillis - timer_str_aan[kring];
 // bereken mode (uit, up, down)
@@ -27,10 +27,10 @@ timeBezig = currentMillis - timer_str_aan[kring];
 
 // bereken level
   if( fl_on and fl_up ){
-    glowfade = map(timeBezig, 0, str_time1[kring], 0, 255 );
+    brightn_glow = map(timeBezig, 0, str_time1[kring], 0, str_bright1[kring] );
   }
   else {
-    glowfade = map(timeBezig, 0, str_time1[kring], 255, 0 );
+    brightn_glow = map(timeBezig, 0, str_time1[kring], str_bright1[kring], 0 );
   }
 
   for (size_t i = str_startled[kring]; i <= str_stopled[kring]; i++)
@@ -38,9 +38,7 @@ timeBezig = currentMillis - timer_str_aan[kring];
     // aan of uit zetten?
     if (fl_on) {
       if( ( (i - str_startled[kring]) % str_every[kring] ) == 0 ) {  // check every
-        ledstrip[i] = str_color1[kring];
-        ledstrip[i].fadeToBlackBy(str_fade1[kring]); // gewone kleur
-        ledstrip[i].fadeToBlackBy(glowfade);         // glow toepassen
+        ledstrip[i] = CHSV(str_hue1[kring], 255, brightn_glow );
       }
       else {
         ledstrip[i] = CRGB::Black;

@@ -73,13 +73,37 @@ int str_stopled[] = {
       STR_OLI_0PLAF_STOPLED,
       STR_OLI_0TRAP_STOPLED,
     };
-CRGB str_color1[] = {
-      STR_OLI_0PLAF_COLOR1,
-      STR_OLI_0TRAP_COLOR1,
+int str_hue1[] = {
+      STR_OLI_0PLAF_HUE1,
+      STR_OLI_0TRAP_HUE1,
     };
-int str_fade1[] = {
-      STR_OLI_0PLAF_FADE1,
-      STR_OLI_0TRAP_FADE1,
+int str_bright1[] = {
+      STR_OLI_0PLAF_BRIGHT1,
+      STR_OLI_0TRAP_BRIGHT1,
+    };
+int str_hue2[] = {
+      STR_OLI_0PLAF_HUE2,
+      STR_OLI_0TRAP_HUE2,
+    };
+int str_bright2[] = {
+      STR_OLI_0PLAF_BRIGHT2,
+      STR_OLI_0TRAP_BRIGHT2,
+    };
+int str_hue3[] = {
+      STR_OLI_0PLAF_HUE3,
+      STR_OLI_0TRAP_HUE3,
+    };
+int str_bright3[] = {
+      STR_OLI_0PLAF_BRIGHT3,
+      STR_OLI_0TRAP_BRIGHT3,
+    };
+int str_hue4[] = {
+      STR_OLI_0PLAF_HUE4,
+      STR_OLI_0TRAP_HUE4,
+    };
+int str_bright4[] = {
+      STR_OLI_0PLAF_BRIGHT4,
+      STR_OLI_0TRAP_BRIGHT4,
     };
 int str_every[] = {
       STR_OLI_0PLAF_EVERY,
@@ -97,3 +121,4 @@ unsigned long str_time2[STR_NR_ITEMS] = {
 // timings
 unsigned long currentMillis;
 unsigned long timer_str_aan[STR_NR_ITEMS];
+unsigned long timer_str_flicker[STR_NR_ITEMS];
