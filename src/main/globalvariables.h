@@ -68,72 +68,86 @@ CRGB ledstrip[STR_NUM_LEDS];
 int str_startled[] = {
       STR_OLI_0PLAF_STARTLED,
       STR_OLI_0TRAP_STARTLED,
-      STR_OLI_1PLAF_STARTLED
+      STR_OLI_1PLAF_STARTLED,
+      STR_SCR_0PLAF_STARTLED
     };
 int str_stopled[] = {
       STR_OLI_0PLAF_STOPLED,
       STR_OLI_0TRAP_STOPLED,
-      STR_OLI_1PLAF_STOPLED
+      STR_OLI_1PLAF_STOPLED,
+      STR_SCR_0PLAF_STOPLED
     };
 int str_hue1[] = {
       STR_OLI_0PLAF_HUE1,
       STR_OLI_0TRAP_HUE1,
-      STR_OLI_1PLAF_HUE1
+      STR_OLI_1PLAF_HUE1,
+      STR_SCR_0PLAF_HUE1
     };
 int str_bright1[] = {
       STR_OLI_0PLAF_BRIGHT1,
       STR_OLI_0TRAP_BRIGHT1,
-      STR_OLI_1PLAF_BRIGHT1
+      STR_OLI_1PLAF_BRIGHT1,
+      STR_SCR_0PLAF_BRIGHT1
     };
 int str_hue2[] = {
       STR_OLI_0PLAF_HUE2,
       STR_OLI_0TRAP_HUE2,
-      STR_OLI_1PLAF_HUE2
+      STR_OLI_1PLAF_HUE2,
+      STR_SCR_0PLAF_HUE2
     };
 int str_bright2[] = {
       STR_OLI_0PLAF_BRIGHT2,
       STR_OLI_0TRAP_BRIGHT2,
-      STR_OLI_1PLAF_BRIGHT2
+      STR_OLI_1PLAF_BRIGHT2,
+      STR_SCR_0PLAF_BRIGHT2
     };
 int str_hue3[] = {
       STR_OLI_0PLAF_HUE3,
       STR_OLI_0TRAP_HUE3,
-      STR_OLI_1PLAF_HUE3
+      STR_OLI_1PLAF_HUE3,
+      STR_SCR_0PLAF_HUE3
     };
 int str_bright3[] = {
       STR_OLI_0PLAF_BRIGHT3,
       STR_OLI_0TRAP_BRIGHT3,
-      STR_OLI_1PLAF_BRIGHT3
+      STR_OLI_1PLAF_BRIGHT3,
+      STR_SCR_0PLAF_BRIGHT3
     };
 int str_hue4[] = {
       STR_OLI_0PLAF_HUE4,
       STR_OLI_0TRAP_HUE4,
-      STR_OLI_1PLAF_HUE4
+      STR_OLI_1PLAF_HUE4,
+      STR_SCR_0PLAF_HUE4
     };
 int str_bright4[] = {
       STR_OLI_0PLAF_BRIGHT4,
       STR_OLI_0TRAP_BRIGHT4,
-      STR_OLI_1PLAF_BRIGHT4
+      STR_OLI_1PLAF_BRIGHT4,
+      STR_SCR_0PLAF_BRIGHT4
     };
 int str_every[] = {
       STR_OLI_0PLAF_EVERY,
       STR_OLI_0TRAP_EVERY,
-      STR_OLI_1PLAF_EVERY
+      STR_OLI_1PLAF_EVERY,
+      STR_SCR_0PLAF_EVERY
     };
 unsigned long str_time1[] = {
       STR_OLI_0PLAF_TIME1,
       STR_OLI_0TRAP_TIME1,
-      STR_OLI_1PLAF_TIME1
+      STR_OLI_1PLAF_TIME1,
+      STR_SCR_0PLAF_TIME1
     };
 unsigned long str_time2[] = {
       STR_OLI_0PLAF_TIME2,
       STR_OLI_0TRAP_TIME2,
-      STR_OLI_1PLAF_TIME2
+      STR_OLI_1PLAF_TIME2,
+      STR_SCR_0PLAF_TIME2
     };
 unsigned long str_time_flick[] = {
       STR_OLI_0PLAF_TIM_FLICK,
       STR_OLI_0TRAP_TIM_FLICK,
-      STR_OLI_1PLAF_TIM_FLICK
+      STR_OLI_1PLAF_TIM_FLICK,
+      STR_SCR_0PLAF_TIM_FLICK
 };
 
 // timings
