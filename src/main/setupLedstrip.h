@@ -6,5 +6,5 @@ void setupLedstrip() {
   // set master brightness control
   FastLED.setBrightness(STR_BRIGHTNESS);
   FastLED.clear();  // clear all pixel data
-
+  FastLED.show();
 }

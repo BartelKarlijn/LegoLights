@@ -5,9 +5,9 @@
 // =======================================================================================
 void setup() {
   setupSerial();
+  setupLedstrip();
   get_datafrom_eeprom (); // parameters uit eeprom halen (oa ssid/pw en PID)
   startWifi();
-  setupLedstrip();
 
   SetupFinished();
 }

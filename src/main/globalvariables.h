@@ -130,15 +130,22 @@ unsigned long str_time2[] = {
       STR_OLI_0TRAP_TIME2,
       STR_OLI_1PLAF_TIME2
     };
+unsigned long str_time_flick[] = {
+      STR_OLI_0PLAF_TIM_FLICK,
+      STR_OLI_0TRAP_TIM_FLICK,
+      STR_OLI_1PLAF_TIM_FLICK
+};
 
 // timings
 unsigned long currentMillis;
 unsigned long timer_str_aan[STR_NR_ITEMS];
 unsigned long timer_str_flicker[STR_NR_ITEMS];
-int idx_strflamehue[STR_NR_ITEMS];
+int flamestrhueidx[STR_NR_ITEMS];
+int flamestrhue[STR_NR_ITEMS];
+int flamestrbright[STR_NR_ITEMS];
 
 // mag weg, is voor debugging
-long unsigned int cnt;
-bool firstpassed;
-int brightPrint = 69;
-long unsigned TimeMapPrint = 69;
+//long unsigned int cnt;
+//bool firstpassed;
+//int brightPrint = 69;
+//long unsigned TimeMapPrint = 69;

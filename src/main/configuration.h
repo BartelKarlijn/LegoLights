@@ -40,10 +40,10 @@
 #define STR_OLI_0TRAP             1
 #define STR_OLI_0TRAP_STARTLED    1
 #define STR_OLI_0TRAP_STOPLED     1
-#define STR_OLI_0TRAP_HUE1        1
+#define STR_OLI_0TRAP_HUE1      128
 #define STR_OLI_0TRAP_BRIGHT1   255
-#define STR_OLI_0TRAP_HUE2       64 
-#define STR_OLI_0TRAP_BRIGHT2   255
+#define STR_OLI_0TRAP_HUE2        0 
+#define STR_OLI_0TRAP_BRIGHT2     0
 #define STR_OLI_0TRAP_HUE3        0
 #define STR_OLI_0TRAP_BRIGHT3     0
 #define STR_OLI_0TRAP_HUE4        0
@@ -68,7 +68,7 @@
 #define STR_OLI_1PLAF_EVERY       1
 #define STR_OLI_1PLAF_TIME1   10000  //(ms) aan: tijd op
 #define STR_OLI_1PLAF_TIME2    1000  //(ms) aan: tijd uit
-#define STR_OLI_1PLAF_TIM_FLICK 250
+#define STR_OLI_1PLAF_TIM_FLICK 1000
 #define STR_OLI_1PLAF_DIRECTION   false
 
 //laatste item definieren
