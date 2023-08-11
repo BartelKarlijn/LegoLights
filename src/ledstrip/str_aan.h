@@ -2,7 +2,7 @@
 
 void str_aan(int kring) {
   bool fl_on;
-  if( (currentMillis - timer_str_aan[kring]) > (str_time1[kring] + str_time2[kring]) ) {   // lang genoeg uit geweest.  Nu uitzetten
+  if( (currentMillis - timer_str_aan[kring]) > (str_time1[kring] + str_time2[kring]) ) {   // lang genoeg uit geweest.  Nu aanzetten
     fl_on = true;
     timer_str_aan[kring] = currentMillis; //reset timer
   }
