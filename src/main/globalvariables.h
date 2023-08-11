@@ -143,6 +143,7 @@ unsigned long timer_str_flicker[STR_NR_ITEMS];
 int flamestrhueidx[STR_NR_ITEMS];
 int flamestrhue[STR_NR_ITEMS];
 int flamestrbright[STR_NR_ITEMS];
+int chasestrnr[STR_NR_ITEMS];
 
 // mag weg, is voor debugging
 //long unsigned int cnt;

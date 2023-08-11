@@ -71,6 +71,23 @@
 #define STR_OLI_1PLAF_TIM_FLICK 250
 #define STR_OLI_1PLAF_DIRECTION   false
 
+#define STR_SCR_0PLAF             3
+#define STR_SCR_0PLAF_STARTLED    3
+#define STR_SCR_0PLAF_STOPLED    11
+#define STR_SCR_0PLAF_HUE1        0  //0:red, 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red'
+#define STR_SCR_0PLAF_BRIGHT1   128
+#define STR_SCR_0PLAF_HUE2      192
+#define STR_SCR_0PLAF_BRIGHT2   128
+#define STR_SCR_0PLAF_HUE3       32
+#define STR_SCR_0PLAF_BRIGHT3   128
+#define STR_SCR_0PLAF_HUE4      150
+#define STR_SCR_0PLAF_BRIGHT4   128
+#define STR_SCR_0PLAF_EVERY       1
+#define STR_SCR_0PLAF_TIME1   10000  //(ms) aan: tijd op
+#define STR_SCR_0PLAF_TIME2    1000  //(ms) aan: tijd uit
+#define STR_SCR_0PLAF_TIM_FLICK   0
+#define STR_SCR_0PLAF_DIRECTION   false
+
 //laatste item definieren
-#define STR_NR_ITEMS 1+ STR_OLI_1PLAF  //om arrays te definieren
-#define STR_NUM_LEDS STR_OLI_1PLAF_STOPLED + 1
+#define STR_NR_ITEMS 1+ STR_SCR_0PLAF  //om arrays te definieren
+#define STR_NUM_LEDS STR_SCR_0PLAF_STOPLED + 1
