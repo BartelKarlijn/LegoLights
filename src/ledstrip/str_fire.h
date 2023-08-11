@@ -8,7 +8,7 @@ void str_fire(int kring) {
   if( timeBezig > (str_time1[kring] + str_time2[kring]) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kring] = currentMillis;      //reset timers
     timer_str_flicker[kring] = currentMillis + str_time_flick[kring];
-    flamestrbright[kring] = random(255);
+    flamestrbright[kring] = random(str_bright1[kring]);
     flamestrhueidx[kring] = 0;
   }
   else  if (timeBezig > str_time1[kring]) { // einde van aan
@@ -16,8 +16,8 @@ void str_fire(int kring) {
   }
   else  if(currentMillis >  timer_str_flicker[kring])  {//einde van flikering, begin een nieuwe
     flamestrhueidx[kring] = (flamestrhueidx[kring] + 1) % 4; //we hebben 4 kleuren, doe er eentje bij
-    flamestrbright[kring] = random(255);
-    timer_str_flicker[kring] = currentMillis + str_time_flick[kring] ; //reset flikkertimer
+    flamestrbright[kring] = random(str_bright1[kring]);
+    timer_str_flicker[kring] = currentMillis + random(str_time_flick[kring]) ; //reset flikkertimer
   }
   else {
     // gewoon verder doen, laat vlammetje maar branden
