@@ -85,23 +85,23 @@
 
 #define STR_SCR_0PLAF             3
 #define STR_SCR_0PLAF_STARTLED    3
-#define STR_SCR_0PLAF_STOPLED    11
-#define STR_SCR_0PLAF_HUE1      192  //0:red, 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red'
+#define STR_SCR_0PLAF_STOPLED    18
+#define STR_SCR_0PLAF_HUE1        0  //0:red, 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red'
 #define STR_SCR_0PLAF_SAT1      255
 #define STR_SCR_0PLAF_BRIGHT1   255
-#define STR_SCR_0PLAF_HUE2      192
+#define STR_SCR_0PLAF_HUE2       84
 #define STR_SCR_0PLAF_SAT2      255
-#define STR_SCR_0PLAF_BRIGHT2    50
-#define STR_SCR_0PLAF_HUE3        0
+#define STR_SCR_0PLAF_BRIGHT2   255
+#define STR_SCR_0PLAF_HUE3      150
 #define STR_SCR_0PLAF_SAT3      255
-#define STR_SCR_0PLAF_BRIGHT3     0
-#define STR_SCR_0PLAF_HUE4        0
+#define STR_SCR_0PLAF_BRIGHT3   255
+#define STR_SCR_0PLAF_HUE4      230
 #define STR_SCR_0PLAF_SAT4      255
-#define STR_SCR_0PLAF_BRIGHT4     0
-#define STR_SCR_0PLAF_EVERY       1
+#define STR_SCR_0PLAF_BRIGHT4   255
+#define STR_SCR_0PLAF_EVERY       2
 #define STR_SCR_0PLAF_TIME1   10000  //(ms) aan: tijd op
 #define STR_SCR_0PLAF_TIME2    1000  //(ms) aan: tijd uit
-#define STR_SCR_0PLAF_TIM_FLICK  80
+#define STR_SCR_0PLAF_TIM_FLICK 500
 #define STR_SCR_0PLAF_DIRECTION   false
 
 //laatste item definieren

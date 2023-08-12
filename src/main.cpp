@@ -18,7 +18,7 @@ void loop() {
   str_aan(STR_OLI_0PLAF);
   str_glow(STR_OLI_0TRAP);
   str_fire(STR_OLI_1PLAF);
-  str_chase(STR_SCR_0PLAF);
+  str_party(STR_SCR_0PLAF);
   FastLED.show();
   
 }
