@@ -167,7 +167,7 @@ unsigned long str_time2[] = {
       STR_OLI_1PLAF_TIME2,
       STR_SCR_0PLAF_TIME2
     };
-unsigned long str_time_flick[] = {
+unsigned long str_tim_flick[] = {
       STR_OLI_0PLAF_TIM_FLICK,
       STR_OLI_0TRAP_TIM_FLICK,
       STR_OLI_1PLAF_TIM_FLICK,
@@ -185,7 +185,8 @@ int flamestrbright[STR_NR_ITEMS];
 int chasestrnr[STR_NR_ITEMS];
 
 // mag weg, is voor debugging
-//long unsigned int cnt;
-//bool firstpassed;
-//int brightPrint = 69;
-//long unsigned TimeMapPrint = 69;
+long unsigned int cntloop;
+long unsigned int cntjust;
+long unsigned int cntander;
+long unsigned int cntblack;
+

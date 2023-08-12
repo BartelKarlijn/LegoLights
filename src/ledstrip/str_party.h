@@ -8,7 +8,7 @@ void str_party(int kring) {
   // bereken mode (uit, up, down)
   if( timeBezig > (str_time1[kring] + str_time2[kring]) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kring] = currentMillis;      //reset timers
-    timer_str_flicker[kring] = currentMillis + str_time_flick[kring];
+    timer_str_flicker[kring] = currentMillis + str_tim_flick[kring];
     chasestrnr[kring] = str_startled[kring];
     flag_on = true;
   }
@@ -17,7 +17,7 @@ void str_party(int kring) {
   }
   else  if(currentMillis >  timer_str_flicker[kring]) {        //naar volgend spotje gaan
     flag_on = true;
-    timer_str_flicker[kring] = currentMillis + str_time_flick[kring] ; //reset flikkertimer
+    timer_str_flicker[kring] = currentMillis + str_tim_flick[kring] ; //reset flikkertimer
     chasestrnr[kring]++;
     if (chasestrnr[kring] > str_stopled[kring]) {
       chasestrnr[kring] = str_startled[kring];

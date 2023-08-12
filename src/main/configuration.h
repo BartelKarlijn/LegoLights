@@ -90,8 +90,8 @@
 #define STR_SCR_0PLAF_SAT1      255
 #define STR_SCR_0PLAF_BRIGHT1   255
 #define STR_SCR_0PLAF_HUE2      192
-#define STR_SCR_0PLAF_SAT2        0
-#define STR_SCR_0PLAF_BRIGHT2    60
+#define STR_SCR_0PLAF_SAT2      255
+#define STR_SCR_0PLAF_BRIGHT2    50
 #define STR_SCR_0PLAF_HUE3        0
 #define STR_SCR_0PLAF_SAT3      255
 #define STR_SCR_0PLAF_BRIGHT3     0
@@ -101,7 +101,7 @@
 #define STR_SCR_0PLAF_EVERY       1
 #define STR_SCR_0PLAF_TIME1   10000  //(ms) aan: tijd op
 #define STR_SCR_0PLAF_TIME2    1000  //(ms) aan: tijd uit
-#define STR_SCR_0PLAF_TIM_FLICK 250
+#define STR_SCR_0PLAF_TIM_FLICK  80
 #define STR_SCR_0PLAF_DIRECTION   false
 
 //laatste item definieren
