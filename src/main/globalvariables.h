@@ -185,8 +185,7 @@ int flamestrbright[STR_NR_ITEMS];
 int chasestrnr[STR_NR_ITEMS];
 
 // mag weg, is voor debugging
-long unsigned int cntloop;
-long unsigned int cntjust;
-long unsigned int cntander;
-long unsigned int cntblack;
-
+//long unsigned int cntloop;
+// long unsigned int cntjust;
+// long unsigned int cntander;
+// long unsigned int cntblack;

@@ -11,18 +11,6 @@ void str_chase(int kring) {
     timer_str_flicker[kring] = currentMillis + str_tim_flick[kring];
     chasestrnr[kring] = str_startled[kring];
     flag_on = true;
-    Print(" cntloop : ");
-    Print(cntloop);
-    Print(" cntjust : ");
-    Print(cntjust);
-    Print(" cntander: ");
-    Println(cntander);
-    Print(" cntblack: ");
-    Println(cntblack);
-    cntloop = 0;
-    cntjust = 0;
-    cntander = 0;
-    cntblack = 0;
   }
   else  if (timeBezig > str_time1[kring]) { // einde van aan
     flag_on = false;
@@ -45,17 +33,13 @@ void str_chase(int kring) {
     if (flag_on) {
       if( i == chasestrnr[kring] ) {
         ledstrip[i] = CHSV(str_hue1[kring], str_sat1[kring], str_bright1[kring]);
-        cntjust++;
       }
       else {
         ledstrip[i] = CHSV(str_hue2[kring], str_sat2[kring], str_bright2[kring]);
-        cntander++;
       }
     }
     else {
       ledstrip[i] = CRGB::Black;
-      cntblack++;
     }
   }
-  cntloop++;
 }
