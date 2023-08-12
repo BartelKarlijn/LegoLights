@@ -22,10 +22,10 @@ void str_aan(int kring) {
     // aan of uit zetten?
     if (fl_on) {
       if( ( (i - str_startled[kring]) % str_every[kring] ) == 0 ) {  // check every
-        ledstrip[i] = CHSV(str_hue1[kring], 255, str_bright1[kring] );
+        ledstrip[i] = CHSV(str_hue1[kring], str_sat1[kring], str_bright1[kring] );
       }
       else {
-        ledstrip[i] = CRGB::Black;
+        ledstrip[i] = CHSV(str_hue2[kring], str_sat2[kring], str_bright2[kring] );
       }
     }
     else {

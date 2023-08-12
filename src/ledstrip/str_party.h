@@ -1,6 +1,6 @@
 #pragma once
 
-void str_chase(int kring) {
+void str_party(int kring) {
   unsigned long timeBezig;
   bool flag_on;
 

@@ -45,4 +45,5 @@
 #include <ledstrip/str_chase.h>
 #include <ledstrip/str_fire.h>
 #include <ledstrip/str_glow.h>
+#include <ledstrip/str_party.h>
 #include <ledstrip/str_uit.h>

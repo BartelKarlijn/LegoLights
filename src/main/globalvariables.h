@@ -83,6 +83,12 @@ int str_hue1[] = {
       STR_OLI_1PLAF_HUE1,
       STR_SCR_0PLAF_HUE1
     };
+int str_sat1[] = {
+      STR_OLI_0PLAF_SAT1,
+      STR_OLI_0TRAP_SAT1,
+      STR_OLI_1PLAF_SAT1,
+      STR_SCR_0PLAF_SAT1
+    };
 int str_bright1[] = {
       STR_OLI_0PLAF_BRIGHT1,
       STR_OLI_0TRAP_BRIGHT1,
@@ -94,6 +100,12 @@ int str_hue2[] = {
       STR_OLI_0TRAP_HUE2,
       STR_OLI_1PLAF_HUE2,
       STR_SCR_0PLAF_HUE2
+    };
+int str_sat2[] = {
+      STR_OLI_0PLAF_SAT2,
+      STR_OLI_0TRAP_SAT2,
+      STR_OLI_1PLAF_SAT2,
+      STR_SCR_0PLAF_SAT2
     };
 int str_bright2[] = {
       STR_OLI_0PLAF_BRIGHT2,
@@ -107,6 +119,12 @@ int str_hue3[] = {
       STR_OLI_1PLAF_HUE3,
       STR_SCR_0PLAF_HUE3
     };
+int str_sat3[] = {
+      STR_OLI_0PLAF_SAT3,
+      STR_OLI_0TRAP_SAT3,
+      STR_OLI_1PLAF_SAT3,
+      STR_SCR_0PLAF_SAT3
+    };
 int str_bright3[] = {
       STR_OLI_0PLAF_BRIGHT3,
       STR_OLI_0TRAP_BRIGHT3,
@@ -118,6 +136,12 @@ int str_hue4[] = {
       STR_OLI_0TRAP_HUE4,
       STR_OLI_1PLAF_HUE4,
       STR_SCR_0PLAF_HUE4
+    };
+int str_sat4[] = {
+      STR_OLI_0PLAF_SAT4,
+      STR_OLI_0TRAP_SAT4,
+      STR_OLI_1PLAF_SAT4,
+      STR_SCR_0PLAF_SAT4
     };
 int str_bright4[] = {
       STR_OLI_0PLAF_BRIGHT4,
@@ -156,6 +180,7 @@ unsigned long timer_str_aan[STR_NR_ITEMS];
 unsigned long timer_str_flicker[STR_NR_ITEMS];
 int flamestrhueidx[STR_NR_ITEMS];
 int flamestrhue[STR_NR_ITEMS];
+int flamestrsat[STR_NR_ITEMS];
 int flamestrbright[STR_NR_ITEMS];
 int chasestrnr[STR_NR_ITEMS];
 

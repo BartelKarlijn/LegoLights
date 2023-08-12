@@ -28,25 +28,30 @@ void str_fire(int kring) {
    {
    case 0:
     flamestrhue[kring] = str_hue1[kring];
+    flamestrsat[kring] = str_sat1[kring];
     break;
    case 1:
     flamestrhue[kring] = str_hue2[kring];
+    flamestrsat[kring] = str_sat2[kring];
     break;
    case 2:
     flamestrhue[kring] = str_hue3[kring];
+    flamestrsat[kring] = str_sat3[kring];
     break;
    case 3:
     flamestrhue[kring] = str_hue4[kring];
+    flamestrsat[kring] = str_sat4[kring];
     break;
    default:
     flamestrhue[kring] = 0;
+    flamestrsat[kring] = 0;
     break;
    }
 
   for (size_t i = str_startled[kring]; i <= str_stopled[kring]; i++)  {
     // aan of uit zetten?
     if( ( (i - str_startled[kring]) % str_every[kring] ) == 0 ) {  // check every
-      ledstrip[i] = CHSV(flamestrhue[kring], 255, flamestrbright[kring]);
+      ledstrip[i] = CHSV(flamestrhue[kring], flamestrsat[kring], flamestrbright[kring]);
     }
     else {
       ledstrip[i] = CRGB::Black;
