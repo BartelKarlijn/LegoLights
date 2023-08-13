@@ -59,4 +59,5 @@
 #include <ledstrip/showstrip.h>
 
 //sigleled
+#include <singleled/scanI2C.h>
 #include <singleled/led_aan.h>
