@@ -63,9 +63,10 @@ const uint16_t   id_Restart = 23;
 
 //////// Timing //////////
 unsigned long currentMillis;
+unsigned long fpsMillis;
+unsigned long cntfps = 1;  // we willen geen 0 om eventuele delingen door 0 te vermijden
 
 //////// ledStrip //////////
-//#define STRIP_NR_LEDS  21
 
 int str_startled[] = {
       STR_OLI_0PLAF_STARTLED,

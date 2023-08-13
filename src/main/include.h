@@ -27,6 +27,7 @@
 #include <main/print.h>
 #include <main/save_eprom.h>
 #include <main/setupLedstrip.h>
+#include <main/show_fps.h>
 
 //wifi
 #include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton

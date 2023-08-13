@@ -6,6 +6,7 @@
 #define PRINTWEBSERIAL   // follow print statements via web Serial.  Page adress: ipadres/webserial
 #define PRINTSERIAL      // follow prints via serial connection
 #define SERIALSPEED 115200
+#define SHOWFPSEVERY 10000 //show fps every x msec
 
 ///////////////// Pins  //////////////////////////////
 // already used in user_setup.h, and platformio.ini

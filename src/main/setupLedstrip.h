@@ -13,4 +13,10 @@ void setupLedstrip() {
   Serial.print(String(STRIP_NR_ITEMS));
   Serial.print(" leds: ");
   Serial.println(STRIP_NR_LEDS);
+
+  // kringen initialiseren met default
+  for (size_t i = 0; i < STRIP_NR_ITEMS; i++) {
+    str_kring[i] = STR_DEFAULT[i];
+  }
+  Serial.println(str_kring[0].desc);
 }

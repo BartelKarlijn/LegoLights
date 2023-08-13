@@ -13,6 +13,7 @@ void setup() {
 }
 void loop() {
   currentMillis = millis();
+  show_fps();
 
   // strip aan/uit
   str_aan(STR_OLI_0PLAF);
