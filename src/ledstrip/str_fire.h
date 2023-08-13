@@ -1,57 +1,57 @@
 #pragma once
 
-void str_fire(int kring) {
+void str_fire(int kringnr) {
   unsigned long timeBezig;
  
-  timeBezig = currentMillis - timer_str_aan[kring];
+  timeBezig = currentMillis - timer_str_aan[kringnr];
   // bereken mode (uit, up, down)
-  if( timeBezig > (str_time1[kring] + str_time2[kring]) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
-    timer_str_aan[kring] = currentMillis;      //reset timers
-    timer_str_flicker[kring] = currentMillis + str_tim_flick[kring];
-    flamestrbright[kring] = random(str_bright1[kring]);
-    flamestrhueidx[kring] = 0;
+  if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
+    timer_str_aan[kringnr] = currentMillis;      //reset timers
+    timer_str_flicker[kringnr] = currentMillis + kring[kringnr].timeeffect;
+    flamestrbright[kringnr] = random(kring[kringnr].bright1);
+    flamestrhueidx[kringnr] = 0;
   }
-  else  if (timeBezig > str_time1[kring]) { // einde van aan
-    flamestrbright[kring] = 0;
+  else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
+    flamestrbright[kringnr] = 0;
   }
-  else  if(currentMillis >  timer_str_flicker[kring])  {//einde van flikering, begin een nieuwe
-    flamestrhueidx[kring] = (flamestrhueidx[kring] + 1) % 4; //we hebben 4 kleuren, doe er eentje bij
-    flamestrbright[kring] = random(str_bright1[kring]);
-    timer_str_flicker[kring] = currentMillis + random(str_tim_flick[kring]) ; //reset flikkertimer
+  else  if(currentMillis >  timer_str_flicker[kringnr])  {//einde van flikering, begin een nieuwe
+    flamestrhueidx[kringnr] = (flamestrhueidx[kringnr] + 1) % 4; //we hebben 4 kleuren, doe er eentje bij
+    flamestrbright[kringnr] = random(kring[kringnr].bright1);
+    timer_str_flicker[kringnr] = currentMillis + random(kring[kringnr].timeeffect) ; //reset flikkertimer
   }
   else {
     // gewoon verder doen, laat vlammetje maar branden
   }
 
 // bereken kleur
-   switch (flamestrhueidx[kring])
+   switch (flamestrhueidx[kringnr])
    {
    case 0:
-    flamestrhue[kring] = str_hue1[kring];
-    flamestrsat[kring] = str_sat1[kring];
+    flamestrhue[kringnr] = kring[kringnr].hue1;
+    flamestrsat[kringnr] = kring[kringnr].sat1;
     break;
    case 1:
-    flamestrhue[kring] = str_hue2[kring];
-    flamestrsat[kring] = str_sat2[kring];
+    flamestrhue[kringnr] = kring[kringnr].hue2;
+    flamestrsat[kringnr] = kring[kringnr].sat2;
     break;
    case 2:
-    flamestrhue[kring] = str_hue3[kring];
-    flamestrsat[kring] = str_sat3[kring];
+    flamestrhue[kringnr] = kring[kringnr].hue3;
+    flamestrsat[kringnr] = kring[kringnr].sat3;
     break;
    case 3:
-    flamestrhue[kring] = str_hue4[kring];
-    flamestrsat[kring] = str_sat4[kring];
+    flamestrhue[kringnr] = kring[kringnr].hue4;
+    flamestrsat[kringnr] = kring[kringnr].sat4;
     break;
    default:
-    flamestrhue[kring] = 0;
-    flamestrsat[kring] = 0;
+    flamestrhue[kringnr] = 0;
+    flamestrsat[kringnr] = 0;
     break;
    }
 
-  for (size_t i = str_startled[kring]; i <= str_stopled[kring]; i++)  {
+  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
     // aan of uit zetten?
-    if( ( (i - str_startled[kring]) % str_every[kring] ) == 0 ) {  // check every
-      ledstrip[i] = CHSV(flamestrhue[kring], flamestrsat[kring], flamestrbright[kring]);
+    if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every
+      ledstrip[i] = CHSV(flamestrhue[kringnr], flamestrsat[kringnr], flamestrbright[kringnr]);
     }
     else {
       ledstrip[i] = CRGB::Black;

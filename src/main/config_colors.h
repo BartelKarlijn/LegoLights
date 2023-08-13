@@ -46,7 +46,7 @@ const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 ,{"Scribulus GLV plafo",   3,  18,   0, 255, 255,  84, 255, 255, 150, 255, 255, 230, 255, 255,    2, 10000,   1000,    500,  0, EFFSTR_PARTY}
 };
 
-str_strip str_kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
+str_strip kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
 // ledstrip 
 CRGB ledstrip[STRIP_NR_LEDS];

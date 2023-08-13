@@ -1,31 +1,31 @@
 #pragma once
 
-void str_aan(int kring) {
+void str_aan(int kringnr) {
   bool fl_on;
   unsigned long timeBezig;
 
-  timeBezig = currentMillis - timer_str_aan[kring];
+  timeBezig = currentMillis - timer_str_aan[kringnr];
 
-  if( timeBezig > (str_time1[kring] + str_time2[kring]) ) {   // lang genoeg uit geweest.  Nu aanzetten
+  if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
     fl_on = true;
-    timer_str_aan[kring] = currentMillis; //reset timer
+    timer_str_aan[kringnr] = currentMillis; //reset timer
   }
-  else  if (timeBezig > str_time1[kring]) { // lang genoeg aan geweest
+  else  if (timeBezig > kring[kringnr].timeon) { // lang genoeg aan geweest
     fl_on = false;
   }
   else {     //laat nog maar tijdje aan.
     fl_on = true;
   }
 
-  for (size_t i = str_startled[kring]; i <= str_stopled[kring]; i++)
+  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
   {
     // aan of uit zetten?
     if (fl_on) {
-      if( ( (i - str_startled[kring]) % str_every[kring] ) == 0 ) {  // check every
-        ledstrip[i] = CHSV(str_hue1[kring], str_sat1[kring], str_bright1[kring] );
+      if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every
+        ledstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bright1 );
       }
       else {
-        ledstrip[i] = CHSV(str_hue2[kring], str_sat2[kring], str_bright2[kring] );
+        ledstrip[i] = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bright2 );
       }
     }
     else {

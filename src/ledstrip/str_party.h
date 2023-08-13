@@ -1,25 +1,25 @@
 #pragma once
 
-void str_party(int kring) {
+void str_party(int kringnr) {
   unsigned long timeBezig;
   bool flag_on;
   int partyhue, partysat, partybright;
 
-  timeBezig = currentMillis - timer_str_aan[kring];
+  timeBezig = currentMillis - timer_str_aan[kringnr];
   // bereken mode (uit, up, down)
-  if( timeBezig > (str_time1[kring] + str_time2[kring]) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
-    timer_str_aan[kring] = currentMillis;      //reset timers
-    timer_str_flicker[kring] = currentMillis + str_tim_flick[kring];
-    chasestrnr[kring] = 0;
+  if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
+    timer_str_aan[kringnr] = currentMillis;      //reset timers
+    timer_str_flicker[kringnr] = currentMillis + kring[kringnr].timeeffect;
+    chasestrnr[kringnr] = 0;
     flag_on = true;
   }
-  else  if (timeBezig > str_time1[kring]) { // einde van aan
+  else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
     flag_on = false;
   }
-  else  if(currentMillis >  timer_str_flicker[kring]) {        //naar volgend spotje gaan
+  else  if(currentMillis >  timer_str_flicker[kringnr]) {        //naar volgend spotje gaan
     flag_on = true;
-    timer_str_flicker[kring] = currentMillis + str_tim_flick[kring] ; //reset flikkertimer
-    chasestrnr[kring] = (chasestrnr[kring] + 1) % 4;           //kleur vd party
+    timer_str_flicker[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
+    chasestrnr[kringnr] = (chasestrnr[kringnr] + 1) % 4;           //kleur vd party
   }
   else {
     // gewoon verder doen, laat lampje maar branden
@@ -27,27 +27,27 @@ void str_party(int kring) {
   }
 
 // bepaal kleur
-switch (chasestrnr[kring])
+switch (chasestrnr[kringnr])
 {
 case 0:
-  partyhue    = str_hue1[kring];
-  partysat    = str_sat1[kring];
-  partybright = str_bright1[kring];
+  partyhue    = kring[kringnr].hue1;
+  partysat    = kring[kringnr].sat1;
+  partybright = kring[kringnr].bright1;
   break;
 case 1:
-  partyhue    = str_hue2[kring];
-  partysat    = str_sat2[kring];
-  partybright = str_bright2[kring];
+  partyhue    = kring[kringnr].hue2;
+  partysat    = kring[kringnr].sat2;
+  partybright = kring[kringnr].bright2;
   break;
 case 2:
-  partyhue    = str_hue3[kring];
-  partysat    = str_sat3[kring];
-  partybright = str_bright3[kring];
+  partyhue    = kring[kringnr].hue3;
+  partysat    = kring[kringnr].sat3;
+  partybright = kring[kringnr].bright3;
   break;
 case 3:
-  partyhue    = str_hue4[kring];
-  partysat    = str_sat4[kring];
-  partybright = str_bright4[kring];
+  partyhue    = kring[kringnr].hue4;
+  partysat    = kring[kringnr].sat4;
+  partybright = kring[kringnr].bright4;
   break;
 default:
   partyhue    = 0;
@@ -56,10 +56,10 @@ default:
   break;
 }
 
-  for (size_t i = str_startled[kring]; i <= str_stopled[kring]; i++)  {
+  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
     // aan of uit zetten?
     if (flag_on) {
-      if( (i - str_startled[kring]) % ( 4 * str_every[kring]) == chasestrnr[kring] * str_every[kring] ) {
+      if( (i - kring[kringnr].startled) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr] * kring[kringnr].every ) {
         ledstrip[i] = CHSV(partyhue, partysat, partybright);
       }
       else {

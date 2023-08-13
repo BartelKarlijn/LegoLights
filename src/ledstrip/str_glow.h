@@ -1,32 +1,32 @@
 #pragma once
 
-void str_glow(int kring) {
+void str_glow(int kringnr) {
   unsigned long timeBezig;
   unsigned long timeMap;
   int brightn_glow;
 
-timeBezig = currentMillis - timer_str_aan[kring];
+timeBezig = currentMillis - timer_str_aan[kringnr];
 // bereken mode (uit, up, down)
-  if( timeBezig > (2 * str_time1[kring] + str_time2[kring]) ) {   // up+down+uit = lang genoeg uit geweest.  Nu aanzetten
+  if( timeBezig > (2 * kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // up+down+uit = lang genoeg uit geweest.  Nu aanzetten
     brightn_glow = 0;
-    timer_str_aan[kring] = currentMillis; //reset timer
+    timer_str_aan[kringnr] = currentMillis; //reset timer
   }
-  else  if (timeBezig > 2 * str_time1[kring]) { // einde van glow down
+  else  if (timeBezig > 2 * kring[kringnr].timeon) { // einde van glow down
     brightn_glow = 0;
   }
-  else  if (timeBezig > str_time1[kring]) { // down aan het gaan
-    timeMap = timeBezig - str_time1[kring];
-    brightn_glow = map(timeMap, 0, str_time1[kring], str_bright1[kring], 0);
+  else  if (timeBezig > kring[kringnr].timeon) { // down aan het gaan
+    timeMap = timeBezig - kring[kringnr].timeon;
+    brightn_glow = map(timeMap, 0, kring[kringnr].timeon, kring[kringnr].bright1, 0);
   }
   else {     //nog tijdje up te gaan.
-    brightn_glow = map(timeBezig, 0, str_time1[kring], 0, str_bright1[kring] );
+    brightn_glow = map(timeBezig, 0, kring[kringnr].timeon, 0, kring[kringnr].bright1 );
   }
 
-  for (size_t i = str_startled[kring]; i <= str_stopled[kring]; i++)
+  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
   {
     // aan of uit zetten?
-    if( ( (i - str_startled[kring]) % str_every[kring] ) == 0 ) {  // check every
-      ledstrip[i] = CHSV(str_hue1[kring], 255, brightn_glow );
+    if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every
+      ledstrip[i] = CHSV(kring[kringnr].hue1, 255, brightn_glow );
     }
     else {
       ledstrip[i] = CRGB::Black;

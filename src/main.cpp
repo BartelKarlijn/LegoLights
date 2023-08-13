@@ -15,11 +15,10 @@ void loop() {
   currentMillis = millis();
   show_fps();
 
-  // strip aan/uit
-  str_aan(STR_OLI_0PLAF);
-  str_glow(STR_OLI_0TRAP);
-  str_fire(STR_OLI_1PLAF);
-  str_party(STR_SCR_0PLAF);
+  str_aan(0);
+  str_glow(1);
+  str_fire(2);
+  str_party(3);
   FastLED.show();
   
 }

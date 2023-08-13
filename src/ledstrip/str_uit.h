@@ -1,6 +1,6 @@
 #pragma once
-void str_uit(int kring) {
-  for (size_t i = str_startled[kring]; i <= str_stopled[kring]; i++)
+void str_uit(int kringnr) {
+  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
   {
     ledstrip[i] = CRGB::Black;
   }
