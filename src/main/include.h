@@ -49,3 +49,4 @@
 #include <ledstrip/str_glow.h>
 #include <ledstrip/str_party.h>
 #include <ledstrip/str_uit.h>
+#include <ledstrip/showstrip.h>

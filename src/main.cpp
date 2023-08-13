@@ -13,12 +13,8 @@ void setup() {
 }
 void loop() {
   currentMillis = millis();
-  show_fps();
-
-  str_aan(0);
-  str_glow(1);
-  str_fire(2);
-  str_party(3);
+  show_fps();    // print om de zoveel tijd de fps
+  showstrip();   // toon alles van de strip
   FastLED.show();
   
 }
