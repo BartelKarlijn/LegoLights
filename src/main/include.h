@@ -28,6 +28,7 @@
 #include <main/print.h>
 #include <main/save_eprom.h>
 #include <main/setupLedstrip.h>
+#include <main/setupSpiffs.h>
 #include <main/show_fps.h>
 
 //wifi
@@ -35,7 +36,7 @@
 #include <wifi/html_buttonUpDown.h>  // routine to change parameter up or down
 #include <wifi/html_buttonLink.h>    // routine to create button with a link
 #include <wifi/html_doubleInput.h>   // 2 input fields + submit button
-#include <wifi/html_sendPage.h>      // send the (config) html string
+//#include <wifi/html_sendPage.h>      // send the (config) html string
 #include <wifi/html_processor.h>     // replaces placeholder in sendPage
 #include <wifi/buttonChange.h>       // actions happening if you ckick a button
 #include <wifi/setup_AsyncWebserver.h> 

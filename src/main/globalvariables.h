@@ -12,6 +12,7 @@ bool   flagWifiOn = false;
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
+#define hdlCSS        "/style.css"               // handle voor stylesheet.
 #define hdlKnop       "/knop"                    // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlUpdate     "/update"                  // Dit niet wijzigen: is voor OTA firmware 
 #define hdlWifiPWD    "/wificfg"                 // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt

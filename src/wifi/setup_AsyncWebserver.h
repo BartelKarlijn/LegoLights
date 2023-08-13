@@ -8,7 +8,7 @@ void setup_AsyncWebserver(){
   // Route for Wifi Passwoord onderhoud
   webserver.on(hdlWifiPWD, HTTP_GET, [](AsyncWebServerRequest *request) {
     Print("Wifi config pagina");
-    request->send_P(200, "text/html", config_html, html_processorWifi);
+    request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
   });
 
   // Opvangen als wifi data bewaard worden
@@ -33,13 +33,16 @@ void setup_AsyncWebserver(){
     
     save_WIFIdatato_eeprom (); 
     Println("Wifi SSID and PWD saved; please reboot ESP32");
-    request->send_P(200, "text/html", config_html, html_processorWifi);
+    request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
   });
 
 
   // Route for root / web page (controller)
   webserver.on(hdlRoot, HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send_P(200, "text/html", config_html, html_processorRoot);
+    request->send(SPIFFS, "/index.html", String(), false, html_processorRoot);
+  });
+  webserver.on(hdlCSS, HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/style.css", "text/css");
   });
 
  // catch setting time
