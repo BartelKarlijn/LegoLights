@@ -4,6 +4,7 @@
 // External libraries
 // read and save dta
 #include <Preferences.h>   // om op ESP32 eeprom te kunnen lezen en schrijven
+#include <SPIFFS.h>        // om het filesysteem van ESP32 te gebruiken
 
 // Wifi
 #include <WiFi.h>           //

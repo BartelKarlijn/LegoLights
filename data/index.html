@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Diagon Alley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+<body>
+  %BUTTONPLACEHOLDER%
+<script>function toggleCheckbox(element) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/knop?output="+element.id, true);
+  xhr.send();
+  setTimeout("location.reload()", 200);
+}</script>
+</body>
+</html>
