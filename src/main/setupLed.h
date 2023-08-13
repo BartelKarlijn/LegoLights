@@ -6,7 +6,4 @@ void setupLed() {
   singleled.setPWMFreq(1600); // This is the maximum PWM frequency and suited to LED's
 
   Println("Single leds setup done");
-  Print("pwm freq ");
-  //Println(singleled.getPWM());
-  Println("freq getoond");
 }
