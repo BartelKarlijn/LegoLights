@@ -33,8 +33,8 @@ typedef struct {
 } str_strip;
 
 // default waarden
-#define STRIP_NR_ITEMS 4
-#define STRIP_NR_LEDS  21 //eentje meer dan laatste item in lijstje hieronder
+#define STRIP_NR_ITEMS 5
+#define STRIP_NR_LEDS  30 //eentje meer dan laatste item in lijstje hieronder
 
 const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 //234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down
@@ -44,6 +44,7 @@ const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 ,{"Olivander GLV trap ",   1,   1, 128, 255, 255,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,      0,  0, EFFSTR_GLOW }
 ,{"Olivander V1 plafon",   2,   2,  25, 255, 255,  20, 255, 255,  15, 255, 255,  30, 255, 255,    1, 10000,   1000,    250,  0, EFFSTR_FIRE }
 ,{"Scribulus GLV plafo",   3,  18,   0, 255, 255,  84, 255, 255, 150, 255, 255, 230, 255, 255,    2, 10000,   1000,    500,  0, EFFSTR_PARTY}
+,{"Scribulus V1 plafoN",  19,  26, 192, 255, 255, 192, 255,  25,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    200,  0, EFFSTR_CHASE}
 };
 
 str_strip kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
