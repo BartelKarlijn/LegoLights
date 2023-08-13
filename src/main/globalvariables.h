@@ -62,6 +62,10 @@ const uint16_t   id_SaveConfig = 22;
 const char* oms_Restart = "Restart";
 const uint16_t   id_Restart = 23;
 
+//////// PCA9685 led servodriver //////////
+//set the board address, PCA9685 come as 0x40 by default
+Adafruit_PWMServoDriver singleled = Adafruit_PWMServoDriver(0x40, Wire);
+
 //////// Timing //////////
 unsigned long currentMillis;
 unsigned long fpsMillis;

@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 // External libraries
-// read and save dta
+// read and save data
 #include <Preferences.h>   // om op ESP32 eeprom te kunnen lezen en schrijven
 #include <SPIFFS.h>        // om het filesysteem van ESP32 te gebruiken
 
@@ -16,6 +16,10 @@
 // Ledstrip
 #include <FastLED.h>
 
+// PCA9865 servo/led driver
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
+
 // Own libraries
 // variables
 #include <main/configuration.h>
@@ -27,6 +31,7 @@
 #include <main/setupSerial.h>
 #include <main/print.h>
 #include <main/save_eprom.h>
+#include <main/setupLed.h>
 #include <main/setupLedstrip.h>
 #include <main/setupSpiffs.h>
 #include <main/show_fps.h>
@@ -52,3 +57,6 @@
 #include <ledstrip/str_party.h>
 #include <ledstrip/str_uit.h>
 #include <ledstrip/showstrip.h>
+
+//sigleled
+#include <singleled/led_aan.h>

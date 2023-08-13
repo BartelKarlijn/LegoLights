@@ -9,6 +9,7 @@ void setup() {
   setupSpiffs();          // van het ESP32 file systeem lezen
   get_datafrom_eeprom (); // parameters uit eeprom halen (oa ssid/pw en PID)
   startWifi();
+  setupLed();
 
   SetupFinished();
 }
@@ -18,4 +19,6 @@ void loop() {
   showstrip();   // toon alles van de strip
   FastLED.show();
   
+  led_aan(0);
+  led_aan(15);
 }
