@@ -19,6 +19,7 @@
 // variables
 #include <main/configuration.h>
 #include <main/globalvariables.h>
+#include <main/config_colors.h>
 
 // Own subroutines
 //   main

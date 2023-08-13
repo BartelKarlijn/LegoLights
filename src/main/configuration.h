@@ -103,7 +103,3 @@
 #define STR_SCR_0PLAF_TIME2    1000  //(ms) aan: tijd uit
 #define STR_SCR_0PLAF_TIM_FLICK 500
 #define STR_SCR_0PLAF_DIRECTION   false
-
-//laatste item definieren
-#define STR_NR_ITEMS 1+ STR_SCR_0PLAF  //om arrays te definieren
-#define STR_NUM_LEDS STR_SCR_0PLAF_STOPLED + 1

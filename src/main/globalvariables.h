@@ -1,4 +1,3 @@
-#pragma once
 //////////////// OPERATION ///////////////////////
 Preferences pref_eeprom;           // to store & read parameters from eprom
 
@@ -62,8 +61,11 @@ const uint16_t   id_SaveConfig = 22;
 const char* oms_Restart = "Restart";
 const uint16_t   id_Restart = 23;
 
+//////// Timing //////////
+unsigned long currentMillis;
+
 //////// ledStrip //////////
-CRGB ledstrip[STR_NUM_LEDS];
+//#define STRIP_NR_LEDS  21
 
 int str_startled[] = {
       STR_OLI_0PLAF_STARTLED,
@@ -173,19 +175,3 @@ unsigned long str_tim_flick[] = {
       STR_OLI_1PLAF_TIM_FLICK,
       STR_SCR_0PLAF_TIM_FLICK
 };
-
-// timings
-unsigned long currentMillis;
-unsigned long timer_str_aan[STR_NR_ITEMS];
-unsigned long timer_str_flicker[STR_NR_ITEMS];
-int flamestrhueidx[STR_NR_ITEMS];
-int flamestrhue[STR_NR_ITEMS];
-int flamestrsat[STR_NR_ITEMS];
-int flamestrbright[STR_NR_ITEMS];
-int chasestrnr[STR_NR_ITEMS];
-
-// mag weg, is voor debugging
-//long unsigned int cntloop;
-// long unsigned int cntjust;
-// long unsigned int cntander;
-// long unsigned int cntblack;
