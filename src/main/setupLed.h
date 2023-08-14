@@ -5,5 +5,9 @@ void setupLed() {
   singleled.begin();          //start PCA9685 for diagon Alley
   singleled.setPWMFreq(1600); // This is the maximum PWM frequency and suited to LED's
 
+  // leds initialiseren met default
+  for (size_t i = 0; i < LED_NR_ITEMS; i++) {
+    singled[i] = LED_DEFAULT[i];
+  }
   Println("Single leds setup done");
 }

@@ -19,6 +19,5 @@ void loop() {
   showstrip();   // toon alles van de strip
   FastLED.show();
   
-  led_aan(0);
-  led_aan(15);
+  showled();     // ledjes tonen
 }

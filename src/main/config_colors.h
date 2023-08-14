@@ -1,5 +1,5 @@
 // Configuration file for default led coloring
-// effecten
+// effecten strip
 #define EFFSTR_AAN      0
 #define EFFSTR_CHASE    1
 #define EFFSTR_FIRE     2
@@ -60,3 +60,44 @@ int flamestrhue[STRIP_NR_ITEMS];
 int flamestrsat[STRIP_NR_ITEMS];
 int flamestrbright[STRIP_NR_ITEMS];
 int chasestrnr[STRIP_NR_ITEMS];
+
+//////////// single leds /////////////////////////////
+// effecten leds
+#define EFFLED_AAN     10
+#define EFFLED_FIRE    11
+#define EFFLED_GLOW    12
+#define EFFLED_UIT     13
+
+typedef struct {
+  char   desc[20];
+  int    lednr;
+  int    bright;
+  unsigned long timeon;
+  unsigned long timeoff;
+  unsigned long timeeffect;
+  int    effect;
+} str_singled;
+
+#define LED_NR_ITEMS 16
+const str_singled LED_DEFAULT[LED_NR_ITEMS] {
+//    description (20) ,lednr,brigh,timeon,timeoff,timeeff, eff
+ {"led geel           ",    0, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test02         ",    1, 4095,   500,    500,      0, EFFLED_AAN  }
+,{"led test03         ",    1, 2095,   500,    500,      0, EFFLED_AAN  }
+,{"led test04         ",    1, 3095,   500,    500,      0, EFFLED_AAN  }
+,{"led test05         ",    1, 4095,   500,    500,      0, EFFLED_AAN  }
+,{"led test06         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test07         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test08         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test09         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test10         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test11         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test12         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test13         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test14         ",   15, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test15         ",   15, 4095,  1000,   1000,      0, EFFLED_AAN  }
+};
+
+str_singled singled[LED_NR_ITEMS];
+unsigned long timer_led_aan[LED_NR_ITEMS];
+unsigned long timer_led_flicker[LED_NR_ITEMS];
