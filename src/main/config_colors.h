@@ -7,7 +7,6 @@
 #define EFFSTR_PARTY    4
 #define EFFSTR_UIT      5
 
-// structure voor de ledstrip
 typedef struct {
   char   desc[20];
   int    startled;

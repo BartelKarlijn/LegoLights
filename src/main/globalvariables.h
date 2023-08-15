@@ -13,13 +13,15 @@ bool   flagWifiOn = false;
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
 #define hdlCSS        "/style.css"               // handle voor stylesheet.
+#define hdlpgStrip    "/maintain_strip"          // handle om onderhoud pagina te sturne
+#define hdlgetStrip   "/getStrip"                // handle om strip info te krijgen (veld/veld)
 #define hdlKnop       "/knop"                    // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
-#define hdlUpdate     "/update"                  // Dit niet wijzigen: is voor OTA firmware 
+
 #define hdlWifiPWD    "/wificfg"                 // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 //#define hdlWifiScan   "/wifiscan"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
+#define hdlUpdate     "/update"                  // Dit niet wijzigen: is voor OTA firmware 
 #define hdlWifiSave   "/wifisave"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWebSerial  "/webserial"               // Dit is niet te wijzigen, is om Serial Monitor via web te hebben
-#define hdlTimeSave   "/timesave"                // handle to submit time
 
 // knoppen
 const char* PARAM_output = "output";   // voor de asyncwebserver
