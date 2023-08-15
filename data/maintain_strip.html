@@ -1,0 +1,30 @@
+<!DOCTYPE html> <html>
+<head>
+    <title>
+       Diagon Alley ledstrip
+    </title>
+</head>
+  
+<body style="text-align:center;" id="body" onload="work5()">
+    <input type='text' id='id5a' name='poging5'/>
+    <br>
+    <input type='text' id='id5b' name='poging5'/>
+    <br>
+    <script>
+        const queryString = window.location.search;
+        function getid5(elem){
+            elem.value = "textValue5&"+elem.id;
+			elem.setAttribute("onchange", "setid5(this)");
+        }
+        function setid5(elem){
+            elem.value = "Teruggezet5&"+elem.id;
+        }
+        function work5(){
+            let allAutom = document.getElementsByName('poging5');
+            allAutom.forEach((elem) => {
+              getid5(elem);
+              });
+        }
+    </script>
+</body>
+</html>
