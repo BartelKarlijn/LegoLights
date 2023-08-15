@@ -143,6 +143,9 @@ void setup_AsyncWebserver(){
   webserver.on(hdlCSS, HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/style.css", "text/plain");
   });
+  webserver.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/favicon.ico", "image/png");
+  });
 
 
  // Verwerk als er op een knop wordt gedrukt
