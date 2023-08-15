@@ -7,7 +7,7 @@ void setupLed() {
 
   // leds initialiseren met default
   for (size_t i = 0; i < LED_NR_ITEMS; i++) {
-    singled[i] = LED_DEFAULT[i];
+    ledsingle[i] = LED_DEFAULT[i];
   }
   Println("Single leds setup done");
 }

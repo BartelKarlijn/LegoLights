@@ -2,7 +2,7 @@
 
 void showled() {
   for (size_t i = 0; i < LED_NR_ITEMS; i++) {
-    switch (singled[i].effect)
+    switch (ledsingle[i].effect)
     {
     case EFFLED_AAN:
         led_aan(i);
