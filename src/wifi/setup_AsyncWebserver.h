@@ -46,7 +46,7 @@ void setup_AsyncWebserver(){
     request->send(SPIFFS, "/index.html", "text/plain");
   });
   webserver.on(hdlgetStrip, HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("getstrip binnen gekregen");
+    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
     String kringString;
     int kringnr;
     String veldString;
@@ -56,17 +56,13 @@ void setup_AsyncWebserver(){
     if (request->hasParam("kring")) {
       kringString = request->getParam("kring")->value();
       kringnr = kringString.toInt();
-      Print("kring = ");
-      Println(kringnr);
     }
     else {
-      kringnr = 0;
+      kringnr = 255;
     }
     if (request->hasParam("veld")) {
       veldString = request->getParam("veld")->value();
       veldnr = veldString.toInt();
-      Print("veldnr = ");
-      Println(veldnr);
 
       switch (veldnr)
       {
@@ -82,38 +78,68 @@ void setup_AsyncWebserver(){
       case 4:
         answertoSend = kring[kringnr].hue1;
         break;
-
-        /* lijstje
- 1  char   desc;
- 2  int    startled;
- 3  int    stopled;
- 4  int    hue1;
- 5  int    sat1;
- 6  int    bright1;
- 7  int    hue2;
- 8  int    sat2;
- 9  int    bright2;
-10  int    hue3;
-11  int    sat3;
-12  int    bright3;
-13  int    hue4;
-14  int    sat4;
-15  int    bright4;
-16  int    every;*/
+      case 5:
+        answertoSend = kring[kringnr].sat1;
+        break;
+      case 6:
+        answertoSend = kring[kringnr].bright1;
+        break;
+      case 7:
+        answertoSend = kring[kringnr].hue2;
+        break;
+      case 8:
+        answertoSend = kring[kringnr].sat2;
+        break;
+      case 9:
+        answertoSend = kring[kringnr].bright2;
+        break;
+      case 10:
+        answertoSend = kring[kringnr].hue3;
+        break;
+      case 11:
+        answertoSend = kring[kringnr].sat3;
+        break;
+      case 12:
+        answertoSend = kring[kringnr].bright3;
+        break;
+      case 13:
+        answertoSend = kring[kringnr].hue4;
+        break;
+      case 14:
+        answertoSend = kring[kringnr].sat4;
+        break;
+      case 15:
+        answertoSend = kring[kringnr].bright4;
+        break;
+      case 16:
+        answertoSend = kring[kringnr].every;
+        break;
+      case 17:
+        answertoSend = kring[kringnr].timeon;
+        break;
+      case 18:
+        answertoSend = kring[kringnr].timeoff;
+        break;
+      case 19:
+        answertoSend = kring[kringnr].timeeffect;
+        break;
+      case 20:
+        answertoSend = kring[kringnr].direction;
+        break;
+      case 21:
+        answertoSend = kring[kringnr].effect;
+        break;
       default:
         answertoSend = "error";
         break;
       }
-      Print("result dat zal worden doorgestuurd = ");
-      Println(answertoSend);
-
     }
     else {
       answertoSend = "error";
     }
     request->send(200, "text/plain", answertoSend);
   });
-  
+
   webserver.on(hdlCSS, HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/style.css", "text/plain");
   });
