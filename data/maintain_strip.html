@@ -17,12 +17,15 @@
             $('input[name="jq"]').val(function(index, value){
                 $.get("/getStrip"+"?kring="+$.urlParam('kring')+"&veld="+this.id, function(data) {
                     console.log("vul waarde "+data);
-                    $('#01').html(data);
+                    //$('01').html(data);  nok
+                    $(this).html(data);
                 });
             });
-            $('03').val(function(index, value){
+            $('#03').val(function(index, value){
                 $.get("/getStrip"+"?kring="+$.urlParam('kring')+"&veld=03", function(data) {
                     console.log("enkel 03 "+data);
+                    console.log("enkel03 val="+$(this).value);
+                    //$(this).val(data); nok
                     $('#03').html(data);
                 });
             });
@@ -31,8 +34,19 @@
 			$('input[name="jq"]').on("focusout", function(){
 				//$(this).val("jq2");
 				$.get("/getStrip"+"?kring="+$.urlParam('kring')+"&veld="+this.id+"&waarde="+this.value, function(data) {
-				$('#02').value = data;
+				    console.log("onchange jq= "+data)
+                    //$(this).html(data);  nok
+                    $(this).html("teruggezet");
 				});
+			});
+            //onchange voor element 03
+			$('#03').on("focusout", function(){
+				//$(this).val("jq2");
+				$.get("/getStrip"+"?kring="+$.urlParam('kring')+"&veld="+this.id+"&waarde="+this.value, function(data) {
+				    console.log("onchange 03="+data)
+                    //$('#03').val(data);  nok
+                    //$('#03').html("teruggezet");
+                    $(this).val("teruggezet");				});
 			});
 		});
 //$.get( "test.php", function( data ) {
