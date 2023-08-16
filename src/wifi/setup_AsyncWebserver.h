@@ -41,11 +41,11 @@ void setup_AsyncWebserver(){
   webserver.on(hdlRoot, HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/index.html", String(), false, html_processorRoot);
   });
-  webserver.on(hdlpgStrip, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("strip configuratie opgeroepen");
-    request->send(SPIFFS, "/index.html", "text/plain");
+    request->send(SPIFFS, "/maintain_strip.html", "text/html");
   });
-  webserver.on(hdlgetStrip, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
     String kringString;
     int kringnr;
@@ -142,6 +142,9 @@ void setup_AsyncWebserver(){
 
   webserver.on(hdlCSS, HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/style.css", "text/plain");
+  });
+  webserver.on("/jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/jquery-3.7.0.min.js", "text/javascript");
   });
   webserver.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/favicon.ico", "image/png");
