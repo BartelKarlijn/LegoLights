@@ -82,19 +82,20 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 //    description (20) ,lednr,brigh,timeon,timeoff,timeeff, eff
  {"led geel           ",    0, 4095,  1000,   1000,      0, EFFLED_AAN  }
 ,{"led test02         ",    1, 4095,   500,    500,      0, EFFLED_AAN  }
-,{"led test03         ",    1, 2095,   500,    500,      0, EFFLED_AAN  }
-,{"led test04         ",    1, 3095,   500,    500,      0, EFFLED_AAN  }
-,{"led test05         ",    1, 4095,   500,    500,      0, EFFLED_AAN  }
-,{"led test06         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test07         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test08         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test09         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test10         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test11         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test12         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test13         ",    1, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test14         ",   15, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test15         ",   15, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test03         ",    2, 2095,   500,    500,      0, EFFLED_AAN  }
+,{"led test04         ",    3, 3095,   500,    500,      0, EFFLED_AAN  }
+,{"led test05         ",    4, 4095,   500,    500,      0, EFFLED_AAN  }
+,{"led test06         ",    5, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test07         ",    6, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test08         ",    7, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test09         ",    8, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test10         ",    9, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test11         ",   10, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test12         ",   11, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test13         ",   12, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test14         ",   13, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test15         ",   14, 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test16         ",   15, 4095,  1000,   1000,      0, EFFLED_AAN  }
 };
 
 str_ledsingle ledsingle[LED_NR_ITEMS];
