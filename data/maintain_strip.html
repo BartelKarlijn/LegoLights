@@ -3,28 +3,52 @@
     <title>
        Diagon Alley ledstrip
     </title>
-</head>
-  
-<body style="text-align:center;" id="body" onload="work5()">
-    <input type='text' id='id5a' name='poging5'/>
-    <br>
-    <input type='text' id='id5b' name='poging5'/>
-    <br>
+    <script src="jquery-3.7.0.min.js"></script>
     <script>
-        const queryString = window.location.search;
-        function getid5(elem){
-            elem.value = "textValue5&"+elem.id;
-			elem.setAttribute("onchange", "setid5(this)");
-        }
-        function setid5(elem){
-            elem.value = "Teruggezet5&"+elem.id;
-        }
-        function work5(){
-            let allAutom = document.getElementsByName('poging5');
-            allAutom.forEach((elem) => {
-              getid5(elem);
-              });
-        }
+        $(document).ready(function() {
+            // url parameters
+            $.urlParam = function(name){
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                if (results==null) { return null; }
+                return decodeURI(results[1]) || 0;
+            }
+			//vul waarde in jq elementen in
+			//$('input[name="jq"]').val("test");
+            $('input[name="jq"]').val(function(index, value){
+                $.get("/getStrip"+"?kring="+$.urlParam('kring')+"&veld="+this.id, function(data) {
+                    console.log("vul waarde "+data);
+                    $('#01').html(data);
+                });
+            });
+            $('03').val(function(index, value){
+                $.get("/getStrip"+"?kring="+$.urlParam('kring')+"&veld=03", function(data) {
+                    console.log("enkel 03 "+data);
+                    $('#03').html(data);
+                });
+            });
+
+            //onchange voor jq elementen
+			$('input[name="jq"]').on("focusout", function(){
+				//$(this).val("jq2");
+				$.get("/getStrip"+"?kring="+$.urlParam('kring')+"&veld="+this.id+"&waarde="+this.value, function(data) {
+				$('#02').value = data;
+				});
+			});
+		});
+//$.get( "test.php", function( data ) {
+//  $( "body" )
+//    .append( "Name: " + data.name ) // John
+//    .append( "Time: " + data.time ); //  2pm
+//}, "json" );
     </script>
+</head>
+
+<body style="text-align:center;" id="body" >
+    <label for="01">Beschrijving</label> <input type='text' id='01' name='jq' value="init"/>
+    <br>
+    <label for="02">Start led   </label> <input type='text' id='02' name='jq' value="init"/>
+    <br>
+    <label for="03">Stop led    </label> <input type='text' id='03' name='jq2'/>
+    <br>
 </body>
 </html>
