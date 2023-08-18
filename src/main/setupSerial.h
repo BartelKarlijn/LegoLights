@@ -2,6 +2,7 @@
 void setupSerial () {
   Serial.begin(SERIALSPEED);
   delay(100);
+  // No wifi yet, so using Serial.print
   Serial.println("Starting ESP32");
   Serial.print("Setup running on core: ");
   Serial.println(xPortGetCoreID());

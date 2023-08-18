@@ -33,8 +33,12 @@
 #include <main/save_eprom.h>
 #include <main/setupLed.h>
 #include <main/setupLedstrip.h>
-#include <main/setupSpiffs.h>
 #include <main/show_fps.h>
+
+// Spiffs() integrated file system)
+#include <spiffs/humanReadableSize.h>
+#include <spiffs/listFiles.h>
+#include <spiffs/setupSpiffs.h>
 
 //wifi
 #include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton

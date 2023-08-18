@@ -6,13 +6,13 @@ void setup_AsyncWebserver(){
   WebSerial.begin(&webserver);
 
   // Route for Wifi Passwoord onderhoud
-  webserver.on(hdlWifiPWD, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
     Print("Wifi config pagina");
     request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
   });
 
   // Opvangen als wifi data bewaard worden
-  webserver.on(hdlWifiSave, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/wifisave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi connection parameters");
     if (request->hasParam(PARAM_ssid)) {
       wifi_ssid = request->getParam(PARAM_ssid)->value();
@@ -38,7 +38,7 @@ void setup_AsyncWebserver(){
 
 
   // Route for root / web page (controller)
-  webserver.on(hdlRoot, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/index.html", String(), false, html_processorRoot);
   });
   webserver.on("/maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
@@ -140,7 +140,7 @@ void setup_AsyncWebserver(){
     request->send(200, "text/plain", answertoSend);
   });
 
-  webserver.on(hdlCSS, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/style.css", "text/plain");
   });
   webserver.on("/jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
@@ -152,7 +152,7 @@ void setup_AsyncWebserver(){
 
 
  // Verwerk als er op een knop wordt gedrukt
-  webserver.on(hdlKnop, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/knop", HTTP_GET, [](AsyncWebServerRequest *request) {
     String IDknopString;
     uint16_t IDknop;
     // GET input1 value on <ESP_IP>/update?output=<inputMessage1>&state=<inputMessage2>
