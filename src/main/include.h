@@ -38,6 +38,7 @@
 // Spiffs() integrated file system)
 #include <spiffs/humanReadableSize.h>
 #include <spiffs/listFiles.h>
+#include <spiffs/listStorage.h>
 #include <spiffs/setupSpiffs.h>
 
 //wifi
