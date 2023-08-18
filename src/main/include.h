@@ -48,6 +48,8 @@
 //#include <wifi/html_sendPage.h>      // send the (config) html string
 #include <wifi/html_processor.h>     // replaces placeholder in sendPage
 #include <wifi/buttonChange.h>       // actions happening if you ckick a button
+#include <wifi/on_wifisave.h>
+#include <wifi/on_getstrip.h>
 #include <wifi/setup_AsyncWebserver.h> 
 #include <wifi/setup_ConnectKnownWifi.h>
 #include <wifi/setup_CreateAccessPoint.h>
