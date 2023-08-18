@@ -1,14 +1,19 @@
 void on_file(AsyncWebServerRequest *request) {
-  Println("File list requested");
+  Println("File requested");
   String logmessage;
   if (request->hasParam("name") && request->hasParam("action")) {
     const char *fileName = request->getParam("name")->value().c_str();
     const char *fileAction = request->getParam("action")->value().c_str();
 
-    logmessage = "Requested file " + String(fileName) + "&action=" + String(fileAction);
+    logmessage = "Requested file ?name=" + String(fileName) + "&action=" + String(fileAction);
 
     if (!SPIFFS.exists(fileName)) {
       Println(logmessage + " ERROR: file does not exist");
+      Print("file='");
+      Print(fileName);
+      Print("'");
+      Print("spiffs output geeft ");
+      Println(SPIFFS.exists(fileName));
       request->send(400, "text/plain", "ERROR: file does not exist");
     } else {
       Println(logmessage + " file exists");

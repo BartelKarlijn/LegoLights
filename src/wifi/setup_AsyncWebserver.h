@@ -13,7 +13,7 @@ void setup_AsyncWebserver(){
 
   // Route for root / web page (controller)
   webserver.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Print("Root requested");
+    Println("Root requested");
     //request->send(SPIFFS, "/index.html", String(), false, html_processorRoot);
     request->send(SPIFFS, "/index.html", "text/html");
   });
@@ -21,15 +21,15 @@ void setup_AsyncWebserver(){
     request->send(SPIFFS, "/favicon.ico", "image/png");
   });
   webserver.on("/file", HTTP_GET, [](AsyncWebServerRequest * request){
-    Print("file requested");
+    Println("file requested");
     on_file(request);
   });
   webserver.on("/fileList", HTTP_GET, [](AsyncWebServerRequest * request){
-    Print("fileList requested");
+    Println("fileList requested");
     request->send(200, "text/plain", listFiles(true));
   });
   webserver.on("/fileManagement", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Print("FileManagement requested");
+    Println("FileManagement requested");
     request->send(SPIFFS, "/fileManagement.html", "text/html");
   });
   webserver.on("/jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
@@ -47,7 +47,7 @@ void setup_AsyncWebserver(){
     request->send(SPIFFS, "/style.css", "text/plain");
   });
   webserver.on("/wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Print("Wifi config pagina");
+    Println("Wifi config pagina");
     request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
   });
   webserver.on("/wifisave", HTTP_GET, [](AsyncWebServerRequest *request) {
