@@ -6,7 +6,7 @@
 </head>
 <body>
   <p>File Management</p>
-  <p>Free Storage: <span id="freespiffs">%FREESPIFFS%</span> | Used Storage: <span id="usedspiffs">%USEDSPIFFS%</span> | Total Storage: <span id="totalspiffs">%TOTALSPIFFS%</span></p>
+  <p>Free Storage: <span id="storage"></span></p>
   <p>
   <button onclick="listFilesButton()">List Files</button>
   <button onclick="showUploadButtonFancy()">Upload File</button>
@@ -21,6 +21,12 @@ function listFilesButton() {
   xmlhttp.send();
   document.getElementById("detailsheader").innerHTML = "<h3>Files<h3>";
   document.getElementById("details").innerHTML = xmlhttp.responseText;
+}
+function listStorage() {
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.open("GET", "/fileStorage", false);
+  xmlhttp.send();
+  document.getElementById("storage").innerHTML = xmlhttp.responseText;
 }
 function downloadDeleteButton(filename, action) {
   var urltocall = "/file?name=/" + filename + "&action=" + action;

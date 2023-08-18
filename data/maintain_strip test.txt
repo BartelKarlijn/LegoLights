@@ -1,0 +1,46 @@
+<!DOCTYPE html> <html>
+<head>
+    <title>
+       test
+    </title>
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // url parameters
+            $.urlParam = function(name){
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                if (results==null) { return null; }
+                return decodeURI(results[1]) || 0;
+            }
+			console.log("kring1= "+$.urlParam('kring'));
+
+			//Beginwaarden ophalen voor jq
+            $('input[name="jq"]').each(function(ind, element) {
+				$(element).val(function(index, value){
+					$.get("https://get.geojs.io/v1/ip/country", {kring: $.urlParam('kring'), veld: $(element).attr('id')}, function(data) {
+						$(element).val("init "+data);
+					});
+				});
+            });
+
+            //onchange voor jq elementen
+			$('input[name="jq"]').each(function(ind, element) {
+				$(element).on("focusout", function(){
+					$.get("https://get.geojs.io/v1/ip/country", {kring: $.urlParam('kring'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
+						//$(element).val(data);
+					});
+				});
+			});
+		});
+    </script>
+</head>
+
+<body style="text-align:center;" id="body" >
+    <label for="01">Beschrijving</label> <input type='text' id='01' name='jq' />
+    <br>
+    <label for="02">Start led   </label> <input type='text' id='02' name='jq' />
+    <br>
+    <label for="03">Stop led    </label> <input type='text' id='03' name='jq'/>
+    <br>
+</body>
+</html>
