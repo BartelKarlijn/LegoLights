@@ -23,7 +23,7 @@ function listFilesButton() {
   document.getElementById("details").innerHTML = xmlhttp.responseText;
 }
 function downloadDeleteButton(filename, action) {
-  var urltocall = "/file?name=" + filename + "&action=" + action;
+  var urltocall = "/file?name=/" + filename + "&action=" + action;
   xmlhttp=new XMLHttpRequest();
   if (action == "delete") {
     xmlhttp.open("GET", urltocall, false);
