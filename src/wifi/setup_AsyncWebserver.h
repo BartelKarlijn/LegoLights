@@ -44,7 +44,7 @@ void setup_AsyncWebserver(){
     Println("fileStorage requested");
     request->send(200, "text/plain", listStorage(true));
   });
-  webserver.on("/getlistKring", HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
     request->send(200, "text/plain", listKringen(true));
   });

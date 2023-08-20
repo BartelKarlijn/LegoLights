@@ -6,7 +6,7 @@ String listFiles(bool ishtml) {
   File root = SPIFFS.open("/");
   File foundfile = root.openNextFile();
   if (ishtml) {
-    returnText += "<table><tr><th align='left'>Name</th><th align='left'>Size</th><th></th><th></th></tr>";
+    returnText += "<table class='center'><tr><th align='left'>Name</th><th align='left'>Size</th><th></th><th></th></tr>";
   }
   while (foundfile) {
     if (ishtml) {
