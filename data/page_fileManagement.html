@@ -41,6 +41,7 @@
   <p id="status"></p>
   <p id="detailsheader"></p>
   <p id="details"></p>
+  <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
 <script>
 function refreshFileList(){
   $.get("/getfileList"   , function(data) {$("#fileList").html(data);})

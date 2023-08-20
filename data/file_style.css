@@ -13,6 +13,7 @@ a {}
 .button-left   {margin-left: 0; margin-right: auto; text-align: left;}
 .button-center {margin-left: auto; margin-right: auto; text-align: center;}
 .button-right  {margin-left: auto; margin-right: 10px; text-align: right;}
+input {margin-left: 100px;}
 
 tr td {height:30px}
 button {display: inline; width: 240px;background-color: #3498db;border: none;color: #fff;border-color: #007bff; padding: 10px 10px;text-decoration: none;font-size: 20px;margin: 5px;cursor: pointer;border-radius: 4px; margin-bottom: 20px;}

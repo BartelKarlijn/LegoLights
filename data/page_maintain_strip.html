@@ -36,42 +36,31 @@
     </script>
 </head>
 
-<body style="text-align:center;" id="body" >
-    <label for="01">Beschrijving</label> <input type='text' id='01' name='jq' />
-    <br>
-    <label for="02">Start led   </label> <input type='text' id='02' name='jq' />
-    <br>
-    <label for="03">Stop led    </label> <input type='text' id='03' name='jq'/>
-    <br>
-    <label for="04">Hue 1       </label> <input type='text' id='04' name='jq'/>
-    <br>
-    <label for="05">Sat 1       </label> <input type='text' id='05' name='jq'/>
-    <br>
-    <label for="06">Brightness 1</label> <input type='text' id='06' name='jq'/>
-    <br>
-    <label for="07">Hue 2       </label> <input type='text' id='07' name='jq'/>
-    <br>1
-    <label for="08">Sat 2       </label> <input type='text' id='08' name='jq'/>
-    <br>
-    <label for="09">Brightness 2</label> <input type='text' id='09' name='jq'/>
-    <br>
-    <label for="10">Hue 3       </label> <input type='text' id='10' name='jq'/>
-    <br>
-    <label for="11">Sat 3       </label> <input type='text' id='11' name='jq'/>
-    <br>
-    <label for="12">Brightness 3</label> <input type='text' id='12' name='jq'/>
-    <br>
-    <label for="13">Every       </label> <input type='text' id='13' name='jq'/>
-    <br>
-    <label for="14">Time on     </label> <input type='text' id='14' name='jq'/>
-    <br>
-    <label for="14">Time off    </label> <input type='text' id='15' name='jq'/>
-    <br>
-    <label for="14">Time effect </label> <input type='text' id='16' name='jq'/>
-    <br>
-    <label for="14">Direction   </label> <input type='text' id='17' name='jq'/>
-    <br>
-    <label for="14">Effect      </label> <input type='text' id='18' name='jq'/>
-    <br>
+<body style="text-align:left;" id="body" >
+    <h1>Beheer effecten van ledstrip</h1>
+    <table>
+        <tr><td>Beschrijving</td><td><input id='01' name='jq' type='text'   required maxlength="20" /></td></tr>
+        <tr><td>Start led</td>   <td><input id='02' name='jq' type='number' min="0" max="500"/></td></tr>
+        <tr><td>Stop led</td>    <td><input id='03' name='jq' type='number' min="0" max="500"/></td></tr>
+        <tr><td>Hue 1</td>       <td><input id='04' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Sat 1</td>       <td><input id='05' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Brightness 1</td><td><input id='06' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Hue 2</td>       <td><input id='07' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Sat 2</td>       <td><input id='08' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Brightness 2</td><td><input id='09' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Hue 3</td>       <td><input id='10' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Sat 3</td>       <td><input id='11' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Brightness 3</td><td><input id='12' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Hue 4</td>       <td><input id='13' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Sat 4</td>       <td><input id='14' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Brightness 4</td><td><input id='15' name='jq' type='number' min="0" max="255"/></td></tr>
+        <tr><td>Every</td>       <td><input id='16' name='jq' type='number' min="0" max="10"/></td></tr>
+        <tr><td>Time on</td>     <td><input id='17' name='jq' type='number' min="0" max="99999"/></td></tr>
+        <tr><td>Time off</td>    <td><input id='18' name='jq' type='number' min="0" max="99999"/></td></tr>
+        <tr><td>Time every</td>  <td><input id='19' name='jq' type='number' min="0" max="99999"/></td></tr>
+        <tr><td>Direction</td>   <td><input id='20' name='jq' type='checkbox'></td></tr>
+        <tr><td>Effect</td>      <td><input id='21' name='jq' type='text'   required maxlength="20" /></td></tr>
+    </table>
+    <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
 </body>
 </html>
