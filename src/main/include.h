@@ -41,6 +41,21 @@
 #include <spiffs/listStorage.h>
 #include <spiffs/setupSpiffs.h>
 
+//ledstrip
+#include <ledstrip/listKringen.h>
+#include <ledstrip/str_aan.h>
+#include <ledstrip/str_chase.h>
+#include <ledstrip/str_fire.h>
+#include <ledstrip/str_glow.h>
+#include <ledstrip/str_party.h>
+#include <ledstrip/str_uit.h>
+#include <ledstrip/showstrip.h>
+
+//sigleled
+#include <singleled/scanI2C.h>
+#include <singleled/led_aan.h>
+#include <singleled/showled.h>
+
 //wifi
 #include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton
 #include <wifi/html_buttonUpDown.h>  // routine to change parameter up or down
@@ -57,17 +72,3 @@
 #include <wifi/setup_ConnectKnownWifi.h>
 #include <wifi/setup_CreateAccessPoint.h>
 #include <wifi/startWifi.h>
-
-//ledstrip
-#include <ledstrip/str_aan.h>
-#include <ledstrip/str_chase.h>
-#include <ledstrip/str_fire.h>
-#include <ledstrip/str_glow.h>
-#include <ledstrip/str_party.h>
-#include <ledstrip/str_uit.h>
-#include <ledstrip/showstrip.h>
-
-//sigleled
-#include <singleled/scanI2C.h>
-#include <singleled/led_aan.h>
-#include <singleled/showled.h>

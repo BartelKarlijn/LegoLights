@@ -18,7 +18,7 @@ void setup_AsyncWebserver(){
   webserver.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Root requested");
     //request->send(SPIFFS, "/index.html", String(), false, html_processorRoot);
-    request->send(SPIFFS, "/index.html", "text/html");
+    request->send(SPIFFS, "/page_root.html", "text/html");
   });
   webserver.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/favicon.ico", "image/png");
@@ -31,10 +31,6 @@ void setup_AsyncWebserver(){
     Println("fileList requested");
     request->send(200, "text/plain", listFiles(true));
   });
-  webserver.on("/fileManagement", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("FileManagement requested");
-    request->send(SPIFFS, "/fileManagement.html", "text/html");
-  });
   webserver.on("/fileStorage", HTTP_GET, [](AsyncWebServerRequest * request){
     Println("fileStorage requested");
     request->send(200, "text/plain", listStorage(true));
@@ -46,14 +42,15 @@ void setup_AsyncWebserver(){
   webserver.on("/jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/jquery-3.7.0.min.js", "text/javascript");
   });
-  webserver.on("/maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/page_fileManagement", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("FileManagement requested");
+    request->send(SPIFFS, "/page_fileManagement.html", "text/html");
+  });
+  webserver.on("/page_maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("strip configuratie opgeroepen");
-    request->send(SPIFFS, "/maintain_strip.html", "text/html");
+    request->send(SPIFFS, "/page_maintain_strip.html", "text/html");
   });
-  webserver.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/style.css", "text/plain");
-  });
-  webserver.on("/wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi config pagina");
     request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
   });
@@ -61,6 +58,9 @@ void setup_AsyncWebserver(){
     Println("Wifi connection parameters");
     on_wifisave(request);
     request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
+  });
+  webserver.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/style.css", "text/plain");
   });
 
   // Start server
