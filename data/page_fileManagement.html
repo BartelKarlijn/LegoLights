@@ -9,9 +9,8 @@
   <script>
     $(document).ready(function() {
  		  //Beginwaarden ophalen voor storage
-      $.get("/getfileStorage", function(data) {
-        $("#storage").html(data);
-      })
+      $.get("/getfileStorage", function(data) {$("#storage").html(data) ;})
+      $.get("/getfileList"   , function(data) {$("#fileList").html(data);})
 		});
   </script>
 </head>
@@ -19,20 +18,33 @@
   <h1>File Management</h1>
   <h2>Free Storage:</h2>
   <span id="storage"></span></p>
-  <h3>
-  <button onclick="listFilesButton()">List Files</button>
-  <button onclick="showUploadButtonFancy()">Upload File</button>
-  </h3>
+  <h2>
+    <button onclick="refreshFileList()">Refresh File list</button>
+    <button onclick="showUploadButtonFancy()">Upload File</button>
+  </h2>
+  <h2>Upload</h2>
+  <!-- 
+  <form id="uploadfilestatus"  method="post" action = "/" enctype="multipart/form-data">
+    <input type="file" name="data"/>
+    <input type="submit" name="upload" value="Upload" title = "Upload File"/>
+  </form> -->
+  <form id="uploadfiledetails" method="post"              enctype="multipart/form-data">
+    <input id="file1" type="file" name="file1" onchange="uploadFile()"></input>
+    <br>
+    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+    <h3 id="status"></h3>
+    <p id="loaded_n_total"></p>
+  </form>
+    
+  <p id="statusupload"></p>
+  <h2>Files</h2>
+  <p id="fileList"></p>
   <p id="status"></p>
   <p id="detailsheader"></p>
   <p id="details"></p>
 <script>
-function listFilesButton() {
-  xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET", "/getfileList", false);
-  xmlhttp.send();
-  document.getElementById("detailsheader").innerHTML = "<h2>Files<h2>";
-  document.getElementById("details").innerHTML = xmlhttp.responseText;
+function refreshFileList(){
+  $.get("/getfileList"   , function(data) {$("#fileList").html(data);})
 }
 function downloadDeleteButton(filename, action) {
   var urltocall = "/getfile?name=/" + filename + "&action=" + action;
@@ -41,9 +53,6 @@ function downloadDeleteButton(filename, action) {
     xmlhttp.open("GET", urltocall, false);
     xmlhttp.send();
     document.getElementById("status").innerHTML = xmlhttp.responseText;
-    xmlhttp.open("GET", "/getfileList", false);
-    xmlhttp.send();
-    document.getElementById("details").innerHTML = xmlhttp.responseText;
   }
   if (action == "download") {
     document.getElementById("status").innerHTML = "";
@@ -51,7 +60,7 @@ function downloadDeleteButton(filename, action) {
   }
 }
 function showUploadButtonFancy() {
-  document.getElementById("detailsheader").innerHTML = "<h3>Upload File<h3>"
+  document.getElementById("detailsheader").innerHTML = "<h2>Upload File<h2>"
   document.getElementById("status").innerHTML = "";
   var uploadform = "<form method = \"POST\" action = \"/\" enctype=\"multipart/form-data\"><input type=\"file\" name=\"data\"/><input type=\"submit\" name=\"upload\" value=\"Upload\" title = \"Upload File\"></form>"
   document.getElementById("details").innerHTML = uploadform;
@@ -93,12 +102,12 @@ function progressHandler(event) {
 function completeHandler(event) {
   _("status").innerHTML = "Upload Complete";
   _("progressBar").value = 0;
-  xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET", "/getfileList", false);
-  xmlhttp.send();
+//  xmlhttp=new XMLHttpRequest();
+//  xmlhttp.open("GET", "/getfileList", false);
+//  xmlhttp.send();
   document.getElementById("status").innerHTML = "File Uploaded";
-  document.getElementById("detailsheader").innerHTML = "<h3>Files<h3>";
-  document.getElementById("details").innerHTML = xmlhttp.responseText;
+//  document.getElementById("detailsheader").innerHTML = "<h3>Files old<h3>";
+//  document.getElementById("details").innerHTML = xmlhttp.responseText;
 }
 function errorHandler(event) {
   _("status").innerHTML = "Upload Failed";
