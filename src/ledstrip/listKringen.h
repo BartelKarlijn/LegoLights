@@ -10,7 +10,8 @@ String listKringen(bool ishtml) {
   for (size_t i = 0; i < STRIP_NR_ITEMS; i++) {
     // telkens ID en beschrijving
     if (ishtml) {
-      returnText += "<tr align='left'><td>" + String(i) + "</td><td>" + String(kring[i].desc) + "</td>";
+      returnText += "<tr align='left'><td>" + String(i) + "</td>";
+      returnText += "<td> href= '/page_maintain_strip?kring=" + String(i) + "'" + String(kring[i].desc) + "</td>";
     }
     else {
       returnText += "ID: "+  String(i) + " Beschrijving: " + String(kring[i].desc);

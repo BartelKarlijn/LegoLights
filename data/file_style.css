@@ -1,13 +1,18 @@
 html { font-family: Arial, Verdana, sans-serif;   font-style: normal; font-weight: 200;font-variant: normal; display:inline-block; margin:50px auto; text-align:left;color:#444444;}
 body { margin-top:10px; background-color: whitesmoke;}
-h1 {text-align:center; font-size: 30;color: #000000; font-weight: 300;}
-h3 {text-align:center; font-size: 20; color: #525252;font-weight: 400;}
-h4 {text-align:right; color: #525252; font-weight: 400;}
-table.center {margin-left: auto; margin-right: auto;}
+h1 {text-align:center; font-size: xx-large; color: #000000; font-weight: 300;}
+h2 {text-align:center; font-size: x-large ; color: #000000; font-weight: 300;}
+h3 {text-align:center; font-size: large   ; color: #525252; font-weight: 400; margin-bottom: 0%;}
+p  {text-align:right;  font-size: medium  ; color: #525252; font-weight: 400;}
+ 
+table {margin-left: auto; margin-right: auto;}
+span {text-align: left;}
+
 tr td {height:40px}
 button {display: inline; width: 240px;background-color: #3498db;border: none;color: #fff;border-color: #007bff; padding: 10px 10px;text-decoration: none;font-size: 20px;margin: 5px;cursor: pointer;border-radius: 4px; margin-bottom: 20px;}
   .button-on {background-color: #3498db;}
   .button-on:active {background-color: #2980b9;}
   .button-of {background-color: #34495e;}
   .button-of:active {background-color: #2c3e50;}
+  .button-small { width: 60; margin-bottom: 5px;font-size: 12px; padding: 5px 5px;}
 

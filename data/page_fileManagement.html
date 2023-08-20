@@ -17,12 +17,12 @@
 </head>
 <body>
   <h1>File Management</h1>
-  <h3>Free Storage:</h3>
+  <h2>Free Storage:</h2>
   <span id="storage"></span></p>
-  <p>
+  <h3>
   <button onclick="listFilesButton()">List Files</button>
   <button onclick="showUploadButtonFancy()">Upload File</button>
-  </p>
+  </h3>
   <p id="status"></p>
   <p id="detailsheader"></p>
   <p id="details"></p>
@@ -31,7 +31,7 @@ function listFilesButton() {
   xmlhttp=new XMLHttpRequest();
   xmlhttp.open("GET", "/getfileList", false);
   xmlhttp.send();
-  document.getElementById("detailsheader").innerHTML = "<h3>Files<h3>";
+  document.getElementById("detailsheader").innerHTML = "<h2>Files<h2>";
   document.getElementById("details").innerHTML = xmlhttp.responseText;
 }
 function downloadDeleteButton(filename, action) {
