@@ -3,6 +3,16 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+  		  //Beginwaarden ophalen voor storage
+        
+        $.get("/fileStorage", function(data) {
+          $("#storage").html(data);
+        })
+  		});
+    </script>
 </head>
 <body>
   <p>File Management</p>
@@ -21,12 +31,6 @@ function listFilesButton() {
   xmlhttp.send();
   document.getElementById("detailsheader").innerHTML = "<h3>Files<h3>";
   document.getElementById("details").innerHTML = xmlhttp.responseText;
-}
-function listStorage() {
-  xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET", "/fileStorage", false);
-  xmlhttp.send();
-  document.getElementById("storage").innerHTML = xmlhttp.responseText;
 }
 function downloadDeleteButton(filename, action) {
   var urltocall = "/file?name=/" + filename + "&action=" + action;

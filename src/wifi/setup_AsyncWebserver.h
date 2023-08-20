@@ -39,16 +39,16 @@ void setup_AsyncWebserver(){
     Println("fileStorage requested");
     request->send(200, "text/plain", listStorage(true));
   });
+  webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    request->send(200, "text/plain", on_getstrip(request));
+  });
   webserver.on("/jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/jquery-3.7.0.min.js", "text/javascript");
   });
   webserver.on("/maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("strip configuratie opgeroepen");
     request->send(SPIFFS, "/maintain_strip.html", "text/html");
-  });
-  webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", on_getstrip(request));
   });
   webserver.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/style.css", "text/plain");

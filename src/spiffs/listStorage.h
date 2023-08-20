@@ -8,7 +8,7 @@ String listStorage(bool ishtml) {
   Println("Listing files stored on SPIFFS");
   
   if (ishtml) {
-    returnText += "<table><tr><th align='left'>Name</th><th align='left'>Size</th><th></th><th></th></tr>";
+    returnText += "<table>";
     returnText += "<tr align='left'><td> Free " + freebytes + "</td><td> Used " + usedbytes  + "</td><td> Total " + totalbytes + "</td>";
     returnText += "</table>";
   }

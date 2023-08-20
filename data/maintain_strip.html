@@ -26,7 +26,7 @@
             //onchange voor jq elementen
 			$('input[name="jq"]').each(function(ind, element) {
 				$(element).on("focusout", function(){
-					$.get("/getstrip", {kring: $.urlParam('kring'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
+					$.get("/setstrip", {kring: $.urlParam('kring'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
 						//$(element).val(data);
 					});
 				});
