@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diagon Alley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="file_style.css">
+  <script src="file_jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+ 		  //Beginwaarden ophalen voor storage
+      $.get("/getlistKringen", function(data) {
+        $("#listKringen").html(data);
+      })
+		});
+  </script>
+
+</head>
+<body>
+  <noscript>
+    <strong>We're sorry but Diagon Alley doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <h1>Diagon Alley</h1>
+  <h3>Kringen</h3>
+  <span id="listKringen"></span></h3>
+  <a href="/page_maintain_strip" class="button button-right button-large">Kleuren strip</a>
+  <a href="/restart"             class="button button-right  button-large">Reboot ESP32</a>
+  <a href="/wificonfig"          class="button button-right  button-large">Wifi config</a>
+  <a href="/page_fileManagement" class="button button-right  button-large">File management</a>
+  <a href="/webserial"           class="button button-right  button-large">Webserial</a>
+  <a href="/update"              class="button button-right  button-large">Firmware Update</a>
+
+  %showfirmware info%
+</body>
+</html>

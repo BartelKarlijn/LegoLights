@@ -33,23 +33,16 @@
 #include <main/save_eprom.h>
 #include <main/setupLed.h>
 #include <main/setupLedstrip.h>
-#include <main/setupSpiffs.h>
 #include <main/show_fps.h>
 
-//wifi
-#include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton
-#include <wifi/html_buttonUpDown.h>  // routine to change parameter up or down
-#include <wifi/html_buttonLink.h>    // routine to create button with a link
-#include <wifi/html_doubleInput.h>   // 2 input fields + submit button
-//#include <wifi/html_sendPage.h>      // send the (config) html string
-#include <wifi/html_processor.h>     // replaces placeholder in sendPage
-#include <wifi/buttonChange.h>       // actions happening if you ckick a button
-#include <wifi/setup_AsyncWebserver.h> 
-#include <wifi/setup_ConnectKnownWifi.h>
-#include <wifi/setup_CreateAccessPoint.h>
-#include <wifi/startWifi.h>
+// Spiffs() integrated file system)
+#include <spiffs/humanReadableSize.h>
+#include <spiffs/listFiles.h>
+#include <spiffs/listStorage.h>
+#include <spiffs/setupSpiffs.h>
 
 //ledstrip
+#include <ledstrip/listKringen.h>
 #include <ledstrip/str_aan.h>
 #include <ledstrip/str_chase.h>
 #include <ledstrip/str_fire.h>
@@ -62,3 +55,21 @@
 #include <singleled/scanI2C.h>
 #include <singleled/led_aan.h>
 #include <singleled/showled.h>
+
+//wifi
+#include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton
+#include <wifi/html_buttonUpDown.h>  // routine to change parameter up or down
+#include <wifi/html_buttonLink.h>    // routine to create button with a link
+#include <wifi/html_doubleInput.h>   // 2 input fields + submit button
+//#include <wifi/html_sendPage.h>      // send the (config) html string
+#include <wifi/html_processor.h>     // replaces placeholder in sendPage
+#include <wifi/buttonChange.h>       // actions happening if you ckick a button
+#include <wifi/on_file.h>            // downloaden of verwijderen
+#include <wifi/on_fileUpload.h>
+#include <wifi/on_getStrip.h>
+#include <wifi/on_getSetStrip.h>
+#include <wifi/on_wifisave.h>
+#include <wifi/setup_AsyncWebserver.h> 
+#include <wifi/setup_ConnectKnownWifi.h>
+#include <wifi/setup_CreateAccessPoint.h>
+#include <wifi/startWifi.h>
