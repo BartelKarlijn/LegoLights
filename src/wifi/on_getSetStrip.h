@@ -59,49 +59,64 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         answertoSend = waardeString;
         break;
       case 7:
-        answertoSend = kring[kringnr].hue2;
+        kring[kringnr].hue2 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 8:
-        answertoSend = kring[kringnr].sat2;
+        kring[kringnr].sat2 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 9:
-        answertoSend = kring[kringnr].bright2;
+        kring[kringnr].bright2 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 10:
-        answertoSend = kring[kringnr].hue3;
+        kring[kringnr].hue3 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 11:
-        answertoSend = kring[kringnr].sat3;
+        kring[kringnr].sat3 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 12:
-        answertoSend = kring[kringnr].bright3;
+        kring[kringnr].bright3 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 13:
-        answertoSend = kring[kringnr].hue4;
+        kring[kringnr].hue4 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 14:
-        answertoSend = kring[kringnr].sat4;
+        kring[kringnr].sat4 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 15:
-        answertoSend = kring[kringnr].bright4;
+        kring[kringnr].bright4 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 16:
-        answertoSend = kring[kringnr].every;
+        kring[kringnr].every = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 17:
-        answertoSend = kring[kringnr].timeon;
+        kring[kringnr].timeon = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 18:
-        answertoSend = kring[kringnr].timeoff;
+        kring[kringnr].timeoff = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 19:
-        answertoSend = kring[kringnr].timeeffect;
+        kring[kringnr].timeeffect = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 20:
-        answertoSend = kring[kringnr].direction;
+        kring[kringnr].direction = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 21:
-        answertoSend = kring[kringnr].effect;
+        kring[kringnr].effect = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       default:
         answertoSend = "error";
