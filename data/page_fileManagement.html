@@ -1,22 +1,28 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+  <title>File management</title>
+  <link rel="stylesheet" type="text/css" href="/file_style.css">
+  <style type="text/css" >
+    body {
+      color: purple;
+      }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-    <script src="file_jquery-3.7.0.min.js"></script>
-    <script>
-      $(document).ready(function() {
-  		  //Beginwaarden ophalen voor storage
-        
-        $.get("/getfileStorage", function(data) {
-          $("#storage").html(data);
-        })
-  		});
-    </script>
+  <script src="file_jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+ 		  //Beginwaarden ophalen voor storage
+      $.get("/getfileStorage", function(data) {
+        $("#storage").html(data);
+      })
+		});
+  </script>
 </head>
 <body>
-  <p>File Management</p>
-  <p>Free Storage: <span id="storage"></span></p>
+  <h1>File Management</h1>
+  <h4>Free Storage: <span id="storage"></span></p>
   <p>
   <button onclick="listFilesButton()">List Files</button>
   <button onclick="showUploadButtonFancy()">Upload File</button>

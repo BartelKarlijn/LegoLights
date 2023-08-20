@@ -28,6 +28,11 @@ void setup_AsyncWebserver(){
     request->send(SPIFFS, "/file_jquery-3.7.0.min.js", "text/javascript");
   });
   webserver.on("/file_style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("/stylesheet opgevraagd");
+    request->send(SPIFFS, "/file_style.css", "text/plain");
+  });
+  webserver.on("file_style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("stylesheet opgevraagd zonder /");
     request->send(SPIFFS, "/file_style.css", "text/plain");
   });
   // dynamic actions

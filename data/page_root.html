@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="file_style.css">
-  <script src="jquery-3.7.0.min.js"></script>
+  <script src="file_jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+ 		  //Beginwaarden ophalen voor storage
+      $.get("/getlistKringen", function(data) {
+        $("#listKringen").html(data);
+      })
+		});
+  </script>
 
 </head>
 <body>
@@ -13,12 +21,8 @@
     <strong>We're sorry but Diagon Alley doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
   <h1>Diagon Alley onderhoud</h1>
+  <p>Kringen<span id="listKringen"></span></p>
+
   %BUTTONPLACEHOLDER%
-<script>function toggleCheckbox(element) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "/knop?output="+element.id, true);
-  xhr.send();
-  setTimeout("location.reload()", 200);
-}</script>
 </body>
 </html>
