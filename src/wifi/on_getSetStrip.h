@@ -1,10 +1,12 @@
-String on_getStrip(AsyncWebServerRequest *request){
+String on_getSetStrip(AsyncWebServerRequest *request){
     String kringString;
     int kringnr;
     String veldString;
     int veldnr;
     String answertoSend;
-    // get parameter kring & veld  http://192.168.68.205/maintain_strip?kring=1?veld=hue1
+    String waardeString;
+    bool doeVerder;
+    // get parameter kring & veld & waarde http://192.168.68.205/maintain_strip?kring=1&veld=hue1&waarde=56
     if (request->hasParam("kring")) {
       kringString = request->getParam("kring")->value();
       kringnr = kringString.toInt();
@@ -15,26 +17,46 @@ String on_getStrip(AsyncWebServerRequest *request){
     if (request->hasParam("veld")) {
       veldString = request->getParam("veld")->value();
       veldnr = veldString.toInt();
+      doeVerder = true;
+    }
+    else {
+      answertoSend += "Error: veld mist";
+    }
+    if (request->hasParam("waarde")) {
+      waardeString = request->getParam("waarde")->value();
+      doeVerder = true;
+    }
+    else {
+      answertoSend += "Error: waardeparameter mist";
+    }
 
+    // verwerk de input
+    if (doeVerder) {
       switch (veldnr)
       {
       case 1:  //we beginnen bij 1, zodat 0 een fout geeft
-        answertoSend = kring[kringnr].desc;
+        waardeString.toCharArray(kring[kringnr].desc, 20);
+        answertoSend = waardeString;
         break;
       case 2:
-        answertoSend = kring[kringnr].startled;
+        kring[kringnr].startled = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 3:
-        answertoSend = kring[kringnr].stopled;
+        kring[kringnr].stopled = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 4:
-        answertoSend = kring[kringnr].hue1;
+        kring[kringnr].hue1 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 5:
-        answertoSend = kring[kringnr].sat1;
+        kring[kringnr].sat1 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 6:
-        answertoSend = kring[kringnr].bright1;
+        kring[kringnr].bright1 = waardeString.toInt();
+        answertoSend = waardeString;
         break;
       case 7:
         answertoSend = kring[kringnr].hue2;
@@ -85,9 +107,6 @@ String on_getStrip(AsyncWebServerRequest *request){
         answertoSend = "error";
         break;
       }
-    }
-    else {
-      answertoSend = "error";
     }
     return answertoSend;
 }

@@ -50,7 +50,11 @@ void setup_AsyncWebserver(){
   });
   webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", on_getstrip(request));
+    request->send(200, "text/plain", on_getStrip(request));
+  });
+  webserver.on("/getSetStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("setstrip binnen gekregen");
+    request->send(200, "text/plain", on_getSetStrip(request));
   });
   // webpages
   webserver.on("/page_fileManagement", HTTP_GET, [](AsyncWebServerRequest *request) {

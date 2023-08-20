@@ -66,7 +66,8 @@
 #include <wifi/buttonChange.h>       // actions happening if you ckick a button
 #include <wifi/on_file.h>            // downloaden of verwijderen
 #include <wifi/on_fileUpload.h>
-#include <wifi/on_getstrip.h>
+#include <wifi/on_getStrip.h>
+#include <wifi/on_getSetStrip.h>
 #include <wifi/on_wifisave.h>
 #include <wifi/setup_AsyncWebserver.h> 
 #include <wifi/setup_ConnectKnownWifi.h>
