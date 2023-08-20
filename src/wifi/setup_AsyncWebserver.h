@@ -29,11 +29,7 @@ void setup_AsyncWebserver(){
   });
   webserver.on("/file_style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("/stylesheet opgevraagd");
-    request->send(SPIFFS, "/file_style.css", "text/plain");
-  });
-  webserver.on("file_style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("stylesheet opgevraagd zonder /");
-    request->send(SPIFFS, "/file_style.css", "text/plain");
+    request->send(SPIFFS, "/file_style.css", "text/css");
   });
   // dynamic actions
   webserver.on("/getfile", HTTP_GET, [](AsyncWebServerRequest * request){

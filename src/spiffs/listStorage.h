@@ -5,7 +5,6 @@ String listStorage(bool ishtml) {
   String freebytes  = humanReadableSize(SPIFFS.totalBytes()-SPIFFS.usedBytes()) ;
   String usedbytes  = humanReadableSize(SPIFFS.usedBytes()) ;
   String totalbytes = humanReadableSize(SPIFFS.totalBytes());
-  Println("Listing files stored on SPIFFS");
   
   if (ishtml) {
     returnText += "<table>";
