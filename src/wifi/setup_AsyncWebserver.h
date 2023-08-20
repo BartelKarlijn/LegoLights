@@ -20,28 +20,38 @@ void setup_AsyncWebserver(){
     //request->send(SPIFFS, "/index.html", String(), false, html_processorRoot);
     request->send(SPIFFS, "/page_root.html", "text/html");
   });
+  // static files
   webserver.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/favicon.ico", "image/png");
+    request->send(SPIFFS, "/file_favicon.ico", "image/png");
   });
-  webserver.on("/file", HTTP_GET, [](AsyncWebServerRequest * request){
+  webserver.on("/file_jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_jquery-3.7.0.min.js", "text/javascript");
+  });
+  webserver.on("/file_style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_style.css", "text/plain");
+  });
+  // dynamic actions
+  webserver.on("/getfile", HTTP_GET, [](AsyncWebServerRequest * request){
     Println("file requested");
     on_file(request);
   });
-  webserver.on("/fileList", HTTP_GET, [](AsyncWebServerRequest * request){
+  webserver.on("/getfileList", HTTP_GET, [](AsyncWebServerRequest * request){
     Println("fileList requested");
     request->send(200, "text/plain", listFiles(true));
   });
-  webserver.on("/fileStorage", HTTP_GET, [](AsyncWebServerRequest * request){
+  webserver.on("/getfileStorage", HTTP_GET, [](AsyncWebServerRequest * request){
     Println("fileStorage requested");
     request->send(200, "text/plain", listStorage(true));
+  });
+  webserver.on("/getlistKring", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    request->send(200, "text/plain", listKringen(true));
   });
   webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
     request->send(200, "text/plain", on_getstrip(request));
   });
-  webserver.on("/jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/jquery-3.7.0.min.js", "text/javascript");
-  });
+  // webpages
   webserver.on("/page_fileManagement", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("FileManagement requested");
     request->send(SPIFFS, "/page_fileManagement.html", "text/html");
@@ -58,9 +68,6 @@ void setup_AsyncWebserver(){
     Println("Wifi connection parameters");
     on_wifisave(request);
     request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
-  });
-  webserver.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/style.css", "text/plain");
   });
 
   // Start server

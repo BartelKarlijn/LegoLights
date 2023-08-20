@@ -3,12 +3,12 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-    <script src="jquery-3.7.0.min.js"></script>
+    <script src="file_jquery-3.7.0.min.js"></script>
     <script>
       $(document).ready(function() {
   		  //Beginwaarden ophalen voor storage
         
-        $.get("/fileStorage", function(data) {
+        $.get("/getfileStorage", function(data) {
           $("#storage").html(data);
         })
   		});
@@ -27,19 +27,19 @@
 <script>
 function listFilesButton() {
   xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET", "/fileList", false);
+  xmlhttp.open("GET", "/getfileList", false);
   xmlhttp.send();
   document.getElementById("detailsheader").innerHTML = "<h3>Files<h3>";
   document.getElementById("details").innerHTML = xmlhttp.responseText;
 }
 function downloadDeleteButton(filename, action) {
-  var urltocall = "/file?name=/" + filename + "&action=" + action;
+  var urltocall = "/getfile?name=/" + filename + "&action=" + action;
   xmlhttp=new XMLHttpRequest();
   if (action == "delete") {
     xmlhttp.open("GET", urltocall, false);
     xmlhttp.send();
     document.getElementById("status").innerHTML = xmlhttp.responseText;
-    xmlhttp.open("GET", "/fileList", false);
+    xmlhttp.open("GET", "/getfileList", false);
     xmlhttp.send();
     document.getElementById("details").innerHTML = xmlhttp.responseText;
   }
@@ -75,7 +75,7 @@ function uploadFile() {
   ajax.addEventListener("load", completeHandler, false); // doesnt appear to ever get called even upon success
   ajax.addEventListener("error", errorHandler, false);
   ajax.addEventListener("abort", abortHandler, false);
-  ajax.open("POST", "/fileManagement");
+  ajax.open("POST", "/page_fileManagement");
   ajax.send(formdata);
 }
 function progressHandler(event) {
@@ -92,7 +92,7 @@ function completeHandler(event) {
   _("status").innerHTML = "Upload Complete";
   _("progressBar").value = 0;
   xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET", "/fileList", false);
+  xmlhttp.open("GET", "/getfileList", false);
   xmlhttp.send();
   document.getElementById("status").innerHTML = "File Uploaded";
   document.getElementById("detailsheader").innerHTML = "<h3>Files<h3>";
