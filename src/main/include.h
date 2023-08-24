@@ -40,6 +40,7 @@
 #include <spiffs/listFiles.h>
 #include <spiffs/listStorage.h>
 #include <spiffs/setupSpiffs.h>
+#include <spiffs/savekring.h>
 
 //ledstrip
 #include <ledstrip/listKringen.h>
