@@ -33,7 +33,7 @@ typedef struct {
 
 // default waarden
 #define STRIP_NR_ITEMS 8
-#define STRIP_NR_LEDS  30 //eentje meer dan laatste item in lijstje hieronder
+#define STRIP_NR_LEDS 199 //eentje meer dan laatste item in lijstje hieronder
 
 const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 //234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down
@@ -42,11 +42,11 @@ const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
  {"Scribulus GLV onder",   0,   1, 150, 255,  80, 145, 255,  80, 150, 255,  80, 160, 255,  80,    1, 10000,   1000,    500,  0, EFFSTR_FIRE }
 ,{"Olivander GLV ondeR",   2,   3,  64, 255,  70,  60, 255,  70,  80, 255,  70,  75, 255,  70,    1, 10000,   1000,    500,  0, EFFSTR_FIRE }
 ,{"Olivander GLV ondeL",   4,   5,  64, 255,  70,  60, 255,  70,  80, 255,  75,  75, 255,  70,    1, 10000,   1000,    500,  0, EFFSTR_FIRE }
-,{"Olivander GLV plafo",   6,  18,   0, 255, 255,  84, 255, 255, 150, 255, 255, 230, 255, 255,    2, 10000,   1000,    500,  0, EFFSTR_PARTY}
+,{"Olivander GLV plafo",   6,  18,   0, 255, 255,  84, 255, 255, 150, 255, 255, 230, 255, 255,    1, 10000,   1000,    500,  0, EFFSTR_PARTY}
 ,{"Olivander GLV plafo",  19,  30,   1, 255, 128,   0,   0,   0,   0,   0,   0,   0,   0,   0,    1, 10000,   1000,      0,  0, EFFSTR_AAN  }
-,{"Olivander GLV trap ",  31,  40, 128, 255, 128,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,      0,  0, EFFSTR_GLOW }
-,{"Olivander V1 plafon",  41,  60,  25, 255, 128,  20, 255, 255,  15, 255, 255,  30, 255, 255,    1, 10000,   1000,    250,  0, EFFSTR_FIRE }
-,{"Scribulus GLV plafo",  61,  99,   0, 255, 128,  84, 255, 255, 150, 255, 255, 230, 255, 255,    2, 10000,   1000,    500,  0, EFFSTR_PARTY}
+,{"Olivander GLV trap ",  31,  40, 128, 255, 128,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,      0,  0, EFFSTR_AAN  }
+,{"Olivander V1 plafon",  41,  60,  25, 255, 128,  20, 255, 255,  15, 255, 255,  30, 255, 255,    1, 10000,   1000,    250,  0, EFFSTR_AAN  }
+,{"Scribulus GLV plafo",  61, 199,   0, 255, 128,  84, 255, 255, 150, 255, 255, 230, 255, 255,    1, 10000,   1000,    500,  0, EFFSTR_AAN  }
 //,{"Scribulus V1 plafoN",  19,  26, 192, 255, 255, 192, 255,  25,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,     80,  0, EFFSTR_CHASE}
 };
 
