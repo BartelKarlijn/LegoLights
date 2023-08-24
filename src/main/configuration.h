@@ -19,7 +19,7 @@
 ///////////////// ledstrip  //////////////////////////////
 // gegevens over de ledstrip
 #define STR_PIN 12
-#define STR_BRIGHTNESS 50
+#define STR_BRIGHTNESS 125
 
 ///////////////// PCA9865  //////////////////////////////
 // I2C pins zelf definieren
