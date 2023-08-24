@@ -33,7 +33,6 @@
 #include <main/save_eprom.h>
 #include <main/setupLed.h>
 #include <main/setupLedstrip.h>
-#include <main/show_fps.h>
 
 // Spiffs() integrated file system)
 #include <spiffs/humanReadableSize.h>
@@ -41,6 +40,9 @@
 #include <spiffs/listStorage.h>
 #include <spiffs/setupSpiffs.h>
 #include <spiffs/savekring.h>
+
+// fps
+#include <main/show_fps.h>
 
 //ledstrip
 #include <ledstrip/listKringen.h>
