@@ -23,17 +23,17 @@
 
 // Own libraries
 // variables
-#include <main/configuration.h>
-#include <main/globalvariables.h>
-#include <main/config_colors.h>
+#include <0main/configuration.h>
+#include <0main/globalvariables.h>
+#include <0main/config_colors.h>
 
 // Own subroutines
 //   main
-#include <main/setupSerial.h>
-#include <main/print.h>
-#include <main/save_eprom.h>
-#include <main/setupLed.h>
-#include <main/setupLedstrip.h>
+#include <0main/setupSerial.h>
+#include <0main/print.h>
+#include <0main/save_eprom.h>
+#include <0main/setupLed.h>
+#include <0main/setupLedstrip.h>
 
 // Spiffs() integrated file system)
 #include <spiffs/humanReadableSize.h>
@@ -46,7 +46,7 @@
 #include <spiffs/savekring.h>
 
 // fps
-#include <main/show_fps.h>
+#include <0main/show_fps.h>
 
 //ledstrip
 #include <ledstrip/listKringen.h>
