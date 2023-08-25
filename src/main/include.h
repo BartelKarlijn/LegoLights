@@ -5,6 +5,7 @@
 // read and save data
 #include <Preferences.h>   // om op ESP32 eeprom te kunnen lezen en schrijven
 #include <SPIFFS.h>        // om het filesysteem van ESP32 te gebruiken
+#include <ArduinoJson.h>
 
 // Wifi
 #include <WiFi.h>           //
