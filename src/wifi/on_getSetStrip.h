@@ -35,7 +35,7 @@ String on_getSetStrip(AsyncWebServerRequest *request){
       switch (veldnr)
       {
       case 1:  //we beginnen bij 1, zodat 0 een fout geeft
-        waardeString.toCharArray(kring[kringnr].desc, 20);
+        kring[kringnr].desc     = waardeString;
         answertoSend = waardeString;
         break;
       case 2:

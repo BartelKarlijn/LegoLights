@@ -8,7 +8,7 @@
 #define EFFSTR_UIT      5
 
 typedef struct {
-  char   desc[20];
+  String desc;
   int    startled;
   int    stopled;
   int    hue1;

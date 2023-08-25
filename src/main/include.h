@@ -40,6 +40,8 @@
 #include <spiffs/listFiles.h>
 #include <spiffs/listStorage.h>
 #include <spiffs/setupSpiffs.h>
+#include <spiffs/writeFile.h>
+#include <spiffs/readFile.h>
 #include <spiffs/loadkring.h>
 #include <spiffs/savekring.h>
 
