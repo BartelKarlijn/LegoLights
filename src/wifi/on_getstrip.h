@@ -10,7 +10,7 @@ String on_getStrip(AsyncWebServerRequest *request){
       kringnr = kringString.toInt();
     }
     else {
-      kringnr = 255;
+      kringnr = 99;
     }
     if (request->hasParam("veld")) {
       veldString = request->getParam("veld")->value();

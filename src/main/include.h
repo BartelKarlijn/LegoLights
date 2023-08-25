@@ -39,6 +39,7 @@
 #include <spiffs/listFiles.h>
 #include <spiffs/listStorage.h>
 #include <spiffs/setupSpiffs.h>
+#include <spiffs/loadkring.h>
 #include <spiffs/savekring.h>
 
 // fps
@@ -71,6 +72,8 @@
 #include <wifi/on_fileUpload.h>
 #include <wifi/on_getStrip.h>
 #include <wifi/on_getSetStrip.h>
+#include <wifi/on_getLoadStrip.h>
+#include <wifi/on_getSaveStrip.h>
 #include <wifi/on_wifisave.h>
 #include <wifi/setup_AsyncWebserver.h> 
 #include <wifi/setup_ConnectKnownWifi.h>
