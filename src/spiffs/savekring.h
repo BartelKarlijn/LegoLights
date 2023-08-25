@@ -1,22 +1,22 @@
 #pragma once
-void savekring(int kring) {
+void savekring(int kringnr) {
 // Save Kring settings to file
-  char filename[13];
-  const char *filebegin = "/cfg/kring";
-  char filenr[3];
-  Print( "Filebegin " );
-  Println(String(filebegin));
-  Print("Filenr ");
-  Println(filenr);
-
-  sprintf(filenr, "%05d", kring);
-  strcpy(filename, filebegin);
-  strcat(filename, filenr);
+  char filename[14];
+  sprintf(filename, "/cfg/kring%02d", kringnr);
 
   Print("Filename ");
   Println(String(filename));
 
 //  File file = SPIFFS.open(filename , FILE_WRITE);
-  
+//   if (!file){
+//    Println("Failed to open file for writing");
+//    return;
+//  }
+//  int bytesWritten = file.print(kring[kringnr]);
+//  if (bytesWritten > 0){
+//    Println("File was written");
+//  } else {
+//    Println("File write failed");
+//  }
 //  file.close();
 }
