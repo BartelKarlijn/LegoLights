@@ -79,3 +79,4 @@
 #include <wifi/setup_ConnectKnownWifi.h>
 #include <wifi/setup_CreateAccessPoint.h>
 #include <wifi/startWifi.h>
+#include <wifi/scanWifiNetworks.h>
