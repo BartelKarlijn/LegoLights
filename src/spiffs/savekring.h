@@ -1,13 +1,13 @@
 #pragma once
 void savekring(int kringnr) {
 // Save Kring settings to file
-  char filename[14];
-  sprintf(filename, "/cfg/kring%02d", kringnr);
+  char filename[18];
+  sprintf(filename, "/cfg/kring%02d.ini", kringnr);
 
   Print("Filename ");
   Println(String(filename));
 
-//  File file = SPIFFS.open(filename , FILE_WRITE);
+  File file = SPIFFS.open(filename , FILE_WRITE);
 //   if (!file){
 //    Println("Failed to open file for writing");
 //    return;
@@ -18,5 +18,5 @@ void savekring(int kringnr) {
 //  } else {
 //    Println("File write failed");
 //  }
-//  file.close();
+  file.close();
 }

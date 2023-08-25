@@ -17,7 +17,6 @@ void setup_AsyncWebserver(){
   // Route for root / web page (controller)
   webserver.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Root requested");
-    //request->send(SPIFFS, "/index.html", String(), false, html_processorRoot);
     request->send(SPIFFS, "/page_root.html", "text/html");
   });
   // static files
@@ -67,12 +66,12 @@ void setup_AsyncWebserver(){
   });
   webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi config pagina");
-    request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
+    request->send(SPIFFS, "/page_wificfg.html", "text/html");
   });
   webserver.on("/wifisave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi connection parameters");
     on_wifisave(request);
-    request->send(SPIFFS, "/index.html", String(), false, html_processorWifi);
+    request->send(SPIFFS, "/page_wificfg.html", "text/html");
   });
 
   // Start server

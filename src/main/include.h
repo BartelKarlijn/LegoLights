@@ -60,13 +60,13 @@
 #include <singleled/showled.h>
 
 //wifi
-#include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton
-#include <wifi/html_buttonUpDown.h>  // routine to change parameter up or down
-#include <wifi/html_buttonLink.h>    // routine to create button with a link
-#include <wifi/html_doubleInput.h>   // 2 input fields + submit button
+//#include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton
+//#include <wifi/html_buttonUpDown.h>  // routine to change parameter up or down
+//#include <wifi/html_buttonLink.h>    // routine to create button with a link
+//#include <wifi/html_doubleInput.h>   // 2 input fields + submit button
 //#include <wifi/html_sendPage.h>      // send the (config) html string
-#include <wifi/html_processor.h>     // replaces placeholder in sendPage
-#include <wifi/buttonChange.h>       // actions happening if you ckick a button
+//#include <wifi/html_processor.h>     // replaces placeholder in sendPage
+//#include <wifi/buttonChange.h>       // actions happening if you ckick a button
 #include <wifi/on_file.h>            // downloaden of verwijderen
 #include <wifi/on_fileUpload.h>
 #include <wifi/on_getStrip.h>

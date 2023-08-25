@@ -9,8 +9,6 @@ void show_fps() {
 
     cntfps = 1;  // we willen geen 0 om eventuele delingen door 0 te vermijden
 
-    savekring(5);
-
   }
   else {
     cntfps++;
