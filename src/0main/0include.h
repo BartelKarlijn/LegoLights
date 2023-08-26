@@ -42,6 +42,7 @@
 #include <spiffs/setupSpiffs.h>
 #include <spiffs/writeFile.h>
 #include <spiffs/readFile.h>
+#include <spiffs/fileDefault2Kring.h>
 #include <spiffs/fileLoad2Kring.h>
 #include <spiffs/fileSaveKring.h>
 
@@ -69,6 +70,7 @@
 #include <wifi/on_getStrip.h>
 #include <wifi/on_getSetStrip.h>
 #include <wifi/on_getfileLoad2Kring.h>
+#include <wifi/on_getfileDefault2Kring.h>
 #include <wifi/on_getfileSaveKring.h>
 #include <wifi/on_wifisave.h>
 #include <wifi/setup_AsyncWebserver.h> 

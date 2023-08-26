@@ -55,6 +55,10 @@ void setup_AsyncWebserver(){
     Println("Strip settings ophalen voor kring");
     request->send(200, "text/plain", on_getfileLoad2Kring(request));
   });
+  webserver.on("/getfileDefault2Kring", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Strip terug naar default zetten");
+    request->send(200, "text/plain", on_getfileDefault2Kring(request));
+  });
   webserver.on("/getfileSaveKring", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Strip settings bewaren voor kring");
     request->send(200, "text/plain", on_getfileSaveKring(request));
