@@ -14,8 +14,10 @@
                 return decodeURI(results[1]) || 0;
             }
             console.log("kring1= "+$.urlParam('kring'));
-
-			//Beginwaarden ophalen voor jq
+            getValuesJQ();          //Beginwaarden ophalen voor jq
+            setonchangeValuesJQ();  //onchange voor jq elementen
+		});
+        function getValuesJQ() {
             $('input[name="jq"]').each(function(ind, element) {
 				$(element).val(function(index, value){
 					$.get("getStrip", {kring: $.urlParam('kring'), veld: $(element).attr('id')}, function(data) {
@@ -23,8 +25,8 @@
 					});
 				});
             });
-
-            //onchange voor jq elementen
+        }
+        function setonchangeValuesJQ(){
 			$('input[name="jq"]').each(function(ind, element) {
 				$(element).on("focusout", function(){
 					$.get("/getSetStrip", {kring: $.urlParam('kring'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
@@ -32,7 +34,10 @@
 					});
 				});
 			});
-		});
+        }
+        function fileSaveKring()    { $.get("/getfileSaveKring"     , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); };
+        function fileDefault2Kring(){ $.get("/getfileDefault2Kring" , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+        function fileLoad2Kring()   { $.get("/getfileLoad2Kring"    , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
     </script>
 </head>
 
@@ -73,10 +78,10 @@
         <div class="column2">Direction  <br><input id='20' name='jq' type='checkbox'                /></div>
         <div class="column2">Effect     <br><input id='21' name='jq' type='number' min="0" max="10" /><br>0: aan, 1: chase, 2: fire, 3: glow, 4: party, 5: uit</div>
     </div>
-    <button onclick="saveStrip()">Save settings</button>
-    <a href="/getfileLoad2Kring" class="button button-right button-large">Save settings</a>
-    <a href="/getDefaultStrip" class="button button-right button-large">Reload settings</a>
-    <a href="/getfileSaveKring" class="button button-right button-large">Reload default</a>
+    <p id="status"></p>
+    <button onclick="fileSaveKring();"    class="button button-right button-large">Save settings</button>
+    <button onclick="fileLoad2Kring();"   class="button button-right button-large">Load from last save</button>
+    <button onclick="fileDefault2Kring()" class="button button-right button-large">Reload defaults</button>
     <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
 </body>
 </html>

@@ -39,6 +39,5 @@ String  fileSaveKring(int kringnr) {
   serializeJson(doc, tmp);
   writeFile(SPIFFS, filename, tmp);
   
-  return kring[kringnr].desc;
-
+  return "Settings bewaard voor " + kring[kringnr].desc;
 }

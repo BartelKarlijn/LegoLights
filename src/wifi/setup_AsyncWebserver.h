@@ -20,8 +20,11 @@ void setup_AsyncWebserver(){
     request->send(SPIFFS, "/page_root.html", "text/html");
   });
   // static files
-  webserver.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/file_favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/file_favicon.ico", "image/png");
+  });
+  webserver.on("/file_hue.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_hue.jpg", "image/png");
   });
   webserver.on("/file_jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/file_jquery-3.7.0.min.js", "text/javascript");
@@ -43,14 +46,6 @@ void setup_AsyncWebserver(){
     Println("fileStorage requested");
     request->send(200, "text/plain", listStorage(true));
   });
-  webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", listKringen(true));
-  });
-  webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", on_getStrip(request));
-  });
   webserver.on("/getfileLoad2Kring", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Strip settings ophalen voor kring");
     request->send(200, "text/plain", on_getfileLoad2Kring(request));
@@ -62,6 +57,14 @@ void setup_AsyncWebserver(){
   webserver.on("/getfileSaveKring", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Strip settings bewaren voor kring");
     request->send(200, "text/plain", on_getfileSaveKring(request));
+  });
+  webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    request->send(200, "text/plain", listKringen(true));
+  });
+  webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    request->send(200, "text/plain", on_getStrip(request));
   });
   webserver.on("/getSetStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("setstrip binnen gekregen");
