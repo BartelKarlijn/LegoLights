@@ -45,7 +45,9 @@
   <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
 <script>
 function refreshFileList(){
-  $.get("/getfileList"   , function(data) {$("#fileList").html(data);})
+  $.get("/getfileList"   , function(data) {$("#fileList").html(data);});
+  document.getElementById("status").innerHTML = "";
+  document.getElementById("loaded_n_total").innerHTML = "";
 }
 function downloadDeleteButton(filename, action) {
   var urltocall = "/getfile?name=/" + filename + "&action=" + action;
