@@ -10,5 +10,5 @@ String on_getSaveStrip(AsyncWebServerRequest *request){
       kringnr = 99;
     }
 
-    return savekring(kringnr);
+    return fileSaveKring(kringnr);
 }

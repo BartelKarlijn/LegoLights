@@ -1,5 +1,5 @@
 #pragma once
-String  savekring(int kringnr) {
+String  fileSaveKring(int kringnr) {
 // Save Kring settings to file
   char filename[18];
   StaticJsonDocument<1024> doc;
