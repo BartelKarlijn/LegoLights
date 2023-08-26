@@ -1,4 +1,4 @@
-String on_getSaveStrip(AsyncWebServerRequest *request){
+String on_getfileSaveKring(AsyncWebServerRequest *request){
     String kringString;
     int kringnr;
     // get parameter kring & veld  http://192.168.68.205/getfileLoad2Kring?kring=1
