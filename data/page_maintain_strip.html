@@ -1,8 +1,8 @@
 <!DOCTYPE html> <html>
 <head>
-    <title>Diagon Alley ledtrip</title>
+    <title>Diagon Alley ledstrip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/file_favicon.ico">
     <link rel="stylesheet" type="text/css" href="file_style.css">
     <script src="file_jquery-3.7.0.min.js"></script>
       <script>
@@ -38,29 +38,44 @@
 
 <body style="text-align:left;" id="body" >
     <h1>Beheer effecten van ledstrip</h1>
-    <table>
-        <tr><td>Beschrijving</td><td><input id='01' name='jq' type='text'   required maxlength="20" /></td></tr>
-        <tr><td>Start led</td>   <td><input id='02' name='jq' type='number' min="0" max="500"/></td></tr>
-        <tr><td>Stop led</td>    <td><input id='03' name='jq' type='number' min="0" max="500"/></td></tr>
-        <tr><td>Hue 1</td>       <td><input id='04' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Sat 1</td>       <td><input id='05' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Brightness 1</td><td><input id='06' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Hue 2</td>       <td><input id='07' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Sat 2</td>       <td><input id='08' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Brightness 2</td><td><input id='09' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Hue 3</td>       <td><input id='10' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Sat 3</td>       <td><input id='11' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Brightness 3</td><td><input id='12' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Hue 4</td>       <td><input id='13' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Sat 4</td>       <td><input id='14' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Brightness 4</td><td><input id='15' name='jq' type='number' min="0" max="255"/></td></tr>
-        <tr><td>Every</td>       <td><input id='16' name='jq' type='number' min="0" max="10"/></td></tr>
-        <tr><td>Time on</td>     <td><input id='17' name='jq' type='number' min="0" max="99999"/></td></tr>
-        <tr><td>Time off</td>    <td><input id='18' name='jq' type='number' min="0" max="99999"/></td></tr>
-        <tr><td>Time effect</td>  <td><input id='19' name='jq' type='number' min="0" max="99999"/></td></tr>
-        <tr><td>Direction</td>   <td><input id='20' name='jq' type='checkbox'></td></tr>
-        <tr><td>Effect</td>      <td><input id='21' name='jq' type='text'   required maxlength="20" /></td></tr>
-    </table>
+    <h3><input id='01' name='jq' type='text'   required/></h3>
+    <div class="row">
+        <div class="column3">Start led  <br><input id='02' name='jq' type='number' min="0" max="500"/></div>
+        <div class="column3">Stop led   <br><input id='03' name='jq' type='number' min="0" max="500"/></div>
+        <div class="column3">Every      <br><input id='16' name='jq' type='number' min="0" max="10"/></div>
+    </div>
+    <div class="row">
+        <div class="column3">Hue1       <br><input id='04' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+        <div class="column3">Sat1       <br><input id='05' name='jq' type='number' min="0" max="255"/></div>
+        <div class="column3">Brighness1 <br><input id='06' name='jq' type='number' min="0" max="255"/></div>
+    </div>
+    <div class="row">
+        <div class="column3">Hue2       <br><input id='07' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+        <div class="column3">Sat2       <br><input id='08' name='jq' type='number' min="0" max="255"/></div>
+        <div class="column3">Brighness2 <br><input id='09' name='jq' type='number' min="0" max="255"/></div>
+    </div>
+    <div class="row">
+        <div class="column3">Hue3       <br><input id='10' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+        <div class="column3">Sat3       <br><input id='11' name='jq' type='number' min="0" max="255"/></div>
+        <div class="column3">Brighness3 <br><input id='12' name='jq' type='number' min="0" max="255"/></div>
+    </div>
+    <div class="row">
+        <div class="column3">Hue4       <br><input id='13' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+        <div class="column3">Sat4       <br><input id='14' name='jq' type='number' min="0" max="255"/></div>
+        <div class="column3">Brighness4 <br><input id='15' name='jq' type='number' min="0" max="255"/></div>
+    </div>
+    <div class="row">
+        <div class="column3">Time on    <br><input id='17' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+        <div class="column3">Time off   <br><input id='18' name='jq' type='number' min="0" max="255"/></div>
+        <div class="column3">Time effect<br><input id='19' name='jq' type='number' min="0" max="255"/></div>
+    </div>
+    <div class="row">
+        <div class="column2">Direction  <br><input id='20' name='jq' type='checkbox'                /></div>
+        <div class="column2">Effect     <br><input id='21' name='jq' type='number' min="0" max="10" /><br>0: aan<br>1: chase<br>2: fire<br>3: glow<br>4: party<br>5: uit</div>
+    </div>
+    <a href="/getLoadStrip" class="button button-right button-large">Reload last saved</a>
+    <a href="/getDefaultStrip" class="button button-right button-large">Reload last saved</a>
+    <a href="/getSaveStrip" class="button button-right button-large">Reload default</a>
     <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
 </body>
 </html>
