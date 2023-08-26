@@ -68,7 +68,7 @@
 #include <wifi/on_fileUpload.h>
 #include <wifi/on_getStrip.h>
 #include <wifi/on_getSetStrip.h>
-#include <wifi/on_getLoadStrip.h>
+#include <wifi/on_getfileLoad2Kring.h>
 #include <wifi/on_getSaveStrip.h>
 #include <wifi/on_wifisave.h>
 #include <wifi/setup_AsyncWebserver.h> 
