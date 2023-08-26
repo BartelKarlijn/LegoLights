@@ -16,6 +16,8 @@
             console.log("kring1= "+$.urlParam('kring'));
             getValuesJQ();          //Beginwaarden ophalen voor jq
             setonchangeValuesJQ();  //onchange voor jq elementen
+            getValuePrevKring();
+            getValueNextKring();
 		});
         function getValuesJQ() {
             $('input[name="jq"]').each(function(ind, element) {
@@ -25,7 +27,7 @@
 					});
 				});
             });
-        }
+        };
         function setonchangeValuesJQ(){
 			$('input[name="jq"]').each(function(ind, element) {
 				$(element).on("focusout", function(){
@@ -34,7 +36,23 @@
 					});
 				});
 			});
-        }
+        };
+        function getValuePrevKring() {
+            var prevKring = parseInt($.urlParam('kring')) - 1;
+            var prevDesc  = null;
+            $.get("getStrip", {kring: prevKring, veld: "01" }, function(data){
+                document.getElementById("PrevKring").innerHTML = "Naar: " + data;
+                document.getElementById("PrevKring").href  = "/page_maintain_strip?kring="+prevKring;
+            });
+        };
+        function getValueNextKring() {
+            var nextKring = parseInt($.urlParam('kring')) + 1;
+            var nextDesc  = null;
+            $.get("getStrip", {kring: nextKring, veld: "01" }, function(data){
+                document.getElementById("NextKring").innerHTML = "Naar: " + data;
+                document.getElementById("NextKring").href  = "/page_maintain_strip?kring="+nextKring;
+            });
+        };
         function fileSaveKring()    { $.get("/getfileSaveKring"     , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); };
         function fileDefault2Kring(){ $.get("/getfileDefault2Kring" , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
         function fileLoad2Kring()   { $.get("/getfileLoad2Kring"    , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
@@ -43,7 +61,11 @@
 
 <body style="text-align:left;" id="body" >
     <h1>Beheer effecten van ledstrip</h1>
-    <h3><input id='01' name='jq' type='text'   required/></h3>
+    <div class="row">
+        <div class="column3"><a id="PrevKring" href="/" class='button button-center'></a></div>
+        <div class="column3"><h3><input id='01' name='jq' type='text'   required/></h3></div>
+        <div class="column3"><a id="NextKring" href="/" class='button button-center'></a></div>
+    </div>
     <div class="row">
         <div class="column3">Start led  <br><input id='02' name='jq' type='number' min="0" max="500"/></div>
         <div class="column3">Stop led   <br><input id='03' name='jq' type='number' min="0" max="500"/></div>
@@ -70,7 +92,7 @@
         <div class="column3">Brighness4 <br><input id='15' name='jq' type='number' min="0" max="255"/></div>
     </div>
     <div class="row">
-        <div class="column3">Time on    <br><input id='17' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+        <div class="column3">Time on    <br><input id='17' name='jq' type='number' min="0" max="255"/><br></div>
         <div class="column3">Time off   <br><input id='18' name='jq' type='number' min="0" max="255"/></div>
         <div class="column3">Time effect<br><input id='19' name='jq' type='number' min="0" max="255"/></div>
     </div>

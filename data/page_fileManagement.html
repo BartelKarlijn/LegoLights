@@ -46,8 +46,9 @@
 <script>
 function refreshFileList(){
   $.get("/getfileList"   , function(data) {$("#fileList").html(data);});
-  document.getElementById("status").innerHTML = "";
-  document.getElementById("loaded_n_total").innerHTML = "";
+  $("status").innerHTML = "";
+  $("loaded_n_total").innerHTML = "";
+  $("input#file1").innerHTML="";
 }
 function downloadDeleteButton(filename, action) {
   var urltocall = "/getfile?name=/" + filename + "&action=" + action;
