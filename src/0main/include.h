@@ -42,7 +42,7 @@
 #include <spiffs/setupSpiffs.h>
 #include <spiffs/writeFile.h>
 #include <spiffs/readFile.h>
-#include <spiffs/loadkring.h>
+#include <spiffs/fileLoad2Kring.h>
 #include <spiffs/savekring.h>
 
 // fps

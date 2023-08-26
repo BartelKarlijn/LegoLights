@@ -9,5 +9,5 @@ String on_getLoadStrip(AsyncWebServerRequest *request){
     else {
       kringnr = 99;
     }
-    return loadkring(kringnr);
+    return fileLoad2Kring(kringnr);
 }

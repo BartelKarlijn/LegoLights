@@ -1,5 +1,5 @@
 #pragma once
-String  loadkring(int kringnr) {
+String  fileLoad2Kring(int kringnr) {
 // Load Kring settings from file
   char filename[18];
 
