@@ -2,13 +2,15 @@
 String  fileLoad2Kring(int kringnr) {
 // Load Kring settings from file
   char filename[18];
+  String msgAnswer;
 
   sprintf(filename, "/cfg_kring%02d.ini", kringnr);
 
-  Print("Filename ");
+  Print("Loading ");
   Println(String(filename));
 
-  if (SPIFFS.exists(filename)) {
+  if (!SPIFFS.exists(filename)) {
+    Println("File does not exist");
     return "File does not exist";
   }
   else {
