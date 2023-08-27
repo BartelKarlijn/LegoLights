@@ -58,6 +58,7 @@
 #include <ledstrip/str_party.h>
 #include <ledstrip/str_uit.h>
 #include <ledstrip/showstrip.h>
+#include <ledstrip/loadAnimatie.h>
 
 //sigleled
 #include <singleled/scanI2C.h>
