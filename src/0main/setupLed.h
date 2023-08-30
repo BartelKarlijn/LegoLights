@@ -6,8 +6,9 @@ void setupLed() {
   singleled.setPWMFreq(1600); // This is the maximum PWM frequency and suited to LED's
 
   // leds initialiseren met default
-  for (size_t i = 0; i < LED_NR_ITEMS; i++) {
-    ledsingle[i] = LED_DEFAULT[i];
+  for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
+    ledsingle[lednr] = LED_DEFAULT[lednr];
+    singleled.setPWM(lednr, 0, 0);     // alles uitzetten
   }
   Println("Single leds setup done");
 }

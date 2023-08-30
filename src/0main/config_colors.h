@@ -105,7 +105,6 @@ int chasestrnr[STRIP_NR_ITEMS];
 
 typedef struct {
   char   desc[20];
-  int    lednr;
   int    bright;
   unsigned long timeon;
   unsigned long timeoff;
@@ -115,23 +114,23 @@ typedef struct {
 
 #define LED_NR_ITEMS 16
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
-//    description (20) ,lednr,brigh,timeon,timeoff,timeeff, eff
- {"Olivander kaars    ",    0, 4095, 10000,   1000,      0, EFFLED_FIRE  }
-,{"Olivander lantaarn ",    1, 3000, 10000,   1000,      0, EFFLED_AAN  }
-,{"led test03         ",    2, 2095,   500,    500,      0, EFFLED_AAN  }
-,{"led test04         ",    3, 3095,   500,    500,      0, EFFLED_AAN  }
-,{"led test05         ",    4, 4095,   500,    500,      0, EFFLED_AAN  }
-,{"led test06         ",    5, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test07         ",    6, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test08         ",    7, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test09         ",    8, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test10         ",    9, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test11         ",   10, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test12         ",   11, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test13         ",   12, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test14         ",   13, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test15         ",   14, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test16         ",   15, 4095,  1000,   1000,      0, EFFLED_AAN  }
+//    description (20) ,brigh,timeon,timeoff,timeeff, eff
+ {"Olivander kaars    ", 4095, 10000,   1000,    500, EFFLED_FIRE  }
+,{"Olivander lantaarn ", 4095, 10000,   1000,   1000, EFFLED_FIRE }
+,{"Olivander fakkel   ", 4095, 10000,   1000,    125, EFFLED_FIRE }
+,{"led test04         ", 3095,   500,    500,      0, EFFLED_AAN  }
+,{"led test05         ", 4095,   500,    500,      0, EFFLED_AAN  }
+,{"led test06         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test07         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test08         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test09         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test10         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test11         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test12         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test13         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test14         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test15         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+,{"led test16         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
 };
 
 str_ledsingle ledsingle[LED_NR_ITEMS];
