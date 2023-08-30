@@ -137,3 +137,4 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
 unsigned long timer_led_effect[LED_NR_ITEMS];
+int flameledbright[LED_NR_ITEMS];

@@ -8,7 +8,7 @@ void showled() {
         led_aan(i);
         break;
     case EFFLED_FIRE:
-//        led_chase(i);
+        led_fire(i);
         break;
     case EFFLED_GLOW:
 //        led_glow(i);

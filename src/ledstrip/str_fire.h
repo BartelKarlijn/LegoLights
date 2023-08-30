@@ -4,7 +4,7 @@ void str_fire(int kringnr) {
   unsigned long timeBezig;
  
   timeBezig = currentMillis - timer_str_aan[kringnr];
-  // bereken mode (uit, up, down)
+  // bereken mode (uit, aan, flikker)
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kringnr] = currentMillis;      //reset timers
     timer_str_flicker[kringnr] = currentMillis + kring[kringnr].timeeffect;
