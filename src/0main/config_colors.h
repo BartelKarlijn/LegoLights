@@ -47,8 +47,8 @@ const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 ,{"Scribulus V1 vitrin",  31,  32, 152, 150, 220,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,      0,  0, EFFSTR_AAN  } // 5
 ,{"Scribulus V0 plafon",  33,  39,  48, 150, 150,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  } // 6
 ,{"Scribulus V0 pui   ",  40,  41, 140, 255, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,    250,  0, EFFSTR_GLOW } // 7
-,{"Olivander V0 puiR  ",  42,  43,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255, 100,    1,  2000,   9000,    100,  0, EFFSTR_FIRE } // 8
-,{"Olivander V0 puiL  ",  44,  45,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255, 100,    1,  2000,   9000,    100,  0, EFFSTR_FIRE } // 9
+,{"Olivander V0 puiR  ",  42,  43,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFSTR_FIRE } // 8
+,{"Olivander V0 puiL  ",  44,  45,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFSTR_FIRE } // 9
 ,{"Quiddich  1        ",  46, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  } //10
 ,{"Quiddich  2        ", 101, 110,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  } //11
 ,{"Quiddich  3        ", 111, 120,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  } //12
@@ -116,8 +116,8 @@ typedef struct {
 #define LED_NR_ITEMS 16
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 //    description (20) ,lednr,brigh,timeon,timeoff,timeeff, eff
- {"led geel           ",    0, 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test02         ",    1, 4095,   500,    500,      0, EFFLED_AAN  }
+ {"Olivander kaars    ",    0, 4095, 10000,   1000,      0, EFFLED_FIRE  }
+,{"Olivander lantaarn ",    1, 3000, 10000,   1000,      0, EFFLED_AAN  }
 ,{"led test03         ",    2, 2095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test04         ",    3, 3095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test05         ",    4, 4095,   500,    500,      0, EFFLED_AAN  }
