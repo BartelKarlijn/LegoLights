@@ -8,10 +8,10 @@
 #define EFFSTR_UIT      5
 
 //jpeg files
-#define IMG_OLIV "/file_imp_Olivander.jpg"
-#define IMG_QUID "/file_imp_Quiddich.jpg"
-#define IMG_FLOU "/file_imp_Flourish.jpg"
-#define IMG_WEAS "/file_imp_Weasley.jpg"
+#define IMG_OLIV "/file_img_Olivander.jpg"
+#define IMG_QUID "/file_img_Quiddich.jpg"
+#define IMG_FLOU "/file_img_Flourish.jpg"
+#define IMG_WEAS "/file_img_Weasley.jpg"
 typedef struct {
   String desc;
   int    startled;
