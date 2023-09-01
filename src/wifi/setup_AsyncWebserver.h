@@ -91,6 +91,13 @@ void setup_AsyncWebserver(){
     Println("strip configuratie opgeroepen");
     request->send(SPIFFS, "/page_maintain_strip.html", "text/html");
   });
+  webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Restarting ESP32 in 2 sec");
+    delay(2000);
+    ESP.restart();
+  });
+  	
+ESP.restart();
   webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi config pagina");
     request->send(SPIFFS, "/page_wificfg.html", "text/html");
