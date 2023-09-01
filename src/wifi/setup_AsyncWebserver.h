@@ -71,8 +71,8 @@ void setup_AsyncWebserver(){
     request->send(200, "text/plain", on_getfileSaveKring(request));
   });
   webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", listKringen(true));
+    Println("img= " + listKringen(true, on_getlistKringen(request)) );
+    request->send(200, "text/plain", listKringen(true, on_getlistKringen(request)) );
   });
   webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen

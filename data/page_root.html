@@ -3,15 +3,15 @@
 <head>
   <title>Diagon Alley</title>
   <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
-  <link rel="icon" href="/file_favicon.ico">
+  <link rel="icon" href="file_favicon.ico">
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function() {
- 		  //Beginwaarden ophalen voor storage
-      $.get("/getlistKringen", function(data) {
+ 		  //We beginnen met Quiddich
+      $.get("/getlistKringen", {image: "file_img_Quiddich.jpg"}, function(data) {
         $("#listKringen").html(data);
-      })
+      });
 		});
   </script>
 
