@@ -81,6 +81,9 @@ String on_getStrip(AsyncWebServerRequest *request){
       case 21:
         answertoSend = kring[kringnr].effect;
         break;
+      case 22:
+        answertoSend = kring[kringnr].image;
+        break;
       default:
         answertoSend = "error";
         break;

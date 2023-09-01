@@ -23,6 +23,18 @@ void setup_AsyncWebserver(){
   webserver.on("/file_favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/file_favicon.ico", "image/png");
   });
+  webserver.on("/file_img_Olivander.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Olivander.jpg", "image/jpg");
+  });
+  webserver.on("/file_img_Quiddich.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Quiddich.jpg", "image/jpg");
+  });
+  webserver.on("/file_img_Weasley.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Weasley.jpg", "image/jpg");
+  });
+  webserver.on("/file_img_Flourish.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Flourish.jpg", "image/jpg");
+  });
   webserver.on("/file_hue.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/file_hue.jpg", "image/png");
   });
@@ -78,6 +90,12 @@ void setup_AsyncWebserver(){
   webserver.on("/page_maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("strip configuratie opgeroepen");
     request->send(SPIFFS, "/page_maintain_strip.html", "text/html");
+  });
+  webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Restarting ESP32 in 2sec");
+    request->send(200, "text/plain", "Restarting ESP32 in 2sec");
+    delay(2000);
+    ESP.restart();
   });
   webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi config pagina");

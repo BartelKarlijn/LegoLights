@@ -18,6 +18,7 @@
             setonchangeValuesJQ();  //onchange voor jq elementen
             getValuePrevKring();
             getValueNextKring();
+            setTimeout(getImage, 2000);
 		});
         function getValuesJQ() {
             $('input[name="jq"]').each(function(ind, element) {
@@ -32,10 +33,14 @@
 			$('input[name="jq"]').each(function(ind, element) {
 				$(element).on("focusout", function(){
 					$.get("/getSetStrip", {kring: $.urlParam('kring'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
-						//$(element).val(data);
 					});
 				});
 			});
+        };
+        function getImage() {
+            console.log("img refreshed " + $('#22').val() )
+
+            $('#file_img').attr( "src",  $('#22').val() );
         };
         function getValuePrevKring() {
             var prevKring = parseInt($.urlParam('kring')) - 1;
@@ -63,7 +68,7 @@
     <h1>Beheer effecten van ledstrip</h1>
     <div class="row">
         <div class="column3"><a id="PrevKring" href="/" class='button button-center'></a></div>
-        <div class="column3"><h3><input id='01' name='jq' type='text'   required/></h3></div>
+        <div class="column3"><h3><img id="file_img"  src="" onchange="getImage();"></img><br><input id='22' name='jq' type='text'   required/><br><input id='01' name='jq' type='text'   required/></h3></div>
         <div class="column3"><a id="NextKring" href="/" class='button button-center'></a></div>
     </div>
     <div class="row">
