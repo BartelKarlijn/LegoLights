@@ -137,3 +137,4 @@ str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
 unsigned long time_led_eff[LED_NR_ITEMS];  //van time_aan tot eind van dit vlammetje
 int flameledbright[LED_NR_ITEMS];
+int vlamcnt[LED_NR_ITEMS];
