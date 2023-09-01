@@ -71,7 +71,6 @@ void setup_AsyncWebserver(){
     request->send(200, "text/plain", on_getfileSaveKring(request));
   });
   webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("img= " + listKringen(true, on_getlistKringen(request)) );
     request->send(200, "text/plain", listKringen(true, on_getlistKringen(request)) );
   });
   webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
