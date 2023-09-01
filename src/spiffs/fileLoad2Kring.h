@@ -50,8 +50,9 @@ String  fileLoad2Kring(int kringnr) {
     const unsigned long _timeon     = doc["timeon"];
     const unsigned long _timeoff    = doc["timeoff"];
     const unsigned long _timeeffect = doc["timeeffect"];
-    const bool  _direction  = doc["direction"];
-    const int  _effect     = doc["effect"];
+    const bool  _direction   = doc["direction"];
+    const int  _effect       = doc["effect"];
+    const String _image      = doc["desc"]; 
 
     kring[kringnr].desc      = _desc;
     kring[kringnr].startled  = _startled;
@@ -74,6 +75,7 @@ String  fileLoad2Kring(int kringnr) {
     kring[kringnr].timeeffect = _timeeffect;
     kring[kringnr].direction = _direction;
     kring[kringnr].effect    = _effect;
+    kring[kringnr].image     = _image;
 
     return ("Data opgehaald voor " + kring[kringnr].desc);
   }

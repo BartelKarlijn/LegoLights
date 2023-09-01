@@ -29,10 +29,9 @@ String  fileSaveKring(int kringnr) {
   doc["timeon"]   = kring[kringnr].timeon;
   doc["timeoff"]  = kring[kringnr].timeoff;
   doc["timeeffect"] = kring[kringnr].timeeffect;
-  doc["direction"] = kring[kringnr].direction;
+  doc["direction"]  = kring[kringnr].direction;
   doc["effect"]   = kring[kringnr].effect;
-
-
+  doc["image"]    = kring[kringnr].image;
 
   // write config file
   String tmp = "";

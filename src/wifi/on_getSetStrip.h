@@ -118,6 +118,10 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         kring[kringnr].effect = waardeString.toInt();
         answertoSend = waardeString;
         break;
+      case 22:
+        kring[kringnr].image = waardeString;
+        answertoSend = waardeString;
+        break;
       default:
         answertoSend = "error";
         break;

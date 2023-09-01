@@ -23,6 +23,18 @@ void setup_AsyncWebserver(){
   webserver.on("/file_favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/file_favicon.ico", "image/png");
   });
+  webserver.on("/file_img_Olivander.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Olivander.jpg", "image/jpg");
+  });
+  webserver.on("/file_img_Quiddich.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Quiddich.jpg", "image/jpg");
+  });
+  webserver.on("/file_img_Weasley.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Weasley.jpg", "image/jpg");
+  });
+  webserver.on("/file_img_Flourish.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/file_img_Flourish.jpg", "image/jpg");
+  });
   webserver.on("/file_hue.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send(SPIFFS, "/file_hue.jpg", "image/png");
   });
