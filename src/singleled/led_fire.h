@@ -2,25 +2,28 @@
 
 void led_fire(int lednr) {
   unsigned long timeBezig;
-  
-  timeBezig = currentMillis - timer_led_aan[lednr];
+  unsigned long timeEffect;
+
+  timeBezig  = currentMillis - timer_led_aan[lednr];
+  timeEffect = currentMillis - timer_led_eff[lednr];
 
   if( timeBezig > (ledsingle[lednr].timeon + ledsingle[lednr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
-    timer_led_aan[lednr]    = currentMillis; //reset timer
-    timer_led_effect[lednr] = currentMillis; //reset timer
+    timer_led_aan[lednr] = currentMillis; //reset timer
+    timer_led_eff[lednr] = currentMillis; //reset timer
 
     singleled.setPWM(lednr, 0, flameledbright[lednr]);
-    Println("aan");
+    if(lednr = 1) {Println("a"); delay(200); };
   }
-  else  if (timeBezig > ledsingle[lednr].timeon) { // lang genoeg aan geweest
+  else  if (timeBezig > ledsingle[lednr].timeon) { // lang genoeg aan geweest. Nu uitzetten
     singleled.setPWM(lednr, 0, 0);
-    Println("uit");
+    if(lednr = 1) {Println("u"); delay(200); };
   }
-  else if (currentMillis > timer_led_effect[lednr] ) { // ander vlammetje
-    flameledbright[lednr]   = random(ledsingle[lednr].bright);
-    timer_led_effect[lednr] = random(ledsingle[lednr].timeeffect) + currentMillis;
+  else if (timeEffect > fire_time[lednr] ) { // ander vlammetje
+    timer_led_eff[lednr] = currentMillis;
+    fire_time[lednr]        = random(ledsingle[lednr].timeeffect); //vlamtijd
+    flameledbright[lednr]   = random(ledsingle[lednr].bright);      //intensiteit
     singleled.setPWM(lednr, 0, flameledbright[lednr]);
-    Println("nieuw " + String(timer_led_effect[lednr]));
+    if(lednr = 1) {    Println("n" ); delay(200); };
   }
   else {     //laat nog maar tijdje aan.
 
