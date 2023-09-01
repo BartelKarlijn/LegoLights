@@ -92,7 +92,8 @@ void setup_AsyncWebserver(){
     request->send(SPIFFS, "/page_maintain_strip.html", "text/html");
   });
   webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Restarting ESP32 in 2 sec");
+    Println("Restarting ESP32 in 2sec");
+    request->send(200, "text/plain", "Restarting ESP32 in 2sec");
     delay(2000);
     ESP.restart();
   });
