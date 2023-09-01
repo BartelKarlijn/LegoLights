@@ -115,9 +115,9 @@ typedef struct {
 #define LED_NR_ITEMS 16
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 //    description (20) ,brigh,timeon,timeoff,timeeff, eff
- {"Olivander kaars    ", 4095, 10000,   1000,    500, EFFLED_FIRE  }
+ {"Olivander kaars    ", 4095, 10000,   1000,   1000, EFFLED_FIRE  }
 ,{"Olivander lantaarn ", 4095, 10000,   1000,   1000, EFFLED_FIRE }
-,{"Olivander fakkel   ", 4095, 10000,   1000,    125, EFFLED_FIRE }
+,{"Olivander fakkel   ", 4095, 10000,   1000,   1000, EFFLED_FIRE }
 ,{"led test04         ", 3095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test05         ", 4095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test06         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
@@ -135,6 +135,5 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 
 str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
-unsigned long timer_led_eff[LED_NR_ITEMS];
-unsigned long fire_time[LED_NR_ITEMS];
+unsigned long time_led_eff[LED_NR_ITEMS];  //van time_aan tot eind van dit vlammetje
 int flameledbright[LED_NR_ITEMS];
