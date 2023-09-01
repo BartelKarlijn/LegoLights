@@ -43,7 +43,7 @@ const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 ,{"Olivander V0 trap  ",  11,  11, 192, 255, 255,  92, 255, 255,  80, 255,  70,  75, 255,  70,    1,  5000,   1000,    500,  0, EFFSTR_GLOW } // 1
 ,{"Olivander V1 plafon",  12,  22,  48, 255, 170,  60, 255,  70,  80, 255,  75,  75, 255,  70,    1, 10000,   1000,    500,  0, EFFSTR_AAN  } // 2
 ,{"Scribulus V1 plafon",  23,  29,  48, 200, 150, 150, 255, 100, 152, 255,   0,   0, 255,   0,    1, 10000,   1000,    500,  0, EFFSTR_CHASE} // 3
-,{"Scribulus V1 haard ",  30,  30,  32, 255, 255,   0, 255, 255,  20, 255, 255,  10, 255, 255,    1, 10000,   1000,      0,  0, EFFSTR_FIRE } // 4
+,{"Scribulus V1 haard ",  30,  30,  32, 255, 255,   0, 255, 255,  20, 255, 255,  10, 255, 255,    1, 10000,   1000,    100,  0, EFFSTR_FIRE } // 4
 ,{"Scribulus V1 vitrin",  31,  32, 152, 150, 220,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,      0,  0, EFFSTR_AAN  } // 5
 ,{"Scribulus V0 plafon",  33,  39,  48, 150, 150,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  } // 6
 ,{"Scribulus V0 pui   ",  40,  41, 140, 255, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,    250,  0, EFFSTR_GLOW } // 7
@@ -115,9 +115,9 @@ typedef struct {
 #define LED_NR_ITEMS 16
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 //    description (20) ,brigh,timeon,timeoff,timeeff, eff
- {"Olivander kaars    ", 4095, 10000,   1000,   1000, EFFLED_FIRE  }
-,{"Olivander lantaarn ", 4095, 10000,   1000,   1000, EFFLED_FIRE }
-,{"Olivander fakkel   ", 4095, 10000,   1000,   1000, EFFLED_FIRE }
+ {"Olivander kaars    ", 4095, 10000,   1000,    150, EFFLED_FIRE  }
+,{"Olivander lantaarn ", 2095, 10000,   1000,    400, EFFLED_FIRE }
+,{"Olivander fakkel   ", 4095, 10000,   1000,    100, EFFLED_FIRE }
 ,{"led test04         ", 3095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test05         ", 4095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test06         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
@@ -137,4 +137,3 @@ str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
 unsigned long time_led_eff[LED_NR_ITEMS];  //van time_aan tot eind van dit vlammetje
 int flameledbright[LED_NR_ITEMS];
-int vlamcnt[LED_NR_ITEMS];
