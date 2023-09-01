@@ -25,6 +25,7 @@
 					$.get("getStrip", {kring: $.urlParam('kring'), veld: $(element).attr('id')}, function(data) {
 						$(element).val(data);
 					});
+                    document.getElementById("file_img").src = document.getElementById("22").val;
 				});
             });
         };
@@ -32,7 +33,6 @@
 			$('input[name="jq"]').each(function(ind, element) {
 				$(element).on("focusout", function(){
 					$.get("/getSetStrip", {kring: $.urlParam('kring'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
-						//$(element).val(data);
 					});
 				});
 			});
@@ -63,7 +63,7 @@
     <h1>Beheer effecten van ledstrip</h1>
     <div class="row">
         <div class="column3"><a id="PrevKring" href="/" class='button button-center'></a></div>
-        <div class="column3"><h3><img src="file_img_Weasley.jpg"></img><br><input id='22' name='jq' type='text'   required/><br><input id='01' name='jq' type='text'   required/></h3></div>
+        <div class="column3"><h3><img id="file_img"  src=""></img><br><input id='22' name='jq' type='text'   required/><br><input id='01' name='jq' type='text'   required/></h3></div>
         <div class="column3"><a id="NextKring" href="/" class='button button-center'></a></div>
     </div>
     <div class="row">
