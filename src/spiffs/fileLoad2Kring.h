@@ -6,28 +6,27 @@ String  fileLoad2Kring(int kringnr) {
 
   sprintf(filename, "/cfg_kring%02d.ini", kringnr);
 
-  Print("Loading ");
-  Println(String(filename));
+  Print(String(filename));
 
   if (!SPIFFS.exists(filename)) {
-    Println("File does not exist");
-    return "File does not exist";
+    Println(" does not exist");
+    msgAnswer = "File does not exist";
   }
   else {
     String file_content = readFile(SPIFFS, filename);
     int config_file_size = file_content.length();
-    Println("Config file size: " + String(config_file_size));
+    Println(" size: " + String(config_file_size));
 
     if(config_file_size > 1024) {
-      Println("Config file too large");
-      return "Config file too large";
+      Println(" too large");
+      msgAnswer ="Config file too large";
     }
 
     StaticJsonDocument<1024> doc;
     auto error = deserializeJson(doc, file_content);
     if ( error ) { 
       Println("Error interpreting config file");
-      return "Error interpreting config file";
+      msgAnswer ="Error interpreting config file";
     }
 
     // write variables to JSON file
@@ -77,6 +76,7 @@ String  fileLoad2Kring(int kringnr) {
     kring[kringnr].effect    = _effect;
     kring[kringnr].image     = _image;
 
-    return ("Data opgehaald voor " + kring[kringnr].desc);
+    msgAnswer = ("Data opgehaald voor " + kring[kringnr].desc);
   }
+  return msgAnswer;
 }

@@ -1,5 +1,4 @@
 String readFile(fs::FS &fs, String filename){
-  Serial.println("readFile -> Reading file: " + filename);
 
   File file = fs.open(filename);
   if(!file || file.isDirectory()){

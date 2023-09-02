@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diagon Alley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
+  <link rel="icon" href="file_favicon.ico">
+  <link rel="stylesheet" type="text/css" href="file_style.css">
+  <script src="file_jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // url parameters
+      $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null) { return null; }
+        return decodeURI(results[1]) || 0;
+      }
+      console.log("image= "+$.urlParam('image'));
+
+      //We beginnen met Quiddich
+      $.get("/getlistKringen", {image: $.urlParam('image')}, function(data) {
+        $("#listKringen").html(data);
+      });
+		});
+  </script>
+
+</head>
+<body>
+  <noscript>
+    <strong>We're sorry but Diagon Alley doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <h1>Diagon Alley</h1>
+  <h3>Kringen</h3>
+  <span id="listKringen"></span></h3>
+  <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
+  %showfirmware info%
+</body>
+</html>

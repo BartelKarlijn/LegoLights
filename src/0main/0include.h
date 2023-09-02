@@ -74,6 +74,7 @@
 #include <wifi/on_getfileLoad2Kring.h>
 #include <wifi/on_getfileDefault2Kring.h>
 #include <wifi/on_getfileSaveKring.h>
+#include <wifi/on_getlistKringen.h>
 #include <wifi/on_wifisave.h>
 #include <wifi/setup_AsyncWebserver.h> 
 #include <wifi/setup_ConnectKnownWifi.h>

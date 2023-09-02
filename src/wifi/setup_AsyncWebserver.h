@@ -71,8 +71,7 @@ void setup_AsyncWebserver(){
     request->send(200, "text/plain", on_getfileSaveKring(request));
   });
   webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", listKringen(true));
+    request->send(200, "text/plain", listKringen(true, on_getlistKringen(request)) );
   });
   webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
@@ -87,19 +86,23 @@ void setup_AsyncWebserver(){
     Println("FileManagement requested");
     request->send(SPIFFS, "/page_fileManagement.html", "text/html");
   });
+  webserver.on("/page_huisje", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Huisje requested");
+    request->send(SPIFFS, "/page_huisje.html", "text/html");
+  });
   webserver.on("/page_maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("strip configuratie opgeroepen");
     request->send(SPIFFS, "/page_maintain_strip.html", "text/html");
+  });
+  webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Wifi config pagina");
+    request->send(SPIFFS, "/page_wificfg.html", "text/html");
   });
   webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Restarting ESP32 in 2sec");
     request->send(200, "text/plain", "Restarting ESP32 in 2sec");
     delay(2000);
     ESP.restart();
-  });
-  webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Wifi config pagina");
-    request->send(SPIFFS, "/page_wificfg.html", "text/html");
   });
   webserver.on("/wifisave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi connection parameters");

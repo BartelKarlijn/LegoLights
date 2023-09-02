@@ -3,15 +3,15 @@
 <head>
   <title>Diagon Alley</title>
   <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
-  <link rel="icon" href="/file_favicon.ico">
+  <link rel="icon" href="file_favicon.ico">
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function() {
- 		  //Beginwaarden ophalen voor storage
-      $.get("/getlistKringen", function(data) {
+      //We beginnen met Quiddich
+      $.get("/getlistKringen", {image: "file_img_Quiddich.jpg"}, function(data) {
         $("#listKringen").html(data);
-      })
+      });
 		});
   </script>
 
@@ -21,7 +21,16 @@
     <strong>We're sorry but Diagon Alley doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
   <h1>Diagon Alley</h1>
-  <h3>Kringen</h3>
+  <h3>Huisjes</h3>
+  <div class="row">
+    <div class="column2"><a id="Olivander" href="page_huisje?image=file_img_Olivander.jpg"><img src = "file_img_Olivander.jpg"></a></div>
+    <div class="column2"><a id="Quiddich"  href="page_huisje?image=file_img_Quiddich.jpg" ><img src = "file_img_Quiddich.jpg" ></a></div>
+  </div>
+  <div class="row">
+    <div class="column2"><a id="Flourish"  href="page_huisje?image=file_img_Flourish.jpg" ><img src = "file_img_Flourish.jpg" ></a></div>
+    <div class="column2"><a id="Weasley"   href="page_huisje?image=file_img_Weasley.jpg"  ><img src = "file_img_Weasley.jpg"  ></a></div>
+  </div>
+
   <span id="listKringen"></span></h3>
   <a href="/restart"             class="button button-right  button-large">/!\Reboot ESP32</a>
   <a href="/page_wificfg"        class="button button-right  button-large">Wifi config</a>
