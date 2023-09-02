@@ -86,19 +86,23 @@ void setup_AsyncWebserver(){
     Println("FileManagement requested");
     request->send(SPIFFS, "/page_fileManagement.html", "text/html");
   });
+  webserver.on("/page_huisje", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Huisje requested");
+    request->send(SPIFFS, "/page_huisje.html", "text/html");
+  });
   webserver.on("/page_maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("strip configuratie opgeroepen");
     request->send(SPIFFS, "/page_maintain_strip.html", "text/html");
+  });
+  webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Wifi config pagina");
+    request->send(SPIFFS, "/page_wificfg.html", "text/html");
   });
   webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Restarting ESP32 in 2sec");
     request->send(200, "text/plain", "Restarting ESP32 in 2sec");
     delay(2000);
     ESP.restart();
-  });
-  webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Wifi config pagina");
-    request->send(SPIFFS, "/page_wificfg.html", "text/html");
   });
   webserver.on("/wifisave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi connection parameters");

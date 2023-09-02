@@ -8,8 +8,16 @@
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function() {
+      // url parameters
+      $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null) { return null; }
+        return decodeURI(results[1]) || 0;
+      }
+      console.log("image= "+$.urlParam('image'));
+
       //We beginnen met Quiddich
-      $.get("/getlistKringen", {image: "file_img_Quiddich.jpg"}, function(data) {
+      $.get("/getlistKringen", {image: $.urlParam('image')}, function(data) {
         $("#listKringen").html(data);
       });
 		});
@@ -23,12 +31,7 @@
   <h1>Diagon Alley</h1>
   <h3>Kringen</h3>
   <span id="listKringen"></span></h3>
-  <a href="/restart"             class="button button-right  button-large">/!\Reboot ESP32</a>
-  <a href="/page_wificfg"        class="button button-right  button-large">Wifi config</a>
-  <a href="/page_fileManagement" class="button button-right  button-large">File management</a>
-  <a href="/webserial"           class="button button-right  button-large">Webserial</a>
-  <a href="/update"              class="button button-right  button-large">Firmware Update</a>
-
+  <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
   %showfirmware info%
 </body>
 </html>
