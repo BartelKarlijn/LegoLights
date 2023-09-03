@@ -29,54 +29,57 @@ String  fileLoad2Kring(int kringnr) {
       msgAnswer ="Error interpreting config file";
     }
 
-    // write variables to JSON file
-    const String _desc       = doc["desc"]; 
-    const int    _startled   = doc["startled"];
-    const int    _stopled    = doc["stopled"];
-    const int    _hue1       = doc["hue1"];
-    const int    _sat1       = doc["sat1"];
-    const int    _bright1    = doc["bright1"];
-    const int    _hue2       = doc["hue2"];
-    const int    _sat2       = doc["sat2"];
-    const int    _bright2    = doc["bright2"];
-    const int    _hue3       = doc["hue3"];
-    const int    _sat3       = doc["sat3"];
-    const int    _bright3    = doc["bright3"];
-    const int    _hue4       = doc["hue4"];
-    const int    _sat4       = doc["sat4"];
-    const int    _bright4    = doc["bright4"];
-    const int    _every      = doc["every"];
-    const unsigned long _timeon     = doc["timeon"];
-    const unsigned long _timeoff    = doc["timeoff"];
-    const unsigned long _timeeffect = doc["timeeffect"];
-    const bool  _direction   = doc["direction"];
-    const int  _effect       = doc["effect"];
-    const String _image      = doc["desc"]; 
-
-    kring[kringnr].desc      = _desc;
-    kring[kringnr].startled  = _startled;
-    kring[kringnr].stopled   = _stopled;
-    kring[kringnr].hue1      = _hue1;
-    kring[kringnr].sat1      = _sat1;
-    kring[kringnr].bright1   = _bright1;
-    kring[kringnr].hue2      = _hue2;
-    kring[kringnr].sat2      = _sat2;
-    kring[kringnr].bright2   = _bright2;
-    kring[kringnr].hue3      = _hue3;
-    kring[kringnr].sat3      = _sat3;
-    kring[kringnr].bright3   = _bright3;
-    kring[kringnr].hue4      = _hue4;
-    kring[kringnr].sat4      = _sat4;
-    kring[kringnr].bright4   = _bright4;
-    kring[kringnr].every     = _every;
-    kring[kringnr].timeon    = _timeon;
-    kring[kringnr].timeoff   = _timeoff;
-    kring[kringnr].timeeffect = _timeeffect;
-    kring[kringnr].direction = _direction;
-    kring[kringnr].effect    = _effect;
-    kring[kringnr].image     = _image;
+    // get variables from JSON file
+    const str_strip _kring = {
+      doc["desc"],
+      doc["startled"],
+      doc["stopled"],
+      doc["hue1"],
+      doc["sat1"],
+      doc["bright1"],
+      doc["hue2"],
+      doc["sat2"],
+      doc["bright2"],
+      doc["hue3"],
+      doc["sat3"],
+      doc["bright3"],
+      doc["hue4"],
+      doc["sat4"],
+      doc["bright4"],
+      doc["every"],
+      doc["timeon"],
+      doc["timeoff"],
+      doc["timeeffect"],
+      doc["direction"],
+      doc["effect"],
+      doc["image"]
+   };
+   kring[kringnr]     = _kring;
+    // kring[kringnr].startled  = _kring.startled;
+    // kring[kringnr].stopled   = _kring.stopled;
+    // kring[kringnr].hue1      = _kring.hue1;
+    // kring[kringnr].sat1      = _kring.sat1;
+    // kring[kringnr].sat1      = _kring.sat1;
+    // kring[kringnr].bright1   = _kring.bright1;
+    // kring[kringnr].hue2      = _kring.hue2;
+    // kring[kringnr].sat2      = _kring.sat2;
+    // kring[kringnr].bright2   = _kring.bright2;
+    // kring[kringnr].hue3      = _kring.hue3;
+    // kring[kringnr].sat3      = _kring.sat3;
+    // kring[kringnr].bright3   = _kring.bright3;
+    // kring[kringnr].hue4      = _kring.hue4;
+    // kring[kringnr].sat4      = _kring.sat4;
+    // kring[kringnr].bright4   = _kring.bright4;
+    // kring[kringnr].every     = _kring.every;
+    // kring[kringnr].timeon    = _timeon;
+    // kring[kringnr].timeoff   = _timeoff;
+    // kring[kringnr].timeeffect = _timeeffect;
+    // kring[kringnr].direction = _direction;
+    // kring[kringnr].effect    = _effect;
+    // kring[kringnr].image     = _image;
 
     msgAnswer = ("Data opgehaald voor " + kring[kringnr].desc);
+    Print("  Desc: " + _kring.desc + ", img: " + _kring.image + ", eff: " + _kring.effect); delay(100);
   }
   return msgAnswer;
 }
