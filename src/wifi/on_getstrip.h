@@ -76,7 +76,7 @@ String on_getStrip(AsyncWebServerRequest *request){
         answertoSend = kring[kringnr].timeeffect;
         break;
       case 20:
-        answertoSend = kring[kringnr].direction;
+        answertoSend = kring[kringnr].seed;
         break;
       case 21:
         answertoSend = kring[kringnr].effect;

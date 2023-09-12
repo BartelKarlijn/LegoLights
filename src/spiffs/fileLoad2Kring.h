@@ -50,34 +50,12 @@ String  fileLoad2Kring(int kringnr) {
       doc["timeon"],
       doc["timeoff"],
       doc["timeeffect"],
-      doc["direction"],
+      doc["seed"],
       doc["effect"],
       doc["image"]
    };
    kring[kringnr]     = _kring;
-    // kring[kringnr].startled  = _kring.startled;
-    // kring[kringnr].stopled   = _kring.stopled;
-    // kring[kringnr].hue1      = _kring.hue1;
-    // kring[kringnr].sat1      = _kring.sat1;
-    // kring[kringnr].sat1      = _kring.sat1;
-    // kring[kringnr].bright1   = _kring.bright1;
-    // kring[kringnr].hue2      = _kring.hue2;
-    // kring[kringnr].sat2      = _kring.sat2;
-    // kring[kringnr].bright2   = _kring.bright2;
-    // kring[kringnr].hue3      = _kring.hue3;
-    // kring[kringnr].sat3      = _kring.sat3;
-    // kring[kringnr].bright3   = _kring.bright3;
-    // kring[kringnr].hue4      = _kring.hue4;
-    // kring[kringnr].sat4      = _kring.sat4;
-    // kring[kringnr].bright4   = _kring.bright4;
-    // kring[kringnr].every     = _kring.every;
-    // kring[kringnr].timeon    = _timeon;
-    // kring[kringnr].timeoff   = _timeoff;
-    // kring[kringnr].timeeffect = _timeeffect;
-    // kring[kringnr].direction = _direction;
-    // kring[kringnr].effect    = _effect;
-    // kring[kringnr].image     = _image;
-
+    
     msgAnswer = ("Data opgehaald voor " + kring[kringnr].desc);
     Print("  Desc: " + _kring.desc + ", img: " + _kring.image + ", eff: " + _kring.effect); delay(100);
   }

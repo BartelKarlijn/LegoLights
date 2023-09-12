@@ -29,7 +29,7 @@ String  fileSaveKring(int kringnr) {
   doc["timeon"]   = kring[kringnr].timeon;
   doc["timeoff"]  = kring[kringnr].timeoff;
   doc["timeeffect"] = kring[kringnr].timeeffect;
-  doc["direction"]  = kring[kringnr].direction;
+  doc["seed"]     = kring[kringnr].seed;
   doc["effect"]   = kring[kringnr].effect;
   doc["image"]    = kring[kringnr].image;
 

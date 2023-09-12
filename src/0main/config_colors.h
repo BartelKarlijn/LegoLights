@@ -32,7 +32,7 @@ typedef struct {
   unsigned long timeon;
   unsigned long timeoff;
   unsigned long timeeffect;
-  bool   direction;
+  int    seed;
   int    effect;
   String image;
 } str_strip;
@@ -44,7 +44,7 @@ typedef struct {
 const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 //234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down
 //                                     sat 0: white -255 color                                      time : in ms                effect: zie begin van file
-//    description (20) ,star,stop,hue1,sat1,bri1,hue2,sat2,bri2,hue3,sat3,bri3,hue4,sat4,bri4,every,timeon,timeoff,timeeff, dir,eff
+//    description (20) ,star,stop,hue1,sat1,bri1,hue2,sat2,bri2,hue3,sat3,bri3,hue4,sat4,bri4,every,timeon,timeoff,timeeff,seed,eff
  {"Olivander V0 plafon",   0,  10,  48, 200, 170,   0, 255,  80, 150, 255,  80, 160, 255,  80,    1, 10000,   1000,    500,  0, EFFSTR_AAN  , IMG_OLIV } // 0
 ,{"Olivander V0 trap  ",  11,  11, 192, 255, 255,  92, 255, 255,  80, 255,  70,  75, 255,  70,    1,  5000,   1000,    500,  0, EFFSTR_GLOW , IMG_OLIV } // 1
 ,{"Olivander V1 plafon",  12,  22,  48, 255, 170,  60, 255,  70,  80, 255,  75,  75, 255,  70,    1, 10000,   1000,    500,  0, EFFSTR_AAN  , IMG_OLIV } // 2

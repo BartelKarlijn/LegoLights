@@ -111,7 +111,7 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         answertoSend = waardeString;
         break;
       case 20:
-        kring[kringnr].direction = waardeString.toInt();
+        kring[kringnr].seed = waardeString.toInt();
         answertoSend = waardeString;
         break;
       case 21:
