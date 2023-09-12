@@ -21,7 +21,7 @@ void str_aan(int kringnr) {
   {
     // aan of uit zetten?
     if (fl_on) {
-      if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every
+      if( ( (i - kring[kringnr].startled + kring[kringnr].seed + 30*kring[kringnr].every) % kring[kringnr].every ) == 0 ) {  // check every.  Aangezien negatieve waarden kunnen voorkomen, tellen we er 30 x every bij op om zeker positieve waarden te hebben
         ledstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bright1 );
       }
       else {
