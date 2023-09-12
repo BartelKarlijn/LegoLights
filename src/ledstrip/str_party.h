@@ -56,7 +56,7 @@ default:
   break;
 }
 
-  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
+  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
     // aan of uit zetten?
     if (flag_on) {
       if( (i - kring[kringnr].startled) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr] * kring[kringnr].every ) {

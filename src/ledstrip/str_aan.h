@@ -17,7 +17,7 @@ void str_aan(int kringnr) {
     fl_on = true;
   }
 
-  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
+  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
   {
     // aan of uit zetten?
     if (fl_on) {

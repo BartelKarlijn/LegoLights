@@ -22,7 +22,7 @@ timeBezig = currentMillis - timer_str_aan[kringnr];
     brightn_glow = map(timeBezig, 0, kring[kringnr].timeon, 0, kring[kringnr].bright1 );
   }
 
-  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
+  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
   {
     // aan of uit zetten?
     if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every

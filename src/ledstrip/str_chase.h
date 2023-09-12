@@ -28,7 +28,7 @@ void str_chase(int kringnr) {
     flag_on = true;
   }
 
-  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
+  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
     // aan of uit zetten?
     if (flag_on) {
       if( i == chasestrnr[kringnr] ) {
