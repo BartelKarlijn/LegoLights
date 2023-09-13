@@ -3,7 +3,7 @@
 void str_glow(int kringnr) {
   unsigned long timeBezig;
   unsigned long timeMap;
-  int brightn_glow;
+  uint8_t brightn_glow;
 
 timeBezig = currentMillis - timer_str_aan[kringnr];
 // bereken mode (uit, up, down)

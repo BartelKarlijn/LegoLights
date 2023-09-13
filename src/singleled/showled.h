@@ -11,10 +11,10 @@ void showled() {
         led_fire(i);
         break;
     case EFFLED_GLOW:
-//        led_glow(i);
+        led_glow(i);
         break;
     case EFFLED_UIT:
-//        led_uit(i);
+        led_uit(i);
         break;
     default:
         break;

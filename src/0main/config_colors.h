@@ -110,12 +110,12 @@ uint8_t chasestrnr[STRIP_NR_ITEMS][4];
 #define EFFLED_UIT     13
 
 typedef struct {
-  char   desc[20];
-  int    bright;    //4095 mogelijkheden
+  char    desc[20];
+  int     bright;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
-  unsigned long timeeffect;
-  uint8_t    effect;
+  long    timeeffect;  //negatieve waarden toelaten
+  uint8_t effect;
 } str_ledsingle;
 
 #define LED_NR_ITEMS 16
@@ -141,5 +141,5 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 
 str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
-unsigned long time_led_eff[LED_NR_ITEMS];  //van time_aan tot eind van dit vlammetje
+unsigned long time_led_eff[LED_NR_ITEMS];  //van begin aan tot eind van effect (gaat dus over meerder effecten heen)
 uint8_t effectledbright[LED_NR_ITEMS];
