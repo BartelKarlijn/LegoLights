@@ -1,11 +1,11 @@
 // Configuration file for default led coloring
 // effecten strip
-#define EFFSTR_AAN      0
-#define EFFSTR_CHASE    1
-#define EFFSTR_FIRE     2
-#define EFFSTR_GLOW     3
-#define EFFSTR_PARTY    4
-#define EFFSTR_UIT      5
+#define EFFSTR_UIT      0
+#define EFFSTR_AAN      1
+#define EFFSTR_CHASE    2
+#define EFFSTR_FIRE     3
+#define EFFSTR_GLOW     4
+#define EFFSTR_PARTY    5
 
 //jpeg files
 #define IMG_OLIV "file_img_Olivander.jpg"

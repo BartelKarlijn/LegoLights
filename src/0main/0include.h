@@ -64,6 +64,8 @@
 #include <singleled/scanI2C.h>
 #include <singleled/led_aan.h>
 #include <singleled/led_fire.h>
+#include <singleled/led_glow.h>
+#include <singleled/led_uit.h>
 #include <singleled/showled.h>
 
 //wifi
