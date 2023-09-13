@@ -14,27 +14,27 @@
 #define IMG_WEAS "file_img_Weasley.jpg"
 typedef struct {
   String desc;
-  int    startled;
-  int    stopled;
-  int    hue1;
-  int    sat1;
-  int    bright1;
-  int    hue2;
-  int    sat2;
-  int    bright2;
-  int    hue3;
-  int    sat3;
-  int    bright3;
-  int    hue4;
-  int    sat4;
-  int    bright4;
-  int    every;
+  int startled;
+  int stopled;
+  uint8_t hue1;
+  uint8_t sat1;
+  uint8_t bright1;
+  uint8_t hue2;
+  uint8_t sat2;
+  uint8_t bright2;
+  uint8_t hue3;
+  uint8_t sat3;
+  uint8_t bright3;
+  uint8_t hue4;
+  uint8_t sat4;
+  uint8_t bright4;
+  uint8_t every;
   unsigned long timeon;
   unsigned long timeoff;
   unsigned long timeeffect;
-  int    seed;
-  int    effect;
-  String image;
+  int8_t  seed;
+  uint8_t effect;
+  String  image;
 } str_strip;
 
 // default waarden
