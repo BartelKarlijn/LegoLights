@@ -95,12 +95,12 @@ CRGB ledstrip[STRIP_NR_LEDS];
 
 // timing & color varialbles
 unsigned long timer_str_aan[STRIP_NR_ITEMS];
-unsigned long timer_str_flicker[STRIP_NR_ITEMS];
-int flamestrhueidx[STRIP_NR_ITEMS];
-int flamestrhue[STRIP_NR_ITEMS];
-int flamestrsat[STRIP_NR_ITEMS];
-int flamestrbright[STRIP_NR_ITEMS];
-int chasestrnr[STRIP_NR_ITEMS];
+unsigned long timer_str_effect[STRIP_NR_ITEMS];
+uint8_t effectstrhueidx[STRIP_NR_ITEMS];
+uint8_t effectstrhue[STRIP_NR_ITEMS];
+uint8_t effectstrsat[STRIP_NR_ITEMS];
+uint8_t effectstrbright[STRIP_NR_ITEMS];
+uint8_t chasestrnr[STRIP_NR_ITEMS];
 
 //////////// single leds /////////////////////////////
 // effecten leds
@@ -111,11 +111,11 @@ int chasestrnr[STRIP_NR_ITEMS];
 
 typedef struct {
   char   desc[20];
-  int    bright;
+  uint8_t    bright;
   unsigned long timeon;
   unsigned long timeoff;
   unsigned long timeeffect;
-  int    effect;
+  uint8_t    effect;
 } str_ledsingle;
 
 #define LED_NR_ITEMS 16
@@ -142,4 +142,4 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
 unsigned long time_led_eff[LED_NR_ITEMS];  //van time_aan tot eind van dit vlammetje
-int flameledbright[LED_NR_ITEMS];
+uint8_t effectledbright[LED_NR_ITEMS];

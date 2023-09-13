@@ -9,16 +9,16 @@ void str_party(int kringnr) {
   // bereken mode (uit, up, down)
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kringnr] = currentMillis;      //reset timers
-    timer_str_flicker[kringnr] = currentMillis + kring[kringnr].timeeffect;
+    timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
     chasestrnr[kringnr] = 0;
     flag_on = true;
   }
   else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
     flag_on = false;
   }
-  else  if(currentMillis >  timer_str_flicker[kringnr]) {        //naar volgend spotje gaan
+  else  if(currentMillis >  timer_str_effect[kringnr]) {        //naar volgend spotje gaan
     flag_on = true;
-    timer_str_flicker[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
+    timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
     chasestrnr[kringnr] = (chasestrnr[kringnr] + 1) % 4;           //kleur vd party
   }
   else {
