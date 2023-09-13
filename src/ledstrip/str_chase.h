@@ -9,7 +9,7 @@ void str_chase(int kringnr) {
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kringnr] = currentMillis;      //reset timers
     timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
-    chasestrnr[kringnr] = kring[kringnr].startled;
+    chasestrnr[kringnr][0] = kring[kringnr].startled;
     flag_on = true;
   }
   else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
@@ -18,9 +18,9 @@ void str_chase(int kringnr) {
   else  if(currentMillis >  timer_str_effect[kringnr]) {        //naar volgend spotje gaan
     flag_on = true;
     timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
-    chasestrnr[kringnr]++;
-    if (chasestrnr[kringnr] > kring[kringnr].stopled) {
-      chasestrnr[kringnr] = kring[kringnr].startled;
+    chasestrnr[kringnr][0]++;
+    if (chasestrnr[kringnr][0] > kring[kringnr].stopled) {
+      chasestrnr[kringnr][0] = kring[kringnr].startled;
     }
   }
   else {
@@ -31,7 +31,7 @@ void str_chase(int kringnr) {
   for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
     // aan of uit zetten?
     if (flag_on) {
-      if( i == chasestrnr[kringnr] ) {
+      if( i == chasestrnr[kringnr][0] ) {
         ledstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bright1);
       }
       else {

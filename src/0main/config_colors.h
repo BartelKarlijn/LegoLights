@@ -96,11 +96,11 @@ CRGB ledstrip[STRIP_NR_LEDS];
 // timing & color varialbles
 unsigned long timer_str_aan[STRIP_NR_ITEMS];
 unsigned long timer_str_effect[STRIP_NR_ITEMS];
-uint8_t effectstrhueidx[STRIP_NR_ITEMS];
-uint8_t effectstrhue[STRIP_NR_ITEMS];
-uint8_t effectstrsat[STRIP_NR_ITEMS];
-uint8_t effectstrbright[STRIP_NR_ITEMS];
-uint8_t chasestrnr[STRIP_NR_ITEMS];
+uint8_t effectstrhueidx[STRIP_NR_ITEMS][4];
+uint8_t effectstrhue[STRIP_NR_ITEMS][4];
+uint8_t effectstrsat[STRIP_NR_ITEMS][4];
+uint8_t effectstrbright[STRIP_NR_ITEMS][4];
+uint8_t chasestrnr[STRIP_NR_ITEMS][4];
 
 //////////// single leds /////////////////////////////
 // effecten leds
@@ -111,7 +111,7 @@ uint8_t chasestrnr[STRIP_NR_ITEMS];
 
 typedef struct {
   char   desc[20];
-  uint8_t    bright;
+  int    bright;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
   unsigned long timeeffect;

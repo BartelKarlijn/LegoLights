@@ -10,7 +10,7 @@ void str_party(int kringnr) {
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kringnr] = currentMillis;      //reset timers
     timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
-    chasestrnr[kringnr] = 0;
+    chasestrnr[kringnr][0] = 0;
     flag_on = true;
   }
   else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
@@ -19,7 +19,7 @@ void str_party(int kringnr) {
   else  if(currentMillis >  timer_str_effect[kringnr]) {        //naar volgend spotje gaan
     flag_on = true;
     timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
-    chasestrnr[kringnr] = (chasestrnr[kringnr] + 1) % 4;           //kleur vd party
+    chasestrnr[kringnr][0] = (chasestrnr[kringnr][0] + 1) % 4;           //kleur vd party
   }
   else {
     // gewoon verder doen, laat lampje maar branden
@@ -27,7 +27,7 @@ void str_party(int kringnr) {
   }
 
 // bepaal kleur
-switch (chasestrnr[kringnr])
+switch (chasestrnr[kringnr][0])
 {
 case 0:
   partyhue    = kring[kringnr].hue1;
@@ -59,7 +59,7 @@ default:
   for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
     // aan of uit zetten?
     if (flag_on) {
-      if( (i - kring[kringnr].startled) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr] * kring[kringnr].every ) {
+      if( (i - kring[kringnr].startled) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr][0] * kring[kringnr].every ) {
         ledstrip[i] = CHSV(partyhue, partysat, partybright);
       }
       else {
