@@ -22,11 +22,11 @@ void led_glow(int lednr) {
     singleled.setPWM(lednr, 0, 0);         //glow begint aan 0
   }
   else if (timeBezig > (timeGlowBegin + ledsingle[lednr].timeeffect / 2 ) ) { // we zijn in de down fase
-    brightn_glow = map(timeBezig,  timeGlowBegin + ledsingle[lednr].timeeffect / 2, timeGlowBegin + ledsingle[lednr].timeeffect, ledsingle[lednr].bright, 0);
+    brightn_glow = map(timeBezig,  timeGlowBegin + ledsingle[lednr].timeeffect / 2, timeGlowBegin + ledsingle[lednr].timeeffect, ledsingle[lednr].bri, 0);
     singleled.setPWM(lednr, 0, brightn_glow);
   }
   else  { // we zijn in de up fase
-    brightn_glow = map(timeBezig,  timeGlowBegin, timeGlowBegin + ledsingle[lednr].timeeffect / 2, 0, ledsingle[lednr].bright);
+    brightn_glow = map(timeBezig,  timeGlowBegin, timeGlowBegin + ledsingle[lednr].timeeffect / 2, 0, ledsingle[lednr].bri);
     singleled.setPWM(lednr, 0, brightn_glow);
   }
 }

@@ -34,7 +34,7 @@ String on_getStrip(AsyncWebServerRequest *request){
         answertoSend = kring[kringnr].sat1;
         break;
       case 6:
-        answertoSend = kring[kringnr].bright1;
+        answertoSend = kring[kringnr].bri1;
         break;
       case 7:
         answertoSend = kring[kringnr].hue2;
@@ -43,7 +43,7 @@ String on_getStrip(AsyncWebServerRequest *request){
         answertoSend = kring[kringnr].sat2;
         break;
       case 9:
-        answertoSend = kring[kringnr].bright2;
+        answertoSend = kring[kringnr].bri2;
         break;
       case 10:
         answertoSend = kring[kringnr].hue3;
@@ -52,7 +52,7 @@ String on_getStrip(AsyncWebServerRequest *request){
         answertoSend = kring[kringnr].sat3;
         break;
       case 12:
-        answertoSend = kring[kringnr].bright3;
+        answertoSend = kring[kringnr].bri3;
         break;
       case 13:
         answertoSend = kring[kringnr].hue4;
@@ -61,7 +61,7 @@ String on_getStrip(AsyncWebServerRequest *request){
         answertoSend = kring[kringnr].sat4;
         break;
       case 15:
-        answertoSend = kring[kringnr].bright4;
+        answertoSend = kring[kringnr].bri4;
         break;
       case 16:
         answertoSend = kring[kringnr].every;

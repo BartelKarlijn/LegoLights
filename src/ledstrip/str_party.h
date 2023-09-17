@@ -32,22 +32,22 @@ switch (chasestrnr[kringnr][0])
 case 0:
   partyhue    = kring[kringnr].hue1;
   partysat    = kring[kringnr].sat1;
-  partybright = kring[kringnr].bright1;
+  partybright = kring[kringnr].bri1;
   break;
 case 1:
   partyhue    = kring[kringnr].hue2;
   partysat    = kring[kringnr].sat2;
-  partybright = kring[kringnr].bright2;
+  partybright = kring[kringnr].bri2;
   break;
 case 2:
   partyhue    = kring[kringnr].hue3;
   partysat    = kring[kringnr].sat3;
-  partybright = kring[kringnr].bright3;
+  partybright = kring[kringnr].bri3;
   break;
 case 3:
   partyhue    = kring[kringnr].hue4;
   partysat    = kring[kringnr].sat4;
-  partybright = kring[kringnr].bright4;
+  partybright = kring[kringnr].bri4;
   break;
 default:
   partyhue    = 0;

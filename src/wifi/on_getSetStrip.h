@@ -55,7 +55,7 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         answertoSend = waardeString;
         break;
       case 6:
-        kring[kringnr].bright1 = waardeString.toInt();
+        kring[kringnr].bri1 = waardeString.toInt();
         answertoSend = waardeString;
         break;
       case 7:
@@ -67,7 +67,7 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         answertoSend = waardeString;
         break;
       case 9:
-        kring[kringnr].bright2 = waardeString.toInt();
+        kring[kringnr].bri2 = waardeString.toInt();
         answertoSend = waardeString;
         break;
       case 10:
@@ -79,7 +79,7 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         answertoSend = waardeString;
         break;
       case 12:
-        kring[kringnr].bright3 = waardeString.toInt();
+        kring[kringnr].bri3 = waardeString.toInt();
         answertoSend = waardeString;
         break;
       case 13:
@@ -91,7 +91,7 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         answertoSend = waardeString;
         break;
       case 15:
-        kring[kringnr].bright4 = waardeString.toInt();
+        kring[kringnr].bri4 = waardeString.toInt();
         answertoSend = waardeString;
         break;
       case 16:

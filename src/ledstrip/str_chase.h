@@ -32,10 +32,10 @@ void str_chase(int kringnr) {
     // aan of uit zetten?
     if (flag_on) {
       if( i == chasestrnr[kringnr][0] ) {
-        ledstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bright1);
+        ledstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bri1);
       }
       else {
-        ledstrip[i] = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bright2);
+        ledstrip[i] = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bri2);
       }
     }
     else {
