@@ -23,36 +23,40 @@ void str_glow(int kringnr) {
     timer_str_aan[kringnr]    = currentMillis; //reset timer
     timer_str_effect[kringnr] = currentMillis; //reset timer
   }
-  else  if (timeBezig > timeGlow + 4 * timeEffect) { // einde van 4e fase.  Terug naar 1
+  else  if (timeGlow > 4 * timeEffect) { // einde van 4e fase.  Terug naar 1
     timer_str_effect[kringnr] = currentMillis; //reset timer
     newColor = CHSV(kring[kringnr].hue4, kring[kringnr].sat4, kring[kringnr].bright4);
   }
-  else  if (timeBezig > timeGlow + 3 * timeEffect) { // op weg naar 4e kleur
+  else  if (timeGlow > 3 * timeEffect) { // op weg naar 4e kleur
     oldColor    = CHSV(kring[kringnr].hue3, kring[kringnr].sat3, kring[kringnr].bright3);
     targetColor = CHSV(kring[kringnr].hue4, kring[kringnr].sat4, kring[kringnr].bright4);
-    timeMap = map(timeBezig, timeGlow + 3 * timeEffect, timeGlow + 4 * timeEffect, 255,  1);  //1: we willen geen deling door 0 hierna
-    amountOftarget = 1 / timeMap;
+    timeMap = map(timeGlow, 3 * timeEffect, 4 * timeEffect, 255,  1);  //1: we willen geen deling door 0 hierna
+    amountOftarget = timeMap;
+//    Println("am4= " + String(amountOftarget)); delay(150);
     newColor    = blend( oldColor, newColor, amountOftarget, SHORTEST_HUES);
   }
-  else  if (timeBezig > timeGlow + 2 * timeEffect) { // op weg naar 3e kleur
+  else  if (timeGlow > 2 * timeEffect) { // op weg naar 3e kleur
     oldColor    = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bright2);
     targetColor = CHSV(kring[kringnr].hue3, kring[kringnr].sat3, kring[kringnr].bright3);
-    timeMap = map(timeBezig, timeGlow + 2 * timeEffect, timeGlow + 3 * timeEffect, 255, 1);
-    amountOftarget = 1 / timeMap;
+    timeMap = map(timeGlow, 2 * timeEffect, 3 * timeEffect, 255,  1);  //1: we willen geen deling door 0 hierna
+    amountOftarget = timeMap;
+//    Println("am3= " + String(amountOftarget)); delay(150);
     newColor    = blend( oldColor, newColor, amountOftarget, SHORTEST_HUES);
   }
-  else  if (timeBezig > timeGlow + timeEffect) { // op weg naar 2e kleur
+  else  if (timeGlow > timeEffect) { // op weg naar 2e kleur
     oldColor    = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bright1);
     targetColor = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bright2);
-    timeMap = map(timeBezig, timeGlow + 1 * timeEffect, timeGlow + 2 * timeEffect, 255, 1);
-    amountOftarget = 1 / timeMap;
+    timeMap = map(timeGlow,    timeEffect, 2 * timeEffect, 255,  1);  //1: we willen geen deling door 0 hierna
+    amountOftarget = timeMap;
+//    Println("am2= " + String(amountOftarget)); delay(150);
     newColor    = blend( oldColor, newColor, amountOftarget, SHORTEST_HUES);
   }
   else {     //op weg naar 1e kleur
     oldColor    = CHSV(kring[kringnr].hue4, kring[kringnr].sat4, kring[kringnr].bright4);
     targetColor = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bright1);
-    timeMap = map(timeBezig, timeGlow + 0 * timeEffect, timeGlow + 1 * timeEffect, 255, 1);
-    amountOftarget = 1 / timeMap;
+    timeMap = map(timeGlow, 0, timeEffect, 255,  1);  //1: we willen geen deling door 0 hierna
+    amountOftarget = timeMap;
+//    Println("am1= " + String(amountOftarget)); delay(150);
     newColor    = blend( oldColor, newColor, amountOftarget, SHORTEST_HUES);
   }
 
