@@ -8,15 +8,15 @@ void str_fire(int kringnr) {
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kringnr] = currentMillis;      //reset timers
     timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
-    effectstrbright[kringnr][0] = random(kring[kringnr].bri1);
+    effectstrbri[kringnr][0] = random(kring[kringnr].bri1);
     effectstrhueidx[kringnr][0] = 0;
   }
   else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
-    effectstrbright[kringnr][0] = 0;
+    effectstrbri[kringnr][0] = 0;
   }
   else  if(currentMillis >  timer_str_effect[kringnr])  {//einde van flikering, begin een nieuwe
     effectstrhueidx[kringnr][0] = (effectstrhueidx[kringnr][0] + 1) % 4; //we hebben 4 kleuren, doe er eentje bij
-    effectstrbright[kringnr][0] = random(kring[kringnr].bri1);
+    effectstrbri[kringnr][0] = random(kring[kringnr].bri1);
     timer_str_effect[kringnr] = currentMillis + random(kring[kringnr].timeeffect) ; //reset flikkertimer
   }
   else {
@@ -51,7 +51,7 @@ void str_fire(int kringnr) {
   for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
     // aan of uit zetten?
     if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every
-      ledstrip[i] = CHSV(effectstrhue[kringnr][0], effectstrsat[kringnr][0], effectstrbright[kringnr][0]);
+      ledstrip[i] = CHSV(effectstrhue[kringnr][0], effectstrsat[kringnr][0], effectstrbri[kringnr][0]);
     }
     else {
       ledstrip[i] = CRGB::Black;

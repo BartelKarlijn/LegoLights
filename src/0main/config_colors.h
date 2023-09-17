@@ -99,7 +99,7 @@ unsigned long timer_str_effect[STRIP_NR_ITEMS];
 uint8_t effectstrhueidx[STRIP_NR_ITEMS][4];
 uint8_t effectstrhue[STRIP_NR_ITEMS][4];
 uint8_t effectstrsat[STRIP_NR_ITEMS][4];
-uint8_t effectstrbright[STRIP_NR_ITEMS][4];
+uint8_t effectstrbri[STRIP_NR_ITEMS][4];
 uint8_t chasestrnr[STRIP_NR_ITEMS][4];
 
 //////////// single leds /////////////////////////////
@@ -111,7 +111,7 @@ uint8_t chasestrnr[STRIP_NR_ITEMS][4];
 
 typedef struct {
   char    desc[20];
-  int     bright;    //4095 mogelijkheden
+  int     bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
   long    timeeffect;  //negatieve waarden toelaten
@@ -142,4 +142,4 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
 unsigned long time_led_eff[LED_NR_ITEMS];  //van begin aan tot eind van effect (gaat dus over meerder effecten heen)
-uint8_t effectledbright[LED_NR_ITEMS];
+uint8_t effectledbri[LED_NR_ITEMS];

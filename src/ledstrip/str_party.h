@@ -3,7 +3,7 @@
 void str_party(int kringnr) {
   unsigned long timeBezig;
   bool flag_on;
-  int partyhue, partysat, partybright;
+  int partyhue, partysat, partybri;
 
   timeBezig = currentMillis - timer_str_aan[kringnr];
   // bereken mode (uit, up, down)
@@ -32,27 +32,27 @@ switch (chasestrnr[kringnr][0])
 case 0:
   partyhue    = kring[kringnr].hue1;
   partysat    = kring[kringnr].sat1;
-  partybright = kring[kringnr].bri1;
+  partybri = kring[kringnr].bri1;
   break;
 case 1:
   partyhue    = kring[kringnr].hue2;
   partysat    = kring[kringnr].sat2;
-  partybright = kring[kringnr].bri2;
+  partybri = kring[kringnr].bri2;
   break;
 case 2:
   partyhue    = kring[kringnr].hue3;
   partysat    = kring[kringnr].sat3;
-  partybright = kring[kringnr].bri3;
+  partybri = kring[kringnr].bri3;
   break;
 case 3:
   partyhue    = kring[kringnr].hue4;
   partysat    = kring[kringnr].sat4;
-  partybright = kring[kringnr].bri4;
+  partybri = kring[kringnr].bri4;
   break;
 default:
   partyhue    = 0;
   partysat    = 0;
-  partybright = 0;
+  partybri = 0;
   break;
 }
 
@@ -60,7 +60,7 @@ default:
     // aan of uit zetten?
     if (flag_on) {
       if( (i - kring[kringnr].startled) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr][0] * kring[kringnr].every ) {
-        ledstrip[i] = CHSV(partyhue, partysat, partybright);
+        ledstrip[i] = CHSV(partyhue, partysat, partybri);
       }
       else {
         ledstrip[i] = CRGB::Black;
