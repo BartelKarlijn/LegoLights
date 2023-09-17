@@ -3,6 +3,7 @@
 uint8_t str_glow_map(uint8_t val1, uint8_t val2, uint8_t amountOf2){
   double newvalue;
   newvalue = val1 + (val2 - val1) * amountOf2 / 255;
+  return newvalue;
 }
 
 void str_glow(int kringnr) {
@@ -28,6 +29,9 @@ void str_glow(int kringnr) {
     timer_str_aan[kringnr]    = currentMillis; //reset timer
     timer_str_effect[kringnr] = currentMillis; //reset timer
   }
+  else  if (timeGlow > kring[kringnr].timeon) { // lang genoeg aan geweest.  uitzetten
+    newColor = CHSV(0, 255 ,0)  ;  //black
+  }
   else  if (timeGlow > 4 * timeEffect) { // einde van 4e fase.  Terug naar 1
     timer_str_effect[kringnr] = currentMillis; //reset timer
     newColor = CHSV(kring[kringnr].hue4, kring[kringnr].sat4, kring[kringnr].bri4);
@@ -47,20 +51,18 @@ void str_glow(int kringnr) {
     newColor = CHSV(hue, sat, bri);
   }
   else  if (timeGlow > timeEffect) { // op weg naar 2e kleur
-    oldColor    = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bri1);
-    targetColor = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bri2);
-    timeMap = map(timeGlow,    timeEffect, 2 * timeEffect, 0, 255);
-    amountOftarget = timeMap;
-//    Println("am2= " + String(amountOftarget)); delay(150);
-    newColor    = blend( oldColor, newColor, amountOftarget, SHORTEST_HUES);
+    timeMap = map(timeGlow, timeEffect, 2 * timeEffect, 0, 255);
+    hue = str_glow_map(kring[kringnr].hue1, kring[kringnr].hue2, timeMap);
+    sat = str_glow_map(kring[kringnr].sat1, kring[kringnr].sat2, timeMap);
+    bri = str_glow_map(kring[kringnr].bri1, kring[kringnr].bri2, timeMap);
+    newColor = CHSV(hue, sat, bri);
   }
   else {     //op weg naar 1e kleur
-    oldColor    = CHSV(kring[kringnr].hue4, kring[kringnr].sat4, kring[kringnr].bri4);
-    targetColor = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bri1);
     timeMap = map(timeGlow, 0, timeEffect, 0, 255);
-    amountOftarget = timeMap;
-//    Println("am1= " + String(amountOftarget)); delay(150);
-    newColor    = blend( oldColor, newColor, amountOftarget, SHORTEST_HUES);
+    hue = str_glow_map(kring[kringnr].hue4, kring[kringnr].hue1, timeMap);
+    sat = str_glow_map(kring[kringnr].sat1, kring[kringnr].sat1, timeMap);
+    bri = str_glow_map(kring[kringnr].bri4, kring[kringnr].bri1, timeMap);
+    newColor = CHSV(hue, sat, bri);
   }
 
   for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
