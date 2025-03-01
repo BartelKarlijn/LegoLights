@@ -11,5 +11,5 @@ void setupSpiffs() {
   Print("SPIFFS Used: "); Println(humanReadableSize(SPIFFS.usedBytes()));
   Print("SPIFFS Total: "); Println(humanReadableSize(SPIFFS.totalBytes()));
 
-  Println(listFiles());
+  //Println(listFiles(false));
 }
