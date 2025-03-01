@@ -22,5 +22,6 @@ Adafruit_PWMServoDriver singleled = Adafruit_PWMServoDriver(0x40, Wire);
 
 //////// Timing //////////
 unsigned long currentMillis;
+unsigned long ota_progress_millis;
 unsigned long fpsMillis;
 unsigned long cntfps = 1;  // we willen geen 0 om eventuele delingen door 0 te vermijden

@@ -1,6 +1,10 @@
 void setup_AsyncWebserver(){
   // Voordat we de webserver starten, moet je OTA opstarten, hier zonder user/pw
-  AsyncElegantOTA.begin(&webserver);
+  ElegantOTA.begin(&webserver);
+  // ElegantOTA callbacks
+  ElegantOTA.onStart(onOTAStart);
+  ElegantOTA.onProgress(onOTAProgress);
+  ElegantOTA.onEnd(onOTAEnd);
 
   // Analoog gaan we de WebSerial opstarten, zodat je kan zien wat er gebeurt
   WebSerial.begin(&webserver);
