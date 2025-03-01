@@ -2,7 +2,7 @@
 String  fileSaveKring(int kringnr) {
 // Save Kring settings to file
   char filename[18];
-  StaticJsonDocument<1024> doc;
+  JsonDocument doc;
 
   sprintf(filename, "/cfg_kring%02d.ini", kringnr);
 

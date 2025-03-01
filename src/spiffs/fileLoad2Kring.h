@@ -22,7 +22,7 @@ String  fileLoad2Kring(int kringnr) {
       msgAnswer ="Config file too large";
     }
 
-    StaticJsonDocument<1024> doc;
+    JsonDocument doc;
     auto error = deserializeJson(doc, file_content);
     if ( error ) { 
       Println("Error interpreting config file");
