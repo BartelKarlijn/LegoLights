@@ -35,6 +35,9 @@
 #include <0main/setupLed.h>
 #include <0main/setupLedstrip.h>
 
+// commands
+#include <commands/readcommand.h>
+
 // Spiffs() integrated file system)
 #include <spiffs/humanReadableSize.h>
 #include <spiffs/listFiles.h>
