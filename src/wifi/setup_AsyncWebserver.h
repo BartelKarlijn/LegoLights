@@ -8,6 +8,11 @@ void setup_AsyncWebserver(){
 
   // Analoog gaan we de WebSerial opstarten, zodat je kan zien wat er gebeurt
   WebSerial.begin(&webserver);
+  WebSerial.onMessage([&](uint8_t *data, size_t len) {
+    Serial.printf("Received %lu bytes from WebSerial: ", len);
+//    decodeCommandFull(String(data));
+//    Println(data, len);
+  });
 
   // if url isn't found
   webserver.onNotFound([](AsyncWebServerRequest *request) {

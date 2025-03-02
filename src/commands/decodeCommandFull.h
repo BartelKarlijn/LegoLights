@@ -1,11 +1,13 @@
-void readcommand() {
-    if (Serial.available() > 0) {
-        String command = Serial.readStringUntil('\n'); // Read the command until a newline character
-        command.trim(); // Remove any leading/trailing whitespace
-        // check structure of command: 
-        decodeCommandFull(command);
+void decodeCommandFull(String command) {
+    // check structure of command: 
+    commandParts = decodeCommandPart(command); // Decode the command
+    Print("Command: "); Println(command);
+    Print("CommandParts.comm: "); Println(commandParts.command); 
+    Print("CommandParts.nr  : "); Println(commandParts.commandnr); 
+    Print("CommandParts.arg : "); Println(commandParts.argument); 
+    Print("CommandParts.rest: "); Println(commandParts.restOfCommand); 
 
-        //        executeCommand(command); // Execute the command
+    //        executeCommand(command); // Execute the command
 // show all commands
 // wificonfig: save & show pw
 // wifi : show available networks
@@ -31,5 +33,4 @@ void readcommand() {
 // Kxx: save settings
 // Kxx: load from last save
 // Kxx: reload defaults
-    }
 }

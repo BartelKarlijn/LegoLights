@@ -38,6 +38,7 @@
 
 // commands
 #include <commands/decodeCommandPart.h>
+#include <commands/decodeCommandFull.h>
 #include <commands/readcommand.h>
 
 // Spiffs() integrated file system)
