@@ -26,6 +26,7 @@
 #include <0main/configuration.h>
 #include <0main/globalvariables.h>
 #include <0main/config_colors.h>
+#include <0main/config_commands.h>
 
 // Own subroutines
 //   main
@@ -36,6 +37,7 @@
 #include <0main/setupLedstrip.h>
 
 // commands
+#include <commands/decodeCommandPart.h>
 #include <commands/readcommand.h>
 
 // Spiffs() integrated file system)
