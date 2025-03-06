@@ -1,37 +1,59 @@
-str_commandParts decodeCommandPart (String commandstring) {
-    // Decode the beginning of command into parts:
-    // eg H01      : command = H, commandnr = 1, argument = _, restOfCommand = "xxx"
-    // eg W01 ssid : command = W, commandnr = 1, argument = ssid, restOfCommand = "xxx"
+#include <Arduino.h>
+#include <vector>
+#include "config_commands.h"
+
+str_commandParts decodeCommandPart(String commandstring) {
+    // Decode the command into parts:
+    // Hxx cmd  arg1 arg2 arg3
     str_commandParts returnMsg;
+    bool isValidCommand = false;
     int spaceIndex;
-    returnMsg.command = commandstring.charAt(0);
-    // check if command is valid
-    for (char validChar : validChars) {
-        if (returnMsg.command == validChar) {
-            returnMsg.isValidCommand = true;
-            break;
-        }
+    String restOfCommand;
+
+    returnMsg.isValidCommand = true;
+
+    //Hxx
+    if (commandstring.charAt(0) != 'H') {
+        returnMsg.isValidCommand = false;
     }
-    if (returnMsg.isValidCommand) {
-        spaceIndex = commandstring.indexOf(' ');
-        if (spaceIndex > 0) {
-            returnMsg.commandnr = commandstring.substring(1, spaceIndex).toInt();
-            returnMsg.restOfCommand = commandstring.substring(spaceIndex+1, 100);
-        } else {
-            returnMsg.commandnr = commandstring.substring(1).toInt();
-            returnMsg.argument = "";
-        }
+
+    returnMsg.huis = commandstring.substring(1, 3).toInt();
+    if (returnMsg.huis < huisMin || returnMsg.huis > huisMax) {
+        returnMsg.isValidCommand = false;
+        returnMsg.huis = 0;
+    }
+
+    restOfCommand = commandstring.substring(3);
+
+    // Split restOfCommand into parts at every space
+    spaceIndex = restOfCommand.indexOf(' ');
+    if (spaceIndex != -1) {
+        returnMsg.cmd = restOfCommand.substring(0, spaceIndex);
+        restOfCommand = restOfCommand.substring(spaceIndex + 1);
     } else {
-        // command is not valid
-        returnMsg.commandnr = 0;
-        returnMsg.argument = "";
-        returnMsg.restOfCommand = "";
+        returnMsg.cmd = restOfCommand;
+        restOfCommand = "";
     }
-    Print("x Command: "); Println(commandstring);
-    Print("x CommandParts.comm: "); Println(returnMsg.command);
-    Print("x CommandParts.nr  : "); Println(returnMsg.commandnr);
-    Print("x CommandParts.arg : "); Println(returnMsg.argument);
-    Print("x CommandParts.rest: "); Println(returnMsg.restOfCommand);
-    
-    return returnMsg;    
+
+    spaceIndex = restOfCommand.indexOf(' ');
+    if (spaceIndex != -1) {
+        returnMsg.arg1 = restOfCommand.substring(0, spaceIndex);
+        restOfCommand = restOfCommand.substring(spaceIndex + 1);
+    } else {
+        returnMsg.arg1 = restOfCommand;
+        restOfCommand = "";
+    }
+
+    spaceIndex = restOfCommand.indexOf(' ');
+    if (spaceIndex != -1) {
+        returnMsg.arg2 = restOfCommand.substring(0, spaceIndex);
+        restOfCommand = restOfCommand.substring(spaceIndex + 1);
+    } else {
+        returnMsg.arg2 = restOfCommand;
+        restOfCommand = "";
+    }
+
+    returnMsg.arg3 = restOfCommand;
+
+    return returnMsg;
 }
