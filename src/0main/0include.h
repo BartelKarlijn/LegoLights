@@ -31,7 +31,8 @@
 // Own subroutines
 //   main
 #include <0main/setupSerial.h>
-#include <0main/print.h>
+//#include <0main/print.h>
+#include <PrintAnyFormat.h>
 #include <0main/save_eprom.h>
 #include <0main/setupLed.h>
 #include <0main/setupLedstrip.h>
