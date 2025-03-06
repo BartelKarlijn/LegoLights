@@ -18,7 +18,7 @@
 
 ///////////////// ledstrip  //////////////////////////////
 // gegevens over de ledstrip
-#define STR_PIN 2
+#define STR_PIN 4
 #define STR_BRIGHTNESS 125
 
 ///////////////// PCA9865  //////////////////////////////
