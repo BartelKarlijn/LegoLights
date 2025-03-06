@@ -12,7 +12,7 @@ void setup_AsyncWebserver(){
     Serial.printf("Received %lu bytes from WebSerial: ", len);
     String WebSerialMessage = String((char*)data).substring(0, len);
     Println(String(WebSerialMessage));
-    decodeCommandFull(String(WebSerialMessage));
+    decodeCommand(String(WebSerialMessage));
   });
 
   // if url isn't found

@@ -1,8 +1,6 @@
 #include <Arduino.h>
-#include <vector>
-#include "config_commands.h"
 
-str_commandParts decodeCommandPart(String commandstring) {
+str_commandParts decodeCommand(String commandstring) {
     // Decode the command into parts:
     // Hxx cmd  arg1 arg2 arg3
     str_commandParts returnMsg;

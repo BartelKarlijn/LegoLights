@@ -37,8 +37,7 @@
 #include <0main/setupLedstrip.h>
 
 // commands
-#include <commands/decodeCommandPart.h>
-#include <commands/decodeCommandFull.h>
+#include <commands/decodeCommand.h>
 #include <commands/readcommand.h>
 
 // Spiffs() integrated file system)
