@@ -16,6 +16,6 @@ void on_wifisave(AsyncWebServerRequest *request){
     Print("pwd ");
     Println(wifi_pwd);
     
-    save_WIFIdatato_eeprom (); 
+    Wifi_save_to_eeprom (wifi_ssid, wifi_pwd); 
     Println("Wifi SSID and PWD saved; please reboot ESP32");
 }

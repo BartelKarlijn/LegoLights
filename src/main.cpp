@@ -6,7 +6,7 @@
 void setup() {
   setupSerial();
   setupLedstrip();        // voornamelijk leds afzetten
-  get_datafrom_eeprom (); // parameters uit eeprom halen (oa ssid/pw en PID)
+  Wifi_get_from_eeprom(); // parameters uit eeprom halen (oa ssid/pw en PID)
   startWifi();
   setupSpiffs();          // van het ESP32 file systeem lezen
   setupLed();

@@ -1,5 +1,4 @@
 //////////////// OPERATION ///////////////////////
-Preferences pref_eeprom;           // to store & read parameters from eprom
 
 //////// Wifi //////////
 // Create AsyncWebServer object on port 80
