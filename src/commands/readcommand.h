@@ -1,9 +1,11 @@
 void readcommand() {
     if (Serial.available() > 0) {
-        String command = Serial.readStringUntil('\n'); // Read the command until a newline character
-        command.trim(); // Remove any leading/trailing whitespace
+        String commandstring = Serial.readStringUntil('\n'); // Read the command until a newline character
         // check structure of command: 
-        decodeCommand(command);
+        commandParts = decodeCommand(commandstring);
+
+        Print("Commandhuis: ");
+        Println(commandParts.huis);
 
         //        executeCommand(command); // Execute the command
         // Een commando is Hxx cmd  arg1 arg2 arg3, met xx het huisje nr

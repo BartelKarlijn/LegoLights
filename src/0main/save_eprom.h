@@ -17,27 +17,30 @@ String Wifi_get_from_eeprom (WifiParam param) {
   // has to use a namespace name to prevent key name collisions. We will open storage in
   // RW-mode (second parameter has to be false).
   // Note: Namespace name is limited to 15 chars.
+  String returnString;
   if (!pref_eeprom.begin(NAMESPACE, false)) {
     Serial.println("Failed to open EEPROM");
-    return "Error";
-}
-
-  // Get the counter value, if the key does not exist, return a default value of 0
-  // Note: Key name is limited to 15 chars.
-  if (param == SSID) {
-    wifi_ssid = pref_eeprom.getString("ssid_eeprom", "");
-    Serial.print("Uit eprom uitgelezen waarde voor SSID = ");
-    Serial.println(wifi_ssid);
-    return wifi_ssid;
-} else if (param == PWD) {
-    wifi_pwd = pref_eeprom.getString("pwd_eeprom", "");
-    Serial.print("Uit eprom uitgelezen waarde voor PWD = ");
-    Serial.println("*****");
-    return wifi_pwd;
-}
+    returnString = "Error";
+  }
+  else {
+    // Get the counter value, if the key does not exist, return a default value of 0
+    // Note: Key name is limited to 15 chars.
+    if (param == SSID) {
+      wifi_ssid = pref_eeprom.getString("ssid_eeprom", "");
+      Serial.print("Uit eprom uitgelezen waarde voor SSID = ");
+      Serial.println(wifi_ssid);
+      returnString = wifi_ssid;
+    } else if (param == PWD) {
+      wifi_pwd = pref_eeprom.getString("pwd_eeprom", "");
+      Serial.print("Uit eprom uitgelezen waarde voor PWD = ");
+      Serial.println("*****");
+      returnString = wifi_pwd;
+    }
   
-  // Close Preferences
-  pref_eeprom.end();
+    // Close Preferences
+    pref_eeprom.end();
+  }
+  return returnString;
 }
 
 
