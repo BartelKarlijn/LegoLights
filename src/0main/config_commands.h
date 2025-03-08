@@ -11,7 +11,7 @@ struct str_commandParts {
 str_commandParts commandParts;
 
 int huisMin = 1;
-int huisMax = 10;
+int huisMax = 20;
 
 const std::vector<String> validCmds = 
 //  cmd         arg1 arg2 arg3

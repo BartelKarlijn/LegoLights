@@ -18,6 +18,9 @@ const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
 // via  singleled/scanI2C gecontroleerd: 0x40 is idd het nr
 Adafruit_PWMServoDriver singleled = Adafruit_PWMServoDriver(0x40, Wire);
 
+//////// Command //////////
+String restOfCommand;
+
 //////// Timing //////////
 unsigned long currentMillis;
 unsigned long ota_progress_millis;
