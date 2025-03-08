@@ -5,7 +5,7 @@
 // =======================================================================================
 void setup() {
   setupSerial();
-  delay(1000);
+  delay(100);
   setupLedstrip();        // voornamelijk leds afzetten
   startWifi();
   setupSpiffs();          // van het ESP32 file systeem lezen

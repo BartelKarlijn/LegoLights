@@ -57,7 +57,7 @@ String  fileLoad2Kring(int kringnr) {
    kring[kringnr]     = _kring;
     
     msgAnswer = ("Data opgehaald voor " + kring[kringnr].desc);
-    Print("  Desc: " + _kring.desc + ", img: " + _kring.image + ", eff: " + _kring.effect); delay(100);
+    // Print("  Desc: " + _kring.desc + ", img: " + _kring.image + ", eff: " + _kring.effect); delay(100);
   }
   return msgAnswer;
 }

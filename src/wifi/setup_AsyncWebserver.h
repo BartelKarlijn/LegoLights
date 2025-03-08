@@ -10,11 +10,10 @@ void setup_AsyncWebserver(){
   WebSerial.begin(&webserver);
   WebSerial.onMessage([&](uint8_t *data, size_t len) {
     Serial.printf("Received %lu bytes from WebSerial: ", len);
+    
     String WebSerialMessage = String((char*)data).substring(0, len);
-    Println(String(WebSerialMessage));
+    Println("Message=" + WebSerialMessage);
     commandParts = decodeCommand(String(WebSerialMessage));
-    Print("Commandhuis: ");
-    Println(commandParts.huis);
   });
 
   // if url isn't found
