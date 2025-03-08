@@ -1,15 +1,17 @@
-void setup_ConnectKnownWifi(){
+bool setup_ConnectKnownWifi(){
+  bool returnMsg = false;
   Serial.println();
   Serial.println("Disconnecting current wifi connection");
   WiFi.disconnect();
-  delay(100);
+  delay(1000);
   WiFi.mode(WIFI_STA);    // connect to network
   
   WiFi.begin(wifi_ssid.c_str(), wifi_pwd.c_str());
+  delay(1000);
 
   // Dit houden we zo'n 30 sec vol, als het dan niet lukt AP opzetten.
   Serial.println("Connecting to wifi");
-  delay(10);
+  delay(100);
   for (int i = 0; i < 300; i++) {
     delay(100);
     if ((WiFi.status() == WL_CONNECTED)) {
@@ -18,6 +20,7 @@ void setup_ConnectKnownWifi(){
       Serial.println(wifi_ssid);
       Serial.print("Local IP: ");
       Serial.println(WiFi.localIP());
+      returnMsg = true;
       break;
     }
     else {
@@ -26,4 +29,5 @@ void setup_ConnectKnownWifi(){
   }
 
   Serial.println("!");
+  return returnMsg;
 }
