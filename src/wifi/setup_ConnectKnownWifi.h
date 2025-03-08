@@ -11,9 +11,9 @@ bool setup_ConnectKnownWifi(){
 
   // Dit houden we zo'n 30 sec vol, als het dan niet lukt AP opzetten.
   Serial.println("Connecting to wifi");
-  delay(100);
-  for (int i = 0; i < 300; i++) {
-    delay(100);
+  delay(500);
+  for (int i = 0; i < 50; i++) {
+    delay(500);
     if ((WiFi.status() == WL_CONNECTED)) {
       Serial.println(".");
       Serial.print("Connected successfully to ");
