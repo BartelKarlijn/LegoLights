@@ -5,7 +5,7 @@ bool setup_ConnectKnownWifi(){
   WiFi.disconnect();
   delay(1000);
   WiFi.mode(WIFI_STA);    // connect to network
-  
+  delay(1000);
   WiFi.begin(wifi_ssid.c_str(), wifi_pwd.c_str());
   delay(1000);
 
