@@ -66,7 +66,6 @@
 #include "ledstrip/loadAnimatie.h"
 
 //sigleled
-//#include "singleled/scanI2C.h"
 #include "singleled/led_aan.h"
 #include "singleled/led_fire.h"
 #include "singleled/led_glow.h"
@@ -89,3 +88,4 @@
 #include "wifi/setup_ConnectKnownWifi.h"
 #include "wifi/setup_CreateAccessPoint.h"
 #include "wifi/startWifi.h"
+#include "wifi/stopWifi.h"

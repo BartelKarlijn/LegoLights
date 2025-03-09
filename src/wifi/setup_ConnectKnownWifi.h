@@ -15,6 +15,7 @@ bool setup_ConnectKnownWifi(){
   for (int i = 0; i < 50; i++) {
     delay(500);
     if ((WiFi.status() == WL_CONNECTED)) {
+      wifi_ip = WiFi.localIP().toString();
       Serial.println(".");
       Serial.print("Connected successfully to ");
       Serial.println(wifi_ssid);

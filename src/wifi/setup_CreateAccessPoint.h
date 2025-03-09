@@ -3,6 +3,8 @@ void setup_CreateAccessPoint(){
   char autoConnectAP[64];
   String nameConnectAP = NAME_ACCESSPOINT;
   nameConnectAP.toCharArray(autoConnectAP, 64);
+  wifi_ssid = "AccessPoint";
+  wifi_ip = "http://192.168.4.1/";
 
   if ((WiFi.status() != WL_CONNECTED)) {
     wifi_scan = scanWifiNetworks();

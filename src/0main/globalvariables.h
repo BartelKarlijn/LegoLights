@@ -6,6 +6,7 @@ AsyncWebServer webserver(80);
 //DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
 String wifi_ssid ;
 String wifi_pwd  ;
+String wifi_ip   ;
 String wifi_scan;         //Lijst met scan van wifi netwerken
 String listFiles(bool ishtml = false);
 
