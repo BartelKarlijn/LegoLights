@@ -41,6 +41,8 @@
 #include "commands/cW01wifiShowNetworks.h"
 #include "commands/decodeCommand.h"
 #include "commands/readcommand.h"
+#include "0main/config_validCommands.h"
+#include "commands/executeCommand.h"
 
 // Spiffs() integrated file system)
 #include "spiffs/humanReadableSize.h"
