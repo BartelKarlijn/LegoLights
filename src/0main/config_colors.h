@@ -12,6 +12,21 @@
 #define IMG_QUID "file_img_Quiddich.jpg"
 #define IMG_FLOU "file_img_Flourish.jpg"
 #define IMG_WEAS "file_img_Weasley.jpg"
+
+typedef struct {
+  int huisnr;
+  String desc;
+  String image;
+} str_huis;
+
+const str_huis HUIS_DEFAULT {
+  0,
+  "Huis",
+  "file_img_Huis.jpg"
+};
+
+str_huis huis;
+
 typedef struct {
   String desc;
   int startled;
@@ -41,7 +56,7 @@ typedef struct {
 #define STRIP_NR_ITEMS 40
 #define STRIP_NR_LEDS 311 //eentje meer dan laatste item in lijstje hieronder
 
-const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
+const str_strip STR_DEFAULT[] {
 //234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down
 //                                     sat 0: white -255 color                                      time : in ms                effect: zie begin van file
 //    description (20) ,star,stop,hue1,sat1,bri1,hue2,sat2,bri2,hue3,sat3,bri3,hue4,sat4,bri4,every,timeon,timeoff,timeeff,seed,eff
@@ -88,6 +103,7 @@ const str_strip STR_DEFAULT[STRIP_NR_ITEMS] {
 //,{"Scribulus V1 plafoN",  19,  26, 192, 255, 255, 192, 255,  25,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,     80,  0, EFFSTR_CHASE}
 };
 
+int strip_nr_items = sizeof(STR_DEFAULT) / sizeof(STR_DEFAULT[0]);
 str_strip kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
 // ledstrip 
