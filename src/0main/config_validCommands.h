@@ -6,7 +6,7 @@ struct str_command {
     FunctionPointer function;
 };
 
-str_command validCommands[] = {
+str_command validCommands[] = {     
     {"W01", cW01wifiShowNetworks},
     {"W02", cW01wifiShowNetworks},
     {"W03", cW01wifiShowNetworks}

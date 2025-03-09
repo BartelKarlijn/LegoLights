@@ -22,7 +22,6 @@ String decodeRestOfCommand (){
         returnArg = restOfCommand.substring(0, spaceIndex);
         restOfCommand = restOfCommand.substring(spaceIndex + 1);
     }
-    Println("Returning: " + returnArg);
     return returnArg;
 }
 
@@ -38,7 +37,6 @@ str_commandParts decodeCommand(String commandstring) {
 
     commandstring.trim(); // Remove any leading/trailing whitespace
     commandstring.toUpperCase();
-    Println("Commandstring: " + commandstring);
 
     //Hxx
 //    if (commandstring.charAt(0) == '?') {
@@ -59,8 +57,6 @@ str_commandParts decodeCommand(String commandstring) {
         Println("Invalid huis = " + String(returnMsg.huis));
         return returnMsg;
     }
-    Print("cmd.huis ");
-    Println(returnMsg.huis);
 
     restOfCommand = commandstring.substring(3);
     //cmd

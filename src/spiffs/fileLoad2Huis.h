@@ -36,7 +36,7 @@ String  fileLoad2Huis() {
    huis     = _huis;
     
     msgAnswer = ("Data opgehaald voor " + huis.huisnr);
-    Print("  Desc: " + _huis.desc + ", img: " + _huis.image); delay(100);
+    Print("Nr" + String(_huis.huisnr) + "Desc: " + _huis.desc + ", img: " + _huis.image); delay(100);
   }
   return msgAnswer;
 }
