@@ -3,6 +3,7 @@ String scanWifiNetworks(){
 
   Println("");
   Println("Disconnecting current wifi connection");
+  WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
   Println("start scan");
@@ -25,7 +26,6 @@ String scanWifiNetworks(){
       Print(" (");
       Print(WiFi.RSSI(i));
       Print(")");
-      Println((WiFi.encryptionType(i) == WIFI_AUTH_OPEN)?" ":"*");
       delay(10);
     }
   }

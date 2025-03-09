@@ -45,12 +45,12 @@
 #include "commands/executeCommand.h"
 
 // Spiffs() integrated file system)
-#include "spiffs/humanReadableSize.h"
-#include "spiffs/listFiles.h"
-#include "spiffs/listStorage.h"
-#include "spiffs/setupSpiffs.h"
-#include "spiffs/writeFile.h"
-#include "spiffs/readFile.h"
+//#include "spiffs/humanReadableSize.h"
+//#include "spiffs/listFiles.h"
+//#include "spiffs/listStorage.h"
+//#include "spiffs/setupSpiffs.h"
+//#include "spiffs/writeFile.h"
+//#include "spiffs/readFile.h"
 #include "spiffs/fileDefault2Huis.h"
 #include "spiffs/fileLoad2Huis.h"
 #include "spiffs/fileDefault2Kring.h"
