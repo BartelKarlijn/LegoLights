@@ -14,6 +14,7 @@ void setup_AsyncWebserver(){
     String WebSerialMessage = String((char*)data).substring(0, len);
     Println("Message=" + WebSerialMessage);
     commandParts = decodeCommand(String(WebSerialMessage));
+    executeCommand();
   });
 
   // if url isn't found
