@@ -45,12 +45,6 @@
 #include "commands/executeCommand.h"
 
 // Spiffs() integrated file system)
-//#include "spiffs/humanReadableSize.h"
-//#include "spiffs/listFiles.h"
-//#include "spiffs/listStorage.h"
-//#include "spiffs/setupSpiffs.h"
-//#include "spiffs/writeFile.h"
-//#include "spiffs/readFile.h"
 #include "spiffs/fileDefault2Huis.h"
 #include "spiffs/fileLoad2Huis.h"
 #include "spiffs/fileDefault2Kring.h"
@@ -91,7 +85,7 @@
 #include "wifi/on_getlistKringen.h"
 #include "wifi/on_wifisave.h"
 #include "wifi/setup_AsyncWebserver.h" 
+#include "wifi/scanWifiNetworks.h"
 #include "wifi/setup_ConnectKnownWifi.h"
 #include "wifi/setup_CreateAccessPoint.h"
 #include "wifi/startWifi.h"
-#include "wifi/scanWifiNetworks.h"

@@ -5,6 +5,8 @@ void setup_CreateAccessPoint(){
   nameConnectAP.toCharArray(autoConnectAP, 64);
 
   if ((WiFi.status() != WL_CONNECTED)) {
+    wifi_scan = scanWifiNetworks();
+/*
     Serial.println("Not connected to wifi; setup up Accespoint");
     Serial.println("Scanning Networks");
     WiFi.mode(WIFI_STA);
@@ -45,7 +47,7 @@ void setup_CreateAccessPoint(){
     wifi_scan += "</li>";
   }
   wifi_scan += "</ol>";
-
+*/
   WiFi.softAP(autoConnectAP, "");
   Serial.println("Local IP: http://192.168.4.1/");
   
