@@ -27,4 +27,4 @@
 #define I2C_SCL_PIN 9
 #define I2C_FREQUENCY 400000
 // frequency for the PCA9685
-#define PCA9685_FREQUENCY 200  //max is 1600
+#define PCA9685_FREQUENCY 1600  //max is 1600

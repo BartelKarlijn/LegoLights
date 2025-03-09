@@ -39,6 +39,8 @@
 
 // commands
 #include "commands/cW01wifiShowNetworks.h"
+#include "commands/CL02ledSetName.h"
+#include "commands/CL07ledSetBrightness.h"
 #include "commands/decodeCommand.h"
 #include "commands/readcommand.h"
 #include "0main/config_validCommands.h"

@@ -126,7 +126,7 @@ uint8_t chasestrnr[STRIP_NR_ITEMS][4];
 #define EFFLED_UIT     13
 
 typedef struct {
-  char    desc[20];
+  String  desc;
   int     bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
