@@ -84,8 +84,10 @@
 #include "wifi/on_getlistKringen.h"
 #include "wifi/on_wifisave.h"
 #include "wifi/setup_AsyncWebserver.h" 
+/*
 #include "wifi/scanWifiNetworks.h"
 #include "wifi/setup_ConnectKnownWifi.h"
 #include "wifi/setup_CreateAccessPoint.h"
 #include "wifi/startWifi.h"
 #include "wifi/stopWifi.h"
+*/

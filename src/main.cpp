@@ -7,6 +7,7 @@ void setup() {
   setupSerial();
   delay(100);
   setupLedstrip();        // voornamelijk leds afzetten
+  setup_AsyncWebserver();    // webserver om html te tonen 
   startWifi();
   setupSpiffs();          // van het ESP32 file systeem lezen
   setupLed();
