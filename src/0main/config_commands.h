@@ -13,6 +13,19 @@ str_commandParts commandParts;
 int huisMin = 1;
 int huisMax = 20;
 
+// Define a type for the function pointers
+typedef void (*FunctionPointer)();
+struct str_command {
+    String cmd;
+    FunctionPointer function;
+};
+
+str_command validCommands[] = {
+    {"W01", cW01wifiShowNetworks},
+    {"W02", cW01wifiShowNetworks},
+    {"W03", cW01wifiShowNetworks}
+};
+
 const std::vector<String> validCmds = 
 //  cmd         arg1 arg2 arg3
 {    "W01"   //  -    -    -    wifi show available networks
