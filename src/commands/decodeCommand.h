@@ -7,26 +7,22 @@ String decodeRestOfCommand (){
     int spaceIndex;
 
     // Looking where command starts
-    spaceIndex = restOfCommand.indexOf(' ');
-    if (spaceIndex != -1) {
-        restOfCommand = restOfCommand.substring(spaceIndex + 1);  
-    } else {
+    restOfCommand.trim();
+    if (restOfCommand.length() == 0) {
         returnArg = "";
         return returnArg;
     }
 
-    // Looking where command ends
     spaceIndex = restOfCommand.indexOf(' ');
-    if (spaceIndex != -1) {
-        returnArg = restOfCommand.substring(0, spaceIndex);
-        Println("cmd or arg: " + returnArg);
-        restOfCommand = restOfCommand.substring(spaceIndex + 1);
-    } else {
+    if (spaceIndex == -1) {
+        // no spaces at end
         returnArg = restOfCommand;
-        restOfCommand = "";
+        restOfCommand = "";  
+    } else {
+        returnArg = restOfCommand.substring(0, spaceIndex);
+        restOfCommand = restOfCommand.substring(spaceIndex + 1);
     }
-    
-    Println("rest na operatie: " + restOfCommand);
+    Println("Returning: " + returnArg);
     return returnArg;
 }
 
@@ -50,13 +46,11 @@ str_commandParts decodeCommand(String commandstring) {
 //        returnMsg.cmd = "HLP";
 //        return returnMsg;
 //    }
-    Println("Char0:-" + String(commandstring.charAt(0)) + "-" );
     if (commandstring[0] != 'H') {
         returnMsg.isValidCommand = false;
         Println("Invalid command");
         return returnMsg;  //stop
     }
-    Println("Command is correct");
 
     returnMsg.huis = commandstring.substring(1, 3).toInt();
     if (returnMsg.huis < huisMin || returnMsg.huis > huisMax) {
@@ -68,9 +62,9 @@ str_commandParts decodeCommand(String commandstring) {
     Print("cmd.huis ");
     Println(returnMsg.huis);
 
+    restOfCommand = commandstring.substring(3);
     //cmd
     returnMsg.cmd = decodeRestOfCommand();
-
     //arg1
     returnMsg.arg1 = decodeRestOfCommand();
     //arg2
