@@ -8,7 +8,7 @@ String listStorage(bool ishtml) {
   
   if (ishtml) {
     returnText += "<table>";
-    returnText += "<tr align='left'><td> Free " + freebytes + "</td><td> Used " + usedbytes  + "</td><td> Total " + totalbytes + "</td>";
+    returnText += "<tr align='left'><td> Free: " + freebytes + "</td><td>; Used " + usedbytes  + "</td><td>; Total " + totalbytes + "</td>";
     returnText += "</table>";
   }
   else {

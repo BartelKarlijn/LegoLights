@@ -72,7 +72,7 @@
 #include "ledstrip/loadAnimatie.h"
 
 //sigleled
-#include "singleled/scanI2C.h"
+//#include "singleled/scanI2C.h"
 #include "singleled/led_aan.h"
 #include "singleled/led_fire.h"
 #include "singleled/led_glow.h"
