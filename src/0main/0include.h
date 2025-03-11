@@ -78,7 +78,7 @@
 //wifi
 #include "wifi/on_file.h"            // downloaden of verwijderen
 #include "wifi/on_fileUpload.h"
-#include "wifi/onOTA.h"
+//#include "wifi/onOTA.h"
 #include "wifi/on_getStrip.h"
 #include "wifi/on_getSetStrip.h"
 #include "wifi/on_getfileLoad2Kring.h"

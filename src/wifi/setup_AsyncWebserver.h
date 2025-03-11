@@ -1,4 +1,5 @@
 void setup_AsyncWebserver(){
+  /*
   // Voordat we de webserver starten, moet je OTA opstarten, hier zonder user/pw
   ElegantOTA.begin(&webserver);
   // ElegantOTA callbacks
@@ -16,6 +17,8 @@ void setup_AsyncWebserver(){
     commandParts = decodeCommand(String(WebSerialMessage));
     executeCommand();
   });
+  */
+  webserver.end();
 
   // if url isn't found
   webserver.onNotFound([](AsyncWebServerRequest *request) {
