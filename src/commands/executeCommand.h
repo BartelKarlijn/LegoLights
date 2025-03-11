@@ -1,5 +1,6 @@
 void executeCommand() {
     // Eerst checken of commando voor dit huisje is.
+    Println("Huis = " + String(commandParts.huis) + " cmd = " + commandParts.cmd + " arg1 = " + commandParts.arg1 + " arg2 = " + commandParts.arg2 + " arg3 = " + commandParts.arg3);
     Println("checken of cmdhuis " + String(commandParts.huis) + " = huisnr" + String(huis.huisnr));
     if (commandParts.huis != huis.huisnr) {
         return;

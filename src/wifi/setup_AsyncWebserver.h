@@ -12,7 +12,7 @@ void setup_AsyncWebserver(){
       
       String WebSerialMessage = String((char*)data).substring(0, len);
       Println("Message=" + WebSerialMessage);
-      decodeCommand(WebSerialMessage);
+      commandParts = decodeCommand(WebSerialMessage);
       executeCommand();
   
     });
