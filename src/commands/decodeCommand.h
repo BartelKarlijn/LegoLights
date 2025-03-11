@@ -54,7 +54,7 @@ str_commandParts decodeCommand(String commandstring) {
     if (returnMsg.huis < huisMin || returnMsg.huis > huisMax) {
         returnMsg.isValidCommand = false;
         returnMsg.huis = 0;
-        Println("Invalid huis = " + String(returnMsg.huis));
+        Println("Invalid huis = " + commandstring.substring(1, 3));
         return returnMsg;
     }
 

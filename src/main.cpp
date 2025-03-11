@@ -8,7 +8,7 @@ void setup() {
   delay(100);
   setupLedstrip();        // voornamelijk leds afzetten
   startWifi();
-  //setup_AsyncWebserver();
+  setup_AsyncWebserver();
   setupSpiffs();          // van het ESP32 file systeem lezen
   setupLed();
   loadAnimatie();         // ini file, terugvallen naar default

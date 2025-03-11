@@ -11,4 +11,5 @@ void executeCommand() {
             return;
         }
     }
+    Println("Invalid cmd"+ commandParts.cmd);
 }
