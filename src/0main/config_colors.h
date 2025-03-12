@@ -137,9 +137,10 @@ typedef struct {
 #define LED_NR_ITEMS 16
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 //    description (20) ,brigh,timeon,timeoff,timeeff, eff
- {"Olivander kaars    ", 4095, 10000,   1000,    150, EFFLED_FIRE  }
+ {"Olivander kaars    ", 4095,  1000,   1000,    150, EFFLED_AAN  }
 ,{"Olivander lantaarn ", 2095, 10000,   1000,    400, EFFLED_FIRE }
 ,{"Olivander fakkel   ", 4095, 10000,   1000,    100, EFFLED_FIRE }
+,{"led test03         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
 ,{"led test04         ", 3095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test05         ", 4095,   500,    500,      0, EFFLED_AAN  }
 ,{"led test06         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
@@ -152,7 +153,6 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 ,{"led test13         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
 ,{"led test14         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
 ,{"led test15         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test16         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
 };
 
 str_ledsingle ledsingle[LED_NR_ITEMS];
