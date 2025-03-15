@@ -43,9 +43,9 @@
 #include "commands/CL07ledSetBrightness.h"
 #include "commands/CL08ledSetTimeOnOff.h"
 #include "commands/decodeCommand.h"
-#include "commands/readcommand.h"
 #include "0main/config_validCommands.h"
 #include "commands/executeCommand.h"
+#include "commands/readSerial.h"
 
 // Spiffs() integrated file system)
 #include "spiffs/fileDefault2Huis.h"
