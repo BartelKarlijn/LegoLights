@@ -11,6 +11,8 @@ void setup_AsyncWebserver(){
       Serial.printf("Received %lu bytes from WebSerial: ", len);
       
       String WebSerialMessage = String((char*)data).substring(0, len);
+      //transmit to Serial1
+      Serial1.println(WebSerialMessage);
       Println("Message=" + WebSerialMessage);
       commandParts = decodeCommand(WebSerialMessage);
       executeCommand();

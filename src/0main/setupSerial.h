@@ -12,6 +12,7 @@ void setupSerial () {
   Serial.print("Compilation date ");
   Serial.println( String(__DATE__) + " "  + String(__TIME__) );
 
+  Serial1.begin(SERIALSPEED, SERIAL_8N1, PIN_RX1, PIN_TX1); 
   delay(100);
 }
 

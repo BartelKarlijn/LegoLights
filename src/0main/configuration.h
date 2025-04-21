@@ -6,15 +6,18 @@
 #define PRINTWEBSERIAL   // follow print statements via web Serial.  Page adress: ipadres/webserial
 #define PRINTSERIAL      // follow prints via serial connection
 #define SERIALSPEED 115200
+#define PIN_RX1 0
+#define PIN_TX1 1
 #define SHOWFPSEVERY 10000 //show fps every x msec
 
 ///////////////// Pins  //////////////////////////////
 // already used in user_setup.h, and platformio.ini
 // Default pinmapping for SPI = MOSI gpio23, MISO gpio19, CLK gpio18, CS gpio5 (but this we're doing ourselves)
 
+
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
-#define NAME_ACCESSPOINT "DiagonAlley"
+#define NAME_ACCESSPOINT "LegoLights"
 
 ///////////////// ledstrip  //////////////////////////////
 // gegevens over de ledstrip
