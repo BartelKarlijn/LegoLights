@@ -8,7 +8,7 @@ struct str_command {
 
 str_command validCommands[] = {     //  arg1 arg2 arg3
     {"F01", cF01fpsShow         },  //  0/1  -    -    stop/show fps from now on
-    {"K01", cW01wifiShowNetworks},  //  krng jpeg -    set jpeg for krng
+    {"K01", cK01kringSetJpg     },  //  krng jpeg -    set jpeg for krng
     {"K02", cW01wifiShowNetworks},  //  krng name -    set name for krng
     {"K03", cW01wifiShowNetworks},  //  krng strt stop set startled
     {"K04", cW01wifiShowNetworks},  //  krng ever -    set every

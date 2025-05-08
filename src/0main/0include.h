@@ -39,6 +39,7 @@
 
 // commands
 #include "commands/cF01fpsShow.h"
+#include "commands/cK01kringSetJpg.h"
 #include "commands/CL02ledSetName.h"
 #include "commands/CL07ledSetBrightness.h"
 #include "commands/CL08ledSetTimeOnOff.h"
