@@ -6,14 +6,8 @@ struct str_command {
     FunctionPointer function;
 };
 
-str_command validCommands[] = {     //arg1 arg2 arg3
-    {"W01", cW01wifiShowNetworks},  //  -    -    -    wifi show available networks
-    {"W02", cW01wifiShowNetworks},  //  -    -    -    wifi show ssid and pw
-    {"W03", cW01wifiShowNetworks},  //  ssid pw   -    wifi save ssid and pw
-    {"W10", cW01wifiShowNetworks},  //  -    -    -    startwifi & connect to network
-    {"W11", cW01wifiShowNetworks},  //  -    -    -    startwifi & setup AP
-    {"W12", cW01wifiShowNetworks},  //  -    -    -    stop wifi
-    {"F01", cW01wifiShowNetworks},  //  0/1  -    -    stop/show fps from now on
+str_command validCommands[] = {     //  arg1 arg2 arg3
+    {"F01", cF01fpsShow         },  //  0/1  -    -    stop/show fps from now on
     {"K01", cW01wifiShowNetworks},  //  krng jpeg -    set jpeg for krng
     {"K02", cW01wifiShowNetworks},  //  krng name -    set name for krng
     {"K03", cW01wifiShowNetworks},  //  krng strt stop set startled
@@ -29,11 +23,17 @@ str_command validCommands[] = {     //arg1 arg2 arg3
     {"K22", cW01wifiShowNetworks},  //  -    -    -    reload defaults
     {"L02", CL02ledSetName      },  //  led  name -    set led name
     {"L07", CL07ledSetBrightness},  //  led  bri  -    set brightness
-    {"L08", CL08ledSetTimeOnOff},  //  led  tOn  tOff set timeOn and timeOff
+    {"L08", CL08ledSetTimeOnOff },  //  led  tOn  tOff set timeOn and timeOff
     {"L09", cW01wifiShowNetworks},  //  led  eff  tEff set effect
     {"R01", cW01wifiShowNetworks},  //  x    -    -    reboot in x sec
     {"R10", cW01wifiShowNetworks},  //  name -    -    give board a name H01= Olivander, ...
     {"R20", cW01wifiShowNetworks},  //  -    -    -    save settings
     {"R21", cW01wifiShowNetworks},  //  -    -    -    load from last save
-    {"R22", cW01wifiShowNetworks}   //  -    -    -    reload defaults
+    {"R22", cW01wifiShowNetworks},   //  -    -    -    reload defaults
+    {"W01", cW01wifiShowNetworks},  //  -    -    -    wifi show available networks
+    {"W02", cW01wifiShowNetworks},  //  -    -    -    wifi show ssid and pw
+    {"W03", cW01wifiShowNetworks},  //  ssid pw   -    wifi save ssid and pw
+    {"W10", cW01wifiShowNetworks},  //  -    -    -    startwifi & connect to network
+    {"W11", cW01wifiShowNetworks},  //  -    -    -    startwifi & setup AP
+    {"W12", cW01wifiShowNetworks}  //  -    -    -    stop wifi
 };

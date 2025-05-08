@@ -38,10 +38,11 @@
 #include "0main/setupLedstrip.h"
 
 // commands
-#include "commands/cW01wifiShowNetworks.h"
+#include "commands/cF01fpsShow.h"
 #include "commands/CL02ledSetName.h"
 #include "commands/CL07ledSetBrightness.h"
 #include "commands/CL08ledSetTimeOnOff.h"
+#include "commands/cW01wifiShowNetworks.h"
 #include "commands/decodeCommand.h"
 #include "0main/config_validCommands.h"
 #include "commands/executeCommand.h"
