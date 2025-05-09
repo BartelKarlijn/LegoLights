@@ -123,7 +123,9 @@ uint8_t chasestrnr[STRIP_NR_ITEMS][4];
 #define EFFLED_AAN     10
 #define EFFLED_FIRE    11
 #define EFFLED_GLOW    12
-#define EFFLED_UIT     13
+#define EFFLED_RAMP    13
+#define EFFLED_RAND    14
+#define EFFLED_UIT     15
 
 typedef struct {
   String  desc;
@@ -158,4 +160,8 @@ const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
 unsigned long time_led_eff[LED_NR_ITEMS];  //van begin aan tot eind van effect (gaat dus over meerder effecten heen)
+unsigned long time_fase_beg[LED_NR_ITEMS];  //begin van een nieuwe fase
+unsigned long time_fase_end[LED_NR_ITEMS];  //eind van een nieuwe fase
+uint8_t fase[LED_NR_ITEMS];  //welke fase zitten we (bv ramp fase 1=up, 2=on, 3=down, 4=off)
+
 uint8_t effectledbri[LED_NR_ITEMS];

@@ -16,6 +16,12 @@ void CL09ledSetEffect(){
         case EFFLED_GLOW:
             ledsingle[lednr].effect = EFFLED_GLOW;
             break;
+        case EFFLED_RAMP:
+            ledsingle[lednr].effect = EFFLED_RAMP;
+            break;
+        case EFFLED_RAND:
+            ledsingle[lednr].effect = EFFLED_RAND;
+            break;
         case EFFLED_UIT:
             ledsingle[lednr].effect = EFFLED_UIT;
             break;

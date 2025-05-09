@@ -13,6 +13,12 @@ void showled() {
     case EFFLED_GLOW:
         led_glow(i);
         break;
+    case EFFLED_RAMP:
+        led_ramp(i);
+        break;
+    case EFFLED_RAND:
+        led_rand(i);
+        break;
     case EFFLED_UIT:
         led_uit(i);
         break;

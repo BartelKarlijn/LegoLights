@@ -75,6 +75,8 @@
 #include "singleled/led_aan.h"
 #include "singleled/led_fire.h"
 #include "singleled/led_glow.h"
+#include "singleled/led_ramp.h"
+#include "singleled/led_rand.h"
 #include "singleled/led_uit.h"
 #include "singleled/showled.h"
 
