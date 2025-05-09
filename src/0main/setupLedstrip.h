@@ -9,10 +9,10 @@ void setupLedstrip() {
   FastLED.show();
 
 // Nog geen wifi, dus geen Print
-  Serial.print("Kringen: ");
-  Serial.print(String(STRIP_NR_ITEMS));
-  Serial.print(" leds: ");
-  Serial.println(STRIP_NR_LEDS);
+  Print("Kringen: ");
+  Print(String(STRIP_NR_ITEMS));
+  Print(" leds: ");
+  Println(STRIP_NR_LEDS);
 
   // kringen initialiseren wordt later gedaan
 }

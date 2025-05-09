@@ -7,11 +7,11 @@ void cK01kringSetJpg(){
         if (SPIFFS.exists("/" + image)) {
             // Set the JPEG for the specified Kring
             kring[kringnr].image = image;
-            Serial.println("Kring " + String(kringnr) + " set to image: " + image);
+            Println("Kring " + String(kringnr) + " set to image: " + image);
         } else {
-            Serial.println("Error: image file does not exist: " + image);
+            Println("Error: image file does not exist: " + image);
         }
     } else {
-        Serial.println("Error: Invalid Kring number: " + String(kringnr));
+        Println("Error: Invalid Kring number: " + String(kringnr));
     }
 }

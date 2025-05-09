@@ -37,9 +37,28 @@
 #include "0main/setupLed.h"
 #include "0main/setupLedstrip.h"
 
+// Spiffs() integrated file system)
+#include "spiffs/fileDefault2Huis.h"
+#include "spiffs/fileLoad2Huis.h"
+#include "spiffs/fileDefault2Kring.h"
+#include "spiffs/fileLoad2Kring.h"
+#include "spiffs/fileSaveKring.h"
+
 // commands
 #include "commands/cF01fpsShow.h"
 #include "commands/cK01kringSetJpg.h"
+#include "commands/cK02kringSetName.h"
+#include "commands/cK03kringStartStop.h"
+#include "commands/cK04kringEvery.h"
+#include "commands/cK05kringHue.h"
+#include "commands/cK06kringSat.h"
+#include "commands/cK07kringBri.h"
+#include "commands/cK08kringTonToff.h"
+#include "commands/cK09kringEffect.h"
+#include "commands/cK10kringSeed.h"
+#include "commands/cK20kringSaveSetting.h"
+#include "commands/cK21kringLoadSetting.h"
+#include "commands/cK22kringDefaultSet.h"
 #include "commands/CL02ledSetName.h"
 #include "commands/CL07ledSetBrightness.h"
 #include "commands/CL08ledSetTimeOnOff.h"
@@ -49,13 +68,6 @@
 #include "0main/config_validCommands.h"
 #include "commands/executeCommand.h"
 #include "commands/readSerial.h"
-
-// Spiffs() integrated file system)
-#include "spiffs/fileDefault2Huis.h"
-#include "spiffs/fileLoad2Huis.h"
-#include "spiffs/fileDefault2Kring.h"
-#include "spiffs/fileLoad2Kring.h"
-#include "spiffs/fileSaveKring.h"
 
 // fps
 #include "0main/show_fps.h"

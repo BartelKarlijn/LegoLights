@@ -9,18 +9,18 @@ struct str_command {
 str_command validCommands[] = {     //  arg1 arg2 arg3
     {"F01", cF01fpsShow         },  //  0/1  -    -    stop/show fps from now on
     {"K01", cK01kringSetJpg     },  //  krng jpeg -    set jpeg for krng
-    {"K02", cW01wifiShowNetworks},  //  krng name -    set name for krng
-    {"K03", cW01wifiShowNetworks},  //  krng strt stop set startled
-    {"K04", cW01wifiShowNetworks},  //  krng ever -    set every
-    {"K05", cW01wifiShowNetworks},  //  krng 1234 hue  set hue1/2/3/
-    {"K06", cW01wifiShowNetworks},  //  krng 1234 sat  set sat1/2/3/
-    {"K07", cW01wifiShowNetworks},  //  krng 1234 bri  set bri1/2/3/
-    {"K08", cW01wifiShowNetworks},  //  krng tOn  tOff set timeOn and timeOff
-    {"K09", cW01wifiShowNetworks},  //  krng eff  tEff set effect
-    {"K10", cW01wifiShowNetworks},  //  krng seed      set
-    {"K20", cW01wifiShowNetworks},  //  -    -    -    save settings
-    {"K21", cW01wifiShowNetworks},  //  -    -    -    load from last save
-    {"K22", cW01wifiShowNetworks},  //  -    -    -    reload defaults
+    {"K02", cK02kringSetName    },  //  krng name -    set name for krng
+    {"K03", cK03kringStartStop  },  //  krng strt stop set startled
+    {"K04", cK04kringEvery      },  //  krng ever -    set every
+    {"K05", cK05kringHue        },  //  krng 1234 hue  set hue1/2/3/
+    {"K06", cK06kringSat        },  //  krng 1234 sat  set sat1/2/3/
+    {"K07", cK07kringBri        },  //  krng 1234 bri  set bri1/2/3/
+    {"K08", cK08kringTonToff    },  //  krng tOn  tOff set timeOn and timeOff
+    {"K09", cK09kringEffect     },  //  krng eff  tEff set effect
+    {"K10", cK10kringSeed       },  //  krng seed      set
+    {"K20", cK20kringSaveSetting},  //  -    -    -    save settings
+    {"K21", cK21kringLoadSetting},  //  -    -    -    load from last save
+    {"K22", cK22kringDefaultSet },  //  -    -    -    reload defaults
     {"L02", CL02ledSetName      },  //  led  name -    set led name
     {"L07", CL07ledSetBrightness},  //  led  bri  -    set brightness
     {"L08", CL08ledSetTimeOnOff },  //  led  tOn  tOff set timeOn and timeOff
