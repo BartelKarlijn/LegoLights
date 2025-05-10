@@ -1,8 +1,12 @@
 #pragma once
-String  fileSaveLed(int lednr) {
+String  fileSaveLed(int lednr, String animatie) {
 // Save Led settings to file
   char filename[18];
   JsonDocument doc;
+  // Create an array to represent the table
+  JsonArray table = doc.to<JsonArray>();  
+  // Add rows to the table
+  JsonObject row = table.createNestedObject();
 
   sprintf(filename, "/cfg_led%02d.ini", lednr);
 
@@ -10,13 +14,15 @@ String  fileSaveLed(int lednr) {
   Println(String(filename));
 
   // write variables to JSON file
-  doc["desc"]     = ledsingle[lednr].desc;
-  doc["bri"]      = ledsingle[lednr].bri;
-  doc["timeon"]   = ledsingle[lednr].timeon;
-  doc["timeoff"]  = ledsingle[lednr].timeoff;
-  doc["timeeffect"] = ledsingle[lednr].timeeffect;
-  doc["effect"]   = ledsingle[lednr].effect;
+  row["animatie"] = animatie;
+  row["desc"]     = ledsingle[lednr].desc;
+  row["bri"]      = ledsingle[lednr].bri;
+  row["timeon"]   = ledsingle[lednr].timeon;
+  row["timeoff"]  = ledsingle[lednr].timeoff;
+  row["timeeffect"] = ledsingle[lednr].timeeffect;
+  row["effect"]   = ledsingle[lednr].effect;
   
+  table.add(row);
   // write config file
   String tmp = "";
   serializeJson(doc, tmp);
