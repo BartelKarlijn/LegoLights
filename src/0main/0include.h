@@ -43,6 +43,7 @@
 #include "spiffs/fileDefault2Kring.h"
 #include "spiffs/fileLoad2Kring.h"
 #include "spiffs/fileSaveKring.h"
+#include "spiffs/fileSaveLed.h"
 
 // commands
 #include "commands/cF01fpsShow.h"
