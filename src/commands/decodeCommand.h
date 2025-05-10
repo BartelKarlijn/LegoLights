@@ -36,7 +36,7 @@ str_commandParts decodeCommand(String commandstring) {
     returnMsg.isValidCommand = true;
 
     commandstring.trim(); // Remove any leading/trailing whitespace
-    commandstring.toUpperCase();
+    //commandstring.toUpperCase();
 
     //Hxx
 //    if (commandstring.charAt(0) == '?') {
@@ -44,7 +44,7 @@ str_commandParts decodeCommand(String commandstring) {
 //        returnMsg.cmd = "HLP";
 //        return returnMsg;
 //    }
-    if (commandstring[0] != 'H') {
+    if (commandstring[0] != 'H' && commandstring[0] != 'h') {
         returnMsg.isValidCommand = false;
         Println("Invalid command");
         return returnMsg;  //stop
@@ -61,6 +61,7 @@ str_commandParts decodeCommand(String commandstring) {
     restOfCommand = commandstring.substring(3);
     //cmd
     returnMsg.cmd = decodeRestOfCommand();
+    returnMsg.cmd.toUpperCase();
     //arg1
     returnMsg.arg1 = decodeRestOfCommand();
     //arg2
