@@ -1,4 +1,4 @@
-void CL09ledSetEffect(){
+void cL09ledSetEffect(){
     // Set On Off time to Led
     int lednr = commandParts.arg1.toInt();
     int Effect = commandParts.arg2.toInt();  //aparently toInt also converts to long

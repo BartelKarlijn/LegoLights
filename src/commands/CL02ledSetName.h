@@ -1,4 +1,4 @@
-void CL02ledSetName(){
+void cL02ledSetName(){
     // Set name to Led
     int lednr = commandParts.arg1.toInt();
     Println("L02 Set name of " + commandParts.arg1 + " to " + commandParts.arg2);

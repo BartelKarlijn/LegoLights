@@ -1,4 +1,4 @@
-void CL08ledSetTimeOnOff(){
+void cL08ledSetTimeOnOff(){
     // Set On Off time to Led
     int lednr = commandParts.arg1.toInt();
     int tOn = commandParts.arg2.toInt();  //aparently toInt also converts to long

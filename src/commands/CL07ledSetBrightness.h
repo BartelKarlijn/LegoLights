@@ -1,4 +1,4 @@
-void CL07ledSetBrightness(){
+void cL07ledSetBrightness(){
     // Set brightness to Led
     int lednr = commandParts.arg1.toInt();
     int bri = commandParts.arg2.toInt();

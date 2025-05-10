@@ -1,4 +1,4 @@
-void CL20ledSaveSetting(){
+void cL20ledSaveSetting(){
     // Save settings for a specific Kring
     int lednr = commandParts.arg1.toInt();
     String animatie = commandParts.arg2;
