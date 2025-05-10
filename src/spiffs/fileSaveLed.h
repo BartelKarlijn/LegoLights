@@ -6,7 +6,7 @@ String  fileSaveLed(int lednr, String animatie) {
   // Create an array to represent the table
   JsonArray table = doc.to<JsonArray>();  
   // Add rows to the table
-  JsonObject row = table.createNestedObject();
+  JsonObject row;
 
   sprintf(filename, "/cfg_led%02d.ini", lednr);
 

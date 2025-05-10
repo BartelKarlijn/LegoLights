@@ -64,6 +64,7 @@
 #include "commands/CL07ledSetBrightness.h"
 #include "commands/CL08ledSetTimeOnOff.h"
 #include "commands/CL09ledSetEffect.h"
+#include "commands/CL20ledSaveSetting.h"
 #include "commands/cW01wifiShowNetworks.h"
 #include "commands/decodeCommand.h"
 #include "0main/config_validCommands.h"

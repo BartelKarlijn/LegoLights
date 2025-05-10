@@ -25,6 +25,9 @@ str_command validCommands[] = {     //  arg1 arg2 arg3
     {"L07", CL07ledSetBrightness},  //  led  bri  -    set brightness
     {"L08", CL08ledSetTimeOnOff },  //  led  tOn  tOff set timeOn and timeOff
     {"L09", CL09ledSetEffect    },  //  led  eff  tEff set effect
+    {"L20", CL20ledSaveSetting  },  //  led  anim -    save settings voor Animatie
+//    {"L21", cL21ledLoadSetting  },  //  led  -    -    load from last save
+//    {"L22", cL22ledDefaultSet   },  //  led  -    -    reload defaults
     {"R01", cW01wifiShowNetworks},  //  x    -    -    reboot in x sec
     {"R10", cW01wifiShowNetworks},  //  name -    -    give board a name H01= Olivander, ...
     {"R20", cW01wifiShowNetworks},  //  -    -    -    save settings
