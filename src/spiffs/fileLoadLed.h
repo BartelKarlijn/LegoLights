@@ -1,19 +1,20 @@
 #pragma once
-String  fileSaveLed(int lednr, String animatie) {
+String  fileLoadLed(int lednr, String animatie) {
 // Save Led settings to file
   char filename[18];
-  JsonDocument doc;
+  //sprintf(filename, "/cfg_led%02d.ini", lednr);
+  sprintf(filename, "/a.txt", lednr);
+
+  Print("Filename ");
+  Println(String(filename));
+
+/*  JsonDocument doc;
   
   // Create an array to represent the table
   JsonArray table = doc.to<JsonArray>();  
 
   // Add rows to the table
   JsonObject row = table.createNestedObject();
-
-  sprintf(filename, "/cfg_led%02d.ini", lednr);
-
-  Print("Filename ");
-  Println(String(filename));
 
   // first write default values to file
   row["animatie"] = "default";
@@ -41,6 +42,6 @@ String  fileSaveLed(int lednr, String animatie) {
   String tmp = "";
   serializeJson(doc, tmp);
   writeFile(SPIFFS, filename, tmp);
-  
-  return "Settings bewaard voor " + ledsingle[lednr].desc;
+  */
+  return "Settings opgeladen voor led " + ledsingle[lednr].desc;
 }

@@ -1,10 +1,10 @@
-void cL20ledSaveSetting(){
-    // Save settings for a specific Led
+void cL21ledLoadSetting(){
+    // Load settings for a specific led
     int lednr = commandParts.arg1.toInt();
     String animatie = commandParts.arg2;
 
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {
-        String result = fileSaveLed(lednr, animatie);
+        String result = fileLoadLed(lednr, animatie);
         Println(result);
         
     } else {
