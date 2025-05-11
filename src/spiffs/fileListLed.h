@@ -1,11 +1,10 @@
 #pragma once
-String  fileLoadLed(int lednr, String animatie) {
-// Save Led settings to file
+String  fileListLed(int lednr) {
+  // List the animations in the file
   char filename[18];
   String msgAnswer;
 
   sprintf(filename, "/cfg_led%02d.ini", lednr);
-  //sprintf(filename, "/a.txt", lednr);
 
   Print("Filename ");
   Println(String(filename));
@@ -33,25 +32,20 @@ String  fileLoadLed(int lednr, String animatie) {
       Println("Error interpreting config file");
       msgAnswer ="Error interpreting config file";
     }
-
-    Println("gezochte anim=" + animatie);
-    if(doc[animatie].isNull()) {
-      Println(" animatie not found");
-      msgAnswer = "Animatie not found";
-    }
     else {
+      Println("doclengte: " + String(doc.size()));
       
-      ledsingle[lednr].desc = doc[animatie]["desc"].as<String>();
-      ledsingle[lednr].bri = doc[animatie]["bri"].as<int>();
-      ledsingle[lednr].timeon = doc[animatie]["timeon"].as<int>();
-      ledsingle[lednr].timeoff = doc[animatie]["timeoff"].as<int>();
-      ledsingle[lednr].timeeffect = doc[animatie]["timeeffect"].as<int>();
-      ledsingle[lednr].effect = doc[animatie]["effect"].as<int>();
-      
-      msgAnswer = "Settings opgeladen voor led " + ledsingle[lednr].desc +", animatie " + animatie;
+      for (JsonPair kv : doc.as<JsonObject>()) {
+        Print("Key: ");
+        Print(kv.key().c_str());
+        Print(" Value: ");
+        Println(kv.value().as<String>());
+      }
+
+      msgAnswer = "Settings tonen voor led " + ledsingle[lednr].desc;
 
     }
   }
 
-  return msgAnswer;
+   return msgAnswer;
 }
