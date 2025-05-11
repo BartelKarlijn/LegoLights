@@ -1,12 +1,9 @@
 #pragma once
-String  fileSaveLed(int lednr, String animatie) {
-// Save Led settings to file
+String  fileDeleteLed(int lednr, String animatie) {
+// Delete one animation from the file
 char filename[18];
 String msgAnswer;
-bool flagFileExists = true;
-bool flagAppend = true;
 JsonDocument doc;
-JsonDocument record;
 
 String key;
 
@@ -17,7 +14,6 @@ Println(String(filename));
 
 if (!SPIFFS.exists(filename)) {
   Println(" does not exist");
-  flagFileExists = false;
   msgAnswer = "File does not exist";
 }
 else {
@@ -37,33 +33,14 @@ else {
     msgAnswer ="Error interpreting config file";
   }
   else {
-    Println("doclengte: " + String(doc.size()));
-    for (JsonPair kv : doc.as<JsonObject>()) {
-      key = kv.key().c_str();
-      if (key == animatie) {
-        flagAppend = false;
-      }
-      Print("Key: " + key);
-      Print(" Value: ");
-      Println(kv.value().as<String>());
+    // de entry verwijderen:
+    if (doc.containsKey(animatie)) {
+      doc.remove(animatie);
+      Println("Verwijderen van " + animatie);
     }
-
-  }
-  // de records aanmaken:
-  record["desc"] = LED_DEFAULT[lednr].desc;
-  record["bri"] = LED_DEFAULT[lednr].bri;
-  record["timeon"] = LED_DEFAULT[lednr].timeon;
-  record["timeoff"] = LED_DEFAULT[lednr].timeoff;
-  record["timeeffect"] = LED_DEFAULT[lednr].timeeffect;
-  record["effect"] = LED_DEFAULT[lednr].effect;
-
-
-  if (flagAppend) {
-    doc[animatie] = record;
-  }
-  else {
-    // update record
-    doc[animatie] = record;
+    else {
+      Println("Geen entry gevonden voor " + animatie);
+    }
   }
 
   // write config file
@@ -74,5 +51,4 @@ else {
   Println(fileListLed(lednr));
 
   return "Settings bewaard voor " + ledsingle[lednr].desc;
-
 }

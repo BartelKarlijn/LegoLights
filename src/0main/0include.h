@@ -46,6 +46,7 @@
 #include "spiffs/fileListLed.h"
 #include "spiffs/fileSaveLed.h"
 #include "spiffs/fileLoadLed.h"
+#include "spiffs/fileDeleteLed.h"
 
 // commands
 #include "commands/cF01fpsShow.h"
@@ -68,6 +69,7 @@
 #include "commands/cL09ledSetEffect.h"
 #include "commands/cL20ledSaveSetting.h"
 #include "commands/cL21ledLoadSetting.h"
+#include "commands/cL22ledDeleSetting.h"
 #include "commands/cW01wifiShowNetworks.h"
 #include "0main/config_validCommands.h"
 #include "commands/cC00Help.h"  // Deze moet na de config staan, want toont wat daar staat
