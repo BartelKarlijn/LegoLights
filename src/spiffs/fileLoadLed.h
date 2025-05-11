@@ -2,46 +2,71 @@
 String  fileLoadLed(int lednr, String animatie) {
 // Save Led settings to file
   char filename[18];
+  String msgAnswer;
+
   //sprintf(filename, "/cfg_led%02d.ini", lednr);
   sprintf(filename, "/a.txt", lednr);
 
   Print("Filename ");
   Println(String(filename));
 
-/*  JsonDocument doc;
-  
-  // Create an array to represent the table
-  JsonArray table = doc.to<JsonArray>();  
+  if (!SPIFFS.exists(filename)) {
+    Println(" does not exist");
+    msgAnswer = "File does not exist";
+  }
+  else {
+    String file_content = readFile(SPIFFS, filename);
+    int config_file_size = file_content.length();
+    Println(" size: " + String(config_file_size));
 
-  // Add rows to the table
-  JsonObject row = table.createNestedObject();
+    if(config_file_size > 1024) {
+      Println(" too large");
+      msgAnswer ="Config file too large";
+    }
 
-  // first write default values to file
-  row["animatie"] = "default";
-  row["desc"]     = LED_DEFAULT[lednr].desc;
-  row["bri"]      = LED_DEFAULT[lednr].bri;
-  row["timeon"]   = LED_DEFAULT[lednr].timeon;
-  row["timeoff"]  = LED_DEFAULT[lednr].timeoff;
-  row["timeeffect"] = LED_DEFAULT[lednr].timeeffect;
-  row["effect"]   = LED_DEFAULT[lednr].effect;
-  table.add(row);
-  
-  // write variables to JSON file
-  row["animatie"] = animatie;
-  row["desc"]     = ledsingle[lednr].desc;
-  row["bri"]      = ledsingle[lednr].bri;
-  row["timeon"]   = ledsingle[lednr].timeon;
-  row["timeoff"]  = ledsingle[lednr].timeoff;
-  row["timeeffect"] = ledsingle[lednr].timeeffect;
-  row["effect"]   = ledsingle[lednr].effect;
-  
-  table.add(row);
-  Print("Json: ");
-  Println(row["animatie"].as<String>());
-  // write config file
-  String tmp = "";
-  serializeJson(doc, tmp);
-  writeFile(SPIFFS, filename, tmp);
-  */
-  return "Settings opgeladen voor led " + ledsingle[lednr].desc;
+    JsonDocument doc;
+    //JsonArray array = doc.as<JsonArray>();
+    JsonObject objec = doc.as<JsonObject>();
+
+    auto error = deserializeJson(doc, file_content);
+    if ( error ) { 
+      Println("Error interpreting config file");
+      msgAnswer ="Error interpreting config file";
+    }
+
+    Println("gezochte anim=" + animatie);
+    if(doc[animatie].isNull()) {
+      Println(" animatie not found");
+      msgAnswer = "Animatie not found";
+    }
+    else {
+      Println(doc[animatie].as<String>());
+      Print("Desc: ");
+      Println(doc[animatie]["desc"].as<String>());
+      Print("Bri: ");
+      Println(doc[animatie]["bri"].as<int>());
+      Print("Timeon: ");
+      Println(doc[animatie]["timeon"].as<int>());
+      Print("Timeoff: ");
+      Println(doc[animatie]["timeoff"].as<int>());
+      Print("Timeeffect: ");
+      Println(doc[animatie]["timeeffect"].as<int>());
+      Print("Effect: ");
+      Println(doc[animatie]["effect"].as<int>());
+
+      Println("doclengte: " + String(doc.size()));
+      
+      for (JsonPair kv : doc.as<JsonObject>()) {
+        Print("Key: ");
+        Print(kv.key().c_str());
+        Print(" Value: ");
+        Println(kv.value().as<String>());
+      }
+
+      msgAnswer = "Settings opgeladen voor led " + ledsingle[lednr].desc;
+
+    }
+  }
+
+   return msgAnswer;
 }

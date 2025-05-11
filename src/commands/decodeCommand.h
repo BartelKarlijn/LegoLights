@@ -69,6 +69,6 @@ str_commandParts decodeCommand(String commandstring) {
     //arg3
     returnMsg.arg3 = decodeRestOfCommand();
 
-    Println("Huis = " + String(returnMsg.huis) + " cmd = " + returnMsg.cmd + " arg1 = " + returnMsg.arg1 + " arg2 = " + returnMsg.arg2 + " arg3 = " + returnMsg.arg3);
+    Println("Huis=" + String(returnMsg.huis) + " cmd=" + returnMsg.cmd + " arg1=" + returnMsg.arg1 + " arg2=" + returnMsg.arg2 + " arg3=" + returnMsg.arg3);
     return returnMsg;
 }
