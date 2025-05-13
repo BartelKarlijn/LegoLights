@@ -132,6 +132,10 @@ void setup_AsyncWebserver(){
     Println("Huisje requested");
     request->send(SPIFFS, "/page_huisje.html", "text/html");
   });
+  webserver.on("/page_maintain_led", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("led configuratie opgeroepen");
+    request->send(SPIFFS, "/page_maintain_led.html", "text/html");
+  });
   webserver.on("/page_maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("strip configuratie opgeroepen");
     request->send(SPIFFS, "/page_maintain_strip.html", "text/html");

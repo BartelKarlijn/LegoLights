@@ -55,7 +55,7 @@
             var nextDesc  = null;
             $.get("getLed", {led: nextLed, veld: "01" }, function(data){
                 document.getElementById("NextLed").innerHTML = "Naar: " + data;
-                document.getElementById("NextLed").href  = "/page_maintain_strip?led="+nextLed;
+                document.getElementById("NextLed").href  = "/page_maintain_led?led="+nextLed;
             });
         };
         function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: $.urlParam('led')} , function(data) {$("#status").html(data);}); };
