@@ -44,16 +44,15 @@
         };
         function getValuePrevLed() {
             var prevLed = parseInt($.urlParam('led')) - 1;
-            var prevDesc  = null;
-            $.get("getLed", {led: prevLed, veld: "01" }, function(data){
-                document.getElementById("prevLed").innerHTML = "Naar: " + data;
+            $.get("getLed", {led: prevLed, veld: "50" }, function(prevDesc){
+                document.getElementById("prevLed").innerHTML = "Naar: " + prevDesc;
                 document.getElementById("prevLed").href  = "/page_maintain_led?led="+prevLed;
             });
         };
         function getValueNextLed() {
             var nextLed = parseInt($.urlParam('led')) + 1;
             var nextDesc  = null;
-            $.get("getLed", {led: nextLed, veld: "01" }, function(data){
+            $.get("getLed", {led: nextLed, veld: "50" }, function(data){
                 document.getElementById("NextLed").innerHTML = "Naar: " + data;
                 document.getElementById("NextLed").href  = "/page_maintain_led?led="+nextLed;
             });
