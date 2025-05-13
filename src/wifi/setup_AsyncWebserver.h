@@ -61,6 +61,7 @@ void setup_AsyncWebserver(){
     request->send(SPIFFS, "/file_style.css", "text/css");
   });
   // dynamic actions
+  // -- file management
   webserver.on("/getfile", HTTP_GET, [](AsyncWebServerRequest * request){
     Println("file requested");
     on_file(request);
@@ -73,6 +74,7 @@ void setup_AsyncWebserver(){
     Println("fileStorage requested");
     request->send(200, "text/plain", listStorage(true));
   });
+  // -- Strip management
   webserver.on("/getfileLoad2Kring", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Strip settings ophalen voor kring");
     request->send(200, "text/plain", on_getfileLoad2Kring(request));
@@ -96,6 +98,31 @@ void setup_AsyncWebserver(){
     Println("setstrip binnen gekregen");
     request->send(200, "text/plain", on_getSetStrip(request));
   });
+  // -- led management
+  webserver.on("/getfileLoad2Led", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Led settings ophalen voor led");
+    request->send(200, "text/plain", on_getfileLoad2Led(request));
+  });
+  webserver.on("/getfileDefault2Led>", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Led terug naar default zetten");
+    request->send(200, "text/plain", on_getfileDefault2Led(request));
+  });
+  webserver.on("/getfileSaveLed", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Led settings bewaren voor led");
+    request->send(200, "text/plain", on_getfileSaveLed(request));
+  });
+  //webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
+  //  request->send(200, "text/plain", listKringen(true, on_getlistKringen(request)) );
+  //});
+  webserver.on("/getLed", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    request->send(200, "text/plain", on_getLed(request));
+  });
+  webserver.on("/getSetLed", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("setLed binnen gekregen");
+    request->send(200, "text/plain", on_getSetLed(request));
+  });
+
   // webpages
   webserver.on("/page_fileManagement", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("FileManagement requested");

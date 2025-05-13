@@ -1,0 +1,89 @@
+<!DOCTYPE html> <html>
+<head>
+    <title>Diagon Alley maintain single Led</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
+    <link rel="icon" href="/file_favicon.ico">
+    <link rel="stylesheet" type="text/css" href="file_style.css">
+    <script src="file_jquery-3.7.0.min.js"></script>
+      <script>
+        $(document).ready(function() {
+            // url parameters
+            $.urlParam = function(name){
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                if (results==null) { return null; }
+                return decodeURI(results[1]) || 0;
+            }
+            console.log("led= "+$.urlParam('led'));
+            getValuesJQ();          //Beginwaarden ophalen voor jq
+            setonchangeValuesJQ();  //onchange voor jq elementen
+            getValuePrevLed();
+            getValueNextLed();
+            setTimeout(getImage, 2000);
+		});
+        function getValuesJQ() {
+            $('input[name="jq"]').each(function(ind, element) {
+				$(element).val(function(index, value){
+					$.get("getLed", {led: $.urlParam('led'), veld: $(element).attr('id')}, function(data) {
+						$(element).val(data);
+					});
+				});
+            });
+        };
+        function setonchangeValuesJQ(){
+			$('input[name="jq"]').each(function(ind, element) {
+				$(element).on("focusout", function(){
+					$.get("/getSetLed", {led: $.urlParam('led'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
+					});
+				});
+			});
+        };
+        function getImage() {
+            console.log("img refreshed " + $('#22').val() )
+
+            $('#file_img').attr( "src",  $('#22').val() );
+        };
+        function getValuePrevLed() {
+            var prevLed = parseInt($.urlParam('led')) - 1;
+            var prevDesc  = null;
+            $.get("getLed", {led: prevLed, veld: "01" }, function(data){
+                document.getElementById("prevLed").innerHTML = "Naar: " + data;
+                document.getElementById("prevLed").href  = "/page_maintain_led?led="+prevLed;
+            });
+        };
+        function getValueNextLed() {
+            var nextLed = parseInt($.urlParam('led')) + 1;
+            var nextDesc  = null;
+            $.get("getLed", {led: nextLed, veld: "01" }, function(data){
+                document.getElementById("NextLed").innerHTML = "Naar: " + data;
+                document.getElementById("NextLed").href  = "/page_maintain_strip?led="+nextLed;
+            });
+        };
+        function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: $.urlParam('led')} , function(data) {$("#status").html(data);}); };
+        function fileDefault2Led(){ $.get("/getfileDefault2Led" , {led: $.urlParam('led')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+        function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: $.urlParam('led')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+    </script>
+</head>
+
+<body style="text-align:left;" id="body" >
+    <h1>Beheer effecten van leds</h1>
+    <div class="row">
+        <div class="column3"><a id="PrevLed" href="/" class='button button-center'></a></div>
+        <div class="column3"><h3><img id="file_img"  src="" onchange="getImage();"></img><br><input id='50' name='jq' type='text'   required/></h3></div>
+        <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
+    </div>
+    <div class="row">
+        <div class="column2">Brighness(4095) <br><input id='51' name='jq' type='number' min="0" max="4095"/></div>
+        <div class="column2">Effect     <br><input id='52' name='jq' type='number' min="10" max="13" /><br>10: aan; 11:fire, 12: glow, 13: uit</div>
+    </div>
+    <div class="row">
+        <div class="column3">Time on    <br><input id='53' name='jq' type='number' min="0" max="255"/><br></div>
+        <div class="column3">Time off   <br><input id='54' name='jq' type='number' min="0" max="255"/></div>
+        <div class="column3">Time effect<br><input id='55' name='jq' type='number' min="0" max="255"/></div>
+    </div>
+    <p id="status"></p>
+    <button onclick="fileSaveLed();"    class="button button-right button-large">Save settings</button>
+    <button onclick="fileLoad2Led();"   class="button button-right button-large">Load from last save</button>
+    <button onclick="fileDefault2Led()" class="button button-right button-large">Reload defaults</button>
+    <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
+</body>
+</html>
