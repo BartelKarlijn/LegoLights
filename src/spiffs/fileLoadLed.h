@@ -47,6 +47,8 @@ String  fileLoadLed(int lednr, String animatie) {
       ledsingle[lednr].timeoff = doc[animatie]["timeoff"].as<int>();
       ledsingle[lednr].timeeffect = doc[animatie]["timeeffect"].as<int>();
       ledsingle[lednr].effect = doc[animatie]["effect"].as<int>();
+      ledsingle[lednr].image = doc[animatie]["image"].as<String>();
+      ledsingle[lednr].animatie = doc[animatie]["animatie"].as<String>();
       
       msgAnswer = "Settings opgeladen voor led " + ledsingle[lednr].desc +", animatie " + animatie;
 

@@ -134,27 +134,29 @@ typedef struct {
   unsigned long timeoff;
   long    timeeffect;  //negatieve waarden toelaten
   uint8_t effect;
+  String  image;
+  String  animatie;
 } str_ledsingle;
 
 #define LED_NR_ITEMS 16
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
 //    description (20) ,brigh,timeon,timeoff,timeeff, eff
- {"Olivander kaars    ", 4095,  1000,   1000,    150, EFFLED_AAN  }
-,{"Olivander lantaarn ", 4095, 10000,   1000,   4500, EFFLED_GLOW }
-,{"Olivander fakkel   ", 4095, 10000,   1000,    100, EFFLED_FIRE }
-,{"led test03         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test04         ", 3095,   500,    500,      0, EFFLED_AAN  }
-,{"led test05         ", 4095,   500,    500,      0, EFFLED_AAN  }
-,{"led test06         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test07         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test08         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test09         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test10         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test11         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test12         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test13         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test14         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
-,{"led test15         ", 4095,  1000,   1000,      0, EFFLED_AAN  }
+ {"Olivander kaars    ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"Olivander lantaarn ", 4095, 10000,   1000,   4500, EFFLED_GLOW, IMG_OLIV , "default" }
+,{"Olivander fakkel   ", 4095, 10000,   1000,    100, EFFLED_FIRE, IMG_OLIV , "default" }
+,{"led test03         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test04         ", 3095,   500,    500,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test05         ", 4095,   500,    500,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test06         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test07         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test08         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test09         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test10         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test11         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test12         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test13         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test14         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led test15         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
 };
 
 str_ledsingle ledsingle[LED_NR_ITEMS];

@@ -13,7 +13,8 @@
                 if (results==null) { return null; }
                 return decodeURI(results[1]) || 0;
             }
-            console.log("led= "+$.urlParam('led'));
+            console.log("led="+$.urlParam('led'));
+			console.log("anim="+$.urlParam('anim'));
             getValuesJQ();          //Beginwaarden ophalen voor jq
             setonchangeValuesJQ();  //onchange voor jq elementen
             getValuePrevLed();
@@ -23,7 +24,7 @@
         function getValuesJQ() {
             $('input[name="jq"]').each(function(ind, element) {
 				$(element).val(function(index, value){
-					$.get("getLed", {led: $.urlParam('led'), veld: $(element).attr('id')}, function(data) {
+					$.get("getLed", {led: $.urlParam('led'), anim: $.urlParam('anim'), veld: $(element).attr('id')}, function(data) {
 						$(element).val(data);
 					});
 				});
@@ -32,21 +33,22 @@
         function setonchangeValuesJQ(){
 			$('input[name="jq"]').each(function(ind, element) {
 				$(element).on("focusout", function(){
-					$.get("/getSetLed", {led: $.urlParam('led'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
+					$.get("/getSetLed", {led: $.urlParam('led'), anim: $.urlParam('anim'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
 					});
 				});
 			});
         };
         function getImage() {
-            console.log("img refreshed " + $('#22').val() )
+            console.log("img refreshed " + $('#56').val() )
 
-            $('#file_img').attr( "src",  $('#22').val() );
+            $('#file_img').attr( "src",  $('#56').val() );
         };
         function getValuePrevLed() {
             var prevLed = parseInt($.urlParam('led')) - 1;
-            $.get("getLed", {led: prevLed, veld: "50" }, function(prevDesc){
-                document.getElementById("prevLed").innerHTML = "Naar: " + prevDesc;
-                document.getElementById("prevLed").href  = "/page_maintain_led?led="+prevLed;
+            var prevDesc  = null;
+            $.get("getLed", {led: prevLed, veld: "50" }, function(data){
+                document.getElementById("PrevLed").innerHTML = "Naar: " + data;
+                document.getElementById("PrevLed").href  = "/page_maintain_led?led="+prevLed+"&anim="+$.urlParam('anim');
             });
         };
         function getValueNextLed() {
@@ -54,12 +56,12 @@
             var nextDesc  = null;
             $.get("getLed", {led: nextLed, veld: "50" }, function(data){
                 document.getElementById("NextLed").innerHTML = "Naar: " + data;
-                document.getElementById("NextLed").href  = "/page_maintain_led?led="+nextLed;
+                document.getElementById("NextLed").href  = "/page_maintain_led?led="+nextLed+"&anim="+$.urlParam('anim');
             });
         };
-        function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: $.urlParam('led')} , function(data) {$("#status").html(data);}); };
-        function fileDefault2Led(){ $.get("/getfileDefault2Led" , {led: $.urlParam('led')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
-        function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: $.urlParam('led')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+        function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: $.urlParam('led'), anim: $.urlParam('anim')} , function(data) {$("#status").html(data);}); };
+        function fileDefault2Led(){ $.get("/getfileDefault2Led" , {led: $.urlParam('led'), anim: $.urlParam('anim')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+        function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: $.urlParam('led'), anim: $.urlParam('anim')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
     </script>
 </head>
 
@@ -67,7 +69,20 @@
     <h1>Beheer effecten van leds</h1>
     <div class="row">
         <div class="column3"><a id="PrevLed" href="/" class='button button-center'></a></div>
-        <div class="column3"><h3><img id="file_img"  src="" onchange="getImage();"></img><br><input id='50' name='jq' type='text'   required/></h3></div>
+        <div class="column3"><h3>
+			<img id="file_img"  src="" onchange="getImage();"></img><br>
+			Image<input id='56' name='jq' type='text'   required/><br>
+			Naam<input id='50' name='jq' type='text'   required/><br>
+			Animatie<input id='57' name='jq' list="anims"   required/>
+				<datalist id="anims">
+					<option value="Edge">
+					<option value="Firefox">
+					<option value="Chrome">
+					<option value="Opera">
+					<option value="Safari">
+				</datalist>
+				<input type="submit">
+			</h3></div>
         <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
     </div>
     <div class="row">

@@ -10,5 +10,5 @@ String on_getfileSaveLed(AsyncWebServerRequest *request){
       lednr = 99;
     }
 
-    return fileSaveLed(lednr, "default");
+    return fileSaveLed(lednr, ledsingle[lednr].animatie);
 }

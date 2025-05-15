@@ -9,6 +9,6 @@ String on_getfileLoad2Led(AsyncWebServerRequest *request){
     else {
       lednr = 99;
     }
-    return fileLoadLed(lednr, "default");
+    return fileLoadLed(lednr, ledsingle[lednr].animatie);
   }
   

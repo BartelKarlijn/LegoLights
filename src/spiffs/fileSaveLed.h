@@ -50,12 +50,14 @@ else {
 
   }
   // de records aanmaken:
-  record["desc"] = LED_DEFAULT[lednr].desc;
-  record["bri"] = LED_DEFAULT[lednr].bri;
-  record["timeon"] = LED_DEFAULT[lednr].timeon;
-  record["timeoff"] = LED_DEFAULT[lednr].timeoff;
-  record["timeeffect"] = LED_DEFAULT[lednr].timeeffect;
-  record["effect"] = LED_DEFAULT[lednr].effect;
+  record["desc"]      = ledsingle[lednr].desc;
+  record["bri"]       = ledsingle[lednr].bri;
+  record["timeon"]    = ledsingle[lednr].timeon;
+  record["timeoff"]   = ledsingle[lednr].timeoff;
+  record["timeeffect"] = ledsingle[lednr].timeeffect;
+  record["effect"]    = ledsingle[lednr].effect;
+  record["image"]     = ledsingle[lednr].image;
+  record["animatie"]  = animatie;
 
 
   if (flagAppend) {
