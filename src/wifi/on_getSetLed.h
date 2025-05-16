@@ -58,6 +58,14 @@ String on_getSetLed(AsyncWebServerRequest *request){
         ledsingle[lednr].timeeffect = waardeString.toInt();
         answertoSend = waardeString;
         break;
+      case 56:
+        ledsingle[lednr].image = waardeString;
+        answertoSend = waardeString;
+        break;
+      case 57:
+        ledsingle[lednr].animatie = waardeString;
+        answertoSend = waardeString;
+        break;
       default:
         answertoSend = "error";
         break;
