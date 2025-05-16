@@ -99,6 +99,10 @@ void setup_AsyncWebserver(){
     request->send(200, "text/plain", on_getSetStrip(request));
   });
   // -- led management
+  webserver.on("/getfileLedListAnims", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Led animaties tonen als option lijst");
+    request->send(200, "text/plain", on_getfileLedListAnim(request));
+  });
   webserver.on("/getfileLoad2Led", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Led settings ophalen voor led");
     request->send(200, "text/plain", on_getfileLoad2Led(request));

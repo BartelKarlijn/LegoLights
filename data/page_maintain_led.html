@@ -16,8 +16,9 @@
             console.log("led="+$.urlParam('led'));
 			console.log("anim="+$.urlParam('anim'));
             getValuesJQ();          //Beginwaarden ophalen voor jq
-            setonchangeValuesJQ();  //onchange voor jq elementen
-            getValuePrevLed();
+            getLedListAnims();
+			setonchangeValuesJQ();  //onchange voor jq elementen
+			getValuePrevLed();
             getValueNextLed();
             setTimeout(getImage, 2000);
 		});
@@ -43,7 +44,14 @@
 
             $('#file_img').attr( "src",  $('#56').val() );
         };
-        function getValuePrevLed() {
+        function getLedListAnims(){
+            $.get("/getfileLedListAnims", {led: $.urlParam('led')}, function(data) {
+				var animsList = $("#anims");
+				animsList.empty();
+				animsList.append(data);
+			});
+        };
+		function getValuePrevLed() {
             var prevLed = parseInt($.urlParam('led')) - 1;
             var prevDesc  = null;
             $.get("getLed", {led: prevLed, veld: "50" }, function(data){
@@ -75,11 +83,7 @@
 			Naam<input id='50' name='jq' type='text'   required/><br>
 			Animatie<input id='57' name='jq' list="anims"   required/>
 				<datalist id="anims">
-					<option value="Edge">
-					<option value="Firefox">
-					<option value="Chrome">
-					<option value="Opera">
-					<option value="Safari">
+					<option value="default">
 				</datalist>
 				<input type="submit">
 			</h3></div>

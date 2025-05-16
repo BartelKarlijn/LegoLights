@@ -1,6 +1,6 @@
 #pragma once
 String  fileLoadLed(int lednr, String animatie) {
-// Save Led settings to file
+// Load LED settings for given animatie
   char filename[18];
   String msgAnswer;
 
