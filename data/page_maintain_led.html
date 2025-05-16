@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="file_style.css">
     <script src="file_jquery-3.7.0.min.js"></script>
       <script>
+        var lv_led = 0;
+        var lv_anim = "default";
         $(document).ready(function() {
             // url parameters
             $.urlParam = function(name){
@@ -13,8 +15,10 @@
                 if (results==null) { return null; }
                 return decodeURI(results[1]) || 0;
             }
-            console.log("led="+$.urlParam('led'));
-			console.log("anim="+$.urlParam('anim'));
+            lv_led = $.urlParam('led');
+            lv_anim = $.urlParam('anim');
+            console.log("led="+lv_led);
+			console.log("anim="+lv_anim);
             getValuesJQ();          //Beginwaarden ophalen voor jq
             getLedListAnims();
 			setonchangeValuesJQ();  //onchange voor jq elementen
@@ -25,7 +29,7 @@
         function getValuesJQ() {
             $('input[name="jq"]').each(function(ind, element) {
 				$(element).val(function(index, value){
-					$.get("getLed", {led: $.urlParam('led'), anim: $.urlParam('anim'), veld: $(element).attr('id')}, function(data) {
+					$.get("getLed", {led: lv_led, anim: lv_anim, veld: $(element).attr('id')}, function(data) {
 						$(element).val(data);
 					});
 				});
@@ -34,7 +38,7 @@
         function setonchangeValuesJQ(){
 			$('input[name="jq"]').each(function(ind, element) {
 				$(element).on("focusout", function(){
-					$.get("/getSetLed", {led: $.urlParam('led'), anim: $.urlParam('anim'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
+					$.get("/getSetLed", {led: lv_led, anim: lv_anim, veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
 					});
 				});
 			});
@@ -45,31 +49,35 @@
             $('#file_img').attr( "src",  $('#56').val() );
         };
         function getLedListAnims(){
-            $.get("/getfileLedListAnims", {led: $.urlParam('led')}, function(data) {
+            $.get("/getfileLedListAnims", {led: lv_led}, function(data) {
 				var animsList = $("#anims");
 				animsList.empty();
 				animsList.append(data);
 			});
         };
 		function getValuePrevLed() {
-            var prevLed = parseInt($.urlParam('led')) - 1;
+            var prevLed = parseInt(lv_led) - 1;
             var prevDesc  = null;
-            $.get("getLed", {led: prevLed, veld: "50" }, function(data){
+            $.get("getLed", {led: prevLed, veld: "50", anim: lv_anim }, function(data){
                 document.getElementById("PrevLed").innerHTML = "Naar: " + data;
-                document.getElementById("PrevLed").href  = "/page_maintain_led?led="+prevLed+"&anim="+$.urlParam('anim');
+                document.getElementById("PrevLed").href  = "/page_maintain_led?led="+prevLed+"&anim="+lv_anim;
             });
         };
         function getValueNextLed() {
-            var nextLed = parseInt($.urlParam('led')) + 1;
+            var nextLed = parseInt(lv_led) + 1;
             var nextDesc  = null;
-            $.get("getLed", {led: nextLed, veld: "50" }, function(data){
+            $.get("getLed", {led: nextLed, veld: "50", anim: lv_anim }, function(data){
                 document.getElementById("NextLed").innerHTML = "Naar: " + data;
-                document.getElementById("NextLed").href  = "/page_maintain_led?led="+nextLed+"&anim="+$.urlParam('anim');
+                document.getElementById("NextLed").href  = "/page_maintain_led?led="+nextLed+"&anim="+lv_anim;
             });
         };
-        function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: $.urlParam('led'), anim: $.urlParam('anim')} , function(data) {$("#status").html(data);}); };
-        function fileDefault2Led(){ $.get("/getfileDefault2Led" , {led: $.urlParam('led'), anim: $.urlParam('anim')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
-        function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: $.urlParam('led'), anim: $.urlParam('anim')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+        function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
+        function fileDefault2Led(){ $.get("/getfileDefault2Led" , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+        function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+        function fileLoadAnim()   {
+            lv_anim = $('#57').val();
+            $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); 
+        };
     </script>
 </head>
 
@@ -84,8 +92,8 @@
 			Animatie<input id='57' name='jq' list="anims"   required/>
 				<datalist id="anims">
 					<option value="default">
-				</datalist>
-				<input type="submit">
+				</datalist><br>
+            <button onclick="fileLoadAnim()" class="button button-center">Load animation</button>
 			</h3></div>
         <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
     </div>
