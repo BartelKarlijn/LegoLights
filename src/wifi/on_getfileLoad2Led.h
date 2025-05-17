@@ -1,5 +1,6 @@
 String on_getfileLoad2Led(AsyncWebServerRequest *request){
     String ledString;
+    String anim;
     int lednr;
     // get parameter led & veld  http://192.168.68.205/getfileLoad2Led?led=1
     if (request->hasParam("led")) {
@@ -9,6 +10,12 @@ String on_getfileLoad2Led(AsyncWebServerRequest *request){
     else {
       lednr = 99;
     }
-    return fileLoadLed(lednr, ledsingle[lednr].animatie);
+    if (request->hasParam("animati")) {
+      anim = request->getParam("animati")->value();
+    }
+    else {
+      anim = "default";
+    }
+    return fileLoadLed(lednr, anim);
   }
   
