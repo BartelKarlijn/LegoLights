@@ -139,25 +139,49 @@ typedef struct {
 } str_ledsingle;
 
 #define LED_NR_ITEMS 16
+#define LED_NR_ANIM 6
+
+typedef struct {
+  int     bri;    //4095 mogelijkheden
+  unsigned long timeon;
+  unsigned long timeoff;
+  long    timeeffect;  //negatieve waarden toelaten
+  uint8_t effect;
+} str_ledanim;
+typedef struct {
+  String  animdesc;
+  str_ledanim animstr;
+} str_ledanimgroup;
+typedef struct {
+  String  leddesc;
+  String  ledimage;
+  str_ledanimgroup animgroup[LED_NR_ANIM];
+} str_ledsettings;
+
+
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
-//    description (20) ,brigh,timeon,timeoff,timeeff, eff
- {"Olivander kaars    ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"Olivander lantaarn ", 4095, 10000,   1000,   4500, EFFLED_GLOW, IMG_OLIV , "default" }
-,{"Olivander fakkel   ", 4095, 10000,   1000,    100, EFFLED_FIRE, IMG_OLIV , "default" }
-,{"led test03         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test04         ", 3095,   500,    500,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test05         ", 4095,   500,    500,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test06         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test07         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test08         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test09         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test10         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test11         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test12         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test13         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test14         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led test15         ", 4095,  1000,   1000,      0, EFFLED_AAN , IMG_OLIV , "default" }
+//    leddesc          ,brigh,timeon,timeoff,timeeff, effect     , image    , animdesc
+ {"led00              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led01              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led02              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led03              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led04              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led05              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led06              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led07              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led08              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led09              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led10              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led11              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led12              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led13              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led14              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+,{"led15              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
 };
+
+// default voor alle leds als er geen file is.
+const str_ledsingle LED_SINGLEDEFAULT  {"led", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" };
+
 
 str_ledsingle ledsingle[LED_NR_ITEMS];
 unsigned long timer_led_aan[LED_NR_ITEMS];
@@ -167,3 +191,5 @@ unsigned long time_fase_end[LED_NR_ITEMS];  //eind van een nieuwe fase
 uint8_t fase[LED_NR_ITEMS];  //welke fase zitten we (bv ramp fase 1=up, 2=on, 3=down, 4=off)
 
 uint8_t effectledbri[LED_NR_ITEMS];
+
+str_ledsettings ledsettings[LED_NR_ITEMS];

@@ -50,7 +50,7 @@
         };
         function getLedListAnims(){
             $.get("/getfileLedListAnims", {led: lv_led}, function(data) {
-				var animsList = $("#anims");
+				var animsList = $("#anim");
 				animsList.empty();
 				animsList.append(data);
 			});
@@ -75,7 +75,8 @@
         function fileDefault2Led(){ $.get("/getfileDefault2Led" , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
         function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
         function fileLoadAnim()   {
-            lv_anim = $('#57').val();
+            lv_anim = $('#anim').val();
+            $('#57').val(lv_anim);
             $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); 
         };
     </script>
@@ -89,10 +90,10 @@
 			<img id="file_img"  src="" onchange="getImage();"></img><br>
 			Image<input id='56' name='jq' type='text'   required/><br>
 			Naam<input id='50' name='jq' type='text'   required/><br>
-			Animatie<input id='57' name='jq' list="anims"   required/>
-				<datalist id="anims">
-					<option value="default">
-				</datalist><br>
+			Animatie<input id='57' name='jq' type='text'   required/><br>
+            Saved Anims<select id="anim" type="text">
+					<option value="default"></option>
+                    </select><br>
             <button onclick="fileLoadAnim()" class="button button-center">Load animation</button>
 			</h3></div>
         <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>

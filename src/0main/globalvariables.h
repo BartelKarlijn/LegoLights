@@ -17,7 +17,7 @@ const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
 //////// PCA9685 led servodriver //////////
 //set the board address, PCA9685 come as 0x40 by default
 // via  singleled/scanI2C gecontroleerd: 0x40 is idd het nr
-Adafruit_PWMServoDriver singleled = Adafruit_PWMServoDriver(0x40, Wire);
+Adafruit_PWMServoDriver ledPCA9685 = Adafruit_PWMServoDriver(0x40, Wire);
 
 //////// Command //////////
 String restOfCommand;

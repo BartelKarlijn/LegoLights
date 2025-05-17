@@ -51,5 +51,5 @@ void led_rand(int lednr) {
     bri_glow = 0;
     break;
   }
-  singleled.setPWM(lednr, 0, bri_glow);
+  ledPCA9685.setPWM(lednr, 0, bri_glow);
 }
