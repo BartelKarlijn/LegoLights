@@ -142,25 +142,23 @@ typedef struct {
 #define LED_NR_ANIM 6
 
 typedef struct {
+  String  animdesc;
   int     bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
   long    timeeffect;  //negatieve waarden toelaten
   uint8_t effect;
 } str_ledanim;
-typedef struct {
-  String  animdesc;
-  str_ledanim animstr;
-} str_ledanimgroup;
+
 typedef struct {
   String  leddesc;
   String  ledimage;
-  str_ledanimgroup animgroup[LED_NR_ANIM];
+  str_ledanim anim[LED_NR_ANIM];
 } str_ledsettings;
 
 
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
-//    leddesc          ,brigh,timeon,timeoff,timeeff, effect     , image    , animdesc
+//    desc             ,brigh,timeon,timeoff,timeeff, effect     , image    , animdesc
  {"led00              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
 ,{"led01              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
 ,{"led02              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
