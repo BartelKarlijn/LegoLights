@@ -27,7 +27,7 @@ String  fileLedLoadSettings() {
     int config_file_size = file_content.length();
     Println(" size: " + String(config_file_size));
 
-    if(config_file_size > 1024) {
+    if(config_file_size > 2048) {
       Println(" too large");
       msgAnswer ="Config file too large";
     }
@@ -41,15 +41,14 @@ String  fileLedLoadSettings() {
 
     int regelcounter = 0;
     JsonArray jarr = doc.as<JsonArray>();
-    Println("we gaan loopen");
+    Println("we gaan loopen: " + String(jarr.size()));
     for (JsonObject it : jarr) {
-      Print("Lednr: "+ it["lednr"].as<String>()); 
-      Print(" desc: " + it["leddesc"].as<String>());
-      Print(" image: " + it["ledimage"].as<String>());
-      Print(" anim: " + it["anim"].as<String>());
+      Println(" desc: " + it["leddesc"].as<String>());
       int lednr = it["lednr"].as<int>();
       ledsettings[lednr].leddesc          = it["leddesc"].as<String>();
       ledsettings[lednr].ledimage         = it["ledimage"].as<String>();
+      JsonArray janim = it["anim"].as<JsonArray>();
+      Println("aantal anims: " + String(janim.size()));
 
       regelcounter++; 
     }
