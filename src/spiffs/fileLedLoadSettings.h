@@ -40,55 +40,26 @@ String  fileLedLoadSettings() {
     }
 
     int regelcounter = 0;
-    JsonArray jarr = doc.as<JsonArray>();
-    Println("we gaan loopen: " + String(jarr.size()));
-    for (JsonObject it : jarr) {
-      Println(" desc: " + it["leddesc"].as<String>());
-      int lednr = it["lednr"].as<int>();
-      ledsettings[lednr].leddesc          = it["leddesc"].as<String>();
-      ledsettings[lednr].ledimage         = it["ledimage"].as<String>();
-      JsonArray janim = it["anim"].as<JsonArray>();
-      Println("aantal anims: " + String(janim.size()));
+    JsonArray jledarr = doc.as<JsonArray>();
+    Println("aantal leds: " + String(jledarr.size()));
+    for (int lednr=0; lednr<jledarr.size(); lednr++) {
+      ledsettings[lednr].leddesc          = jledarr[lednr]["leddesc"].as<String>();
+      ledsettings[lednr].ledimage         = jledarr[lednr]["ledimage"].as<String>();
+      Print(String(lednr)+" desc: " + jledarr[lednr]["leddesc"].as<String>());
 
-      regelcounter++; 
+      JsonArray janimarr = jledarr[lednr]["anim"].as<JsonArray>();
+      Println(" aantal anims: " + String(janimarr.size()));
+      for (int animnr=0; animnr<janimarr.size(); animnr++) {
+        ledsettings[lednr].anim[animnr].animdesc    = janimarr[animnr]["animdesc"].as<String>();
+        ledsettings[lednr].anim[animnr].bri         = janimarr[animnr]["bri"].as<int>();
+        ledsettings[lednr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<int>();
+        ledsettings[lednr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<int>();
+        ledsettings[lednr].anim[animnr].timeeffect  = janimarr[animnr]["timeeffect"].as<int>();
+        ledsettings[lednr].anim[animnr].effect      = janimarr[animnr]["effect"].as<int>();
+        regelcounter++; 
+      }
+
     }
-
-
-      /*Println("Lednr: " + String(lednr));
-      Println("desc: "  + jsled["leddesc"].as<String>());
-      Println("image: " + jsled["ledimage"].as<String>());
-      Println("anim: "  + jsled["anim"].as<String>());
-      
-      ledsettings[lednr].leddesc  = jsled["leddesc"].as<String>();
-      ledsettings[lednr].ledimage = jsled["ledimage"].as<String>();
-*/
-
-    /*for (JsonPair ledkv : doc.as<JsonObject>()) {
-      String ledkey = ledkv.key().c_str();
-      int lednr = ledkey.toInt();
-      JsonObject ledvalue = ledkv.value();
-      Println("Lednr: " + ledkey);
-      Println("desc: " + ledvalue["leddesc"].as<String>());
-      Println("image: " + ledvalue["ledimage"].as<String>());
-      Println("anim: " + ledvalue["anim"].as<String>());
-      
-      ledsettings[lednr].leddesc = ledvalue["leddesc"].as<String>();
-      ledsettings[lednr].ledimage = ledvalue["ledimage"].as<String>();
-      JsonDocument janim = ledvalue["anim"].as<JsonObject>();
-*/
-
-      /*for (JsonPair animkv : janim.as<JsonObject>()) {
-        String animkey = animkv.key().c_str();
-        int animnr = animkey.toInt();
-        JsonObject animvalue = animkv.value();
-        ledsettings[lednr].anim[animnr].animdesc = animvalue["animdesc"].as<String>();
-        ledsettings[lednr].anim[animnr].bri = animvalue["bri"].as<int>();
-        ledsettings[lednr].anim[animnr].timeon = animvalue["timeon"].as<int>();
-        ledsettings[lednr].anim[animnr].timeoff = animvalue["timeoff"].as<int>();
-        ledsettings[lednr].anim[animnr].timeeffect = animvalue["timeeffect"].as<int>();
-        ledsettings[lednr].anim[animnr].effect = animvalue["effect"].as<int>();
-
-      }*/
 
       msgAnswer = "Settings geladen voor " + String(regelcounter) + " ledanimaties";
 
