@@ -6,38 +6,15 @@ String  fileHuisLoadSettings() {
 
   Print(String(filename));
 
-/*  if (!SPIFFS.exists(filename)) {
-    Println(" does not exist");
-    msgAnswer = "File does not exist";
-  }
-  else {
-    String file_content = readFile(SPIFFS, filename);
-    int config_file_size = file_content.length();
-    Println(" size: " + String(config_file_size));
-
-    if(config_file_size > 1024) {
-      Println(" too large");
-      msgAnswer ="Config file too large";
-    }
-
-    JsonDocument doc;
-    auto error = deserializeJson(doc, file_content);
-    if ( error ) { 
-      Println("Error interpreting config file");
-      msgAnswer ="Error interpreting config file";
-    }
-
-    // get variables from JSON file
-    const str_huis _huis = {
-      doc["huisnr"],
-      doc["desc"],
-      doc["image"]
-   };
-   huis     = _huis;
+  if (!SPIFFS.exists(filename)) {
+    msgAnswer = "Huis config file does not exist, using defaults";
     
-    msgAnswer = ("Data opgehaald voor " + huis.huisnr);
-    Print("Nr" + String(_huis.huisnr) + "Desc: " + _huis.desc + ", img: " + _huis.image); delay(100);
+    for(int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
+//      ledsettings[lednr].leddesc          = LED_SINGLEDEFAULT.desc + String(lednr);
+//      ledsettings[lednr].ledimage         = LED_SINGLEDEFAULT.image;
+//      ledsettings[lednr].anim[0].animdesc = LED_SINGLEDEFAULT.animatie;
+    }
   }
-  */
+  
   return msgAnswer;
 }

@@ -8,8 +8,7 @@ String  fileLedLoadSettings() {
   Println(String(filename));
 
   if (!SPIFFS.exists(filename)) {
-    msgAnswer = "File does not exist, creating default one";
-    Println("TODO TODO TODO");
+    msgAnswer = "Led config file does not exist, using defaults";
     for(int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
       ledsettings[lednr].leddesc          = LED_SINGLEDEFAULT.desc + String(lednr);
       ledsettings[lednr].ledimage         = LED_SINGLEDEFAULT.image;
