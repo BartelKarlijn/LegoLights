@@ -135,6 +135,7 @@ typedef struct {
   long    timeeffect;  //negatieve waarden toelaten
   uint8_t effect;
   String  image;
+  int     animnr;
   String  animatie;
 } str_ledsingle;
 
@@ -158,27 +159,27 @@ typedef struct {
 
 
 const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
-//    desc             ,brigh,timeon,timeoff,timeeff, effect     , image    , animdesc
- {"led00              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led01              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led02              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led03              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led04              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led05              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led06              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led07              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led08              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led09              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led10              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led11              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led12              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led13              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led14              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
-,{"led15              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" }
+//    desc             ,brigh,timeon,timeoff,timeeff, effect     , image    , nr, animdesc
+ {"led00              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led01              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led02              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led03              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led04              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led05              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led06              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led07              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led08              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led09              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led10              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led11              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led12              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led13              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led14              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
+,{"led15              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
 };
 
 // default voor alle leds als er geen file is.
-const str_ledsingle LED_SINGLEDEFAULT  {"led", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV , "default" };
+const str_ledsingle LED_SINGLEDEFAULT  {"led", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" };
 
 
 str_ledsingle ledsingle[LED_NR_ITEMS];

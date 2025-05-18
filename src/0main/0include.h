@@ -102,6 +102,7 @@
 #include "singleled/led_rand.h"
 #include "singleled/led_uit.h"
 #include "singleled/showled.h"
+#include "singleled/settingLedApplyAnim.h"
 #include "singleled/settingLedDelete.h"
 #include "singleled/settingLedListAnim.h"
 
