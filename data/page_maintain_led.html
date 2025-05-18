@@ -72,7 +72,6 @@
             });
         };
         function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
-        function fileDefault2Led(){ $.get("/getfileDefault2Led" , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
         function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
         function fileLoadAnim()   {
             lv_anim = $('#anim').val();
@@ -110,7 +109,6 @@
     <p id="status"></p>
     <button onclick="fileSaveLed();"    class="button button-right button-large">Save settings</button>
     <button onclick="fileLoad2Led();"   class="button button-right button-large">Load from last save</button>
-    <button onclick="fileDefault2Led()" class="button button-right button-large">Reload defaults</button>
     <a href="/" class="button button-right button-large">Terug naar hoofdscherm</a>
 </body>
 </html>

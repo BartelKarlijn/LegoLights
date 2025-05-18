@@ -107,10 +107,6 @@ void setup_AsyncWebserver(){
     Println("Led settings ophalen voor led");
     request->send(200, "text/plain", on_getfileLoad2Led(request));
   });
-  webserver.on("/getfileDefault2Led>", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Led terug naar default zetten");
-    request->send(200, "text/plain", on_getfileDefault2Led(request));
-  });
   webserver.on("/getfileSaveLed", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Led settings bewaren voor led");
     request->send(200, "text/plain", on_getfileSaveLed(request));
