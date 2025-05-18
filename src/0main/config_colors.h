@@ -13,10 +13,14 @@
 #define IMG_FLOU "file_img_Flourish.jpg"
 #define IMG_WEAS "file_img_Weasley.jpg"
 
+#define LED_NR_ITEMS 16
+#define LED_NR_ANIM 6
+
 typedef struct {
   int huisnr;
   String desc;
   String image;
+  int    animnr[LED_NR_ITEMS];
 } str_huis;
 
 const str_huis HUIS_DEFAULT {
@@ -138,9 +142,6 @@ typedef struct {
   int     animnr;
   String  animatie;
 } str_ledsingle;
-
-#define LED_NR_ITEMS 16
-#define LED_NR_ANIM 6
 
 typedef struct {
   String  animdesc;

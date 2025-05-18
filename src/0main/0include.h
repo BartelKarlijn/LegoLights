@@ -38,19 +38,20 @@
 #include "0main/setupLedstrip.h"
 
 // Spiffs() integrated file system)
+#include "spiffs/fileHuisLoadSettings.h"
+#include "spiffs/fileLedLoadSettings.h"
+#include "spiffs/fileLedSaveSettings.h"
 #include "spiffs/fileDefault2Huis.h"
 #include "spiffs/fileLoad2Huis.h"
 #include "spiffs/fileDefault2Kring.h"
-#include "spiffs/fileDefault2Led.h"
-#include "spiffs/fileLedLoadSettings.h"
-#include "spiffs/fileLedSaveSettings.h"
-#include "spiffs/fileLedListAnim.h"
 #include "spiffs/fileLoad2Kring.h"
 #include "spiffs/fileSaveKring.h"
-#include "spiffs/fileListLed.h"
-#include "spiffs/fileSaveLed.h"
-#include "spiffs/fileLoadLed.h"
-#include "spiffs/fileDeleteLed.h"
+#include "spiffs/file0ldDefault2Led.h"
+#include "spiffs/file0ldLedListAnim.h"
+#include "spiffs/file0ldListLed.h"
+#include "spiffs/file0ldSaveLed.h"
+#include "spiffs/file0ldLoadLed.h"
+#include "spiffs/file0ldDeleteLed.h"
 
 // commands
 #include "commands/cF01fpsShow.h"
