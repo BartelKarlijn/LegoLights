@@ -49,7 +49,7 @@
             $('#file_img').attr( "src",  $('#56').val() );
         };
         function getLedListAnims(){
-            $.get("/getfileLedListAnims", {led: lv_led}, function(data) {
+            $.get("/getSettingLedListAnim", {led: lv_led}, function(data) {
 				var animsList = $("#anim");
 				animsList.empty();
 				animsList.append(data);
