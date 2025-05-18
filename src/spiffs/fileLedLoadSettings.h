@@ -27,11 +27,6 @@ String  fileLedLoadSettings() {
     int config_file_size = file_content.length();
     Println(" size: " + String(config_file_size));
 
-    if(config_file_size > 2048) {
-      Println(" too large");
-      msgAnswer ="Config file too large";
-    }
-
     JsonDocument doc;
 
     auto error = deserializeJson(doc, file_content);

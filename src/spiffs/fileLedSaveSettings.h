@@ -1,7 +1,7 @@
 #pragma once
 String fileLedSaveSettings() {
     // Save all LED settings into a JSON file
-    char filename[18] = "/cfg_ledsave.ini";
+    char filename[18] = "/cfg_led.ini";
     String msgAnswer;
     String tmp;
 
@@ -18,14 +18,28 @@ String fileLedSaveSettings() {
         ledLine["leddesc"] = ledsettings[lednr].leddesc;
         ledLine["ledimage"] = ledsettings[lednr].ledimage;
 
+        JsonDocument animDoc;
+        JsonArray animArr = animDoc.to<JsonArray>();
+        for (size_t animnr = 0; animnr < LED_NR_ANIM; animnr++){
+          JsonObject animLine = animArr.add<JsonObject>();
+          animLine["animdesc"]   = ledsettings[lednr].anim[animnr].animdesc;
+          animLine["bri"]        = ledsettings[lednr].anim[animnr].bri;
+          animLine["timeon"]     = ledsettings[lednr].anim[animnr].timeon;
+          animLine["timeoff"]    = ledsettings[lednr].anim[animnr].timeoff;
+          animLine["timeeffect"] = ledsettings[lednr].anim[animnr].timeeffect;
+          animLine["effect"]     = ledsettings[lednr].anim[animnr].effect;
+        }
+        serializeJson(animDoc, tmp);
 
+        ledLine["anim"] = tmp;
+        
     }
 
     // Serialize the JSON and write it to the file
-    serializeJson(doc, tmp);
+    serializeJsonPretty(doc, tmp);
+
     writeFile(SPIFFS, filename, tmp);
 
     msgAnswer = "LED settings saved";
-    Println(tmp); // Debug: Print the JSON content
     return msgAnswer;
 }
