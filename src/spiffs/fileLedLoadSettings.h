@@ -30,7 +30,7 @@ String  fileLedLoadSettings() {
 
     auto error = deserializeJson(doc, file_content);
     if ( error ) { 
-      msgAnswer ="Error interpreting config file";
+      msgAnswer ="Error interpreting config file Led";
     }
 
     int regelcounter = 0;

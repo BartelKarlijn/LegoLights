@@ -8,13 +8,26 @@ String  fileHuisLoadSettings() {
 
   if (!SPIFFS.exists(filename)) {
     msgAnswer = "Huis config file does not exist, using defaults";
-    
+    huissetting.desc = HUIS_DEFAULT.desc;
+    huissetting.image = HUIS_DEFAULT.image;
+    huissetting.huisnr = HUIS_DEFAULT.huisnr;
     for(int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-//      ledsettings[lednr].leddesc          = LED_SINGLEDEFAULT.desc + String(lednr);
-//      ledsettings[lednr].ledimage         = LED_SINGLEDEFAULT.image;
-//      ledsettings[lednr].anim[0].animdesc = LED_SINGLEDEFAULT.animatie;
+      huissetting.animnr[lednr] = HUIS_DEFAULT.animnr[lednr];
     }
   }
-  
+  else {
+    String file_content = readFile(SPIFFS, filename);
+    int config_file_size = file_content.length();
+    Println(" size: " + String(config_file_size));
+
+    JsonDocument doc;
+
+    auto error = deserializeJson(doc, file_content);
+    if ( error ) { 
+      msgAnswer ="Error interpreting config file Led";
+    }
+    
+  }
+
   return msgAnswer;
 }
