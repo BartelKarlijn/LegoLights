@@ -50,7 +50,19 @@
 #include "spiffs/file0ldListLed.h"
 #include "spiffs/file0ldSaveLed.h"
 #include "spiffs/file0ldLoadLed.h"
-#include "spiffs/file0ldDeleteLed.h"
+
+//sigleled
+#include "singleled/led_aan.h"
+#include "singleled/led_fire.h"
+#include "singleled/led_glow.h"
+#include "singleled/led_ramp.h"
+#include "singleled/led_rand.h"
+#include "singleled/led_uit.h"
+#include "singleled/showled.h"
+#include "singleled/settingLedApplyAnim.h"
+#include "singleled/settingLedDelete.h"
+#include "singleled/settingLedListAnim.h"
+#include "singleled/settingLedUpdate.h"
 
 // commands
 #include "commands/cF01fpsShow.h"
@@ -90,19 +102,6 @@
 #include "ledstrip/str_party.h"
 #include "ledstrip/str_uit.h"
 #include "ledstrip/showstrip.h"
-
-//sigleled
-#include "singleled/led_aan.h"
-#include "singleled/led_fire.h"
-#include "singleled/led_glow.h"
-#include "singleled/led_ramp.h"
-#include "singleled/led_rand.h"
-#include "singleled/led_uit.h"
-#include "singleled/showled.h"
-#include "singleled/settingLedApplyAnim.h"
-#include "singleled/settingLedDelete.h"
-#include "singleled/settingLedListAnim.h"
-#include "singleled/settingLedUpdate.h"
 
 // fps & anims
 #include "0main/show_fps.h"
