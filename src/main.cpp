@@ -12,6 +12,7 @@ void setup() {
   setupSpiffs();          // van het ESP32 file systeem lezen
   setupLed();
   fileLedLoadSettings(); // ledsettings inlezen
+  fileLedSaveSettings(); // testing
   //loadAnimatie();         // ini file, terugvallen naar default
   SetupFinished();
 }

@@ -39,10 +39,11 @@
 
 // Spiffs() integrated file system)
 #include "spiffs/fileDefault2Huis.h"
-#include "spiffs/fileLedLoadSettings.h"
 #include "spiffs/fileLoad2Huis.h"
 #include "spiffs/fileDefault2Kring.h"
 #include "spiffs/fileDefault2Led.h"
+#include "spiffs/fileLedLoadSettings.h"
+#include "spiffs/fileLedSaveSettings.h"
 #include "spiffs/fileLedListAnim.h"
 #include "spiffs/fileLoad2Kring.h"
 #include "spiffs/fileSaveKring.h"
