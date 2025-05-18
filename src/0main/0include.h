@@ -83,10 +83,7 @@
 #include "commands/executeCommand.h"
 #include "commands/readSerial.h"
 
-// fps
-#include "0main/show_fps.h"
-
-//ledstrip
+//rgb
 #include "ledstrip/listKringen.h"
 #include "ledstrip/str_aan.h"
 #include "ledstrip/str_chase.h"
@@ -95,7 +92,6 @@
 #include "ledstrip/str_party.h"
 #include "ledstrip/str_uit.h"
 #include "ledstrip/showstrip.h"
-#include "ledstrip/loadAnimatie.h"
 
 //sigleled
 #include "singleled/led_aan.h"
@@ -109,6 +105,10 @@
 #include "singleled/settingLedDelete.h"
 #include "singleled/settingLedListAnim.h"
 #include "singleled/settingLedUpdate.h"
+
+// fps & anims
+#include "0main/show_fps.h"
+#include "0main/loadAnimatie.h"
 
 //wifi
 #include "wifi/on_file.h"            // downloaden of verwijderen
