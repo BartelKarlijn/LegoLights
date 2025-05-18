@@ -1,7 +1,7 @@
 #pragma once
 String  fileLedLoadSettings() {
 // Load all Led settings into memory
-  char filename[18]= "/cfg_led.ini";
+  char filename[18]= FILE_LED;
   String msgAnswer;
 
   Print("Filename ");

@@ -1,7 +1,7 @@
 #pragma once
 String  fileHuisLoadSettings() {
 // Load Huis settings from file
-  char filename[18] = "/cfg_huis.ini";
+  char filename[18] = FILE_HUIS;
   String msgAnswer;
 
   Print(String(filename));
@@ -12,7 +12,7 @@ String  fileHuisLoadSettings() {
     huissetting.image = HUIS_DEFAULT.image;
     huissetting.huisnr = HUIS_DEFAULT.huisnr;
     for(int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-      huissetting.animnr[lednr] = HUIS_DEFAULT.animnr[lednr];
+      huissetting.animnr[lednr] = 0;
     }
   }
   else {
@@ -26,7 +26,13 @@ String  fileHuisLoadSettings() {
     if ( error ) { 
       msgAnswer ="Error interpreting config file Led";
     }
-    
+
+    huissetting.huisnr = doc["huisnr"].as<int>();
+    huissetting.desc   = doc["desc"].as<String>();
+    huissetting.image  = doc["image"].as<String>();
+    for (int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
+      huissetting.animnr[lednr] = doc["animnr"][lednr].as<int>();
+    }
   }
 
   return msgAnswer;

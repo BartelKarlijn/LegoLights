@@ -16,6 +16,9 @@
 #define LED_NR_ITEMS 16
 #define LED_NR_ANIM 6
 
+#define FILE_HUIS "/cfg_huis.ini"
+#define FILE_RGB  "/cfg_rgb.ini"
+#define FILE_LED  "/cfg_led.ini"
 typedef struct {
   int huisnr;
   String desc;

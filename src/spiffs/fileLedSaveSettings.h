@@ -1,7 +1,7 @@
 #pragma once
 String fileLedSaveSettings() {
     // Save all LED settings into a JSON file
-    char filename[18] = "/cfg_led.ini";
+    char filename[18] = FILE_LED;
     String msgAnswer;
     String tmp;
 

@@ -11,6 +11,8 @@ void setup() {
   setup_AsyncWebserver();
   setupSpiffs();          // van het ESP32 file systeem lezen
   setupLed();
+  fileHuisLoadSettings(); // huissettings inlezen
+  fileHuisSaveSettings(); // huissettings opslaan
   fileLedLoadSettings(); // ledsettings inlezen
   //loadAnimatie();         // ini file, terugvallen naar default
   SetupFinished();

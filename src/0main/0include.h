@@ -39,6 +39,7 @@
 
 // Spiffs() integrated file system)
 #include "spiffs/fileHuisLoadSettings.h"
+#include "spiffs/fileHuisSaveSettings.h"
 #include "spiffs/fileLedLoadSettings.h"
 #include "spiffs/fileLedSaveSettings.h"
 #include "spiffs/fileDefault2Huis.h"
