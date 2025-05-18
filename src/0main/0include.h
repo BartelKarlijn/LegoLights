@@ -105,6 +105,7 @@
 #include "singleled/settingLedApplyAnim.h"
 #include "singleled/settingLedDelete.h"
 #include "singleled/settingLedListAnim.h"
+#include "singleled/settingLedUpdate.h"
 
 //wifi
 #include "wifi/on_file.h"            // downloaden of verwijderen
