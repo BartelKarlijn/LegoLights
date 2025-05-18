@@ -42,7 +42,6 @@
 #include "spiffs/fileHuisSaveSettings.h"
 #include "spiffs/fileLedLoadSettings.h"
 #include "spiffs/fileLedSaveSettings.h"
-#include "spiffs/file0ldLoad2Huis.h"
 #include "spiffs/fileDefault2Kring.h"
 #include "spiffs/fileLoad2Kring.h"
 #include "spiffs/fileSaveKring.h"
