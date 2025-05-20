@@ -4,7 +4,7 @@ void cL20ledSaveSetting(){
     String animatie = commandParts.arg2;
 
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {
-        String result = fileSaveLed(lednr, animatie);
+        String result = fileLedSaveSettings();
         Println(result);
         
     } else {

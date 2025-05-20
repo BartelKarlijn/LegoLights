@@ -68,7 +68,7 @@
           document.getElementById("NextLed").href  = "/page_maintain_led.html?led="+nextLed+"&anim="+lv_anim;
         });
       };
-      function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
+      function fileLedSaveSettings() { $.get("/getfileLedSaveSettings"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
       function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
       function fileLoadAnim()   {
         lv_anim = $('#anim').val();
@@ -104,7 +104,7 @@
         <div class="column3">Time effect<br><input id='55' name='jq' type='number' min="0" max="255"/></div>
     </div>
     <p id="status"></p>
-    <button onclick="fileSaveLed();"    class="button button-right button-large">Save settings</button>
+    <button onclick="fileLedSaveSettings();"    class="button button-right button-large">Save settings</button>
     <button onclick="fileLoad2Led();"   class="button button-right button-large">Load from last save</button>
     <a href="/page_root.html" class="button button-right button-large">Terug naar hoofdscherm</a>
 </body>

@@ -1,4 +1,4 @@
-String on_getfileSaveLed(AsyncWebServerRequest *request){
+String on_getfileLedSaveSettings(AsyncWebServerRequest *request){
     String ledString;
     int lednr;
     // get parameter led & veld  http://192.168.68.205/getfileLoad2Led?led=1
@@ -10,5 +10,5 @@ String on_getfileSaveLed(AsyncWebServerRequest *request){
       lednr = 99;
     }
 
-    return fileSaveLed(lednr, ledsingle[lednr].animatie);
+    return fileLedSaveSettings();
 }

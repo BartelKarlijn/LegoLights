@@ -72,9 +72,9 @@ void setup_AsyncWebserver(){
     Println("Led settings ophalen voor led");
     request->send(200, "text/plain", on_getfileLoad2Led(request));
   });
-  webserver.on("/getfileSaveLed", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Led settings bewaren voor led");
-    request->send(200, "text/plain", on_getfileSaveLed(request));
+  webserver.on("/getfileLedSaveSettings", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Alle Led settings bewaren");
+    request->send(200, "text/plain", on_getfileLedSaveSettings(request));
   });
   webserver.on("/getLed", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
