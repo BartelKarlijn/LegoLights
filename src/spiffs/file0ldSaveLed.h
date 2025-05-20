@@ -73,7 +73,7 @@ else {
     serializeJson(doc, tmp);
     writeFile(SPIFFS, filename, tmp);
   }
-  Println(fileListLed(lednr));
+//  Println(settingLedListAnim(lednr));
 
   return "Settings bewaard voor " + ledsingle[lednr].desc;
 
