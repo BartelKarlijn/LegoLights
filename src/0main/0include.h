@@ -45,7 +45,6 @@
 #include "spiffs/fileDefault2Kring.h"
 #include "spiffs/fileLoad2Kring.h"
 #include "spiffs/fileSaveKring.h"
-#include "spiffs/file0ldLoadLed.h"
 
 //sigleled
 #include "singleled/led_aan.h"
@@ -68,11 +67,11 @@
 #include "wifi/on_getSetStrip.h"
 #include "wifi/on_getSetLed.h"
 #include "wifi/on_getSettingLedListAnim.h"
+#include "wifi/on_getsettingLedApplyAnim.h"
 #include "wifi/on_getfileLoad2Kring.h"
-#include "wifi/on_getfileLoad2Led.h"
 #include "wifi/on_getfileDefault2Kring.h"
 #include "wifi/on_getfileSaveKring.h"
-#include "wifi/on_getfileSaveLed.h"
+#include "wifi/on_getfileLedSaveSettings.h"
 #include "wifi/on_getlistKringen.h"
 #include "wifi/on_wifisave.h"
 

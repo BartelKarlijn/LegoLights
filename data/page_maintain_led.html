@@ -69,11 +69,11 @@
         });
       };
       function fileLedSaveSettings() { $.get("/getfileLedSaveSettings"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
-      function fileLoad2Led()   { $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+      function fileLedLoadSettings() { $.get("/getfileLedLoadSettings"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
       function fileLoadAnim()   {
         lv_anim = $('#anim').val();
         $('#57').val(lv_anim);
-        $.get("/getfileLoad2Led"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); 
+        $.get("/getsettingLedApplyAnim"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); 
       };
     </script>
 </head>
@@ -105,7 +105,7 @@
     </div>
     <p id="status"></p>
     <button onclick="fileLedSaveSettings();"    class="button button-right button-large">Save settings</button>
-    <button onclick="fileLoad2Led();"   class="button button-right button-large">Load from last save</button>
+    <button onclick="fileLedLoadSettings();"   class="button button-right button-large">Load from last save</button>
     <a href="/page_root.html" class="button button-right button-large">Terug naar hoofdscherm</a>
 </body>
 </html>

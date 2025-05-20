@@ -4,7 +4,7 @@ void cL21ledLoadSetting(){
     String animatie = commandParts.arg2;
 
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {
-        String result = fileLoadLed(lednr, animatie);
+        String result = fileLedLoadSettings();
         Println(result);
         
     } else {
