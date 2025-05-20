@@ -47,7 +47,7 @@
             var prevDesc  = null;
             $.get("getStrip", {kring: prevKring, veld: "01" }, function(data){
                 document.getElementById("PrevKring").innerHTML = "Naar: " + data;
-                document.getElementById("PrevKring").href  = "/page_maintain_strip?kring="+prevKring;
+                document.getElementById("PrevKring").href  = "/page_maintain_strip.html?kring="+prevKring;
             });
         };
         function getValueNextKring() {
@@ -55,7 +55,7 @@
             var nextDesc  = null;
             $.get("getStrip", {kring: nextKring, veld: "01" }, function(data){
                 document.getElementById("NextKring").innerHTML = "Naar: " + data;
-                document.getElementById("NextKring").href  = "/page_maintain_strip?kring="+nextKring;
+                document.getElementById("NextKring").href  = "/page_maintain_strip.html?kring="+nextKring;
             });
         };
         function fileSaveKring()    { $.get("/getfileSaveKring"     , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); };

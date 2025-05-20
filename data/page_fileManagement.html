@@ -89,7 +89,7 @@ function uploadFile() {
   ajax.addEventListener("load", completeHandler, false); // doesnt appear to ever get called even upon success
   ajax.addEventListener("error", errorHandler, false);
   ajax.addEventListener("abort", abortHandler, false);
-  ajax.open("POST", "/page_fileManagement");
+  ajax.open("POST", "/page_fileManagement.html");
   ajax.send(formdata);
 }
 function progressHandler(event) {

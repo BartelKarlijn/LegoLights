@@ -18,49 +18,14 @@ void setup_AsyncWebserver(){
       executeCommand();
   
     });
-
-    
-  // if url isn't found
-  webserver.onNotFound([](AsyncWebServerRequest *request) {
-    Println("Wifi page not found");
-    //Println(String(request));
-    request->send(404, "text/plain", "Not found");
-  });
   // run handleUpload function when any file is uploaded
   webserver.onFileUpload(on_fileUpload);
-
+    
   // Route for root / web page (controller)
   webserver.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Root requested");
     request->send(SPIFFS, "/page_root.html", "text/html");
   });
-  // static files
-  webserver.on("/file_favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/file_favicon.ico", "image/png");
-  });
-  webserver.on("/file_img_Olivander.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/file_img_Olivander.jpg", "image/jpg");
-  });
-  webserver.on("/file_img_Quiddich.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/file_img_Quiddich.jpg", "image/jpg");
-  });
-  webserver.on("/file_img_Weasley.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/file_img_Weasley.jpg", "image/jpg");
-  });
-  webserver.on("/file_img_Flourish.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/file_img_Flourish.jpg", "image/jpg");
-  });
-  webserver.on("/file_hue.jpg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/file_hue.jpg", "image/png");
-  });
-  webserver.on("/file_jquery-3.7.0.min.js", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/file_jquery-3.7.0.min.js", "text/javascript");
-  });
-  webserver.on("/file_style.css", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("/stylesheet opgevraagd");
-    request->send(SPIFFS, "/file_style.css", "text/css");
-  });
-  // dynamic actions
   // -- file management
   webserver.on("/getfile", HTTP_GET, [](AsyncWebServerRequest * request){
     Println("file requested");
@@ -111,9 +76,6 @@ void setup_AsyncWebserver(){
     Println("Led settings bewaren voor led");
     request->send(200, "text/plain", on_getfileSaveLed(request));
   });
-  //webserver.on("/getlistKringen", HTTP_GET, [](AsyncWebServerRequest *request) {
-  //  request->send(200, "text/plain", listKringen(true, on_getlistKringen(request)) );
-  //});
   webserver.on("/getLed", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
     request->send(200, "text/plain", on_getLed(request));
@@ -121,28 +83,6 @@ void setup_AsyncWebserver(){
   webserver.on("/getSetLed", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("setLed binnen gekregen");
     request->send(200, "text/plain", on_getSetLed(request));
-  });
-
-  // webpages
-  webserver.on("/page_fileManagement", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("FileManagement requested");
-    request->send(SPIFFS, "/page_fileManagement.html", "text/html");
-  });
-  webserver.on("/page_huisje", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Huisje requested");
-    request->send(SPIFFS, "/page_huisje.html", "text/html");
-  });
-  webserver.on("/page_maintain_led", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("led configuratie opgeroepen");
-    request->send(SPIFFS, "/page_maintain_led.html", "text/html");
-  });
-  webserver.on("/page_maintain_strip", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("strip configuratie opgeroepen");
-    request->send(SPIFFS, "/page_maintain_strip.html", "text/html");
-  });
-  webserver.on("/page_wificfg", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Wifi config pagina");
-    request->send(SPIFFS, "/page_wificfg.html", "text/html");
   });
   webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Restarting ESP32 in 2sec");
@@ -154,6 +94,31 @@ void setup_AsyncWebserver(){
     Println("Wifi connection parameters");
     on_wifisave(request);
     request->send(SPIFFS, "/page_wificfg.html", "text/html");
+  });
+  // everything else, currently only static files
+  webserver.onNotFound([](AsyncWebServerRequest *request) {
+    String RequestStr= request->url();
+    Println("NF Request: "+RequestStr);
+    String FileName = RequestStr.substring(0, RequestStr.indexOf("?"));
+    Println("FileName: "+FileName);
+
+    for (int i = 0; i < MAX_WIFI_REQUEST; i++) {
+      // checking if it's a valid file
+      if (FileName.startsWith(validWifiRequest[i].reqPrefix) && FileName.endsWith(validWifiRequest[i].reqExt)) {
+        if (SPIFFS.exists(FileName)) {
+          Println("Sending file " + FileName + " with type " + validWifiRequest[i].htmltype);
+          request->send(SPIFFS, FileName, validWifiRequest[i].htmltype);
+          return;
+        } else {
+          request->send(404, "text/plain", "File not found");
+          return;
+        }
+      }
+      Print("loopronje " + String(i));
+    } 
+
+    Println("Wifi page not found, request: "+request->url());
+    request->send(404, "text/plain", "Not found");
   });
 
   // Start server

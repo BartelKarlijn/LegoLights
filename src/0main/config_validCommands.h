@@ -44,3 +44,22 @@ str_command validCommands[] = {// arg1 arg2 arg3       desc
     {"W11", cW01wifiShowNetworks, "-    -    -    " , "startwifi & setup AP" },
     {"W12", cW01wifiShowNetworks, "-    -    -    " , "stop wifi" }
 };
+
+////// wifi comands ////////
+struct str_wifiRequest {
+    String reqPrefix;
+    String reqExt;
+    String htmltype;
+    FunctionPointer function;
+};
+
+#define MAX_WIFI_REQUEST 5
+str_wifiRequest validWifiRequest[] = {
+    //begin    , ext   , htmltype, function
+    {"/file", "jpg", "image/jpg"        , NULL},
+    {"/file", "js" , "text/javascript"  , NULL},
+    {"/file", "ico", "image/png"        , NULL},
+    {"/file", "css", "text/css"         , NULL},
+    {"/page", "html", "text/html"       , NULL}
+//    {"getSetLed", "txt", "text/plain", NULL}
+};

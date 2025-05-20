@@ -57,7 +57,7 @@
         var prevDesc  = null;
         $.get("getLed", {led: prevLed, veld: "50", anim: lv_anim }, function(data){
           document.getElementById("PrevLed").innerHTML = "Naar: " + data;
-          document.getElementById("PrevLed").href  = "/page_maintain_led?led="+prevLed+"&anim="+lv_anim;
+          document.getElementById("PrevLed").href  = "/page_maintain_led.html?led="+prevLed+"&anim="+lv_anim;
         });
       };
       function getValueNextLed() {
@@ -65,7 +65,7 @@
         var nextDesc  = null;
         $.get("getLed", {led: nextLed, veld: "50", anim: lv_anim }, function(data){
           document.getElementById("NextLed").innerHTML = "Naar: " + data;
-          document.getElementById("NextLed").href  = "/page_maintain_led?led="+nextLed+"&anim="+lv_anim;
+          document.getElementById("NextLed").href  = "/page_maintain_led.html?led="+nextLed+"&anim="+lv_anim;
         });
       };
       function fileSaveLed()    { $.get("/getfileSaveLed"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
