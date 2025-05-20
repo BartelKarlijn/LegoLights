@@ -98,14 +98,22 @@ void setup_AsyncWebserver(){
   // everything else, currently only static files
   webserver.onNotFound([](AsyncWebServerRequest *request) {
     String RequestStr= request->url();
-    Println("NF Request: "+RequestStr);
+    Println("Request: "+RequestStr);
     String FileName = RequestStr.substring(0, RequestStr.indexOf("?"));
-    Println("FileName: "+FileName);
 
     for (int i = 0; i < MAX_WIFI_REQUEST; i++) {
       // checking if it's a valid file
       if (FileName.startsWith(validWifiRequest[i].reqPrefix) && FileName.endsWith(validWifiRequest[i].reqExt)) {
-        if (SPIFFS.exists(FileName)) {
+        if (validWifiRequest[i].iscmd) {
+          // if it's a command, call the function
+          String response = validWifiRequest[i].function(request);
+          Println("X" + response);
+          request->send(200, validWifiRequest[i].htmltype, response);
+          return;
+        }
+       else if (SPIFFS.exists(FileName)) {
+          // This should be a file.
+          Println("Request: "+RequestStr);
           Println("Sending file " + FileName + " with type " + validWifiRequest[i].htmltype);
           request->send(SPIFFS, FileName, validWifiRequest[i].htmltype);
           return;
@@ -114,10 +122,9 @@ void setup_AsyncWebserver(){
           return;
         }
       }
-      Print("loopronje " + String(i));
     } 
 
-    Println("Wifi page not found, request: "+request->url());
+    Println("Wifi page not found, request: "+RequestStr);
     request->send(404, "text/plain", "Not found");
   });
 

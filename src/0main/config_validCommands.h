@@ -1,6 +1,7 @@
 // Configuration file for commands
 // Define a type for the function pointers
 typedef void (*FunctionPointer)();
+typedef String (*FunctPointerWifi)(AsyncWebServerRequest *request);
 struct str_command {
     String cmd;
     FunctionPointer function;
@@ -49,17 +50,19 @@ str_command validCommands[] = {// arg1 arg2 arg3       desc
 struct str_wifiRequest {
     String reqPrefix;
     String reqExt;
+    bool iscmd;
     String htmltype;
-    FunctionPointer function;
+    FunctPointerWifi function;    // zie hoger voor de definitie hiervan
 };
 
 #define MAX_WIFI_REQUEST 5
 str_wifiRequest validWifiRequest[] = {
-    //begin    , ext   , htmltype, function
-    {"/file", "jpg", "image/jpg"        , NULL},
-    {"/file", "js" , "text/javascript"  , NULL},
-    {"/file", "ico", "image/png"        , NULL},
-    {"/file", "css", "text/css"         , NULL},
-    {"/page", "html", "text/html"       , NULL}
-//    {"getSetLed", "txt", "text/plain", NULL}
+    //begin , ext   , iscmd, htmltype, function
+    {"/page", "html", false, "text/html"        , NULL},
+    {"/file", "jpg" , false, "image/jpg"        , NULL},
+    {"/file", "js"  , false, "text/javascript"  , NULL},
+    {"/file", "ico" , false, "image/png"        , NULL},
+    {"/file", "css" , false, "text/css"         , NULL}
+//    {"/get" , "Led"   , true, "text/plain", on_getLed   },
+//    {"/get" , "SetLed", true, "text/plain", on_getSetLed},
 };
