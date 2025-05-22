@@ -75,6 +75,12 @@ void setup_AsyncWebserver(){
     decodeRequestLed(request);
     request->send(200, "text/plain", settingledListAnim());
   });
+  webserver.on("/ledSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Alle Led settings terug ophalen uit cfg file");
+    decodeRequestLed(request);
+    request->send(200, "text/plain", fileLedLoadSettings());
+    ledLoadAnim();
+  });
   webserver.on("/ledSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Led settings bewaren in cfg file");
     decodeRequestLed(request);

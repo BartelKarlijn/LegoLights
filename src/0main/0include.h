@@ -57,6 +57,7 @@
 #include "singleled/ledValueSet.h"
 #include "singleled/showled.h"
 #include "singleled/settingledAnimApply.h"
+#include "singleled/ledLoadAnim.h"
 #include "singleled/settingLedDelete.h"
 #include "singleled/settingledListAnim.h"
 #include "singleled/settingLedUpdate.h"
