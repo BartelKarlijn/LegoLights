@@ -6,6 +6,8 @@ String on_ledValueSet(AsyncWebServerRequest *request){
     String answertoSend;
     String waardeString;
     bool doeVerder;
+    String url = request->url();
+    Println("Request: " + url);
     // get parameter led & veld & waarde http://192.168.68.205/maintain_strip?led=1&veld=hue1&waarde=56
     if (request->hasParam("led")) {
       ledString = request->getParam("led")->value();
@@ -30,6 +32,7 @@ String on_ledValueSet(AsyncWebServerRequest *request){
       answertoSend += "Error: waardeparameter mist";
     }
 
+    Println("Led: " + String(lednr) + " veld: " + String(veldnr) + " waarde: " + waardeString);
     // verwerk de input
     if (doeVerder) {
       switch (veldnr)

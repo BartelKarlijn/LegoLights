@@ -71,7 +71,8 @@ void setup_AsyncWebserver(){
   });
   webserver.on("/ledListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Led animaties tonen als option lijst");
-    request->send(200, "text/plain", on_ledListAnim(request));
+    decodeRequestLed(request);
+    request->send(200, "text/plain", on_ledListAnim());
   });
   webserver.on("/ledSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Led settings bewaren in cfg file");
@@ -85,6 +86,7 @@ void setup_AsyncWebserver(){
     Println("setLed binnen gekregen");
     request->send(200, "text/plain", on_ledValueSet(request));
   });
+  // -- andere dingen
   webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Restarting ESP32 in 2sec");
     request->send(200, "text/plain", "Restarting ESP32 in 2sec");

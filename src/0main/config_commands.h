@@ -12,3 +12,12 @@ str_commandParts commandParts;
 
 int huisMin = 1;
 int huisMax = 20;
+
+struct str_ledRequest {
+    int lednr;
+    int animnr;
+    int veld;
+    String waarde;
+};
+
+struct str_ledRequest ledRequest;

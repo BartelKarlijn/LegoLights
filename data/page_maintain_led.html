@@ -28,7 +28,7 @@
       function getValuesJQ() {
         $('input[name="jq"]').each(function(ind, element) {
 			  $(element).val(function(index, value){
-			  $.get("getLed", {led: lv_led, anim: lv_anim, veld: $(element).attr('id')}, function(data) {
+			  $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: $(element).attr('id')}, function(data) {
 				  $(element).val(data);
 				    });
 				  });
@@ -37,7 +37,7 @@
       function setonchangeValuesJQ(){
 			  $('input[name="jq"]').each(function(ind, element) {
 			    $(element).on("focusout", function(){
-				  $.get("/getSetLed", {led: lv_led, anim: lv_anim, veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {});
+				  $.get("/ledValueSet", {led: lv_led, anim: lv_anim, veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {});
 			    });
 		    });
       };
@@ -46,7 +46,7 @@
         $('#file_img').attr( "src",  $('#56').val() );
       };
       function getLedListAnims(){
-        $.get("/getSettingLedListAnim", {led: lv_led}, function(data) {
+        $.get("/ledListAnim", {led: lv_led}, function(data) {
   		  var animsList = $("#anim");
 			  animsList.empty();
         animsList.append(data);
@@ -55,7 +55,7 @@
 		  function getValuePrevLed() {
         var prevLed = parseInt(lv_led) - 1;
         var prevDesc  = null;
-        $.get("getLed", {led: prevLed, veld: "50", anim: lv_anim }, function(data){
+        $.get("ledValueGet", {led: prevLed, veld: "50", anim: lv_anim }, function(data){
           document.getElementById("PrevLed").innerHTML = "Naar: " + data;
           document.getElementById("PrevLed").href  = "/page_maintain_led.html?led="+prevLed+"&anim="+lv_anim;
         });
@@ -63,17 +63,17 @@
       function getValueNextLed() {
         var nextLed = parseInt(lv_led) + 1;
         var nextDesc  = null;
-        $.get("getLed", {led: nextLed, veld: "50", anim: lv_anim }, function(data){
+        $.get("ledValueGet", {led: nextLed, veld: "50", anim: lv_anim }, function(data){
           document.getElementById("NextLed").innerHTML = "Naar: " + data;
           document.getElementById("NextLed").href  = "/page_maintain_led.html?led="+nextLed+"&anim="+lv_anim;
         });
       };
-      function fileLedSaveSettings() { $.get("/getfileLedSaveSettings"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
-      function fileLedLoadSettings() { $.get("/getfileLedLoadSettings"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
+      function fileLedSaveSettings() { $.get("/ledSettingFileSaves"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
+      function fileLedLoadSettings() { $.get("/ledSettingFileLoad"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); };
       function fileLoadAnim()   {
         lv_anim = $('#anim').val();
         $('#57').val(lv_anim);
-        $.get("/getsettingLedApplyAnim"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); 
+        $.get("/ledAnimApply"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); 
       };
     </script>
 </head>

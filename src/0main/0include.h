@@ -60,6 +60,7 @@
 #include "singleled/settingLedUpdate.h"
 
 // Wifi Actions
+#include "wifi/decodeRequestLed.h"
 #include "wifi/on_file.h"            // downloaden of verwijderen
 #include "wifi/on_fileUpload.h"
 #include "wifi/on_getStrip.h"
