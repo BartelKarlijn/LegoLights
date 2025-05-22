@@ -6,10 +6,10 @@ String ledValueGet(){
       switch (veldnr)
       {
         case 50:  //we beginnen bij 1, zodat 0 een fout geeft
-        answertoSend = ledsingle[lednr].desc;
+          answertoSend = ledsingle[lednr].desc;
         break;
       case 51:
-        answertoSend = ledsingle[lednr].bri;
+          answertoSend = ledsingle[lednr].bri;
         break;
       case 52:
         answertoSend = ledsingle[lednr].effect;

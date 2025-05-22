@@ -13,7 +13,7 @@ void setup() {
   setupLed();
   fileHuisLoadSettings(); // huissettings inlezen
   fileLedLoadSettings(); // ledsettings inlezen
-  //loadAnimatie();         // ini file, terugvallen naar default
+  loadAnimatie();         // ini file, terugvallen naar default
   SetupFinished();
 }
 void loop() {

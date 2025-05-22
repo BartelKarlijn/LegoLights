@@ -106,7 +106,6 @@ void setup_AsyncWebserver(){
   // everything else, currently only static files
   webserver.onNotFound([](AsyncWebServerRequest *request) {
     String RequestStr= request->url();
-    Println("Request: "+RequestStr);
     String FileName = RequestStr.substring(0, RequestStr.indexOf("?"));
 
     for (int i = 0; i < MAX_WIFI_REQUEST; i++) {
@@ -121,8 +120,7 @@ void setup_AsyncWebserver(){
         }
        else if (SPIFFS.exists(FileName)) {
           // This should be a file.
-          Println("Request: "+RequestStr);
-          Println("Sending file " + FileName + " with type " + validWifiRequest[i].htmltype);
+          Println("Sending " + FileName + ", type " + validWifiRequest[i].htmltype);
           request->send(SPIFFS, FileName, validWifiRequest[i].htmltype);
           return;
         } else {
