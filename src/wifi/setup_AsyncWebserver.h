@@ -73,9 +73,9 @@ void setup_AsyncWebserver(){
     Println("Led animaties tonen als option lijst");
     request->send(200, "text/plain", on_ledListAnim(request));
   });
-  webserver.on("/getfileLedSaveSettings", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Alle Led settings bewaren");
-    request->send(200, "text/plain", on_getfileLedSaveSettings(request));
+  webserver.on("/ledSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Alle Led settings bewaren in cfg file");
+    request->send(200, "text/plain", on_ledSettingFileSave(request));
   });
   webserver.on("/getLed", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
