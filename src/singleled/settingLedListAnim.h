@@ -1,5 +1,5 @@
 #pragma once
-String settingLedListAnim(int lednr) {
+String settingledListAnim(int lednr) {
   // List the animations in the settings for a led
   String msgAnswer="";
 

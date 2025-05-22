@@ -37,7 +37,7 @@
 #include "0main/setupLed.h"
 #include "0main/setupLedstrip.h"
 
-// Spiffs() integrated file system)
+// Spiffs(integrated file system)
 #include "spiffs/fileHuisLoadSettings.h"
 #include "spiffs/fileHuisSaveSettings.h"
 #include "spiffs/fileLedLoadSettings.h"
@@ -56,7 +56,7 @@
 #include "singleled/showled.h"
 #include "singleled/settingledAnimApply.h"
 #include "singleled/settingLedDelete.h"
-#include "singleled/settingLedListAnim.h"
+#include "singleled/settingledListAnim.h"
 #include "singleled/settingLedUpdate.h"
 
 // Wifi Actions
