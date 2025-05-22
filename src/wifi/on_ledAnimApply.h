@@ -1,4 +1,4 @@
-String on_getsettingLedApplyAnim(AsyncWebServerRequest *request){
+String ledAnimApply(AsyncWebServerRequest *request){
     String ledString;
     int lednr;
     int animnr;
@@ -16,7 +16,7 @@ String on_getsettingLedApplyAnim(AsyncWebServerRequest *request){
     else {
       animnr = 0;
     }
-    settingLedApplyAnim(lednr, animnr);
+    settingledAnimApply(lednr, animnr);
     return "Animatie "+String(animnr)+" op led "+String(lednr)+" toegepast";
   }
  

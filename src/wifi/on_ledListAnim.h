@@ -1,4 +1,4 @@
-String on_getSettingLedListAnim(AsyncWebServerRequest *request){
+String on_getsettingLedListAnim(AsyncWebServerRequest *request){
     String ledString;
     int lednr;
     if (request->hasParam("led")) {

@@ -63,14 +63,15 @@ void setup_AsyncWebserver(){
     Println("setstrip binnen gekregen");
     request->send(200, "text/plain", on_getSetStrip(request));
   });
-  // -- led management
+  //--------------------
+  // -- led management--
+  webserver.on("/ledAnimApply", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Animatie toepassen voor led");
+    request->send(200, "text/plain", ledAnimApply(request));
+  });
   webserver.on("/getSettingLedListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Led animaties tonen als option lijst");
-    request->send(200, "text/plain", on_getSettingLedListAnim(request));
-  });
-  webserver.on("/getsettingLedApplyAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Led settings ophalen voor led");
-    request->send(200, "text/plain", on_getsettingLedApplyAnim(request));
+    request->send(200, "text/plain", on_getsettingLedListAnim(request));
   });
   webserver.on("/getfileLedSaveSettings", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Led settings bewaren");

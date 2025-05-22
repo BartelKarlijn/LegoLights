@@ -1,5 +1,5 @@
 #pragma once
-void settingLedApplyAnim(int lednr, int animnr) {
+void settingledAnimApply(int lednr, int animnr) {
   // Apply LED settings for given animatie
   if (ledsettings[lednr].anim[animnr].animdesc == NULL) {
     Println("settingLedApplyAnim: animatie niet gevonden");
