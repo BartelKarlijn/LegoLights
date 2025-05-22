@@ -1,4 +1,4 @@
-String on_getSetLed(AsyncWebServerRequest *request){
+String on_ledValueSet(AsyncWebServerRequest *request){
     String ledString;
     int lednr;
     String veldString;

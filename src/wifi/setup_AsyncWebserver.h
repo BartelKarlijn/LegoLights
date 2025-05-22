@@ -77,13 +77,13 @@ void setup_AsyncWebserver(){
     Println("Alle Led settings bewaren in cfg file");
     request->send(200, "text/plain", on_ledSettingFileSave(request));
   });
-  webserver.on("/getLed", HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/ledValueGet", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", on_getLed(request));
+    request->send(200, "text/plain", on_ledValueGet(request));
   });
-  webserver.on("/getSetLed", HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/ledValueSet", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("setLed binnen gekregen");
-    request->send(200, "text/plain", on_getSetLed(request));
+    request->send(200, "text/plain", on_ledValueSet(request));
   });
   webserver.on("/restart", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Restarting ESP32 in 2sec");
