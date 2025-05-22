@@ -6,7 +6,9 @@ void loadAnimatie() {
   // leds
   for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++)
   {
-    settingledAnimApply(lednr, huissetting.animnr[lednr]);
+    ledRequest.lednr = lednr;
+    ledRequest.animnr = huissetting.animnr[lednr];
+    settingledAnimApply();
   }
   
   // kringen

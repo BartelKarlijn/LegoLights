@@ -67,7 +67,6 @@
 #include "wifi/on_ledValueGet.h"
 #include "wifi/on_getSetStrip.h"
 #include "wifi/on_ledValueSet.h"
-#include "wifi/on_ledAnimApply.h"
 #include "wifi/on_getfileLoad2Kring.h"
 #include "wifi/on_getfileDefault2Kring.h"
 #include "wifi/on_getfileSaveKring.h"

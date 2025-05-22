@@ -1,6 +1,8 @@
 #pragma once
-void settingledAnimApply(int lednr, int animnr) {
+String settingledAnimApply() {
   // Apply LED settings for given animatie
+  int lednr = ledRequest.lednr;
+  int animnr = ledRequest.animnr;
   if (ledsettings[lednr].anim[animnr].animdesc == NULL) {
     Println("settingLedApplyAnim: animatie niet gevonden");
   }
@@ -16,4 +18,5 @@ void settingledAnimApply(int lednr, int animnr) {
     ledsingle[lednr].animnr = animnr;
     ledsingle[lednr].animatie = ledsettings[lednr].anim[animnr].animdesc;
   }
+  return "anim applied";
 }

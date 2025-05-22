@@ -67,7 +67,8 @@ void setup_AsyncWebserver(){
   // -- led management--
   webserver.on("/ledAnimApply", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Animatie toepassen voor led");
-    request->send(200, "text/plain", ledAnimApply(request));
+    decodeRequestLed(request);
+    request->send(200, "text/plain", settingledAnimApply());
   });
   webserver.on("/ledListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Led animaties tonen als option lijst");
@@ -76,14 +77,17 @@ void setup_AsyncWebserver(){
   });
   webserver.on("/ledSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Led settings bewaren in cfg file");
+    decodeRequestLed(request);
     request->send(200, "text/plain", on_ledSettingFileSave(request));
   });
   webserver.on("/ledValueGet", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    decodeRequestLed(request);
     request->send(200, "text/plain", on_ledValueGet(request));
   });
   webserver.on("/ledValueSet", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("setLed binnen gekregen");
+    decodeRequestLed(request);
     request->send(200, "text/plain", on_ledValueSet(request));
   });
   // -- andere dingen
