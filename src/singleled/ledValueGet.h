@@ -1,21 +1,8 @@
-String on_ledValueGet(AsyncWebServerRequest *request){
-    String ledString;
-    int lednr;
-    String veldString;
-    int veldnr;
-    String answertoSend;
+String ledValueGet(){
+    int lednr = ledRequest.lednr;
+    int veldnr = ledRequest.veld;
+    String answertoSend = "";
     // get parameter led & veld  http://192.168.68.205/maintain_strip?led=1?veld=hue1
-    if (request->hasParam("led")) {
-      ledString = request->getParam("led")->value();
-      lednr = ledString.toInt();
-    }
-    else {
-      lednr = 99;
-    }
-    if (request->hasParam("veld")) {
-      veldString = request->getParam("veld")->value();
-      veldnr = veldString.toInt();
-
       switch (veldnr)
       {
         case 50:  //we beginnen bij 1, zodat 0 een fout geeft
@@ -46,9 +33,5 @@ String on_ledValueGet(AsyncWebServerRequest *request){
         answertoSend = "error";
         break;
       }
-    }
-    else {
-      answertoSend = "error";
-    }
     return answertoSend;
 }

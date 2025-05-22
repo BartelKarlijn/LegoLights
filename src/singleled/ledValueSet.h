@@ -1,40 +1,12 @@
-String on_ledValueSet(AsyncWebServerRequest *request){
-    String ledString;
-    int lednr;
-    String veldString;
-    int veldnr;
+String ledValueSet(){
+    int lednr = ledRequest.lednr;
+    int veldnr = ledRequest.veld;
+    String waardeString = ledRequest.waarde;
     String answertoSend;
-    String waardeString;
-    bool doeVerder;
-    String url = request->url();
-    Println("Request: " + url);
     // get parameter led & veld & waarde http://192.168.68.205/maintain_strip?led=1&veld=hue1&waarde=56
-    if (request->hasParam("led")) {
-      ledString = request->getParam("led")->value();
-      lednr = ledString.toInt();
-    }
-    else {
-      lednr = 255;
-    }
-    if (request->hasParam("veld")) {
-      veldString = request->getParam("veld")->value();
-      veldnr = veldString.toInt();
-      doeVerder = true;
-    }
-    else {
-      answertoSend += "Error: veld mist";
-    }
-    if (request->hasParam("waarde")) {
-      waardeString = request->getParam("waarde")->value();
-      doeVerder = true;
-    }
-    else {
-      answertoSend += "Error: waardeparameter mist";
-    }
-
+    
     Println("Led: " + String(lednr) + " veld: " + String(veldnr) + " waarde: " + waardeString);
     // verwerk de input
-    if (doeVerder) {
       switch (veldnr)
       {
       case 50:  //we beginnen bij 50, zodat 0 een fout geeft (strip is 1-50)
@@ -73,6 +45,5 @@ String on_ledValueSet(AsyncWebServerRequest *request){
         answertoSend = "error";
         break;
       }
-    }
     return answertoSend;
 }

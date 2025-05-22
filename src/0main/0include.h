@@ -53,6 +53,8 @@
 #include "singleled/led_ramp.h"
 #include "singleled/led_rand.h"
 #include "singleled/led_uit.h"
+#include "singleled/ledValueGet.h"
+#include "singleled/ledValueSet.h"
 #include "singleled/showled.h"
 #include "singleled/settingledAnimApply.h"
 #include "singleled/settingLedDelete.h"
@@ -64,13 +66,10 @@
 #include "wifi/on_file.h"            // downloaden of verwijderen
 #include "wifi/on_fileUpload.h"
 #include "wifi/on_getStrip.h"
-#include "wifi/on_ledValueGet.h"
 #include "wifi/on_getSetStrip.h"
-#include "wifi/on_ledValueSet.h"
 #include "wifi/on_getfileLoad2Kring.h"
 #include "wifi/on_getfileDefault2Kring.h"
 #include "wifi/on_getfileSaveKring.h"
-#include "wifi/on_ledSettingFileSave.h"
 #include "wifi/on_getlistKringen.h"
 #include "wifi/on_wifisave.h"
 
