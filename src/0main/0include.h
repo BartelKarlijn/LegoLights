@@ -56,11 +56,9 @@
 #include "singleled/ledValueGet.h"
 #include "singleled/ledValueSet.h"
 #include "singleled/showled.h"
-#include "singleled/settingledAnimApply.h"
+#include "singleled/ledAnimApply.h"
 #include "singleled/ledLoadAnim.h"
-#include "singleled/settingLedDelete.h"
-#include "singleled/settingledListAnim.h"
-#include "singleled/settingLedUpdate.h"
+#include "singleled/ledListAnim.h"
 
 // Wifi Actions
 #include "wifi/decodeRequestLed.h"
@@ -95,7 +93,6 @@
 #include "commands/cL09ledSetEffect.h"
 #include "commands/cL20ledSaveSetting.h"
 #include "commands/cL21ledLoadSetting.h"
-#include "commands/cL22ledDeleSetting.h"
 #include "commands/cW01wifiShowNetworks.h"
 #include "0main/config_validCommands.h"
 #include "commands/cC00Help.h"  // Deze moet na de config staan, want toont wat daar staat

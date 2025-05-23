@@ -8,7 +8,7 @@ void loadAnimatie() {
   {
     ledRequest.lednr = lednr;
     ledRequest.animnr = huissetting.animnr[lednr];
-    settingledAnimApply();
+    ledAnimApply();
   }
   
   // kringen

@@ -32,7 +32,6 @@ str_command validCommands[] = {// arg1 arg2 arg3       desc
     {"L09", cL09ledSetEffect    , "led  eff  tEff " , "set effect" },
     {"L20", cL20ledSaveSetting  , "led  anim -    " , "save settings voor Animatie" },
     {"L21", cL21ledLoadSetting  , "led  anim -    " , "load animation from last save" },
-    {"L22", cL22ledDeleSetting  , "led  annr -    " , "delete animation by nr" },
     {"R01", cW01wifiShowNetworks, "x    -    -    " , "reboot in x sec" },
     {"R10", cW01wifiShowNetworks, "name -    -    " , "give board a name H01= Olivander, ..." },
     {"R20", cW01wifiShowNetworks, "-    -    -    " , "save settings" },

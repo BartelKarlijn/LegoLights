@@ -1,5 +1,5 @@
 #pragma once
-String settingledAnimApply() {
+String ledAnimApply() {
   // Apply LED settings for given animatie
   int lednr = ledRequest.lednr;
   int animnr = ledRequest.animnr;
