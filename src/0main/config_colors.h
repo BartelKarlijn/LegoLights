@@ -32,7 +32,7 @@ const str_huis HUIS_DEFAULT {
   "file_img_Huis.jpg"
 };
 
-str_huis huissetting;
+str_huis huisSetting;
 
 typedef struct {
   String desc;

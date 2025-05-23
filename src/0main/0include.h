@@ -46,7 +46,11 @@
 #include "spiffs/fileLoad2Kring.h"
 #include "spiffs/fileSaveKring.h"
 
-//sigleled
+//huis
+#include "huis/huisValueGet.h"
+#include "huis/huisValueSet.h"
+
+//singleled
 #include "led/led_aan.h"
 #include "led/led_fire.h"
 #include "led/led_glow.h"
@@ -61,6 +65,7 @@
 #include "led/ledListAnim.h"
 
 // Wifi Actions
+#include "wifi/decodeRequestHuis.h"
 #include "wifi/decodeRequestLed.h"
 #include "wifi/on_file.h"            // downloaden of verwijderen
 #include "wifi/on_fileUpload.h"

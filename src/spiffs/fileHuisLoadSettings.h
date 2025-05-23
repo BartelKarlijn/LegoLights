@@ -8,11 +8,11 @@ String  fileHuisLoadSettings() {
 
   if (!SPIFFS.exists(filename)) {
     msgAnswer = "Huis config file does not exist, using defaults";
-    huissetting.desc = HUIS_DEFAULT.desc;
-    huissetting.image = HUIS_DEFAULT.image;
-    huissetting.huisnr = HUIS_DEFAULT.huisnr;
+    huisSetting.desc = HUIS_DEFAULT.desc;
+    huisSetting.image = HUIS_DEFAULT.image;
+    huisSetting.huisnr = HUIS_DEFAULT.huisnr;
     for(int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-      huissetting.animnr[lednr] = 0;
+      huisSetting.animnr[lednr] = 0;
     }
   }
   else {
@@ -27,11 +27,11 @@ String  fileHuisLoadSettings() {
       msgAnswer ="Error interpreting config file Led";
     }
 
-    huissetting.huisnr = doc["huisnr"].as<int>();
-    huissetting.desc   = doc["desc"].as<String>();
-    huissetting.image  = doc["image"].as<String>();
+    huisSetting.huisnr = doc["huisnr"].as<int>();
+    huisSetting.desc   = doc["desc"].as<String>();
+    huisSetting.image  = doc["image"].as<String>();
     for (int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-      huissetting.animnr[lednr] = doc["animnr"][lednr].as<int>();
+      huisSetting.animnr[lednr] = doc["animnr"][lednr].as<int>();
     }
   }
 

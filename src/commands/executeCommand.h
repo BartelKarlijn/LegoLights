@@ -1,6 +1,6 @@
 void executeCommand() {
     // Eerst checken of commando voor dit huisje is.
-    if (commandParts.huis != huissetting.huisnr) {
+    if (commandParts.huis != huisSetting.huisnr) {
         return;
     }
 

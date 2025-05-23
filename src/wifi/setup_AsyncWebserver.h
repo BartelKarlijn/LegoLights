@@ -64,6 +64,18 @@ void setup_AsyncWebserver(){
     request->send(200, "text/plain", on_getSetStrip(request));
   });
   //--------------------
+  // -- huis management--
+  webserver.on("/huisValueGet", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    decodeRequestHuis(request);
+    request->send(200, "text/plain", huisValueGet());
+  });
+  webserver.on("/huisValueSet", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("setLed binnen gekregen");
+    decodeRequestHuis(request);
+    request->send(200, "text/plain", huisValueSet());
+  });
+  //--------------------
   // -- led management--
   webserver.on("/ledAnimApply", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Animatie toepassen voor led");

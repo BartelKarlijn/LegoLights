@@ -10,9 +10,7 @@ struct str_commandParts {
 };
 str_commandParts commandParts;
 
-int huisMin = 1;
-int huisMax = 20;
-
+// led
 struct str_ledRequest {
     int lednr;
     int animnr;
@@ -20,4 +18,17 @@ struct str_ledRequest {
     String waarde;
 };
 
-struct str_ledRequest ledRequest;
+str_ledRequest ledRequest;
+
+//huis
+int huisMin = 1;
+int huisMax = 20;
+
+struct str_huisRequest {
+    int huisnr;
+    int veld;
+    int lednr;
+    String waarde;
+};
+
+str_huisRequest huisRequest;
