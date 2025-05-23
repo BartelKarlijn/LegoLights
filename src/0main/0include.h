@@ -47,18 +47,18 @@
 #include "spiffs/fileSaveKring.h"
 
 //sigleled
-#include "singleled/led_aan.h"
-#include "singleled/led_fire.h"
-#include "singleled/led_glow.h"
-#include "singleled/led_ramp.h"
-#include "singleled/led_rand.h"
-#include "singleled/led_uit.h"
-#include "singleled/ledValueGet.h"
-#include "singleled/ledValueSet.h"
-#include "singleled/showled.h"
-#include "singleled/ledAnimApply.h"
-#include "singleled/ledLoadAnim.h"
-#include "singleled/ledListAnim.h"
+#include "led/led_aan.h"
+#include "led/led_fire.h"
+#include "led/led_glow.h"
+#include "led/led_ramp.h"
+#include "led/led_rand.h"
+#include "led/led_uit.h"
+#include "led/ledValueGet.h"
+#include "led/ledValueSet.h"
+#include "led/showled.h"
+#include "led/ledAnimApply.h"
+#include "led/ledLoadAnim.h"
+#include "led/ledListAnim.h"
 
 // Wifi Actions
 #include "wifi/decodeRequestLed.h"
@@ -101,14 +101,14 @@
 #include "commands/readSerial.h"
 
 //rgb
-#include "ledstrip/listKringen.h"
-#include "ledstrip/str_aan.h"
-#include "ledstrip/str_chase.h"
-#include "ledstrip/str_fire.h"
-#include "ledstrip/str_glow.h"
-#include "ledstrip/str_party.h"
-#include "ledstrip/str_uit.h"
-#include "ledstrip/showstrip.h"
+#include "rgb/listKringen.h"
+#include "rgb/str_aan.h"
+#include "rgb/str_chase.h"
+#include "rgb/str_fire.h"
+#include "rgb/str_glow.h"
+#include "rgb/str_party.h"
+#include "rgb/str_uit.h"
+#include "rgb/showstrip.h"
 
 // fps & anims
 #include "0main/show_fps.h"
