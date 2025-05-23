@@ -5,7 +5,7 @@
   <link rel="icon" href="/file_favicon.ico">
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
-    <script>
+  <script>
       var lv_led = 0;
       var lv_anim = 0;
       $(document).ready(function() {
@@ -23,7 +23,7 @@
 			  setonchangeValuesJQ();  //onchange voor jq elementen
 			  getValuePrevLed();
         getValueNextLed();
-        setTimeout(getImage, 2000);
+        setTimeout(getImage, 1000);
   		});
       function getValuesJQ() {
         $('input[name="jq"]').each(function(ind, element) {
@@ -75,7 +75,7 @@
         $('#57').val(lv_anim);
         $.get("/ledAnimApply"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQ(); 
       };
-    </script>
+  </script>
 </head>
 
 <body style="text-align:left;" id="body" >
@@ -83,14 +83,12 @@
     <div class="row">
         <div class="column3"><a id="PrevLed" href="/" class='button button-center'></a></div>
         <div class="column3"><h3>
-			<img id="file_img"  src="" onchange="getImage();"></img><br>
-			Image<input id='56' name='jq' type='text'   required/><br>
-			Naam<input id='50' name='jq' type='text'   required/><br>
-			Animatie<input id='57' name='jq' type='text'   required/><br>
-            Anims<select id="anim" type="text">
-					<option value="default"></option>
-                    </select><br>
-            <button onclick="fileLoadAnim()" class="button button-center">Reload</button>
+    			<img id="file_img"  src="" onchange="getImage();"></img><br>
+			    Image<input id='56' name='jq' type='text'   required/><br>
+			    Naam<input id='50' name='jq' type='text'   required/><br>
+			    Animatie<input id='57' name='jq' type='text'   required/><br>
+          Anims<select id="anim" type="text"><option value="default"></option></select><br>
+          <button onclick="fileLoadAnim()" class="button button-center">Reload</button>
 			</h3></div>
         <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
     </div>

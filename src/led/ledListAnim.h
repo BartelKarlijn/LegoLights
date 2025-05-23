@@ -8,6 +8,8 @@ String ledListAnim() {
       msgAnswer += "<option value='";
       msgAnswer += i;
       msgAnswer += "'>";
+      msgAnswer += i;
+      msgAnswer += ". ";
       msgAnswer += ledsettings[ledRequest.lednr].anim[i].animdesc;
       msgAnswer += "</option>";
   }

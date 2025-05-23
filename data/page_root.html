@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
   <title>Diagon Alley</title>
   <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
@@ -8,7 +7,39 @@
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function() {
+      console.log("begin van ready");
+      createDefaultAnim();
+      getValuesJQ();        //dan pas alles ophalen voor jq
+			setonchangeValuesJQ();  //onchange voor jq elementen
+      setTimeout(getImage, 1000);
 		});
+    function getValuesJQ() {
+        $('input[name="jq"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+			  $.get("huisValueGet", {led: $(element).attr('led'), veld: $(element).attr('id')}, function(data) {
+				  $(element).val(data);
+				    });
+				  });
+        });
+      };
+      function setonchangeValuesJQ(anim){
+			  $('input[name="jq"]').each(function(ind, element) {
+			    $(element).on("focusout", function(){
+				  $.get("/huisValueSet", {led: $(element).attr('led'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {});
+			    });
+		    });
+      };
+      function getImage() {
+        console.log("img refreshed " + $('#41').val() )
+        $('#file_img').attr( "src",  $('#41').val() );
+      };
+      function createDefaultAnim(){
+        for (let i=0; i<16; i++){
+          var defaultanims = $("<input id='43' led='"+i+"' name='jq'> default "+ i +"</input>");
+          defaultanims.appendTo("#defaultAnims");
+          console.log("led "+i);
+        };
+      };
   </script>
 
 </head>
@@ -16,12 +47,17 @@
   <noscript>
     <strong>We're sorry but Diagon Alley doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
-  <h1>Diagon Alley</h1>
-  <h3>Huisjes</h3>
+  <h1>Beheer Huis</h1>
   <div class="row">
-    <div class="column2"><a id="Olivander" href="page_huisje.html?image=file_img_Olivander.jpg"><img src = "file_img_Olivander.jpg"></a></div>
-    <div class="column2"><a id="Quiddich"  href="page_huisje.html?image=file_img_Quiddich.jpg" ><img src = "file_img_Quiddich.jpg" ></a></div>
-    <div class="column2"><a id="led"  href="page_maintain_led.html" ><img src = "file_img_Quiddich.jpg" ></a></div>
+    <div class="column3"><a id="jq" href="page_huisje.html?image=file_img_Olivander.jpg">led</a></div>
+    <div class="column3"><h3>
+      <img id="file_img"  src="" onchange="getImage();"></img><br>
+      Image<input id='41' name='jq' type='text' led="0"  required/><br>
+      Naam<input id='40' name='jq' type='text'  led="0" required/><br>
+      HuisNr<input id='42' name='jq' type='text' led="0"  required/><br>
+      Anims todo <div id='defaultAnims'></div><br>
+      </h3></div>
+    <div class="column3"><a id="led"  href="page_maintain_led.html" >rgb</a></div>
   </div>
   <div class="row">
     <div class="column2"><a id="Flourish"  href="page_huisje.html?image=file_img_Flourish.jpg" ><img src = "file_img_Flourish.jpg" ></a></div>

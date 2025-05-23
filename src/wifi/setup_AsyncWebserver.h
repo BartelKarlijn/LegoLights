@@ -65,8 +65,17 @@ void setup_AsyncWebserver(){
   });
   //--------------------
   // -- huis management--
+  webserver.on("/huisSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Alle Huis settings terug ophalen uit cfg file");
+    decodeRequestHuis(request);
+    request->send(200, "text/plain", fileHuisLoadSettings());
+  });
+  webserver.on("/ledSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Alle Huis settings bewaren in cfg file");
+    decodeRequestHuis(request);
+    request->send(200, "text/plain", fileHuisSaveSettings());
+  });
   webserver.on("/huisValueGet", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("getled binnen gekregen"); geen print want we krijgen er zo 10 binnen
     decodeRequestHuis(request);
     request->send(200, "text/plain", huisValueGet());
   });
