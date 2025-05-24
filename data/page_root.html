@@ -9,23 +9,23 @@
     $(document).ready(function() {
       console.log("begin van ready");
       createDefaultAnim();
-      getValuesJQ();        //dan pas alles ophalen voor jq
-			setonchangeValuesJQ();  //onchange voor jq elementen
+      getValuesJQH();        //dan pas alles ophalen voor jq
+			setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
 		});
-    function getValuesJQ() {
-        $('input[name="jq"]').each(function(ind, element) {
+    function getValuesJQH() {
+        $('input[name="jqh"]').each(function(ind, element) {
 			  $(element).val(function(index, value){
-			  $.get("huisValueGet", {led: $(element).attr('led'), veld: $(element).attr('id')}, function(data) {
+			  $.get("huisValueGet", {led: $(element).attr('led'), veld: $(element).attr('veld')}, function(data) {
 				  $(element).val(data);
 				    });
 				  });
         });
       };
-      function setonchangeValuesJQ(anim){
-			  $('input[name="jq"]').each(function(ind, element) {
+      function setonchangeValuesJQH(anim){
+			  $('input[name="jqh"]').each(function(ind, element) {
 			    $(element).on("focusout", function(){
-				  $.get("/huisValueSet", {led: $(element).attr('led'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {});
+				  $.get("/huisValueSet", {led: $(element).attr('led'), veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
 			    });
 		    });
       };
@@ -35,8 +35,8 @@
       };
       function createDefaultAnim(){
         for (let i=0; i<16; i++){
-          var defaultanims = $("<input id='43' led='"+i+"' name='jq'> default "+ i +"</input>");
-          defaultanims.appendTo("#defaultAnims");
+          var ledlist = $("<input veld='43' led='"+i+"' name='jqh'> default "+ i +"</input>");
+          ledlist.appendTo("#defaultAnims");
           console.log("led "+i);
         };
       };
@@ -49,19 +49,24 @@
   </noscript>
   <h1>Beheer Huis</h1>
   <div class="row">
-    <div class="column3"><a id="jq" href="page_huisje.html?image=file_img_Olivander.jpg">led</a></div>
+    <div class="column3"><a href="http://192.168.68.191/page_maintain_led.html?led=1&anim=0">led</a></div>
     <div class="column3"><h3>
       <img id="file_img"  src="" onchange="getImage();"></img><br>
-      Image<input id='41' name='jq' type='text' led="0"  required/><br>
-      Naam<input id='40' name='jq' type='text'  led="0" required/><br>
-      HuisNr<input id='42' name='jq' type='text' led="0"  required/><br>
+      Image<input veld='41' name='jqh' type='text' led="0"  required/><br>
+      Naam<input veld='40' name='jqh' type='text'  led="0" required/><br>
+      HuisNr<input veld='42' name='jqh' type='text' led="0"  required/><br>
       Anims todo <div id='defaultAnims'></div><br>
       </h3></div>
-    <div class="column3"><a id="led"  href="page_maintain_led.html" >rgb</a></div>
+    <div class="column3"><a veld="led"  href="page_maintain_led.html" >rgb</a></div>
   </div>
   <div class="row">
-    <div class="column2"><a id="Flourish"  href="page_huisje.html?image=file_img_Flourish.jpg" ><img src = "file_img_Flourish.jpg" ></a></div>
-    <div class="column2"><a id="Weasley"   href="page_huisje.html?image=file_img_Weasley.jpg"  ><img src = "file_img_Weasley.jpg"  ></a></div>
+    <div class="column3"><a veld="50" name="jql">0.</a></div>
+  </div>
+
+
+  <div class="row">
+    <div class="column2"><a veld="Flourish"  href="page_huisje.html?image=file_img_Flourish.jpg" ><img src = "file_img_Flourish.jpg" ></a></div>
+    <div class="column2"><a veld="Weasley"   href="page_huisje.html?image=file_img_Weasley.jpg"  ><img src = "file_img_Weasley.jpg"  ></a></div>
   </div>
 
   <a href="/restart"                  class="button button-right  button-large">/!\Reboot ESP32</a>
