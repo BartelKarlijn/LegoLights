@@ -8,7 +8,8 @@
   <script>
     $(document).ready(function() {
       console.log("begin van ready");
-      createDefaultAnim();
+      //createDefaultAnim();
+      getValuesJQL();
       getValuesJQH();        //dan pas alles ophalen voor jq
 			setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
@@ -29,17 +30,45 @@
 			    });
 		    });
       };
+      function getValuesJQL() {
+        $('label[name="jql"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+			  $.get("ledValueGet", {led: $(element).attr('led'), anim: $(element).attr('anim'), veld: $(element).attr('veld')}, function(data) {
+				  $(element).text($(element).attr('led') + ". "+data);
+				    });
+				  });
+        });
+        $('a[name="jql"]').each(function(ind, element) {
+			    $(element).val(function(index, value){
+            lv_led = $(element).attr('led');
+            lv_anim = $(element).attr('anim');
+            lv_veld = $(element).attr('veld');
+			      $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
+              $(element).text(lv_led + ". "+data);
+              $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
+				    });
+				  });
+        });
+      };
       function getImage() {
-        console.log("img refreshed " + $('#41').val() )
-        $('#file_img').attr( "src",  $('#41').val() );
+        console.log("img refreshed " + $('#img').val() )
+        $('#file_img').attr( "src",  $('#img').val() );
+      };
+      function getLedListAnims(){
+        lv_led = $(element).attr('led');
+        $.get("/ledListAnim", {led: lv_led}, function(data) {
+  		  var animsList = $("#anim");
+			  animsList.empty();
+        animsList.append(data);
+			  });
       };
       function createDefaultAnim(){
         for (let i=0; i<16; i++){
           var ledlist = $("<input veld='43' led='"+i+"' name='jqh'> default "+ i +"</input>");
-          ledlist.appendTo("#defaultAnims");
+          ledlist.appendTo("#defaultAnims"); 
           console.log("led "+i);
         };
-      };
+    };
   </script>
 
 </head>
@@ -52,17 +81,23 @@
     <div class="column3"><a href="http://192.168.68.191/page_maintain_led.html?led=1&anim=0">led</a></div>
     <div class="column3"><h3>
       <img id="file_img"  src="" onchange="getImage();"></img><br>
-      Image<input veld='41' name='jqh' type='text' led="0"  required/><br>
+      Image<input id="img" veld='41' name='jqh' type='text' led="0"  required/><br>
       Naam<input veld='40' name='jqh' type='text'  led="0" required/><br>
-      HuisNr<input veld='42' name='jqh' type='text' led="0"  required/><br>
+      HuisNr<input class = "input-small" veld='42' name='jqh' type='text' led="0"  required/><br>
       Anims todo <div id='defaultAnims'></div><br>
       </h3></div>
     <div class="column3"><a veld="led"  href="page_maintain_led.html" >rgb</a></div>
   </div>
+  <div class="row"><h2>
+    <div class="column3"><label>Led</label></div>
+    <div class="column3"><label>Default animatie</label></div>
+    <div class="column3"><label>Animaties</label></div>
+  </h2></div>
   <div class="row">
-    <div class="column3"><a veld="50" name="jql">0.</a></div>
+    <div class="column3"><a      name="jql" veld="50" led="0" anim="0" href="/" class='button button-center'>naar</a></div>
+    <div class="column3"><input  name="jqh" veld="43" led="0" class="input-small"></input></div>
+    <div class="column3"><select name="jql"           led="0" type="text" ><option value="default"></option></select></div>
   </div>
-
 
   <div class="row">
     <div class="column2"><a veld="Flourish"  href="page_huisje.html?image=file_img_Flourish.jpg" ><img src = "file_img_Flourish.jpg" ></a></div>
