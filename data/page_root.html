@@ -8,66 +8,91 @@
   <script>
     $(document).ready(function() {
       console.log("begin van ready");
-      //createDefaultAnim();
+      ListLedDefaults();
+      getLedListAnims();
       getValuesJQL();
       getValuesJQH();        //dan pas alles ophalen voor jq
 			setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
 		});
     function getValuesJQH() {
-        $('input[name="jqh"]').each(function(ind, element) {
-			  $(element).val(function(index, value){
-			  $.get("huisValueGet", {led: $(element).attr('led'), veld: $(element).attr('veld')}, function(data) {
-				  $(element).val(data);
-				    });
-				  });
-        });
-      };
-      function setonchangeValuesJQH(anim){
-			  $('input[name="jqh"]').each(function(ind, element) {
-			    $(element).on("focusout", function(){
-				  $.get("/huisValueSet", {led: $(element).attr('led'), veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
+      $('input[name="jqh"]').each(function(ind, element) {
+		  	$(element).val(function(index, value){
+          lv_led = $(element).attr('led');
+          lv_veld = $(element).attr('veld');
+  		    $.get("huisValueGet", {led: $(element).attr('led'), veld: $(element).attr('veld')}, function(data) {
+	  	      $(element).val(data);
 			    });
-		    });
-      };
-      function getValuesJQL() {
-        $('label[name="jql"]').each(function(ind, element) {
+			  });
+      });
+    };
+    function setonchangeValuesJQH(anim){
+		  $('input[name="jqh"]').each(function(ind, element) {
+			  $(element).on("focusout", function(){
+          lv_led = $(element).attr('led');
+          lv_veld = $(element).attr('veld');
+          lv_waarde = $(element).val();
+  				$.get("/huisValueSet", {led: lv_led, veld: lv_veld, waarde: lv_waarde}, function(data) {});
+			  });
+		  });
+    };
+    function getValuesJQL() {
+      $('label[name="jql"]').each(function(ind, element) {
+		   $(element).val(function(index, value){
+          lv_led = $(element).attr('led');
+          lv_anim = $(element).attr('anim');
+          lv_veld = $(element).attr('veld');
+		      $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
+				    $(element).text(lv_led + ". "+data);
+				  });
+				});
+      });
+      $('a[name="jql"]').each(function(ind, element) {
 			  $(element).val(function(index, value){
-			  $.get("ledValueGet", {led: $(element).attr('led'), anim: $(element).attr('anim'), veld: $(element).attr('veld')}, function(data) {
-				  $(element).text($(element).attr('led') + ". "+data);
-				    });
-				  });
-        });
-        $('a[name="jql"]').each(function(ind, element) {
-			    $(element).val(function(index, value){
-            lv_led = $(element).attr('led');
-            lv_anim = $(element).attr('anim');
-            lv_veld = $(element).attr('veld');
-			      $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
-              $(element).text(lv_led + ". "+data);
-              $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
-				    });
-				  });
-        });
-      };
-      function getImage() {
-        console.log("img refreshed " + $('#img').val() )
-        $('#file_img').attr( "src",  $('#img').val() );
-      };
-      function getLedListAnims(){
-        lv_led = $(element).attr('led');
-        $.get("/ledListAnim", {led: lv_led}, function(data) {
-  		  var animsList = $("#anim");
+          lv_led = $(element).attr('led');
+          lv_anim = $(element).attr('anim');
+          lv_veld = $(element).attr('veld');
+			    $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
+            $(element).text(lv_led + ". "+data);
+            $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
+			    });
+			  });
+       });
+       $('select[name="jql"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          lv_led = $(element).attr('led');
+          $.get("/ledListAnim", {led: lv_led}, function(data) {
+      		  var animsList = $('select[list="ledanim" led="'+lv_led+'"]');
+		    	  animsList.empty();
+            animsList.append(data);
+			    });
+			  });
+       });
+    };
+    function getImage() {
+      console.log("img refreshed " + $('#img').val() )
+      $('#file_img').attr( "src",  $('#img').val() );
+    };
+    function getLedListAnims(){
+      lv_led = $('select[list="ledanim"]').attr('led');
+      //lv_led = $("#anim").attr('led');
+      $.get("/ledListAnim", {led: lv_led}, function(data) {
+  		  var animsList = $('select[list="ledanim"]');
 			  animsList.empty();
         animsList.append(data);
-			  });
+			});
+    };
+    function ListLedDefaults(){
+      for (let i=0; i<16; i++){
+        var ledlist = $("<div class='row'>"
+                      + "<div class='column3'><a      name='jql' veld='50' led='"+i+"' anim='0' href='/'' class='button button-left'>naar</a></div>"
+                      + "<div class='column3'><select name='jql'           led='"+i+"' list='ledanim' type='text' ><option value='default'></option></select></div>"
+                      + "<div class='column3'><input  name='jqh' veld='43' led='"+i+"' class='input-small'></input></div>"
+                      + "</div>"
+                    );
+        ledlist.appendTo("#ListLed"); 
+        console.log("led "+i);
       };
-      function createDefaultAnim(){
-        for (let i=0; i<16; i++){
-          var ledlist = $("<input veld='43' led='"+i+"' name='jqh'> default "+ i +"</input>");
-          ledlist.appendTo("#defaultAnims"); 
-          console.log("led "+i);
-        };
     };
   </script>
 
@@ -84,19 +109,19 @@
       Image<input id="img" veld='41' name='jqh' type='text' led="0"  required/><br>
       Naam<input veld='40' name='jqh' type='text'  led="0" required/><br>
       HuisNr<input class = "input-small" veld='42' name='jqh' type='text' led="0"  required/><br>
-      Anims todo <div id='defaultAnims'></div><br>
       </h3></div>
     <div class="column3"><a veld="led"  href="page_maintain_led.html" >rgb</a></div>
   </div>
   <div class="row"><h2>
     <div class="column3"><label>Led</label></div>
-    <div class="column3"><label>Default animatie</label></div>
     <div class="column3"><label>Animaties</label></div>
+    <div class="column3"><label>Default animatie</label></div>
   </h2></div>
+  <div id="ListLed"></div>
   <div class="row">
     <div class="column3"><a      name="jql" veld="50" led="0" anim="0" href="/" class='button button-center'>naar</a></div>
+    <div class="column3"><select name="jql"           led="0" id="anim" type="text" ><option value="default"></option></select></div>
     <div class="column3"><input  name="jqh" veld="43" led="0" class="input-small"></input></div>
-    <div class="column3"><select name="jql"           led="0" type="text" ><option value="default"></option></select></div>
   </div>
 
   <div class="row">
