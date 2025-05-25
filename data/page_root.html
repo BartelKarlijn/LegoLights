@@ -9,7 +9,7 @@
     $(document).ready(function() {
       console.log("begin van ready");
       ListLedDefaults();
-      getLedListAnims();
+      //getLedListAnims();
       getValuesJQL();
       getValuesJQH();        //dan pas alles ophalen voor jq
 			setonchangeValuesJQH();  //onchange voor jq elementen
@@ -62,9 +62,8 @@
 			  $(element).val(function(index, value){
           lv_led = $(element).attr('led');
           $.get("/ledListAnim", {led: lv_led}, function(data) {
-      		  var animsList = $('select[list="ledanim" led="'+lv_led+'"]');
-		    	  animsList.empty();
-            animsList.append(data);
+      		  $(element).empty();
+            $(element).append(data);
 			    });
 			  });
        });
@@ -72,15 +71,6 @@
     function getImage() {
       console.log("img refreshed " + $('#img').val() )
       $('#file_img').attr( "src",  $('#img').val() );
-    };
-    function getLedListAnims(){
-      lv_led = $('select[list="ledanim"]').attr('led');
-      //lv_led = $("#anim").attr('led');
-      $.get("/ledListAnim", {led: lv_led}, function(data) {
-  		  var animsList = $('select[list="ledanim"]');
-			  animsList.empty();
-        animsList.append(data);
-			});
     };
     function ListLedDefaults(){
       for (let i=0; i<16; i++){
@@ -118,12 +108,6 @@
     <div class="column3"><label>Default animatie</label></div>
   </h2></div>
   <div id="ListLed"></div>
-  <div class="row">
-    <div class="column3"><a      name="jql" veld="50" led="0" anim="0" href="/" class='button button-center'>naar</a></div>
-    <div class="column3"><select name="jql"           led="0" id="anim" type="text" ><option value="default"></option></select></div>
-    <div class="column3"><input  name="jqh" veld="43" led="0" class="input-small"></input></div>
-  </div>
-
   <div class="row">
     <div class="column2"><a veld="Flourish"  href="page_huisje.html?image=file_img_Flourish.jpg" ><img src = "file_img_Flourish.jpg" ></a></div>
     <div class="column2"><a veld="Weasley"   href="page_huisje.html?image=file_img_Weasley.jpg"  ><img src = "file_img_Weasley.jpg"  ></a></div>
