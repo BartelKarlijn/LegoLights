@@ -6,7 +6,7 @@ void cL07ledSetBrightness(){
     Println("L02 Set brightness of " + commandParts.arg1 + " to " + commandParts.arg2);
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {
         if (bri >= 0 && bri <= 4095) {
-            ledsingle[lednr].bri = bri;
+            ledactive[lednr].bri = bri;
         } else {
             Println("Invalid brightness value");
         }

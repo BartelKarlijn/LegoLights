@@ -10,14 +10,14 @@ String  fileLedLoadSettings() {
   if (!SPIFFS.exists(filename)) {
     msgAnswer = "Led config file does not exist, using defaults";
     for(int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-      ledsettings[lednr].leddesc          = LED_SINGLEDEFAULT.desc + String(lednr);
-      ledsettings[lednr].ledimage         = LED_SINGLEDEFAULT.image;
-      ledsettings[lednr].anim[0].animdesc = LED_SINGLEDEFAULT.animatie;
-      ledsettings[lednr].anim[0].bri      = LED_SINGLEDEFAULT.bri;
-      ledsettings[lednr].anim[0].timeon   = LED_SINGLEDEFAULT.timeon;
-      ledsettings[lednr].anim[0].timeoff  = LED_SINGLEDEFAULT.timeoff;
-      ledsettings[lednr].anim[0].timeeffect = LED_SINGLEDEFAULT.timeeffect;
-      ledsettings[lednr].anim[0].effect   = LED_SINGLEDEFAULT.effect;
+      ledsettings[lednr].leddesc          = LEDACTIVE_DEFAULT.desc + String(lednr);
+      ledsettings[lednr].ledimage         = LEDACTIVE_DEFAULT.image;
+      ledsettings[lednr].anim[0].animdesc = LEDACTIVE_DEFAULT.animatie;
+      ledsettings[lednr].anim[0].bri      = LEDACTIVE_DEFAULT.bri;
+      ledsettings[lednr].anim[0].timeon   = LEDACTIVE_DEFAULT.timeon;
+      ledsettings[lednr].anim[0].timeoff  = LEDACTIVE_DEFAULT.timeoff;
+      ledsettings[lednr].anim[0].timeeffect = LEDACTIVE_DEFAULT.timeeffect;
+      ledsettings[lednr].anim[0].effect   = LEDACTIVE_DEFAULT.effect;
     }
 
   }

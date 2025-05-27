@@ -1,38 +1,98 @@
-// Configuration file for default led coloring
-// effecten strip
-#define EFFSTR_UIT      0
-#define EFFSTR_AAN      1
-#define EFFSTR_CHASE    2
-#define EFFSTR_FIRE     3
-#define EFFSTR_GLOW     4
-#define EFFSTR_PARTY    5
-
 //jpeg files
 #define IMG_OLIV "file_img_Olivander.jpg"
 #define IMG_QUID "file_img_Quiddich.jpg"
 #define IMG_FLOU "file_img_Flourish.jpg"
 #define IMG_WEAS "file_img_Weasley.jpg"
 
-#define LED_NR_ITEMS 16
-#define LED_NR_ANIM 6
-
 #define FILE_HUIS "/cfg_huis.ini"
 #define FILE_RGB  "/cfg_rgb.ini"
 #define FILE_LED  "/cfg_led.ini"
+
+#define LED_NR_ITEMS 16
+#define LED_NR_ANIM 6
+
+// default waarden
+#define STRIP_NR_ITEMS 40
+#define STRIP_NR_LEDS 311 //eentje meer dan laatste item in lijstje hieronder
+
+// ------------------ Huis -----------------------
+// -----------------------------------------------
 typedef struct {
   int huisnr;
   String desc;
   String image;
   int    animnr[LED_NR_ITEMS];
-} str_huis;
+} struc_huis;
 
-const str_huis HUIS_DEFAULT {
+const struc_huis HUIS_DEFAULT {
   0,
   "Huis",
   "file_img_Huis.jpg"
 };
+struc_huis huisSetting;
 
-str_huis huisSetting;
+// ------------------ Led ------------------------
+// -----------------------------------------------
+// effecten leds
+#define EFFLED_AAN     10
+#define EFFLED_FIRE    11
+#define EFFLED_GLOW    12
+#define EFFLED_RAMP    13
+#define EFFLED_RAND    14
+#define EFFLED_UIT     15
+
+typedef struct {
+  String  desc;
+  int     bri;    //4095 mogelijkheden
+  unsigned long timeon;
+  unsigned long timeoff;
+  long    timeeffect;  //negatieve waarden toelaten
+  uint8_t effect;
+  String  image;
+  int     animnr;
+  String  animatie;
+} struc_ledactive;
+
+typedef struct {
+  String  animdesc;
+  int     bri;    //4095 mogelijkheden
+  unsigned long timeon;
+  unsigned long timeoff;
+  long    timeeffect;  //negatieve waarden toelaten
+  uint8_t effect;
+} struc_ledanim;
+
+typedef struct {
+  String  leddesc;
+  String  ledimage;
+  struc_ledanim anim[LED_NR_ANIM];
+} struc_ledsettings;
+
+// default voor alle leds als er geen file is.
+const struc_ledactive LEDACTIVE_DEFAULT  {"led", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" };
+
+
+struc_ledactive ledactive[LED_NR_ITEMS];
+struc_ledsettings ledsettings[LED_NR_ITEMS];
+
+unsigned long timer_led_aan[LED_NR_ITEMS];
+unsigned long time_led_eff[LED_NR_ITEMS];  //van begin aan tot eind van effect (gaat dus over meerder effecten heen)
+unsigned long time_fase_beg[LED_NR_ITEMS];  //begin van een nieuwe fase
+unsigned long time_fase_end[LED_NR_ITEMS];  //eind van een nieuwe fase
+uint8_t       fase[LED_NR_ITEMS];  //welke fase zitten we (bv ramp fase 1=up, 2=on, 3=down, 4=off)
+uint8_t       effectledbri[LED_NR_ITEMS];
+
+
+// ------------------ Rgb ------------------------
+// -----------------------------------------------
+// Configuration file for default rgb coloring
+// effecten rgb
+#define EFFSTR_UIT      0
+#define EFFSTR_AAN      1
+#define EFFSTR_CHASE    2
+#define EFFSTR_FIRE     3
+#define EFFSTR_GLOW     4
+#define EFFSTR_PARTY    5
 
 typedef struct {
   String desc;
@@ -59,9 +119,6 @@ typedef struct {
   String  image;
 } str_strip;
 
-// default waarden
-#define STRIP_NR_ITEMS 40
-#define STRIP_NR_LEDS 311 //eentje meer dan laatste item in lijstje hieronder
 
 const str_strip STR_DEFAULT[] {
 //234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down
@@ -113,7 +170,7 @@ const str_strip STR_DEFAULT[] {
 int strip_nr_items = sizeof(STR_DEFAULT) / sizeof(STR_DEFAULT[0]);
 str_strip kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
-// ledstrip 
+// rgbstrip 
 CRGB ledstrip[STRIP_NR_LEDS];
 
 // timing & color varialbles
@@ -126,73 +183,3 @@ uint8_t effectstrbri[STRIP_NR_ITEMS][4];
 uint8_t chasestrnr[STRIP_NR_ITEMS][4];
 
 //////////// single leds /////////////////////////////
-// effecten leds
-#define EFFLED_AAN     10
-#define EFFLED_FIRE    11
-#define EFFLED_GLOW    12
-#define EFFLED_RAMP    13
-#define EFFLED_RAND    14
-#define EFFLED_UIT     15
-
-typedef struct {
-  String  desc;
-  int     bri;    //4095 mogelijkheden
-  unsigned long timeon;
-  unsigned long timeoff;
-  long    timeeffect;  //negatieve waarden toelaten
-  uint8_t effect;
-  String  image;
-  int     animnr;
-  String  animatie;
-} str_ledsingle;
-
-typedef struct {
-  String  animdesc;
-  int     bri;    //4095 mogelijkheden
-  unsigned long timeon;
-  unsigned long timeoff;
-  long    timeeffect;  //negatieve waarden toelaten
-  uint8_t effect;
-} str_ledanim;
-
-typedef struct {
-  String  leddesc;
-  String  ledimage;
-  str_ledanim anim[LED_NR_ANIM];
-} str_ledsettings;
-
-
-const str_ledsingle LED_DEFAULT[LED_NR_ITEMS] {
-//    desc             ,brigh,timeon,timeoff,timeeff, effect     , image    , nr, animdesc
- {"led00              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led01              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led02              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led03              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led04              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led05              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led06              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led07              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led08              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led09              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led10              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led11              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led12              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led13              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led14              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-,{"led15              ", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" }
-};
-
-// default voor alle leds als er geen file is.
-const str_ledsingle LED_SINGLEDEFAULT  {"led", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" };
-
-
-str_ledsingle ledsingle[LED_NR_ITEMS];
-unsigned long timer_led_aan[LED_NR_ITEMS];
-unsigned long time_led_eff[LED_NR_ITEMS];  //van begin aan tot eind van effect (gaat dus over meerder effecten heen)
-unsigned long time_fase_beg[LED_NR_ITEMS];  //begin van een nieuwe fase
-unsigned long time_fase_end[LED_NR_ITEMS];  //eind van een nieuwe fase
-uint8_t fase[LED_NR_ITEMS];  //welke fase zitten we (bv ramp fase 1=up, 2=on, 3=down, 4=off)
-
-uint8_t effectledbri[LED_NR_ITEMS];
-
-str_ledsettings ledsettings[LED_NR_ITEMS];

@@ -4,7 +4,7 @@ void cL02ledSetName(){
     Println("L02 Set name of " + commandParts.arg1 + " to " + commandParts.arg2);
 
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {
-        ledsingle[lednr].desc = commandParts.arg2;
+        ledactive[lednr].desc = commandParts.arg2;
     } else {
         Println("Invalid led number");
     }

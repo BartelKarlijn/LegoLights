@@ -24,11 +24,11 @@ str_ledRequest ledRequest;
 int huisMin = 1;
 int huisMax = 20;
 
-struct str_huisRequest {
+struct struc_huisRequest {
     int huisnr;
     int veld;
     int lednr;
     String waarde;
 };
 
-str_huisRequest huisRequest;
+struc_huisRequest huisRequest;

@@ -6,28 +6,28 @@ String ledValueGet(){
       switch (veldnr)
       {
         case 50:  //we beginnen bij 1, zodat 0 een fout geeft
-          answertoSend = ledsingle[lednr].desc;
+          answertoSend = ledactive[lednr].desc;
         break;
       case 51:
-          answertoSend = ledsingle[lednr].bri;
+          answertoSend = ledactive[lednr].bri;
         break;
       case 52:
-        answertoSend = ledsingle[lednr].effect;
+        answertoSend = ledactive[lednr].effect;
         break;
       case 53:
-        answertoSend = ledsingle[lednr].timeon;
+        answertoSend = ledactive[lednr].timeon;
         break;
       case 54:
-        answertoSend = ledsingle[lednr].timeoff;
+        answertoSend = ledactive[lednr].timeoff;
         break;
       case 55:
-        answertoSend = ledsingle[lednr].timeeffect;
+        answertoSend = ledactive[lednr].timeeffect;
         break;
       case 56:
-        answertoSend = ledsingle[lednr].image;
+        answertoSend = ledactive[lednr].image;
         break;
       case 57:
-        answertoSend = ledsingle[lednr].animatie;
+        answertoSend = ledactive[lednr].animatie;
         break;
       default:
         answertoSend = "error";

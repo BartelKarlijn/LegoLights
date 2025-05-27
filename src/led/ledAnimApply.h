@@ -8,15 +8,15 @@ String ledAnimApply() {
   }
   else {
     Println("settingLedApplyAnim: " + ledsettings[lednr].anim[animnr].animdesc);
-    ledsingle[lednr].desc = ledsettings[lednr].leddesc;
-    ledsingle[lednr].bri = ledsettings[lednr].anim[animnr].bri;
-    ledsingle[lednr].timeon = ledsettings[lednr].anim[animnr].timeon;
-    ledsingle[lednr].timeoff = ledsettings[lednr].anim[animnr].timeoff;
-    ledsingle[lednr].timeeffect = ledsettings[lednr].anim[animnr].timeeffect;
-    ledsingle[lednr].effect = ledsettings[lednr].anim[animnr].effect;
-    ledsingle[lednr].image = ledsettings[lednr].ledimage;
-    ledsingle[lednr].animnr = animnr;
-    ledsingle[lednr].animatie = ledsettings[lednr].anim[animnr].animdesc;
+    ledactive[lednr].desc = ledsettings[lednr].leddesc;
+    ledactive[lednr].bri = ledsettings[lednr].anim[animnr].bri;
+    ledactive[lednr].timeon = ledsettings[lednr].anim[animnr].timeon;
+    ledactive[lednr].timeoff = ledsettings[lednr].anim[animnr].timeoff;
+    ledactive[lednr].timeeffect = ledsettings[lednr].anim[animnr].timeeffect;
+    ledactive[lednr].effect = ledsettings[lednr].anim[animnr].effect;
+    ledactive[lednr].image = ledsettings[lednr].ledimage;
+    ledactive[lednr].animnr = animnr;
+    ledactive[lednr].animatie = ledsettings[lednr].anim[animnr].animdesc;
   }
   return "anim applied";
 }

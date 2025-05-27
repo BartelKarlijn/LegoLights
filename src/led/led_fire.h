@@ -5,19 +5,19 @@ void led_fire(int lednr) {
 
   timeBezig  = currentMillis - timer_led_aan[lednr];
 
-  if( timeBezig > (ledsingle[lednr].timeon + ledsingle[lednr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
+  if( timeBezig > (ledactive[lednr].timeon + ledactive[lednr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
     timer_led_aan[lednr]  = currentMillis; //reset timer
-    time_led_eff[lednr]  = random(ledsingle[lednr].timeeffect); //reset timer
-    effectledbri[lednr] = random(ledsingle[lednr].bri);      //intensiteit
+    time_led_eff[lednr]  = random(ledactive[lednr].timeeffect); //reset timer
+    effectledbri[lednr] = random(ledactive[lednr].bri);      //intensiteit
 
     ledPCA9685.setPWM(lednr, 0, effectledbri[lednr]);
   }
-  else  if (timeBezig > ledsingle[lednr].timeon) { // lang genoeg aan geweest. Nu uitzetten
+  else  if (timeBezig > ledactive[lednr].timeon) { // lang genoeg aan geweest. Nu uitzetten
     ledPCA9685.setPWM(lednr, 0, 0);
   }
   else if (timeBezig > time_led_eff[lednr] ) { // ander vlammetje
-    time_led_eff[lednr]  += random(ledsingle[lednr].timeeffect); //Vergroot timer naar eind volgend vlammetje
-    effectledbri[lednr]   = random(ledsingle[lednr].bri);      //intensiteit
+    time_led_eff[lednr]  += random(ledactive[lednr].timeeffect); //Vergroot timer naar eind volgend vlammetje
+    effectledbri[lednr]   = random(ledactive[lednr].bri);      //intensiteit
     ledPCA9685.setPWM(lednr, 0, effectledbri[lednr]);
   }
   else {     //laat nog maar tijdje aan.

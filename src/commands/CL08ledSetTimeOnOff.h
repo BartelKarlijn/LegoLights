@@ -6,8 +6,8 @@ void cL08ledSetTimeOnOff(){
     Println("L08 Set led " + commandParts.arg1 + " timeOn= " + commandParts.arg2 + ", timeOff= " + commandParts.arg3);
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {
         if ((tOn >= 0) && (tOff >= 0)) {
-            ledsingle[lednr].timeon = tOn;
-            ledsingle[lednr].timeoff = tOff;
+            ledactive[lednr].timeon = tOn;
+            ledactive[lednr].timeoff = tOff;
         } else {
             Println("Invalid time value(s)");
         }

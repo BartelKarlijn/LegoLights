@@ -13,19 +13,19 @@ void led_rand(int lednr) {
     time_fase_beg[lednr] = currentMillis;
     switch (fase[lednr]){
       case 1:  //up fase
-        time_fase_end[lednr] = currentMillis + ledsingle[lednr].timeeffect;
+        time_fase_end[lednr] = currentMillis + ledactive[lednr].timeeffect;
         break;        
       case 2:  //on fase
-        time_fase_end[lednr] = currentMillis + random(ledsingle[lednr].timeon/2, ledsingle[lednr].timeon * 2);
+        time_fase_end[lednr] = currentMillis + random(ledactive[lednr].timeon/2, ledactive[lednr].timeon * 2);
         break;        
       case 3:  //donw fase
-        time_fase_end[lednr] = currentMillis + ledsingle[lednr].timeeffect;
+        time_fase_end[lednr] = currentMillis + ledactive[lednr].timeeffect;
         break;        
       case 4:  //off fase
-        time_fase_end[lednr] = currentMillis + ledsingle[lednr].timeoff;
+        time_fase_end[lednr] = currentMillis + ledactive[lednr].timeoff;
         break;        
       default: //5 door ophoging of iets anders: gewoon zelfde als fase1
-        time_fase_end[lednr] = currentMillis + ledsingle[lednr].timeeffect;
+        time_fase_end[lednr] = currentMillis + ledactive[lednr].timeeffect;
         fase[lednr] = 0;
         break;
     }
@@ -36,13 +36,13 @@ void led_rand(int lednr) {
   switch (fase[lednr])
   {
   case 1: // up
-    bri_glow = map(timeBezig, 0,  timeEffect, 0, ledsingle[lednr].bri);
+    bri_glow = map(timeBezig, 0,  timeEffect, 0, ledactive[lednr].bri);
     break;
   case 2: // on
-    bri_glow = ledsingle[lednr].bri;
+    bri_glow = ledactive[lednr].bri;
     break;
   case 3: // down
-    bri_glow = map(timeBezig, 0, timeEffect, ledsingle[lednr].bri, 0);
+    bri_glow = map(timeBezig, 0, timeEffect, ledactive[lednr].bri, 0);
     break;
   case 4: // off
     bri_glow = 0;
