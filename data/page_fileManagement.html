@@ -20,11 +20,6 @@
   <h2>Free Storage:</h2>
   <span id="storage"></span></p>
   <h2>Upload</h2>
-  <!-- 
-  <form id="uploadfilestatus"  method="post" action = "/" enctype="multipart/form-data">
-    <input type="file" name="data"/>
-    <input type="submit" name="upload" value="Upload" title = "Upload File"/>
-  </form> -->
   <form id="uploadfiledetails" method="post"              enctype="multipart/form-data">
     <input id="file1" type="file" name="file1" onchange="uploadFile()"></input>
     <br>
@@ -93,7 +88,6 @@ function uploadFile() {
   ajax.send(formdata);
 }
 function progressHandler(event) {
-  //_("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total; // event.total doesnt show accurate total file size
   _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes";
   var percent = (event.loaded / event.total) * 100;
   _("progressBar").value = Math.round(percent);
@@ -105,12 +99,7 @@ function progressHandler(event) {
 function completeHandler(event) {
   _("status").innerHTML = "Upload Complete";
   _("progressBar").value = 0;
-//  xmlhttp=new XMLHttpRequest();
-//  xmlhttp.open("GET", "/getfileList", false);
-//  xmlhttp.send();
   document.getElementById("status").innerHTML = "File Uploaded";
-//  document.getElementById("detailsheader").innerHTML = "<h3>Files old<h3>";
-//  document.getElementById("details").innerHTML = xmlhttp.responseText;
 }
 function errorHandler(event) {
   _("status").innerHTML = "Upload Failed";

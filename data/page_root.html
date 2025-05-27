@@ -9,8 +9,8 @@
     $(document).ready(function() {
       console.log("begin van ready");
       ListLedDefaults();
-      getValuesJQL();
       getValuesJQH();        //dan pas alles ophalen voor jq
+      getValuesJQL();
 			setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
 		});
@@ -52,10 +52,11 @@
           lv_anim = $(element).attr('anim');
           lv_veld = $(element).attr('veld');
 			    $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
+            lv_led = $(element).attr('led');
+            lv_anim = 0;
             $(element).text(lv_led + ". "+data);
             $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
 			    });
-          console.log("jql: " + $(element).text() + " led: " + lv_led + " anim: " + lv_anim);
 			  });
        });
        $('select[name="jql"]').each(function(ind, element) {
@@ -92,14 +93,21 @@
   </noscript>
   <h1>Beheer Huis</h1>
   <div class="row">
-    <div class="column3">.</div>
+    <div class="column3">
+      <a href="/page_fileManagement.html" class="button button-right  button-large">File management</a>
+      <a href="/webserial"                class="button button-right  button-large">Webserial</a>
+      <a href="/page_wificfg.html"        class="button button-right  button-large">Wifi config</a>
+    </div>
     <div class="column3"><h3>
       <img id="file_img"  src="" onchange="getImage();"></img><br>
       Image<input id="img" veld='41' name='jqh' type='text' led="0"  required/><br>
       Naam<input veld='40' name='jqh' type='text'  led="0" required/><br>
       HuisNr<input class = "input-small" veld='42' name='jqh' type='text' led="0"  required/><br>
       </h3></div>
-    <div class="column3">.</div>
+    <div class="column3">
+      <a href="/restart"                  class="button button-right  button-large">/!\Reboot ESP32</a>
+      <a href="/update"                   class="button button-right  button-large">Firmware Update</a>
+    </div>
   </div>
   <div class="row"><h2>
     <div class="column3"><label>Led</label></div>
@@ -108,12 +116,6 @@
   </h2></div>
   <div id="ListLed"></div>
   
-  <a href="/restart"                  class="button button-right  button-large">/!\Reboot ESP32</a>
-  <a href="/page_wificfg.html"        class="button button-right  button-large">Wifi config</a>
-  <a href="/page_fileManagement.html" class="button button-right  button-large">File management</a>
-  <a href="/webserial"                class="button button-right  button-large">Webserial</a>
-  <a href="/update"                   class="button button-right  button-large">Firmware Update</a>
-
   %showfirmware info%
 </body>
 </html>
