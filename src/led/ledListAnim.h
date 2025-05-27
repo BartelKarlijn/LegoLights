@@ -14,7 +14,7 @@ String ledListAnim() {
       msgAnswer += "</option>";
   }
   
-  Println("settingLedListAnim: " + msgAnswer);
+  Println("List Anims for led " + String(ledRequest.lednr));
 
   return msgAnswer;
 }

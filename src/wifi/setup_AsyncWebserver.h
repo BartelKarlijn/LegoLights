@@ -70,7 +70,7 @@ void setup_AsyncWebserver(){
     decodeRequestHuis(request);
     request->send(200, "text/plain", fileHuisLoadSettings());
   });
-  webserver.on("/ledSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on("/huisSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Huis settings bewaren in cfg file");
     decodeRequestHuis(request);
     request->send(200, "text/plain", fileHuisSaveSettings());
@@ -92,7 +92,7 @@ void setup_AsyncWebserver(){
     request->send(200, "text/plain", ledAnimApply());
   });
   webserver.on("/ledListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Led animaties tonen als option lijst");
+    //Println("Led animaties tonen als option lijst");
     decodeRequestLed(request);
     request->send(200, "text/plain", ledListAnim());
   });

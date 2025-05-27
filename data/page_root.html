@@ -84,6 +84,8 @@
         ledlist.appendTo("#ListLed");
       };
     };
+    function fileHuisSaveSettings() { $.get("/huisSettingFileSave", {} , function(data) {$("#status").html(data);}); };
+    function fileHuisLoadSettings() { $.get("/huisSettingFileLoad", {lv_anim} , function(data) {$("#status").html(data);}); getValuesJQH(); getValuesJQL(); };
   </script>
 
 </head>
@@ -115,6 +117,10 @@
     <div class="column3"><label>Default animatie</label></div>
   </h2></div>
   <div id="ListLed"></div>
+  <div class="row"><h2>
+    <div class="column2"><button onclick="fileHuisSaveSettings();" class="button button-right button-large">Save settings</button></div>
+    <div class="column2"><button onclick="fileHuisLoadSettings();" class="button button-right button-large">Load from last save</button></div>
+  </div>
   
   %showfirmware info%
 </body>
