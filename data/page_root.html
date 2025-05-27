@@ -9,7 +9,6 @@
     $(document).ready(function() {
       console.log("begin van ready");
       ListLedDefaults();
-      //getLedListAnims();
       getValuesJQL();
       getValuesJQH();        //dan pas alles ophalen voor jq
 			setonchangeValuesJQH();  //onchange voor jq elementen
@@ -56,6 +55,7 @@
             $(element).text(lv_led + ". "+data);
             $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
 			    });
+          console.log("jql: " + $(element).text() + " led: " + lv_led + " anim: " + lv_anim);
 			  });
        });
        $('select[name="jql"]').each(function(ind, element) {
@@ -80,8 +80,7 @@
                       + "<div class='column3'><input  name='jqh' veld='43' led='"+i+"' class='input-small'></input></div>"
                       + "</div>"
                     );
-        ledlist.appendTo("#ListLed"); 
-        console.log("led "+i);
+        ledlist.appendTo("#ListLed");
       };
     };
   </script>
@@ -93,14 +92,14 @@
   </noscript>
   <h1>Beheer Huis</h1>
   <div class="row">
-    <div class="column3"><a href="http://192.168.68.191/page_maintain_led.html?led=1&anim=0">led</a></div>
+    <div class="column3">.</div>
     <div class="column3"><h3>
       <img id="file_img"  src="" onchange="getImage();"></img><br>
       Image<input id="img" veld='41' name='jqh' type='text' led="0"  required/><br>
       Naam<input veld='40' name='jqh' type='text'  led="0" required/><br>
       HuisNr<input class = "input-small" veld='42' name='jqh' type='text' led="0"  required/><br>
       </h3></div>
-    <div class="column3"><a veld="led"  href="page_maintain_led.html" >rgb</a></div>
+    <div class="column3">.</div>
   </div>
   <div class="row"><h2>
     <div class="column3"><label>Led</label></div>
@@ -108,11 +107,7 @@
     <div class="column3"><label>Default animatie</label></div>
   </h2></div>
   <div id="ListLed"></div>
-  <div class="row">
-    <div class="column2"><a veld="Flourish"  href="page_huisje.html?image=file_img_Flourish.jpg" ><img src = "file_img_Flourish.jpg" ></a></div>
-    <div class="column2"><a veld="Weasley"   href="page_huisje.html?image=file_img_Weasley.jpg"  ><img src = "file_img_Weasley.jpg"  ></a></div>
-  </div>
-
+  
   <a href="/restart"                  class="button button-right  button-large">/!\Reboot ESP32</a>
   <a href="/page_wificfg.html"        class="button button-right  button-large">Wifi config</a>
   <a href="/page_fileManagement.html" class="button button-right  button-large">File management</a>
