@@ -22,10 +22,10 @@ String on_getStrip(AsyncWebServerRequest *request){
         answertoSend = kring[kringnr].desc;
         break;
       case 2:
-        answertoSend = kring[kringnr].startled;
+        answertoSend = kring[kringnr].startrgb;
         break;
       case 3:
-        answertoSend = kring[kringnr].stopled;
+        answertoSend = kring[kringnr].stoprgb;
         break;
       case 4:
         answertoSend = kring[kringnr].hue1;

@@ -4,8 +4,8 @@ void cK03kringStartStop(){
     int start = commandParts.arg2.toInt();
     int stop = commandParts.arg3.toInt();
     if (kringnr >= 0 && kringnr < STRIP_NR_ITEMS) {
-        kring[kringnr].startled = start;
-        kring[kringnr].stopled = stop;
+        kring[kringnr].startrgb = start;
+        kring[kringnr].stoprgb = stop;
     } else {
         Println("Error: Invalid Kring number: " + String(kringnr));
     }

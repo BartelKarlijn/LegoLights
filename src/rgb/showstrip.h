@@ -4,22 +4,22 @@ void showstrip() {
   for (size_t i = 0; i < STRIP_NR_ITEMS; i++) {
     switch (kring[i].effect)
     {
-    case EFFSTR_AAN:
+    case EFFRGB_AAN:
         str_aan(i);
         break;
-    case EFFSTR_CHASE:
+    case EFFRGB_CHASE:
         str_chase(i);
         break;
-    case EFFSTR_FIRE:
+    case EFFRGB_FIRE:
         str_fire(i);
         break;
-    case EFFSTR_GLOW:
+    case EFFRGB_GLOW:
         str_glow(i);
         break;
-    case EFFSTR_PARTY:
+    case EFFRGB_PARTY:
         str_party(i);
         break;
-    case EFFSTR_UIT:
+    case EFFRGB_UIT:
         str_uit(i);
         break;
     default:

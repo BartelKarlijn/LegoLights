@@ -56,10 +56,10 @@ default:
   break;
 }
 
-  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
+  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
     // aan of uit zetten?
     if (flag_on) {
-      if( (i - kring[kringnr].startled) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr][0] * kring[kringnr].every ) {
+      if( (i - kring[kringnr].startrgb) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr][0] * kring[kringnr].every ) {
         ledstrip[i] = CHSV(partyhue, partysat, partybri);
       }
       else {

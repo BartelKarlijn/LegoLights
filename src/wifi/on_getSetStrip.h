@@ -39,11 +39,11 @@ String on_getSetStrip(AsyncWebServerRequest *request){
         answertoSend = waardeString;
         break;
       case 2:
-        kring[kringnr].startled = waardeString.toInt();
+        kring[kringnr].startrgb = waardeString.toInt();
         answertoSend = waardeString;
         break;
       case 3:
-        kring[kringnr].stopled = waardeString.toInt();
+        kring[kringnr].stoprgb = waardeString.toInt();
         answertoSend = waardeString;
         break;
       case 4:

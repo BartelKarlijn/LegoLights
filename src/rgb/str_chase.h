@@ -6,7 +6,7 @@ void str_chase(int kringnr) {
   // seed: +1..+4 : 1..4 lichtjes up gaan
   unsigned long timeBezig;
   bool flag_on;
-  int  nr_leds =  kring[kringnr].stopled - kring[kringnr].startled + 1;
+  int  nr_leds =  kring[kringnr].stoprgb - kring[kringnr].startrgb + 1;
   int  spacing;
   
   if (kring[kringnr].seed = 0) {
@@ -21,7 +21,7 @@ void str_chase(int kringnr) {
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
     timer_str_aan[kringnr] = currentMillis;      //reset timers
     timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
-    chasestrnr[kringnr][0] = kring[kringnr].startled;
+    chasestrnr[kringnr][0] = kring[kringnr].startrgb;
     flag_on = true;
   }
   else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
@@ -31,8 +31,8 @@ void str_chase(int kringnr) {
     flag_on = true;
     timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
     chasestrnr[kringnr][0]++;
-    if (chasestrnr[kringnr][0] > kring[kringnr].stopled) {
-      chasestrnr[kringnr][0] = kring[kringnr].startled;
+    if (chasestrnr[kringnr][0] > kring[kringnr].stoprgb) {
+      chasestrnr[kringnr][0] = kring[kringnr].startrgb;
     }
   }
   else {
@@ -40,7 +40,7 @@ void str_chase(int kringnr) {
     flag_on = true;
   }
 
-  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
+  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
     // aan of uit zetten?
     if (flag_on) {
 

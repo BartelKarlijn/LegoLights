@@ -48,9 +48,9 @@ void str_fire(int kringnr) {
     break;
    }
 
-  for (size_t i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)  {
+  for (size_t i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
     // aan of uit zetten?
-    if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every
+    if( ( (i - kring[kringnr].startrgb) % kring[kringnr].every ) == 0 ) {  // check every
       ledstrip[i] = CHSV(effectstrhue[kringnr][0], effectstrsat[kringnr][0], effectstrbri[kringnr][0]);
     }
     else {

@@ -65,10 +65,10 @@ void str_glow(int kringnr) {
     newColor = CHSV(hue, sat, bri);
   }
 
-  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
+  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)
   {
     // aan of uit zetten?
-    if( ( (i - kring[kringnr].startled) % kring[kringnr].every ) == 0 ) {  // check every
+    if( ( (i - kring[kringnr].startrgb) % kring[kringnr].every ) == 0 ) {  // check every
       ledstrip[i] = newColor;
     }
     else {

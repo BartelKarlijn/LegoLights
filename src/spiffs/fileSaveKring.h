@@ -11,8 +11,8 @@ String  fileSaveKring(int kringnr) {
 
   // write variables to JSON file
   doc["desc"]     = kring[kringnr].desc;
-  doc["startled"] = kring[kringnr].startled;
-  doc["stopled"]  = kring[kringnr].stopled;
+  doc["startrgb"] = kring[kringnr].startrgb;
+  doc["stoprgb"]  = kring[kringnr].stoprgb;
   doc["hue1"]     = kring[kringnr].hue1;
   doc["sat1"]     = kring[kringnr].sat1;
   doc["bri1"]     = kring[kringnr].bri1;

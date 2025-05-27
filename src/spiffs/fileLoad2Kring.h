@@ -30,10 +30,10 @@ String  fileLoad2Kring(int kringnr) {
     }
 
     // get variables from JSON file
-    const str_strip _kring = {
+    const struc_rgbactive _kring = {
       doc["desc"],
-      doc["startled"],
-      doc["stopled"],
+      doc["startrgb"],
+      doc["stoprgb"],
       doc["hue1"],
       doc["sat1"],
       doc["bri1"],

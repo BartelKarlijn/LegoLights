@@ -17,11 +17,11 @@ void str_aan(int kringnr) {
     fl_on = true;
   }
 
-  for (int i = kring[kringnr].startled; i <= kring[kringnr].stopled; i++)
+  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)
   {
     // aan of uit zetten?
     if (fl_on) {
-      if( ( (i - kring[kringnr].startled + kring[kringnr].seed + 30*kring[kringnr].every) % kring[kringnr].every ) == 0 ) {  // check every.  Aangezien negatieve waarden kunnen voorkomen, tellen we er 30 x every bij op om zeker positieve waarden te hebben
+      if( ( (i - kring[kringnr].startrgb + kring[kringnr].seed + 30*kring[kringnr].every) % kring[kringnr].every ) == 0 ) {  // check every.  Aangezien negatieve waarden kunnen voorkomen, tellen we er 30 x every bij op om zeker positieve waarden te hebben
         ledstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bri1 );
       }
       else {

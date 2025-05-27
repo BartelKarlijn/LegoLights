@@ -42,37 +42,36 @@ struc_huis huisSetting;
 #define EFFLED_UIT     15
 
 typedef struct {
-  String  desc;
-  int     bri;    //4095 mogelijkheden
+  String        desc;
+  String        image;
+  int           bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
-  long    timeeffect;  //negatieve waarden toelaten
-  uint8_t effect;
-  String  image;
-  int     animnr;
-  String  animatie;
+  long          timeeffect;  //negatieve waarden toelaten
+  uint8_t       effect;
+  int           animnr;
+  String        animatie;
 } struc_ledactive;
 
 typedef struct {
-  String  animdesc;
-  int     bri;    //4095 mogelijkheden
+  String        animdesc;
+  int           bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
-  long    timeeffect;  //negatieve waarden toelaten
-  uint8_t effect;
+  long          timeeffect;  //negatieve waarden toelaten
+  uint8_t       effect;
 } struc_ledanim;
 
 typedef struct {
-  String  leddesc;
-  String  ledimage;
+  String        leddesc;
+  String        ledimage;
   struc_ledanim anim[LED_NR_ANIM];
 } struc_ledsettings;
 
 // default voor alle leds als er geen file is.
-const struc_ledactive LEDACTIVE_DEFAULT  {"led", 4095,  1000,   1000,    150, EFFLED_AAN , IMG_OLIV ,  0, "default" };
+const struc_ledactive LEDACTIVE_DEFAULT  {"led", IMG_OLIV , 4095,  1000,   1000,    150, EFFLED_AAN ,  0, "default" };
 
-
-struc_ledactive ledactive[LED_NR_ITEMS];
+struc_ledactive   ledactive[LED_NR_ITEMS];
 struc_ledsettings ledsettings[LED_NR_ITEMS];
 
 unsigned long timer_led_aan[LED_NR_ITEMS];
@@ -87,88 +86,89 @@ uint8_t       effectledbri[LED_NR_ITEMS];
 // -----------------------------------------------
 // Configuration file for default rgb coloring
 // effecten rgb
-#define EFFSTR_UIT      0
-#define EFFSTR_AAN      1
-#define EFFSTR_CHASE    2
-#define EFFSTR_FIRE     3
-#define EFFSTR_GLOW     4
-#define EFFSTR_PARTY    5
+#define EFFRGB_UIT      0
+#define EFFRGB_AAN      1
+#define EFFRGB_CHASE    2
+#define EFFRGB_FIRE     3
+#define EFFRGB_GLOW     4
+#define EFFRGB_PARTY    5
 
 typedef struct {
-  String desc;
-  int startled;
-  int stopled;
-  uint8_t hue1;
-  uint8_t sat1;
-  uint8_t bri1;
-  uint8_t hue2;
-  uint8_t sat2;
-  uint8_t bri2;
-  uint8_t hue3;
-  uint8_t sat3;
-  uint8_t bri3;
-  uint8_t hue4;
-  uint8_t sat4;
-  uint8_t bri4;
-  uint8_t every;
+  String        desc;
+  String        image;
+  int           startrgb;
+  int           stoprgb;
+  uint8_t       hue1;
+  uint8_t       sat1;
+  uint8_t       bri1;
+  uint8_t       hue2;
+  uint8_t       sat2;
+  uint8_t       bri2;
+  uint8_t       hue3;
+  uint8_t       sat3;
+  uint8_t       bri3;
+  uint8_t       hue4;
+  uint8_t       sat4;
+  uint8_t       bri4;
+  uint8_t       every;
   unsigned long timeon;
   unsigned long timeoff;
   unsigned long timeeffect;
-  int8_t  seed;
-  uint8_t effect;
-  String  image;
-} str_strip;
+  int8_t        seed;
+  uint8_t       effect;
+} struc_rgbactive;
 
+typedef struct {
+  String        animdesc;
+  uint8_t       hue1;
+  uint8_t       sat1;
+  uint8_t       bri1;
+  uint8_t       hue2;
+  uint8_t       sat2;
+  uint8_t       bri2;
+  uint8_t       hue3;
+  uint8_t       sat3;
+  uint8_t       bri3;
+  uint8_t       hue4;
+  uint8_t       sat4;
+  uint8_t       bri4;
+  uint8_t       every;
+  unsigned long timeon;
+  unsigned long timeoff;
+  unsigned long timeeffect;
+  int8_t        seed;
+  uint8_t       effect;
+} struc_rgbanim;
 
-const str_strip STR_DEFAULT[] {
+typedef struct {
+  String        rgbdesc;
+  String        rgbimage;
+  int           startrgb;
+  int           stoprgb;
+  struc_rgbanim anim[LED_NR_ANIM];
+} struc_rgbsettings;
+
+const struc_rgbactive STR_DEFAULT[] {
 //234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down
 //                                     sat 0: white -255 color                                      time : in ms                effect: zie begin van file
 //    description (20) ,star,stop,hue1,sat1,bri1,hue2,sat2,bri2,hue3,sat3,bri3,hue4,sat4,bri4,every,timeon,timeoff,timeeff,seed,eff
- {"Olivander V0 plafon",   0,  10,  48, 255, 255,  48, 255,   0, 150, 255, 170, 150, 255,   0,    5, 10000,   1000,   2500,  0, EFFSTR_GLOW , IMG_OLIV } // 0
-,{"Olivander V0 trap  ",  11,  11, 192, 255, 255,  92, 255, 255,  80, 255,  70,  75, 255,  70,    1,  5000,   1000,    500,  0, EFFSTR_UIT  , IMG_OLIV } // 1
-,{"Olivander V1 plafon",  12,  22,  48, 255, 170,  60, 255,  70,  80, 255,  75,  75, 255,  70,    5, 10000,   1000,    500,  0, EFFSTR_UIT  , IMG_OLIV } // 2
-,{"Scribulus V1 plafon",  23,  29,  48, 200, 150, 150, 255, 100, 152, 255,   0,   0, 255,   0,    3, 10000,   1000,    500,  0, EFFSTR_CHASE, IMG_OLIV } // 3
-,{"Scribulus V1 haard ",  30,  30,  32, 255, 255,   0, 255, 255,  20, 255, 255,  10, 255, 255,    1, 10000,   1000,    100,  0, EFFSTR_FIRE , IMG_OLIV } // 4
-,{"Scribulus V1 vitrin",  31,  32, 152, 150, 220,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,      0,  0, EFFSTR_AAN  , IMG_OLIV } // 5
-,{"Scribulus V0 plafon",  33,  39,  48, 150, 150,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_OLIV } // 6
-,{"Scribulus V0 pui   ",  40,  41, 140, 255, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,    250,  0, EFFSTR_AAN , IMG_OLIV } // 7
-,{"Olivander V0 puiR  ",  42,  43,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFSTR_FIRE , IMG_OLIV } // 8
-,{"Olivander V0 puiL  ",  44,  45,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFSTR_FIRE , IMG_OLIV } // 9
-,{"Quiddich  GLV pop v",  46,  48,   0, 180, 200,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_QUID } //10
-,{"Quiddich  V1 plafon",  49,  72,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_QUID } //11
-,{"Quiddich  V1 kast  ",  73,  82, 128, 255, 255,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  1000,    250,    250,  0, EFFSTR_AAN , IMG_QUID } //12
-,{"Quiddich  V2 Dozen ",  83,  89,  32, 200, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    6,   125,   5750,    250,  0, EFFSTR_AAN , IMG_QUID } //13
-,{"Quiddich  V2 Rat   ",  90,  96,  32, 200, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    3,   125,   5750,    250,  0, EFFSTR_AAN  , IMG_QUID } //14
-,{"Daily Spin         ",  97, 110, 192, 128, 150, 172, 128, 150, 152, 128, 150, 192, 180, 150,    2, 10000,   1000,     50,  0, EFFSTR_FIRE , IMG_QUID } //15
-,{"Daily Profet GLV   ", 110, 123,  32, 100, 250,  32, 150,  50,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    100,  0, EFFSTR_AAN  , IMG_QUID } //16
-,{"Quiddich GLV Plafon", 123, 146,   0, 255, 200,   0, 255,   0,   0, 255,   0,   0, 255,   0,    2, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_QUID } //17
-,{"Quiddich GLV Bezem ", 147, 154,   0, 150, 200,   0, 200, 200,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,     75,  0, EFFSTR_CHASE, IMG_QUID } //18
-,{"Quiddich GLV Afdak ", 155, 174,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_QUID } //19
-,{"Flourish  1        ", 191, 192,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //20
-,{"Flourish  2        ", 193, 194,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //21
-,{"Flourish  3        ", 195, 196,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //22
-,{"Flourish  4        ", 197, 198,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //23
-,{"Flourish  5        ", 199, 200,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //24
-,{"Flourish  6        ", 201, 202,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //25
-,{"Flourish  7        ", 203, 204,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //26
-,{"Flourish  8        ", 205, 206,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //27
-,{"Flourish  9        ", 207, 208,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //28
-,{"Flourish 10        ", 209, 210,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_FLOU } //29
-,{"Weasley   1        ", 211, 220,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //30
-,{"Weasley   2        ", 221, 230,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //31
-,{"Weasley   3        ", 231, 240,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //32
-,{"Weasley   4        ", 241, 250,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //33
-,{"Weasley   5        ", 251, 260,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //34
-,{"Weasley   6        ", 261, 270,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //35
-,{"Weasley   7        ", 271, 280,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //36
-,{"Weasley   8        ", 281, 290,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //37
-,{"Weasley   9        ", 291, 300,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //38
-,{"Weasley  10        ", 301, 310,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFSTR_AAN  , IMG_WEAS } //39
-//,{"Scribulus V1 plafoN",  19,  26, 192, 255, 255, 192, 255,  25,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,     80,  0, EFFSTR_CHASE}
+ {"Olivander V0 plafon", IMG_OLIV ,   0,  10,  48, 255, 255,  48, 255,   0, 150, 255, 170, 150, 255,   0,    5, 10000,   1000,   2500,  0, EFFRGB_GLOW } // 0
+,{"Olivander V0 trap  ", IMG_OLIV ,  11,  11, 192, 255, 255,  92, 255, 255,  80, 255,  70,  75, 255,  70,    1,  5000,   1000,    500,  0, EFFRGB_UIT  } // 1
+,{"Olivander V1 plafon", IMG_OLIV ,  12,  22,  48, 255, 170,  60, 255,  70,  80, 255,  75,  75, 255,  70,    5, 10000,   1000,    500,  0, EFFRGB_UIT  } // 2
+,{"Scribulus V1 plafon", IMG_OLIV ,  23,  29,  48, 200, 150, 150, 255, 100, 152, 255,   0,   0, 255,   0,    3, 10000,   1000,    500,  0, EFFRGB_CHASE} // 3
+,{"Scribulus V1 haard ", IMG_OLIV ,  30,  30,  32, 255, 255,   0, 255, 255,  20, 255, 255,  10, 255, 255,    1, 10000,   1000,    100,  0, EFFRGB_FIRE } // 4
+,{"Scribulus V1 vitrin", IMG_OLIV ,  31,  32, 152, 150, 220,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,      0,  0, EFFRGB_AAN  } // 5
+,{"Scribulus V0 plafon", IMG_OLIV ,  33,  39,  48, 150, 150,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFRGB_AAN  } // 6
+,{"Scribulus V0 pui   ", IMG_OLIV ,  40,  41, 140, 255, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,    250,  0, EFFRGB_AAN  } // 7
+,{"Olivander V0 puiR  ", IMG_OLIV ,  42,  43,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFRGB_FIRE } // 8
+,{"Olivander V0 puiL  ", IMG_OLIV ,  44,  45,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFRGB_FIRE } // 9
+,{"Quiddich  GLV pop v", IMG_OLIV ,  46,  48,   0, 180, 200,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFRGB_AAN  } //10
+,{"Quiddich  V1 plafon", IMG_OLIV ,  49,  72,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFRGB_AAN  } //11
+,{"Quiddich  V1 kast  ", IMG_OLIV ,  73,  82, 128, 255, 255,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  1000,    250,    250,  0, EFFRGB_AAN  } //12
+,{"Quiddich  V2 Dozen ", IMG_OLIV ,  83,  89,  32, 200, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    6,   125,   5750,    250,  0, EFFRGB_AAN  } //13
 };
 
-int strip_nr_items = sizeof(STR_DEFAULT) / sizeof(STR_DEFAULT[0]);
-str_strip kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
+struc_rgbactive kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
 // rgbstrip 
 CRGB ledstrip[STRIP_NR_LEDS];
