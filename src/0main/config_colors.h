@@ -171,15 +171,15 @@ const struc_rgbactive STR_DEFAULT[] {
 struc_rgbactive kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
 // rgbstrip 
-CRGB ledstrip[STRIP_NR_LEDS];
+CRGB rgbstrip[STRIP_NR_LEDS];
 
 // timing & color varialbles
-unsigned long timer_str_aan[STRIP_NR_ITEMS];
-unsigned long timer_str_effect[STRIP_NR_ITEMS];
-uint8_t effectstrhueidx[STRIP_NR_ITEMS][4];
-uint8_t effectstrhue[STRIP_NR_ITEMS][4];
-uint8_t effectstrsat[STRIP_NR_ITEMS][4];
-uint8_t effectstrbri[STRIP_NR_ITEMS][4];
-uint8_t chasestrnr[STRIP_NR_ITEMS][4];
+unsigned long timer_rgb_aan[STRIP_NR_ITEMS];
+unsigned long timer_rgb_effect[STRIP_NR_ITEMS];
+uint8_t effectrgbhueidx[STRIP_NR_ITEMS][4];
+uint8_t effectrgbhue[STRIP_NR_ITEMS][4];
+uint8_t effectrgbsat[STRIP_NR_ITEMS][4];
+uint8_t effectrgbbri[STRIP_NR_ITEMS][4];
+uint8_t chaseRgbNr[STRIP_NR_ITEMS][4];
 
 //////////// single leds /////////////////////////////

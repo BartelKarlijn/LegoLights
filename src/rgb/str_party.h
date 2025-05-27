@@ -5,21 +5,21 @@ void str_party(int kringnr) {
   bool flag_on;
   int partyhue, partysat, partybri;
 
-  timeBezig = currentMillis - timer_str_aan[kringnr];
+  timeBezig = currentMillis - timer_rgb_aan[kringnr];
   // bereken mode (uit, up, down)
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
-    timer_str_aan[kringnr] = currentMillis;      //reset timers
-    timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
-    chasestrnr[kringnr][0] = 0;
+    timer_rgb_aan[kringnr] = currentMillis;      //reset timers
+    timer_rgb_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
+    chaseRgbNr[kringnr][0] = 0;
     flag_on = true;
   }
   else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
     flag_on = false;
   }
-  else  if(currentMillis >  timer_str_effect[kringnr]) {        //naar volgend spotje gaan
+  else  if(currentMillis >  timer_rgb_effect[kringnr]) {        //naar volgend spotje gaan
     flag_on = true;
-    timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
-    chasestrnr[kringnr][0] = (chasestrnr[kringnr][0] + 1) % 4;           //kleur vd party
+    timer_rgb_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
+    chaseRgbNr[kringnr][0] = (chaseRgbNr[kringnr][0] + 1) % 4;           //kleur vd party
   }
   else {
     // gewoon verder doen, laat lampje maar branden
@@ -27,7 +27,7 @@ void str_party(int kringnr) {
   }
 
 // bepaal kleur
-switch (chasestrnr[kringnr][0])
+switch (chaseRgbNr[kringnr][0])
 {
 case 0:
   partyhue    = kring[kringnr].hue1;
@@ -59,15 +59,15 @@ default:
   for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
     // aan of uit zetten?
     if (flag_on) {
-      if( (i - kring[kringnr].startrgb) % ( 4 * kring[kringnr].every) == chasestrnr[kringnr][0] * kring[kringnr].every ) {
-        ledstrip[i] = CHSV(partyhue, partysat, partybri);
+      if( (i - kring[kringnr].startrgb) % ( 4 * kring[kringnr].every) == chaseRgbNr[kringnr][0] * kring[kringnr].every ) {
+        rgbstrip[i] = CHSV(partyhue, partysat, partybri);
       }
       else {
-        ledstrip[i] = CRGB::Black;
+        rgbstrip[i] = CRGB::Black;
       }
     }
     else {
-      ledstrip[i] = CRGB::Black;
+      rgbstrip[i] = CRGB::Black;
     }
   }
 }

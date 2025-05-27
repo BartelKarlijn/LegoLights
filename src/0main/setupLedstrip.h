@@ -1,7 +1,7 @@
 #pragma once
 void setupLedstrip() {
 
-  FastLED.addLeds< NEOPIXEL, STR_PIN >(ledstrip, STRIP_NR_LEDS);  // GRB ordering is assumed
+  FastLED.addLeds< NEOPIXEL, STR_PIN >(rgbstrip, STRIP_NR_LEDS);  // GRB ordering is assumed
 
   // set master brightness control
   FastLED.setBrightness(STR_BRIGHTNESS);

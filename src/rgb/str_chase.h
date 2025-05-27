@@ -14,25 +14,25 @@ void str_chase(int kringnr) {
   } else {
     spacing = nr_leds / abs(kring[kringnr].seed);
   }
-  timeBezig = currentMillis - timer_str_aan[kringnr];
+  timeBezig = currentMillis - timer_rgb_aan[kringnr];
   
 
   // bereken mode (uit, up, down)
   if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
-    timer_str_aan[kringnr] = currentMillis;      //reset timers
-    timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
-    chasestrnr[kringnr][0] = kring[kringnr].startrgb;
+    timer_rgb_aan[kringnr] = currentMillis;      //reset timers
+    timer_rgb_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
+    chaseRgbNr[kringnr][0] = kring[kringnr].startrgb;
     flag_on = true;
   }
   else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
     flag_on = false;
   }
-  else  if(currentMillis >  timer_str_effect[kringnr]) {        //naar volgend spotje gaan
+  else  if(currentMillis >  timer_rgb_effect[kringnr]) {        //naar volgend spotje gaan
     flag_on = true;
-    timer_str_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
-    chasestrnr[kringnr][0]++;
-    if (chasestrnr[kringnr][0] > kring[kringnr].stoprgb) {
-      chasestrnr[kringnr][0] = kring[kringnr].startrgb;
+    timer_rgb_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
+    chaseRgbNr[kringnr][0]++;
+    if (chaseRgbNr[kringnr][0] > kring[kringnr].stoprgb) {
+      chaseRgbNr[kringnr][0] = kring[kringnr].startrgb;
     }
   }
   else {
@@ -44,15 +44,15 @@ void str_chase(int kringnr) {
     // aan of uit zetten?
     if (flag_on) {
 
-      if( i == chasestrnr[kringnr][0] ) {
-        ledstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bri1);
+      if( i == chaseRgbNr[kringnr][0] ) {
+        rgbstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bri1);
       }
       else {
-        ledstrip[i] = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bri2);
+        rgbstrip[i] = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bri2);
       }
     }
     else {
-      ledstrip[i] = CRGB::Black;
+      rgbstrip[i] = CRGB::Black;
     }
   }
 }
