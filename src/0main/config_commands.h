@@ -1,6 +1,6 @@
 // Configuration file for commands
 //////// command //////////
-struct str_commandParts {
+struct struc_commandParts {
     bool isValidCommand;
     int  huis;
     String  cmd;
@@ -8,7 +8,7 @@ struct str_commandParts {
     String arg2;
     String arg3;
 };
-str_commandParts commandParts;
+struc_commandParts commandParts;
 
 // led
 struct str_ledRequest {

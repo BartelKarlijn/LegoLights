@@ -26,10 +26,10 @@ String decodeRestOfCommand (){
 }
 
 
-str_commandParts decodeCommand(String commandstring) {
+struc_commandParts decodeCommand(String commandstring) {
     // Decode the command into parts:
     // Hxx cmd  arg1 arg2 arg3
-    str_commandParts returnMsg;
+    struc_commandParts returnMsg;
     bool isValidCommand = false;
     int spaceIndex;
 
