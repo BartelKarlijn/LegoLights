@@ -1,6 +1,6 @@
 #pragma once
 
-void str_chase(int kringnr) {
+void rgb_chase(int kringnr) {
   // seed: -4..-1 : 1..4 lichtjes die down gaan
   // seed: 0      : lichtje up en eentje down
   // seed: +1..+4 : 1..4 lichtjes up gaan

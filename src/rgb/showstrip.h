@@ -5,22 +5,22 @@ void showstrip() {
     switch (kring[i].effect)
     {
     case EFFRGB_AAN:
-        str_aan(i);
+        rgb_aan(i);
         break;
     case EFFRGB_CHASE:
-        str_chase(i);
+        rgb_chase(i);
         break;
     case EFFRGB_FIRE:
-        str_fire(i);
+        rgb_fire(i);
         break;
     case EFFRGB_GLOW:
-        str_glow(i);
+        rgb_glow(i);
         break;
     case EFFRGB_PARTY:
-        str_party(i);
+        rgb_party(i);
         break;
     case EFFRGB_UIT:
-        str_uit(i);
+        rgb_uit(i);
         break;
     default:
         break;

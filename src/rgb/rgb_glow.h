@@ -1,12 +1,12 @@
 #pragma once
 
-uint8_t str_glow_map(uint8_t val1, uint8_t val2, uint8_t amountOf2){
+uint8_t rgb_glow_map(uint8_t val1, uint8_t val2, uint8_t amountOf2){
   double newvalue;
   newvalue = val1 + (val2 - val1) * amountOf2 / 255;
   return newvalue;
 }
 
-void str_glow(int kringnr) {
+void rgb_glow(int kringnr) {
   // TimeEff : up of down cycle.  4 cycles in totaal
   // seed    : <0 : col1/2/3/4, seed aantal lampjes, random
   //           =0 : col1/2/3/4, hele strip
@@ -38,30 +38,30 @@ void str_glow(int kringnr) {
   }
   else  if (timeGlow > 3 * timeEffect) { // op weg naar 4e kleur
     timeMap = map(timeGlow, 3 * timeEffect, 4 * timeEffect, 0, 255);
-    hue = str_glow_map(kring[kringnr].hue3, kring[kringnr].hue4, timeMap);
-    sat = str_glow_map(kring[kringnr].sat3, kring[kringnr].sat4, timeMap);
-    bri = str_glow_map(kring[kringnr].bri3, kring[kringnr].bri4, timeMap);
+    hue = rgb_glow_map(kring[kringnr].hue3, kring[kringnr].hue4, timeMap);
+    sat = rgb_glow_map(kring[kringnr].sat3, kring[kringnr].sat4, timeMap);
+    bri = rgb_glow_map(kring[kringnr].bri3, kring[kringnr].bri4, timeMap);
     newColor = CHSV(hue, sat, bri);
   }
   else  if (timeGlow > 2 * timeEffect) { // op weg naar 3e kleur
     timeMap = map(timeGlow, 2 * timeEffect, 3 * timeEffect, 0, 255);
-    hue = str_glow_map(kring[kringnr].hue2, kring[kringnr].hue3, timeMap);
-    sat = str_glow_map(kring[kringnr].sat2, kring[kringnr].sat3, timeMap);
-    bri = str_glow_map(kring[kringnr].bri2, kring[kringnr].bri3, timeMap);
+    hue = rgb_glow_map(kring[kringnr].hue2, kring[kringnr].hue3, timeMap);
+    sat = rgb_glow_map(kring[kringnr].sat2, kring[kringnr].sat3, timeMap);
+    bri = rgb_glow_map(kring[kringnr].bri2, kring[kringnr].bri3, timeMap);
     newColor = CHSV(hue, sat, bri);
   }
   else  if (timeGlow > timeEffect) { // op weg naar 2e kleur
     timeMap = map(timeGlow, timeEffect, 2 * timeEffect, 0, 255);
-    hue = str_glow_map(kring[kringnr].hue1, kring[kringnr].hue2, timeMap);
-    sat = str_glow_map(kring[kringnr].sat1, kring[kringnr].sat2, timeMap);
-    bri = str_glow_map(kring[kringnr].bri1, kring[kringnr].bri2, timeMap);
+    hue = rgb_glow_map(kring[kringnr].hue1, kring[kringnr].hue2, timeMap);
+    sat = rgb_glow_map(kring[kringnr].sat1, kring[kringnr].sat2, timeMap);
+    bri = rgb_glow_map(kring[kringnr].bri1, kring[kringnr].bri2, timeMap);
     newColor = CHSV(hue, sat, bri);
   }
   else {     //op weg naar 1e kleur
     timeMap = map(timeGlow, 0, timeEffect, 0, 255);
-    hue = str_glow_map(kring[kringnr].hue4, kring[kringnr].hue1, timeMap);
-    sat = str_glow_map(kring[kringnr].sat1, kring[kringnr].sat1, timeMap);
-    bri = str_glow_map(kring[kringnr].bri4, kring[kringnr].bri1, timeMap);
+    hue = rgb_glow_map(kring[kringnr].hue4, kring[kringnr].hue1, timeMap);
+    sat = rgb_glow_map(kring[kringnr].sat1, kring[kringnr].sat1, timeMap);
+    bri = rgb_glow_map(kring[kringnr].bri4, kring[kringnr].bri1, timeMap);
     newColor = CHSV(hue, sat, bri);
   }
 

@@ -107,12 +107,12 @@
 
 //rgb
 #include "rgb/listKringen.h"
-#include "rgb/str_aan.h"
-#include "rgb/str_chase.h"
-#include "rgb/str_fire.h"
-#include "rgb/str_glow.h"
-#include "rgb/str_party.h"
-#include "rgb/str_uit.h"
+#include "rgb/rgb_aan.h"
+#include "rgb/rgb_chase.h"
+#include "rgb/rgb_fire.h"
+#include "rgb/rgb_glow.h"
+#include "rgb/rgb_party.h"
+#include "rgb/rgb_uit.h"
 #include "rgb/showstrip.h"
 
 // fps & anims

@@ -1,6 +1,6 @@
 #pragma once
 
-void str_party(int kringnr) {
+void rgb_party(int kringnr) {
   unsigned long timeBezig;
   bool flag_on;
   int partyhue, partysat, partybri;

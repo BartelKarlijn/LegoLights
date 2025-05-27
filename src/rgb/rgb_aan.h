@@ -1,6 +1,6 @@
 #pragma once
 
-void str_aan(int kringnr) {
+void rgb_aan(int kringnr) {
   bool fl_on;
   unsigned long timeBezig;
 
