@@ -11,14 +11,14 @@ struct struc_commandParts {
 struc_commandParts commandParts;
 
 // led
-struct str_ledRequest {
+struct struc_ledRequest {
     int lednr;
     int animnr;
     int veld;
     String waarde;
 };
 
-str_ledRequest ledRequest;
+struc_ledRequest ledRequest;
 
 //huis
 int huisMin = 1;

@@ -2,7 +2,7 @@
 // Define a type for the function pointers
 typedef void (*FunctionPointer)();
 typedef String (*FunctPointerWifi)(AsyncWebServerRequest *request);
-struct str_command {
+struct struc_command {
     String cmd;
     FunctionPointer function;
     String arguments;
@@ -10,7 +10,7 @@ struct str_command {
 };
 void cC00Help();  // forward declaration
 
-str_command validCommands[] = {// arg1 arg2 arg3       desc
+struc_command validCommands[] = {// arg1 arg2 arg3       desc
     {"C00", cC00Help            , "-    -    -    " , "show this table" },
     {"F01", cF01fpsShow         , "0/1  -    -    " , "stop/show fps from now on" },
     {"K01", cK01kringSetJpg     , "krng jpeg -    " , "set jpeg for krng" },
@@ -46,7 +46,7 @@ str_command validCommands[] = {// arg1 arg2 arg3       desc
 };
 
 ////// wifi comands ////////
-struct str_wifiRequest {
+struct struc_wifiRequest {
     String reqPrefix;
     String reqExt;
     bool iscmd;
@@ -55,7 +55,7 @@ struct str_wifiRequest {
 };
 
 #define MAX_WIFI_REQUEST 5
-str_wifiRequest validWifiRequest[] = {
+struc_wifiRequest validWifiRequest[] = {
     //begin , ext   , iscmd, htmltype, function
     {"/page", "html", false, "text/html"        , NULL},
     {"/file", "jpg" , false, "image/jpg"        , NULL},
