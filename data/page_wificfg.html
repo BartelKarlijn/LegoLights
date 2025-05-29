@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
-  <title>Diagon Alley</title>
+  <title>Led there be light</title>
   <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
-  <link rel="icon" href="/file_favicon.ico">
+  <link rel="icon" href="file_favicon.ico">
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function() {
- 		  //Beginwaarden ophalen voor storage
-      $.get("/getlistKringen", function(data) {
-        $("#listKringen").html(data);
-      })
+      getValuesJQH();        //dan pas alles ophalen voor jqh
 		});
+    function getValuesJQH() {
+      $('p[name="jqh"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          $.get("/showfirmware", {}, function(data) {
+      		  //$(element).empty();
+            $(element).append(data);
+			    });
+			  });
+       });
+    };
   </script>
 
 </head>
@@ -31,6 +37,6 @@
   <a href="/restart"             class="button button-right  button-large">/!\Reboot ESP32</a>
   <a href="/page_root.html"                    class="button button-right  button-large">Hoofdpagina</a>
 
-  %showfirmware info%
+  <p name='jqh'>Firmware status: </p>
 </body>
 </html>

@@ -135,6 +135,10 @@ void setup_AsyncWebserver(){
     delay(2000);
     ESP.restart();
   });
+  webserver.on("/showfirmware", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Show Firmware info");
+    request->send(200, "text/plain", on_showfirmware());
+  });
   webserver.on("/wifisave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi connection parameters");
     on_wifisave(request);

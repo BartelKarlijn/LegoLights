@@ -7,9 +7,8 @@
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function() {
-      console.log("begin van ready");
       ListLedDefaults();
-      getValuesJQH();        //dan pas alles ophalen voor jq
+      getValuesJQH();        //dan pas alles ophalen voor jqh
       getValuesJQL();
 			setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
@@ -24,6 +23,14 @@
 			    });
 			  });
       });
+      $('p[name="jqh"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          $.get("/showfirmware", {}, function(data) {
+      		  //$(element).empty();
+            $(element).append(data);
+			    });
+			  });
+       });
     };
     function setonchangeValuesJQH(anim){
 		  $('input[name="jqh"]').each(function(ind, element) {
@@ -122,6 +129,6 @@
     <div class="column2"><button onclick="fileHuisLoadSettings();" class="button button-right button-large">Load from last save</button></div>
   </div>
   
-  %showfirmware info%
+  <p name='jqh'>Firmware status: </p>
 </body>
 </html>

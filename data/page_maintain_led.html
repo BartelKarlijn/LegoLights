@@ -24,7 +24,18 @@
 			  getValuePrevLed();
         getValueNextLed();
         setTimeout(getImage, 1000);
+        getValuesJQH();        //dan pas alles ophalen voor jqh
   		});
+      function getValuesJQH() {
+        $('p[name="jqh"]').each(function(ind, element) {
+			    $(element).val(function(index, value){
+            $.get("/showfirmware", {}, function(data) {
+      		  //$(element).empty();
+              $(element).append(data);
+			      });
+		  	  });
+         });
+      };
       function getValuesJQL() {
         $('input[name="jql"]').each(function(ind, element) {
 			    $(element).val(function(index, value){
@@ -79,31 +90,32 @@
 </head>
 
 <body style="text-align:left;" id="body" >
-    <h1>Beheer effecten van leds</h1>
-    <div class="row">
-        <div class="column3"><a id="PrevLed" href="/" class='button button-center'></a></div>
-        <div class="column3"><h3>
-    			<img id="file_img" name='jql' veld='56' src="" onchange="getImage();"></img><br>
-			    Image   <input     name='jql' veld='56' type='text' id="img" required/><br>
-			    Naam    <input     name='jql' veld='50' type='text'   required/><br>
-			    Animatie<input     name='jql' veld='57' type='text'   required/><br>
-          Anims   <select id="anim" type="text"><option value="default"></option></select><br>
-          <button onclick="fileLoadAnim()" class="button button-center">Reload</button>
-			</h3></div>
-        <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
-    </div>
-    <div class="row">
-        <div class="column2">Brighness(4095) <br><input name='jql' veld='51' type='number' min="0" max="4095"/></div>
-        <div class="column2">Effect          <br><input name='jql' veld='52' type='number' min="10" max="13" /><br>10: aan; 11:fire, 12: glow, 13: uit</div>
-    </div>
-    <div class="row">
-        <div class="column3">Time on    <br><input name='jql' veld='53' type='number' min="0" max="255"/><br></div>
-        <div class="column3">Time off   <br><input name='jql' veld='54' type='number' min="0" max="255"/></div>
-        <div class="column3">Time effect<br><input name='jql' veld='55' type='number' min="0" max="255"/></div>
-    </div>
-    <p id="status"></p>
-    <button onclick="fileLedSaveSettings();"    class="button button-right button-large">Save settings</button>
-    <button onclick="fileLedLoadSettings();"   class="button button-right button-large">Load from last save</button>
-    <a href="/page_root.html" class="button button-right button-large">Terug naar hoofdscherm</a>
+  <h1>Beheer effecten van leds</h1>
+  <div class="row">
+    <div class="column3"><a id="PrevLed" href="/" class='button button-center'></a></div>
+      <div class="column3"><h3>
+    	  <img id="file_img" name='jql' veld='56' src="" onchange="getImage();"></img><br>
+			  Image   <input     name='jql' veld='56' type='text' id="img" required/><br>
+			  Naam    <input     name='jql' veld='50' type='text'   required/><br>
+			  Animatie<input     name='jql' veld='57' type='text'   required/><br>
+        Anims   <select id="anim" type="text"><option value="default"></option></select><br>
+        <button onclick="fileLoadAnim()" class="button button-center">Reload</button>
+	    </h3></div>
+    <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
+  </div>
+  <div class="row">
+      <div class="column2">Brighness(4095) <br><input name='jql' veld='51' type='number' min="0" max="4095"/></div>
+      <div class="column2">Effect          <br><input name='jql' veld='52' type='number' min="10" max="13" /><br>10: aan; 11:fire, 12: glow, 13: uit</div>
+  </div>
+  <div class="row">
+      <div class="column3">Time on    <br><input name='jql' veld='53' type='number' min="0" max="255"/><br></div>
+      <div class="column3">Time off   <br><input name='jql' veld='54' type='number' min="0" max="255"/></div>
+      <div class="column3">Time effect<br><input name='jql' veld='55' type='number' min="0" max="255"/></div>
+  </div>
+  <p id="status"></p>
+  <button onclick="fileLedSaveSettings();"    class="button button-right button-large">Save settings</button>
+  <button onclick="fileLedLoadSettings();"   class="button button-right button-large">Load from last save</button>
+  <a href="/page_root.html" class="button button-right button-large">Terug naar hoofdscherm</a>
+  <p name='jqh'>Firmware status: </p>
 </body>
 </html>
