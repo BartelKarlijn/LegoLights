@@ -66,7 +66,6 @@
 #include "led/ledListAnim.h"
 
 //rgb
-#include "rgb/0ldlistKringen.h"
 #include "rgb/rgb_aan.h"
 #include "rgb/rgb_chase.h"
 #include "rgb/rgb_fire.h"
