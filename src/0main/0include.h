@@ -85,12 +85,6 @@
 #include "wifi/decodeRequestRgb.h"
 #include "wifi/on_file.h"            // downloaden of verwijderen
 #include "wifi/on_fileUpload.h"
-#include "wifi/on_getStrip.h"
-#include "wifi/on_getSetStrip.h"
-#include "wifi/on_getfileLoad2Kring.h"
-#include "wifi/on_getfileDefault2Kring.h"
-#include "wifi/on_getfileSaveKring.h"
-#include "wifi/on_getlistKringen.h"
 #include "wifi/on_wifisave.h"
 
 // commands
