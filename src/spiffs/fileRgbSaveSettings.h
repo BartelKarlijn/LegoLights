@@ -9,29 +9,44 @@ String fileRgbSaveSettings() {
     Println(String(filename));
 
     JsonDocument doc; // Adjust size as needed
-    JsonArray ledArr = doc.to<JsonArray>();
+    JsonArray rgbArr = doc.to<JsonArray>();
         
-    for (int lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
-        // Create a JsonObject for each LED
-        JsonObject ledLine = ledArr.add<JsonObject>();
-        ledLine["lednr"] = lednr;
-        ledLine["leddesc"] = ledsettings[lednr].leddesc;
-        ledLine["ledimage"] = ledsettings[lednr].ledimage;
+    for (int rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++) {
+        // Create a JsonObject for each RGB
+        JsonObject rgbLine = rgbArr.add<JsonObject>();
+        rgbLine["rgbnr"] = rgbnr;
+        rgbLine["rgbdesc"] = rgbsettings[rgbnr].rgbdesc;
+        rgbLine["rgbimage"] = rgbsettings[rgbnr].rgbimage;
+        rgbLine["startrgb"] = rgbsettings[rgbnr].startrgb;
+        rgbLine["stoprgb"] = rgbsettings[rgbnr].stoprgb;
 
         JsonDocument animDoc;
         JsonArray animArr = animDoc.to<JsonArray>();
-        for (size_t animnr = 0; animnr < LED_NR_ANIM; animnr++){
+        for (size_t animnr = 0; animnr < RGB_NR_ANIM; animnr++){
           JsonObject animLine = animArr.add<JsonObject>();
-          animLine["animdesc"]   = ledsettings[lednr].anim[animnr].animdesc;
-          animLine["bri"]        = ledsettings[lednr].anim[animnr].bri;
-          animLine["timeon"]     = ledsettings[lednr].anim[animnr].timeon;
-          animLine["timeoff"]    = ledsettings[lednr].anim[animnr].timeoff;
-          animLine["timeeffect"] = ledsettings[lednr].anim[animnr].timeeffect;
-          animLine["effect"]     = ledsettings[lednr].anim[animnr].effect;
+          animLine["animdesc"]   = rgbsettings[rgbnr].anim[animnr].animdesc;
+          animLine["hue1"]       = rgbsettings[rgbnr].anim[animnr].hue1;
+          animLine["sat1"]       = rgbsettings[rgbnr].anim[animnr].sat1;
+          animLine["bri1"]       = rgbsettings[rgbnr].anim[animnr].bri1;
+          animLine["hue2"]       = rgbsettings[rgbnr].anim[animnr].hue2;
+          animLine["sat2"]       = rgbsettings[rgbnr].anim[animnr].sat2;
+          animLine["bri2"]       = rgbsettings[rgbnr].anim[animnr].bri2;
+          animLine["hue3"]       = rgbsettings[rgbnr].anim[animnr].hue3;
+          animLine["sat3"]       = rgbsettings[rgbnr].anim[animnr].sat3;
+          animLine["bri3"]       = rgbsettings[rgbnr].anim[animnr].bri3;
+          animLine["hue4"]       = rgbsettings[rgbnr].anim[animnr].hue4;
+          animLine["sat4"]       = rgbsettings[rgbnr].anim[animnr].sat4;
+          animLine["bri4"]       = rgbsettings[rgbnr].anim[animnr].bri4;
+          animLine["every"]      = rgbsettings[rgbnr].anim[animnr].every;
+          animLine["timeon"]     = rgbsettings[rgbnr].anim[animnr].timeon;
+          animLine["timeoff"]    = rgbsettings[rgbnr].anim[animnr].timeoff;
+          animLine["timeeffect"] = rgbsettings[rgbnr].anim[animnr].timeeffect;
+          animLine["seed"]       = rgbsettings[rgbnr].anim[animnr].seed;
+          animLine["effect"]     = rgbsettings[rgbnr].anim[animnr].effect;
         }
         serializeJson(animDoc, tmp);
 
-        ledLine["anim"] = tmp;
+        rgbLine["anim"] = tmp;
         
     }
 
@@ -40,6 +55,6 @@ String fileRgbSaveSettings() {
 
     writeFile(SPIFFS, filename, tmp);
 
-    msgAnswer = "LED settings saved";
+    msgAnswer = "RGB settings saved";
     return msgAnswer;
 }
