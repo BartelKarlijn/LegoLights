@@ -139,6 +139,10 @@ void setup_AsyncWebserver(){
     Println("Show Firmware info");
     request->send(200, "text/plain", on_showfirmware());
   });
+  webserver.on("/wifiScanNetworks", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Scanning Wifi networks");
+    request->send(200, "text/plain", scanWifiNetworks());
+  });
   webserver.on("/wifisave", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Wifi connection parameters");
     on_wifisave(request);
