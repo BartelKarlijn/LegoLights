@@ -3,7 +3,7 @@ void cK08kringTonToff(){
     int kringnr = commandParts.arg1.toInt();
     int effect = commandParts.arg2.toInt();
     unsigned long timeeffect = commandParts.arg3.toDouble();
-    if (kringnr >= 0 && kringnr < STRIP_NR_ITEMS) {
+    if (kringnr >= 0 && kringnr < RGB_NR_ITEMS) {
         kring[kringnr].effect = effect;
         kring[kringnr].timeeffect = timeeffect;
     } else {

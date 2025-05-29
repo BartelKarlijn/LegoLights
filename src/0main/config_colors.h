@@ -15,9 +15,6 @@
 #define RGB_NR_ANIM 5
 #define RGB_NR_LEDS 300 
 
-// default waarden
-#define STRIP_NR_ITEMS 40
-
 // ------------------ Huis -----------------------
 // -----------------------------------------------
 typedef struct {
@@ -178,18 +175,18 @@ const struc_rgbactive STR_DEFAULT[] {
 ,{"Quiddich  V2 Dozen ", IMG_OLIV ,  83,  89,  32, 200, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    6,   125,   5750,    250,  0, EFFRGB_AAN  } //13
 };
 
-struc_rgbactive kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
+struc_rgbactive kring[RGB_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
 // rgbstrip 
 CRGB rgbstrip[RGB_NR_LEDS];
 
 // timing & color varialbles
-unsigned long timer_rgb_aan[STRIP_NR_ITEMS];
-unsigned long timer_rgb_effect[STRIP_NR_ITEMS];
-uint8_t effectrgbhueidx[STRIP_NR_ITEMS][4];
-uint8_t effectrgbhue[STRIP_NR_ITEMS][4];
-uint8_t effectrgbsat[STRIP_NR_ITEMS][4];
-uint8_t effectrgbbri[STRIP_NR_ITEMS][4];
-uint8_t chaseRgbNr[STRIP_NR_ITEMS][4];
+unsigned long timer_rgb_aan[RGB_NR_ITEMS];
+unsigned long timer_rgb_effect[RGB_NR_ITEMS];
+uint8_t effectrgbhueidx[RGB_NR_ITEMS][4];
+uint8_t effectrgbhue[RGB_NR_ITEMS][4];
+uint8_t effectrgbsat[RGB_NR_ITEMS][4];
+uint8_t effectrgbbri[RGB_NR_ITEMS][4];
+uint8_t chaseRgbNr[RGB_NR_ITEMS][4];
 
 //////////// single leds /////////////////////////////

@@ -1,7 +1,7 @@
 #pragma once
 
 void showstrip() {
-  for (size_t i = 0; i < STRIP_NR_ITEMS; i++) {
+  for (size_t i = 0; i < RGB_NR_ITEMS; i++) {
     switch (kring[i].effect)
     {
     case EFFRGB_AAN:

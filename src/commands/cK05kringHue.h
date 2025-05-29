@@ -3,7 +3,7 @@ void cK05kringHue(){
     int kringnr = commandParts.arg1.toInt();
     int nr = commandParts.arg2.toInt();
     int hue = commandParts.arg3.toInt();
-    if (kringnr >= 0 && kringnr < STRIP_NR_ITEMS) {
+    if (kringnr >= 0 && kringnr < RGB_NR_ITEMS) {
         switch (nr) {
             case 1:
                 kring[kringnr].hue1 = hue;

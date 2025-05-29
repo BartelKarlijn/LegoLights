@@ -5,7 +5,7 @@ String listKringen(bool ishtml, String file_img) {
   Print("Listing kringen van ");
   Println(file_img);
 
-  for (size_t i = 0; i < STRIP_NR_ITEMS; i++) {
+  for (size_t i = 0; i < RGB_NR_ITEMS; i++) {
     if (kring[i].image == file_img ) {
       // telkens ID en beschrijving
       if (ishtml) {
