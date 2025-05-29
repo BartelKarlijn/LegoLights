@@ -83,6 +83,7 @@
 #include "wifi/decodeRequestRgb.h"
 #include "wifi/on_file.h"            // downloaden of verwijderen
 #include "wifi/on_fileUpload.h"
+#include "wifi/on_showfirmware.h"   // tonen van de firmware versie
 #include "wifi/on_wifisave.h"
 
 // commands
