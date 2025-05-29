@@ -1,10 +1,10 @@
 #pragma once
 void rgbLoadAnim() {
   // Ini files zijn ingelezen, nog eens toepassen wat daar staat
-  for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++)
+  for (size_t rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++)
   {
-    ledRequest.lednr = lednr;
-    ledRequest.animnr = huisSetting.animnr[lednr];
-    ledAnimApply();
+    rgbRequest.rgbnr = rgbnr;
+    rgbRequest.animnr = huisSetting.animnr[rgbnr];
+    rgbAnimApply();
   } 
 }
