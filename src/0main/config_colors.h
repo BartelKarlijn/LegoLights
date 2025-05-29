@@ -5,11 +5,14 @@
 #define IMG_WEAS "file_img_Weasley.jpg"
 
 #define FILE_HUIS "/cfg_huis.ini"
-#define FILE_RGB  "/cfg_rgb.ini"
 #define FILE_LED  "/cfg_led.ini"
+#define FILE_RGB  "/cfg_rgb.ini"
 
 #define LED_NR_ITEMS 16
 #define LED_NR_ANIM 6
+
+#define RGB_NR_ITEMS 16
+#define RGB_NR_ANIM 5
 
 // default waarden
 #define STRIP_NR_ITEMS 40
@@ -147,6 +150,13 @@ typedef struct {
   int           stoprgb;
   struc_rgbanim anim[LED_NR_ANIM];
 } struc_rgbsettings;
+
+// default voor alle leds als er geen file is.
+//                                        desc, img      ,star,stop,hue1,sat1,bri1,hue2,sat2,bri2,hue3,sat3,bri3,hue4,sat4,bri4,every,timeon,timeoff,timeeff,seed,eff
+const struc_rgbactive RGBACTIVE_DEFAULT  {"rgb", IMG_OLIV, 0  ,  10,   0,  10, 150, 255, 255, 255, 255, 255, 255, 255, 255, 255,    0,  1000,    150, 500, 0, EFFRGB_AAN };
+
+struc_rgbactive   rgbactive[RGB_NR_ITEMS];
+struc_rgbsettings rgbsettings[RGB_NR_ITEMS];
 
 const struc_rgbactive STR_DEFAULT[] {
 //234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down

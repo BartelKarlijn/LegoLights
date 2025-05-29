@@ -42,6 +42,8 @@
 #include "spiffs/fileHuisSaveSettings.h"
 #include "spiffs/fileLedLoadSettings.h"
 #include "spiffs/fileLedSaveSettings.h"
+#include "spiffs/fileRgbLoadSettings.h"
+#include "spiffs/fileRgbSaveSettings.h"
 #include "spiffs/fileDefault2Kring.h"
 #include "spiffs/fileLoad2Kring.h"
 #include "spiffs/fileSaveKring.h"
