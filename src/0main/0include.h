@@ -52,7 +52,7 @@
 #include "huis/huisValueGet.h"
 #include "huis/huisValueSet.h"
 
-//singleled
+//led
 #include "led/led_aan.h"
 #include "led/led_fire.h"
 #include "led/led_glow.h"
@@ -65,6 +65,21 @@
 #include "led/ledAnimApply.h"
 #include "led/ledLoadAnim.h"
 #include "led/ledListAnim.h"
+
+//rgb
+#include "rgb/0ldlistKringen.h"
+#include "rgb/rgb_aan.h"
+#include "rgb/rgb_chase.h"
+#include "rgb/rgb_fire.h"
+#include "rgb/rgb_glow.h"
+#include "rgb/rgb_party.h"
+#include "rgb/rgb_uit.h"
+#include "rgb/rgbValueGet.h"
+#include "rgb/rgbValueSet.h"
+#include "rgb/showrgb.h"
+#include "rgb/rgbAnimApply.h"
+#include "rgb/rgbLoadAnim.h"
+#include "rgb/rgbListAnim.h"
 
 // Wifi Actions
 #include "wifi/decodeRequestHuis.h"
@@ -107,16 +122,6 @@
 #include "commands/decodeCommand.h"
 #include "commands/executeCommand.h"
 #include "commands/readSerial.h"
-
-//rgb
-#include "rgb/0ldlistKringen.h"
-#include "rgb/rgb_aan.h"
-#include "rgb/rgb_chase.h"
-#include "rgb/rgb_fire.h"
-#include "rgb/rgb_glow.h"
-#include "rgb/rgb_party.h"
-#include "rgb/rgb_uit.h"
-#include "rgb/showrgb.h"
 
 // fps & anims
 #include "0main/show_fps.h"
