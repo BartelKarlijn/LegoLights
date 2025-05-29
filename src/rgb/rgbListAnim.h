@@ -1,20 +1,20 @@
 #pragma once
 String rgbListAnim() {
-  // List the animations in the settings for a led
+  // List the animations in the settings for a rgb
   String msgAnswer="";
 
-  for (size_t i = 0; i < LED_NR_ANIM; i++)
+  for (size_t i = 0; i < RGB_NR_ANIM; i++)
   {
       msgAnswer += "<option value='";
       msgAnswer += i;
       msgAnswer += "'>";
       msgAnswer += i;
       msgAnswer += ". ";
-      msgAnswer += ledsettings[ledRequest.lednr].anim[i].animdesc;
+      msgAnswer += rgbsettings[rgbRequest.rgbnr].anim[i].animdesc;
       msgAnswer += "</option>";
   }
   
-  Println("List Anims for led " + String(ledRequest.lednr));
+  Println("List Anims for rgb " + String(rgbRequest.rgbnr));
 
   return msgAnswer;
 }
