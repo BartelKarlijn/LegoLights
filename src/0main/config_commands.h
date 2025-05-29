@@ -20,6 +20,16 @@ struct struc_ledRequest {
 
 struc_ledRequest ledRequest;
 
+// rgb
+struct struc_rgbRequest {
+    int rgbnr;
+    int animnr;
+    int veld;
+    String waarde;
+};
+
+struc_rgbRequest rgbRequest;
+
 //huis
 int huisMin = 1;
 int huisMax = 20;

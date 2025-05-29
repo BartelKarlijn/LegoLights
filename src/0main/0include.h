@@ -69,6 +69,7 @@
 // Wifi Actions
 #include "wifi/decodeRequestHuis.h"
 #include "wifi/decodeRequestLed.h"
+#include "wifi/decodeRequestRgb.h"
 #include "wifi/on_file.h"            // downloaden of verwijderen
 #include "wifi/on_fileUpload.h"
 #include "wifi/on_getStrip.h"
