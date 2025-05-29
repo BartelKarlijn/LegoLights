@@ -39,27 +39,6 @@ void setup_AsyncWebserver(){
     Println("fileStorage requested");
     request->send(200, "text/plain", listStorage(true));
   });
-  // -- Strip management
-  webserver.on("/getfileLoad2Kring", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Strip settings ophalen voor kring");
-    request->send(200, "text/plain", on_getfileLoad2Kring(request));
-  });
-  webserver.on("/getfileDefault2Kring", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Strip terug naar default zetten");
-    request->send(200, "text/plain", on_getfileDefault2Kring(request));
-  });
-  webserver.on("/getfileSaveKring", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("Strip settings bewaren voor kring");
-    request->send(200, "text/plain", on_getfileSaveKring(request));
-  });
-  webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
-    request->send(200, "text/plain", on_getStrip(request));
-  });
-  webserver.on("/getSetStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Println("setstrip binnen gekregen");
-    request->send(200, "text/plain", on_getSetStrip(request));
-  });
   //--------------------
   // -- huis management--
   webserver.on("/huisSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
@@ -113,6 +92,62 @@ void setup_AsyncWebserver(){
     Println("setLed binnen gekregen");
     decodeRequestLed(request);
     request->send(200, "text/plain", ledValueSet());
+  });
+  //--------------------
+  // -- rgb management--
+  webserver.on("/rgbAnimApply", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Animatie toepassen voor rgb");
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", rgbAnimApply());
+  });
+  webserver.on("/rgbListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("Rgb animaties tonen als option lijst");
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", rgbListAnim());
+  });
+  webserver.on("/rgbSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Alle Rgb settings terug ophalen uit cfg file");
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", fileRgbLoadSettings());
+    rgbLoadAnim();
+  });
+  webserver.on("/rgbSettingFileSave", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Alle Rgb settings bewaren in cfg file");
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", fileRgbSaveSettings());
+  });
+  webserver.on("/rgbValueGet", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getrgb binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", rgbValueGet());
+  });
+  webserver.on("/rgbValueSet", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("setRgb binnen gekregen");
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", rgbValueSet());
+  });
+
+
+  // -- Strip management
+  webserver.on("/getfileLoad2Kring", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Strip settings ophalen voor kring");
+    request->send(200, "text/plain", on_getfileLoad2Kring(request));
+  });
+  webserver.on("/getfileDefault2Kring", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Strip terug naar default zetten");
+    request->send(200, "text/plain", on_getfileDefault2Kring(request));
+  });
+  webserver.on("/getfileSaveKring", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Strip settings bewaren voor kring");
+    request->send(200, "text/plain", on_getfileSaveKring(request));
+  });
+  webserver.on("/getStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("getstrip binnen gekregen"); geen print want we krijgen er zo 10 binnen
+    request->send(200, "text/plain", on_getStrip(request));
+  });
+  webserver.on("/getSetStrip", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("setstrip binnen gekregen");
+    request->send(200, "text/plain", on_getSetStrip(request));
   });
   //--------------------
   // -- andere dingen
