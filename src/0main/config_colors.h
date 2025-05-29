@@ -13,10 +13,10 @@
 
 #define RGB_NR_ITEMS 16
 #define RGB_NR_ANIM 5
+#define RGB_NR_LEDS 300 
 
 // default waarden
 #define STRIP_NR_ITEMS 40
-#define STRIP_NR_LEDS 311 //eentje meer dan laatste item in lijstje hieronder
 
 // ------------------ Huis -----------------------
 // -----------------------------------------------
@@ -181,7 +181,7 @@ const struc_rgbactive STR_DEFAULT[] {
 struc_rgbactive kring[STRIP_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
 // rgbstrip 
-CRGB rgbstrip[STRIP_NR_LEDS];
+CRGB rgbstrip[RGB_NR_LEDS];
 
 // timing & color varialbles
 unsigned long timer_rgb_aan[STRIP_NR_ITEMS];

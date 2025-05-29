@@ -35,7 +35,7 @@
 //#include <ESPtools.h>
 #include "C:\NonSyncing\Github repository\ESPtools\src\ESPtools.h"
 #include "0main/setupLed.h"
-#include "0main/setupLedstrip.h"
+#include "0main/setupRgb.h"
 
 // Spiffs(integrated file system)
 #include "spiffs/fileHuisLoadSettings.h"
