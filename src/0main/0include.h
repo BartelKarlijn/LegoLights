@@ -44,8 +44,6 @@
 #include "spiffs/fileLedSaveSettings.h"
 #include "spiffs/fileRgbLoadSettings.h"
 #include "spiffs/fileRgbSaveSettings.h"
-#include "spiffs/0ldLoad2Kring.h"
-#include "spiffs/0ldSaveKring.h"
 
 //huis
 #include "huis/huisValueGet.h"
@@ -99,9 +97,6 @@
 #include "commands/cK08kringTonToff.h"
 #include "commands/cK09kringEffect.h"
 #include "commands/cK10kringSeed.h"
-#include "commands/cK20kringSaveSetting.h"
-#include "commands/cK21kringLoadSetting.h"
-#include "commands/cK22kringDefaultSet.h"
 #include "commands/cL02ledSetName.h"
 #include "commands/cL07ledSetBrightness.h"
 #include "commands/cL08ledSetTimeOnOff.h"
