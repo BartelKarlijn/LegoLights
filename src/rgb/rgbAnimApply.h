@@ -1,22 +1,37 @@
 #pragma once
 String rgbAnimApply() {
-  // Apply LED settings for given animatie
-  int lednr = ledRequest.lednr;
-  int animnr = ledRequest.animnr;
-  if (ledsettings[lednr].anim[animnr].animdesc == NULL) {
-    Println("settingLedApplyAnim: animatie niet gevonden");
+  // Apply RGB settings for given animatie
+  int rgbnr = rgbRequest.rgbnr;
+  int animnr = rgbRequest.animnr;
+  if (rgbsettings[rgbnr].anim[animnr].animdesc == NULL) {
+    Println("settingRgbApplyAnim: animatie niet gevonden");
   }
   else {
-    Println("settingLedApplyAnim: " + ledsettings[lednr].anim[animnr].animdesc);
-    ledactive[lednr].desc = ledsettings[lednr].leddesc;
-    ledactive[lednr].bri = ledsettings[lednr].anim[animnr].bri;
-    ledactive[lednr].timeon = ledsettings[lednr].anim[animnr].timeon;
-    ledactive[lednr].timeoff = ledsettings[lednr].anim[animnr].timeoff;
-    ledactive[lednr].timeeffect = ledsettings[lednr].anim[animnr].timeeffect;
-    ledactive[lednr].effect = ledsettings[lednr].anim[animnr].effect;
-    ledactive[lednr].image = ledsettings[lednr].ledimage;
-    ledactive[lednr].animnr = animnr;
-    ledactive[lednr].animatie = ledsettings[lednr].anim[animnr].animdesc;
+    Println("settingRgbApplyAnim: " + rgbsettings[rgbnr].anim[animnr].animdesc);
+    rgbactive[rgbnr].desc = rgbsettings[rgbnr].rgbdesc;
+    rgbactive[rgbnr].image = rgbsettings[rgbnr].rgbimage;
+    rgbactive[rgbnr].startrgb = rgbsettings[rgbnr].startrgb;
+    rgbactive[rgbnr].stoprgb = rgbsettings[rgbnr].stoprgb;
+    rgbactive[rgbnr].hue1 = rgbsettings[rgbnr].anim[animnr].hue1;
+    rgbactive[rgbnr].sat1 = rgbsettings[rgbnr].anim[animnr].sat1;
+    rgbactive[rgbnr].bri1 = rgbsettings[rgbnr].anim[animnr].bri1;
+    rgbactive[rgbnr].hue2 = rgbsettings[rgbnr].anim[animnr].hue2;
+    rgbactive[rgbnr].sat2 = rgbsettings[rgbnr].anim[animnr].sat2;
+    rgbactive[rgbnr].bri2 = rgbsettings[rgbnr].anim[animnr].bri2;
+    rgbactive[rgbnr].hue3 = rgbsettings[rgbnr].anim[animnr].hue3;
+    rgbactive[rgbnr].sat3 = rgbsettings[rgbnr].anim[animnr].sat3;
+    rgbactive[rgbnr].bri3 = rgbsettings[rgbnr].anim[animnr].bri3;
+    rgbactive[rgbnr].hue4 = rgbsettings[rgbnr].anim[animnr].hue4;
+    rgbactive[rgbnr].sat4 = rgbsettings[rgbnr].anim[animnr].sat4;
+    rgbactive[rgbnr].bri4 = rgbsettings[rgbnr].anim[animnr].bri4;
+    rgbactive[rgbnr].every = rgbsettings[rgbnr].anim[animnr].every;
+    rgbactive[rgbnr].timeon = rgbsettings[rgbnr].anim[animnr].timeon;
+    rgbactive[rgbnr].timeoff = rgbsettings[rgbnr].anim[animnr].timeoff;
+    rgbactive[rgbnr].timeeffect = rgbsettings[rgbnr].anim[animnr].timeeffect;
+    rgbactive[rgbnr].seed = rgbsettings[rgbnr].anim[animnr].seed;
+    rgbactive[rgbnr].effect = rgbsettings[rgbnr].anim[animnr].effect;
+    rgbactive[rgbnr].animnr = animnr;
+    rgbactive[rgbnr].animatie = rgbsettings[rgbnr].anim[animnr].animdesc;
   }
   return "anim applied";
 }

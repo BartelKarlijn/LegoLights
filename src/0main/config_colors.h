@@ -116,6 +116,8 @@ typedef struct {
   unsigned long timeeffect;
   int8_t        seed;
   uint8_t       effect;
+  int           animnr;
+  String        animatie;
 } struc_rgbactive;
 
 typedef struct {
