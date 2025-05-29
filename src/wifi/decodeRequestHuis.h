@@ -13,6 +13,14 @@ void decodeRequestHuis(AsyncWebServerRequest *request){
         huisRequest.lednr = 255;
       }
   
+    if (request->hasParam("rgb")) {
+        ledString = request->getParam("rgb")->value();
+        huisRequest.rgbnr = ledString.toInt();
+      }
+      else {
+        huisRequest.rgbnr = 255;
+      }
+
     if (request->hasParam("veld")) {
         veldString = request->getParam("veld")->value();
         huisRequest.veld = veldString.toInt();

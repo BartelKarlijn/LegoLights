@@ -18,6 +18,7 @@ struct struc_huisRequest {
     int huisnr;
     int veld;
     int lednr;
+    int rgbnr;
     String waarde;
 };
 struc_huisRequest huisRequest;

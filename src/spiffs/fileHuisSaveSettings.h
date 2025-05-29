@@ -16,9 +16,11 @@ String fileHuisSaveSettings() {
     
     for (int lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
       // Create a JsonObject for each LED      
-      doc["animnr"][lednr] = huisSetting.animnr[lednr];
-        //JsonArray animArray = doc.to<JsonArray>();
-        //animArray.add(huisSetting.animnr[lednr]);
+      doc["animnr"][lednr] = huisSetting.animnrled[lednr];
+    }
+    for (int rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++) {
+      // Create a JsonObject for each RGB      
+      doc["animnr"][rgbnr] = huisSetting.animnrrgb[rgbnr];
     }
 
     // Serialize the JSON and write it to the file

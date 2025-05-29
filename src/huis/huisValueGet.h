@@ -1,5 +1,6 @@
 String huisValueGet(){
     int lednr = huisRequest.lednr;
+    int rgbnr = huisRequest.rgbnr;
     int veldnr = huisRequest.veld;
     
     String answertoSend = "";
@@ -15,7 +16,10 @@ String huisValueGet(){
         answertoSend = huisSetting.huisnr;
         break;
       case 43:
-        answertoSend = huisSetting.animnr[lednr];
+        answertoSend = huisSetting.animnrled[lednr];
+        break;
+      case 44:
+        answertoSend = huisSetting.animnrrgb[rgbnr];
         break;
       default:
         answertoSend = "error";

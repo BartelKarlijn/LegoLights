@@ -21,7 +21,8 @@ typedef struct {
   int huisnr;
   String desc;
   String image;
-  int    animnr[LED_NR_ITEMS];
+  int    animnrled[LED_NR_ITEMS];
+  int    animnrrgb[RGB_NR_ITEMS];
 } struc_huis;
 
 const struc_huis HUIS_DEFAULT {

@@ -1,5 +1,6 @@
 String huisValueSet(){
     int lednr = huisRequest.lednr;
+    int rgbnr = huisRequest.rgbnr;
     int veldnr = huisRequest.veld;
     String waardeString = huisRequest.waarde;
     String answertoSend;
@@ -22,7 +23,11 @@ String huisValueSet(){
         answertoSend = waardeString;
         break;
       case 43:
-        huisSetting.animnr[lednr] = waardeString.toInt();
+        huisSetting.animnrled[lednr] = waardeString.toInt();
+        answertoSend = waardeString;
+        break;
+      case 44:
+        huisSetting.animnrrgb[rgbnr] = waardeString.toInt();
         answertoSend = waardeString;
         break;
       default:

@@ -4,7 +4,7 @@ void rgbLoadAnim() {
   for (size_t rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++)
   {
     rgbRequest.rgbnr = rgbnr;
-    rgbRequest.animnr = huisSetting.animnr[rgbnr];
+    rgbRequest.animnr = huisSetting.animnrrgb[rgbnr];
     rgbAnimApply();
   } 
 }

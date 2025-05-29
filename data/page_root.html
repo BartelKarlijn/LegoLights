@@ -8,8 +8,10 @@
   <script>
     $(document).ready(function() {
       ListLedDefaults();
+      ListRgbDefaults();
       getValuesJQH();        //dan pas alles ophalen voor jqh
       getValuesJQL();
+      getValuesJQR();
 			setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
 		});
@@ -17,8 +19,9 @@
       $('input[name="jqh"]').each(function(ind, element) {
 		  	$(element).val(function(index, value){
           lv_led = $(element).attr('led');
+          lv_rgb = $(element).attr('rgb');
           lv_veld = $(element).attr('veld');
-  		    $.get("huisValueGet", {led: $(element).attr('led'), veld: $(element).attr('veld')}, function(data) {
+  		    $.get("huisValueGet", {led: $(element).attr('led'), rgb: $(element).attr('rgb'), veld: $(element).attr('veld')}, function(data) {
 	  	      $(element).val(data);
 			    });
 			  });
@@ -76,6 +79,40 @@
 			  });
        });
     };
+    function getValuesJQR() {
+      $('label[name="jqr"]').each(function(ind, element) {
+		   $(element).val(function(index, value){
+          lv_rgb = $(element).attr('rgb');
+          lv_anim = $(element).attr('anim');
+          lv_veld = $(element).attr('veld');
+		      $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: lv_veld}, function(data) {
+				    $(element).text(lv_rgb + ". "+data);
+				  });
+				});
+      });
+      $('a[name="jqr"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          lv_rgb = $(element).attr('rgb');
+          lv_anim = $(element).attr('anim');
+          lv_veld = $(element).attr('veld');
+			    $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: lv_veld}, function(data) {
+            lv_led = $(element).attr('rgb');
+            lv_anim = 0;
+            $(element).text(lv_rgb + ". "+data);
+            $(element).attr("href", "/page_maintain_rgb.html?led="+lv_rgb+"&anim="+lv_anim);
+			    });
+			  });
+       });
+       $('select[name="jqr"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          lv_rgb = $(element).attr('rgb');
+          $.get("/rgbListAnim", {rgb: lv_rgb}, function(data) {
+      		  $(element).empty();
+            $(element).append(data);
+			    });
+			  });
+       });
+    };
     function getImage() {
       console.log("img refreshed " + $('#img').val() )
       $('#file_img').attr( "src",  $('#img').val() );
@@ -89,6 +126,17 @@
                       + "</div>"
                     );
         ledlist.appendTo("#ListLed");
+      };
+    };
+    function ListRgbDefaults(){
+      for (let i=0; i<16; i++){
+        var ledlist = $("<div class='row'>"
+                      + "<div class='column3'><a      name='jqr' veld='1'  rgb='"+i+"' anim='0' href='/'' class='button button-left'>naar</a></div>"
+                      + "<div class='column3'><select name='jqr'           rgb='"+i+"' list='rgbanim' type='text' ><option value='default'></option></select></div>"
+                      + "<div class='column3'><input  name='jqh' veld='44' rgb='"+i+"' class='input-small'></input></div>"
+                      + "</div>"
+                    );
+        ledlist.appendTo("#ListRgb");
       };
     };
     function fileHuisSaveSettings() { $.get("/huisSettingFileSave", {} , function(data) {$("#status").html(data);}); };
@@ -125,9 +173,16 @@
   </h2></div>
   <div id="ListLed"></div>
   <div class="row"><h2>
+    <div class="column3"><label>Rgb</label></div>
+    <div class="column3"><label>Animaties</label></div>
+    <div class="column3"><label>Default animatie</label></div>
+  </h2></div>
+  <div id="ListRgb"></div>
+  <div class="row"><h2>
     <div class="column2"><button onclick="fileHuisSaveSettings();" class="button button-right button-large">Save settings</button></div>
     <div class="column2"><button onclick="fileHuisLoadSettings();" class="button button-right button-large">Load from last save</button></div>
   </div>
+  <br>
   
   <p name='jqh'>Firmware status: </p>
 </body>
