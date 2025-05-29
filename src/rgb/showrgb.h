@@ -1,6 +1,6 @@
 #pragma once
 
-void showstrip() {
+void showrgb() {
   for (size_t i = 0; i < RGB_NR_ITEMS; i++) {
     switch (kring[i].effect)
     {
@@ -26,4 +26,5 @@ void showstrip() {
         break;
     }
   }
+  FastLED.show();
 }

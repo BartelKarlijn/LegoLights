@@ -109,14 +109,14 @@
 #include "commands/readSerial.h"
 
 //rgb
-#include "rgb/listKringen.h"
+#include "rgb/0ldlistKringen.h"
 #include "rgb/rgb_aan.h"
 #include "rgb/rgb_chase.h"
 #include "rgb/rgb_fire.h"
 #include "rgb/rgb_glow.h"
 #include "rgb/rgb_party.h"
 #include "rgb/rgb_uit.h"
-#include "rgb/showstrip.h"
+#include "rgb/showrgb.h"
 
 // fps & anims
 #include "0main/show_fps.h"

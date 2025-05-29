@@ -21,8 +21,6 @@ void loop() {
   currentMillis = millis();
   show_fps();    // print om de zoveel tijd de fps
   readSerial(); // commando's van de serial poort lezen
-  showstrip();   // toon alles van de strip
-  FastLED.show();
-  
   showled();     // ledjes tonen
+  showrgb();   // toon alles van de strip  
 }
