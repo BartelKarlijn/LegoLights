@@ -9,5 +9,5 @@ String on_getfileDefault2Kring(AsyncWebServerRequest *request){
     else {
       kringnr = 99;
     }
-    return fileDefault2Kring(kringnr);
+    return ".";
 }

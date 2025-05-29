@@ -157,26 +157,6 @@ const struc_rgbactive RGBACTIVE_DEFAULT  {"rgb", IMG_OLIV, 0  ,  10,   0,  10, 1
 struc_rgbactive   rgbactive[RGB_NR_ITEMS];
 struc_rgbsettings rgbsettings[RGB_NR_ITEMS];
 
-const struc_rgbactive STR_DEFAULT[] {
-//234567890 234567890             hue 0:red   , 32: orange, 64: yellow, 128: aqua, 192: purple, 255:red                     dir 0: up, 1: down
-//                                     sat 0: white -255 color                                      time : in ms                effect: zie begin van file
-//    description (20) ,star,stop,hue1,sat1,bri1,hue2,sat2,bri2,hue3,sat3,bri3,hue4,sat4,bri4,every,timeon,timeoff,timeeff,seed,eff
- {"Olivander V0 plafon", IMG_OLIV ,   0,  10,  48, 255, 255,  48, 255,   0, 150, 255, 170, 150, 255,   0,    5, 10000,   1000,   2500,  0, EFFRGB_GLOW } // 0
-,{"Olivander V0 trap  ", IMG_OLIV ,  11,  11, 192, 255, 255,  92, 255, 255,  80, 255,  70,  75, 255,  70,    1,  5000,   1000,    500,  0, EFFRGB_UIT  } // 1
-,{"Olivander V1 plafon", IMG_OLIV ,  12,  22,  48, 255, 170,  60, 255,  70,  80, 255,  75,  75, 255,  70,    5, 10000,   1000,    500,  0, EFFRGB_UIT  } // 2
-,{"Scribulus V1 plafon", IMG_OLIV ,  23,  29,  48, 200, 150, 150, 255, 100, 152, 255,   0,   0, 255,   0,    3, 10000,   1000,    500,  0, EFFRGB_CHASE} // 3
-,{"Scribulus V1 haard ", IMG_OLIV ,  30,  30,  32, 255, 255,   0, 255, 255,  20, 255, 255,  10, 255, 255,    1, 10000,   1000,    100,  0, EFFRGB_FIRE } // 4
-,{"Scribulus V1 vitrin", IMG_OLIV ,  31,  32, 152, 150, 220,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,      0,  0, EFFRGB_AAN  } // 5
-,{"Scribulus V0 plafon", IMG_OLIV ,  33,  39,  48, 150, 150,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFRGB_AAN  } // 6
-,{"Scribulus V0 pui   ", IMG_OLIV ,  40,  41, 140, 255, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  5000,   1000,    250,  0, EFFRGB_AAN  } // 7
-,{"Olivander V0 puiR  ", IMG_OLIV ,  42,  43,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFRGB_FIRE } // 8
-,{"Olivander V0 puiL  ", IMG_OLIV ,  44,  45,  64, 255, 100, 100, 255, 100,  90, 255, 100, 110, 255,  50,    1, 10000,   1000,    100,  0, EFFRGB_FIRE } // 9
-,{"Quiddich  GLV pop v", IMG_OLIV ,  46,  48,   0, 180, 200,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFRGB_AAN  } //10
-,{"Quiddich  V1 plafon", IMG_OLIV ,  49,  72,   0, 255,   0,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1, 10000,   1000,    250,  0, EFFRGB_AAN  } //11
-,{"Quiddich  V1 kast  ", IMG_OLIV ,  73,  82, 128, 255, 255,   0, 255,   0,   0, 255,   0,   0, 255,   0,    1,  1000,    250,    250,  0, EFFRGB_AAN  } //12
-,{"Quiddich  V2 Dozen ", IMG_OLIV ,  83,  89,  32, 200, 100,   0, 255,   0,   0, 255,   0,   0, 255,   0,    6,   125,   5750,    250,  0, EFFRGB_AAN  } //13
-};
-
 struc_rgbactive kring[RGB_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
 
 // rgbstrip 
@@ -190,5 +170,3 @@ uint8_t effectrgbhue[RGB_NR_ITEMS][4];
 uint8_t effectrgbsat[RGB_NR_ITEMS][4];
 uint8_t effectrgbbri[RGB_NR_ITEMS][4];
 uint8_t chaseRgbNr[RGB_NR_ITEMS][4];
-
-//////////// single leds /////////////////////////////

@@ -10,26 +10,6 @@ struct struc_commandParts {
 };
 struc_commandParts commandParts;
 
-// led
-struct struc_ledRequest {
-    int lednr;
-    int animnr;
-    int veld;
-    String waarde;
-};
-
-struc_ledRequest ledRequest;
-
-// rgb
-struct struc_rgbRequest {
-    int rgbnr;
-    int animnr;
-    int veld;
-    String waarde;
-};
-
-struc_rgbRequest rgbRequest;
-
 //huis
 int huisMin = 1;
 int huisMax = 20;
@@ -40,5 +20,22 @@ struct struc_huisRequest {
     int lednr;
     String waarde;
 };
-
 struc_huisRequest huisRequest;
+
+// led
+struct struc_ledRequest {
+    int lednr;
+    int animnr;
+    int veld;
+    String waarde;
+};
+struc_ledRequest ledRequest;
+
+// rgb
+struct struc_rgbRequest {
+    int rgbnr;
+    int animnr;
+    int veld;
+    String waarde;
+};
+struc_rgbRequest rgbRequest;
