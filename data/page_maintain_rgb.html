@@ -1,128 +1,146 @@
 <!DOCTYPE html> <html>
 <head>
-    <title>rgb</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
-    <link rel="icon" href="/file_favicon.ico">
-    <link rel="stylesheet" type="text/css" href="file_style.css">
-    <script src="file_jquery-3.7.0.min.js"></script>
-      <script>
-        $(document).ready(function() {
-            // url parameters
-            $.urlParam = function(name){
-                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-                if (results==null) { return null; }
-                return decodeURI(results[1]) || 0;
-            }
-            console.log("kring= "+$.urlParam('kring'));
-            getValuesJQ();          //Beginwaarden ophalen voor jq
-            setonchangeValuesJQ();  //onchange voor jq elementen
-            getValuePrevKring();
-            getValueNextKring();
-            setTimeout(getImage, 2000);
-		});
-        function getValuesJQ() {
-            $('input[name="jq"]').each(function(ind, element) {
-				$(element).val(function(index, value){
-					$.get("getStrip", {kring: $.urlParam('kring'), veld: $(element).attr('id')}, function(data) {
-						$(element).val(data);
-					});
-				});
-            });
-        };
-        function setonchangeValuesJQ(){
-			$('input[name="jq"]').each(function(ind, element) {
-				$(element).on("focusout", function(){
-					$.get("/getSetStrip", {kring: $.urlParam('kring'), veld: $(element).attr('id'), waarde: $(element).val()}, function(data) {
-					});
-				});
-			});
-        };
-        function getImage() {
-            console.log("img refreshed " + $('#22').val() )
-
-            $('#file_img').attr( "src",  $('#22').val() );
-        };
-        function getValuePrevKring() {
-            var prevKring = parseInt($.urlParam('kring')) - 1;
-            var prevDesc  = null;
-            $.get("getStrip", {kring: prevKring, veld: "01" }, function(data){
-                document.getElementById("PrevKring").innerHTML = "Naar: " + data;
-                document.getElementById("PrevKring").href  = "/page_maintain_strip.html?kring="+prevKring;
-            });
-        };
-        function getValueNextKring() {
-            var nextKring = parseInt($.urlParam('kring')) + 1;
-            var nextDesc  = null;
-            $.get("getStrip", {kring: nextKring, veld: "01" }, function(data){
-                document.getElementById("NextKring").innerHTML = "Naar: " + data;
-                document.getElementById("NextKring").href  = "/page_maintain_strip.html?kring="+nextKring;
-            });
-        };
-        function fileSaveKring()    { $.get("/getfileSaveKring"     , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); };
-        function fileDefault2Kring(){ $.get("/getfileDefault2Kring" , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
-        function fileLoad2Kring()   { $.get("/getfileLoad2Kring"    , {kring: $.urlParam('kring')} , function(data) {$("#status").html(data);}); getValuesJQ(); };
-    </script>
+  <title>rgb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
+  <link rel="icon" href="/file_favicon.ico">
+  <link rel="stylesheet" type="text/css" href="file_style.css">
+  <script src="file_jquery-3.7.0.min.js"></script>
+  <script>
+      var lv_rgb = 0;
+      var lv_anim = 0;
+      $(document).ready(function() {
+        // url parameters
+        $.urlParam = function(name){
+          var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+          if (results==null) { return null; }
+          return decodeURI(results[1]) || 0;
+        }
+        lv_rgb = $.urlParam('rgb');
+        lv_anim = $.urlParam('anim');
+        console.log("rgb="+lv_rgb + " animnr= "+lv_anim);
+        getRgbListAnims();    //Animaties ophalen, 
+        getValuesJQR();        //dan pas alles ophalen voor jqr
+			  setonchangeValuesJQR();  //onchange voor jqr elementen
+			  getValuePrevRgb();
+        getValueNextRgb();
+        setTimeout(getImage, 1000);
+        getValuesJQH();        //dan pas alles ophalen voor jqh
+  		});
+      function getValuesJQH() {
+        $('p[name="jqh"]').each(function(ind, element) {
+			    $(element).val(function(index, value){
+            $.get("/showfirmware", {}, function(data) {
+      		  //$(element).empty();
+              $(element).append(data);
+			      });
+		  	  });
+         });
+      };
+      function getValuesJQR() {
+        $('input[name="jqr"]').each(function(ind, element) {
+			    $(element).val(function(index, value){
+			      $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
+				      $(element).val(data);
+				    });
+				  });
+        });
+      };
+      function setonchangeValuesJQR(){
+			  $('input[name="jqr"]').each(function(ind, element) {
+			    $(element).on("focusout", function(){
+				  $.get("/rgbValueSet", {rgb: lv_rgb, anim: lv_anim, veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
+			    });
+		    });
+      };
+      function getImage() {
+        console.log("img refreshed " + $('#img').val() )
+        $('#file_img').attr( "src",  $('#img').val() );
+      };
+      function getRgbListAnims(){
+        $.get("/rgbListAnim", {rgb: lv_rgb}, function(data) {
+  		  var animsList = $("#anim");
+			  animsList.empty();
+        animsList.append(data);
+			  });
+      };
+		  function getValuePrevRgb() {
+        var prevRgb = parseInt(lv_rgb) - 1;
+        var prevDesc  = null;
+        $.get("rgbValueGet", {rgb: prevRgb, veld: "01", anim: lv_anim }, function(data){
+          document.getElementById("PrevRgb").innerHTML = "Naar: " + data;
+          document.getElementById("PrevRgb").href  = "/page_maintain_rgb.html?rgb="+prevRgb+"&anim="+lv_anim;
+        });
+      };
+      function getValueNextRgb() {
+        var nextRgb = parseInt(lv_rgb) + 1;
+        var nextDesc  = null;
+        $.get("rgbValueGet", {rgb: nextRgb, veld: "01", anim: lv_anim }, function(data){
+          document.getElementById("NextRgb").innerHTML = "Naar: " + data;
+          document.getElementById("NextRgb").href  = "/page_maintain_rgb.html?rgb="+nextRgb+"&anim="+lv_anim;
+        });
+      };
+      function fileRgbSaveSettings() { $.get("/rgbSettingFileSave", {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); };
+      function fileRgbLoadSettings() { $.get("/rgbSettingFileLoad", {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQR(); };
+      function fileLoadAnim()   {
+        lv_anim = $('#anim').val();
+        $('#57').val(lv_anim);
+        $.get("/rgbAnimApply"    , {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQR(); 
+      };
+  </script>
 </head>
 
 <body style="text-align:left;" id="body" >
-    <h1>Beheer effecten van rgbstrip</h1>
-    <div class="row">
-        <div class="column3"><a id="PrevKring" href="/" class='button button-center'></a></div>
-        <div class="column3"><h3>
-			<img id="file_img"  src="" onchange="getImage();"></img><br>
-			Image: <input id='22' name='jq' type='text'   required/><br>
-			Naam: <input id='01' name='jq' type='text'   required/><br>
-			Animatie<input id='23' name='jq' list="anims"   required/>
-				<datalist id="anims">
-					<option value="Edge">
-					<option value="Firefox">
-					<option value="Chrome">
-					<option value="Opera">
-					<option value="Safari">
-				</datalist>
-				<input type="submit">
-		</h3></div>
-        <div class="column3"><a id="NextKring" href="/" class='button button-center'></a></div>
-    </div>
-    <div class="row">
-        <div class="column3">Start led  <br><input id='02' name='jq' type='number' min="0" max="500"/></div>
-        <div class="column3">Stop led   <br><input id='03' name='jq' type='number' min="0" max="500"/></div>
-        <div class="column3">Every      <br><input id='16' name='jq' type='number' min="0" max="10"/></div>
-    </div>
-    <div class="row">
-        <div class="column3">Hue1       <br><input id='04' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
-        <div class="column3">Sat1       <br><input id='05' name='jq' type='number' min="0" max="255"/></div>
-        <div class="column3">Brighness1 <br><input id='06' name='jq' type='number' min="0" max="255"/></div>
-    </div>
-    <div class="row">
-        <div class="column3">Hue2       <br><input id='07' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
-        <div class="column3">Sat2       <br><input id='08' name='jq' type='number' min="0" max="255"/></div>
-        <div class="column3">Brighness2 <br><input id='09' name='jq' type='number' min="0" max="255"/></div>
-    </div>
-    <div class="row">
-        <div class="column3">Hue3       <br><input id='10' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
-        <div class="column3">Sat3       <br><input id='11' name='jq' type='number' min="0" max="255"/></div>
-        <div class="column3">Brighness3 <br><input id='12' name='jq' type='number' min="0" max="255"/></div>
-    </div>
-    <div class="row">
-        <div class="column3">Hue4       <br><input id='13' name='jq' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
-        <div class="column3">Sat4       <br><input id='14' name='jq' type='number' min="0" max="255"/></div>
-        <div class="column3">Brighness4 <br><input id='15' name='jq' type='number' min="0" max="255"/></div>
-    </div>
-    <div class="row">
-        <div class="column3">Time on    <br><input id='17' name='jq' type='number' min="0" max="255"/><br></div>
-        <div class="column3">Time off   <br><input id='18' name='jq' type='number' min="0" max="255"/></div>
-        <div class="column3">Time effect<br><input id='19' name='jq' type='number' min="0" max="255"/></div>
-    </div>
-    <div class="row">
-        <div class="column2">Seed  <br><input id='20' name='jq' type='checkbox'                /></div>
-        <div class="column2">Effect     <br><input id='21' name='jq' type='number' min="0" max="10" /><br>0: uit; 1:aan, 2: chase, 3: fire, 4: glow, 5: party</div>
-    </div>
-    <p id="status"></p>
-    <button onclick="fileSaveKring();"    class="button button-right button-large">Save settings</button>
-    <button onclick="fileLoad2Kring();"   class="button button-right button-large">Load from last save</button>
-    <button onclick="fileDefault2Kring()" class="button button-right button-large">Reload defaults</button>
-    <a href="/page_root.html" class="button button-right button-large">Terug naar hoofdscherm</a>
-    
+  <h1>Beheer effecten van rgb</h1>
+  <div class="row">
+    <div class="column3"><a id="PrevRgb" href="/" class='button button-center'></a></div>
+      <div class="column3"><h3>
+    	  <img id="file_img" name='jqr' veld='24' src="" onchange="getImage();"></img><br>
+			  Image   <input     name='jqr' veld='24' type='text' id="img" required/><br>
+			  Naam    <input     name='jqr' veld='01' type='text'   required/><br>
+			  Animatie<input     name='jqr' veld='23' type='text'   required/><br>
+        Anims   <select id="anim" type="text"><option value="default"></option></select><br>
+        <button onclick="fileLoadAnim()" class="button button-center">Reload</button>
+	    </h3></div>
+    <div class="column3"><a id="NextRgb" href="/" class='button button-center'></a></div>
+  </div>
+  <div class="row">
+    <div class="column3">Start led  <br><input name='jqr' veld='02' type='number' min="0" max="500"/></div>
+    <div class="column3">Stop led   <br><input name='jqr' veld='03' type='number' min="0" max="500"/></div>
+    <div class="column3">Every      <br><input name='jqr' veld='16' type='number' min="0" max="10"/></div>
+  </div>
+  <div class="row">
+    <div class="column3">Hue1       <br><input name='jqr' veld='04' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+    <div class="column3">Sat1       <br><input name='jqr' veld='05' type='number' min="0" max="255"/></div>
+    <div class="column3">Brighness1 <br><input name='jqr' veld='06' type='number' min="0" max="255"/></div>
+  </div>
+  <div class="row">
+    <div class="column3">Hue2       <br><input name='jqr' veld='07' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+    <div class="column3">Sat2       <br><input name='jqr' veld='08' type='number' min="0" max="255"/></div>
+    <div class="column3">Brighness2 <br><input name='jqr' veld='09' type='number' min="0" max="255"/></div>
+  </div>
+  <div class="row">
+    <div class="column3">Hue3       <br><input name='jqr' veld='10' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+    <div class="column3">Sat3       <br><input name='jqr' veld='11' type='number' min="0" max="255"/></div>
+    <div class="column3">Brighness3 <br><input name='jqr' veld='12' type='number' min="0" max="255"/></div>
+  </div>
+  <div class="row">
+    <div class="column3">Hue4       <br><input name='jqr' veld='13' type='number' min="0" max="255"/><br><img src="file_hue.jpg"></img></div>
+    <div class="column3">Sat4       <br><input name='jqr' veld='14' type='number' min="0" max="255"/></div>
+    <div class="column3">Brighness4 <br><input name='jqr' veld='15' type='number' min="0" max="255"/></div>
+  </div>
+  <div class="row">
+    <div class="column3">Time on    <br><input name='jqr' veld='17' type='number' min="0" max="255"/><br></div>
+    <div class="column3">Time off   <br><input name='jqr' veld='18' type='number' min="0" max="255"/></div>
+    <div class="column3">Time effect<br><input name='jqr' veld='19' type='number' min="0" max="255"/></div>
+  </div>
+  <div class="row">
+    <div class="column2">Seed       <br><input name='jqr' veld='20' type='checkbox'                /></div>
+    <div class="column2">Effect     <br><input name='jqr' veld='21' type='number' min="0" max="10" /><br>0: uit; 1:aan, 2: chase, 3: fire, 4: glow, 5: party</div>
+  </div>
+  <p id="status"></p>
+  <button onclick="fileRgbSaveSettings();"    class="button button-right button-large">Save settings</button>
+  <button onclick="fileRgbLoadSettings();"   class="button button-right button-large">Load from last save</button>
+  <a href="/page_root.html" class="button button-right button-large">Terug naar hoofdscherm</a>
+  <p name='jqh'>Firmware status: </p>
 </body>
 </html>

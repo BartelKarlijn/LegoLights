@@ -1,6 +1,6 @@
 <!DOCTYPE html> <html>
 <head>
-  <title>Diagon Alley maintain single Led</title>
+  <title>led</title>
   <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
   <link rel="icon" href="/file_favicon.ico">
   <link rel="stylesheet" type="text/css" href="file_style.css">
@@ -79,8 +79,8 @@
           document.getElementById("NextLed").href  = "/page_maintain_led.html?led="+nextLed+"&anim="+lv_anim;
         });
       };
-      function fileLedSaveSettings() { $.get("/ledSettingFileSaves"     , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
-      function fileLedLoadSettings() { $.get("/ledSettingFileLoad"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); };
+      function fileLedSaveSettings() { $.get("/ledSettingFileSave", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
+      function fileLedLoadSettings() { $.get("/ledSettingFileLoad", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); };
       function fileLoadAnim()   {
         lv_anim = $('#anim').val();
         $('#57').val(lv_anim);
