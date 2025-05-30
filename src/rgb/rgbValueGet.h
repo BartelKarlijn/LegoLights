@@ -73,6 +73,9 @@ String rgbValueGet(){
       case 23:
         answertoSend = rgbactive[rgbnr].animatie;
         break;
+      case 24:
+        answertoSend = rgbactive[rgbnr].image;
+        break;
       default:
         answertoSend = "error";
         break;

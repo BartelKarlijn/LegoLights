@@ -123,6 +123,11 @@ String rgbValueSet(){
         rgbsettings[rgbnr].anim[animnr].animdesc = waardeString;
         answertoSend = waardeString;
         break;
+      case 24:
+        rgbactive[rgbnr].image = waardeString;
+        rgbsettings[rgbnr].rgbimage = waardeString;
+        answertoSend = waardeString;
+        break;
       default:
         answertoSend = "error";
         break;
