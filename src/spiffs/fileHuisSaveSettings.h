@@ -14,13 +14,13 @@ String fileHuisSaveSettings() {
     doc["desc"] = huisSetting.desc;
     doc["image"] = huisSetting.image;
     
-    for (int lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
+    for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
       // Create a JsonObject for each LED      
-      doc["animnr"][lednr] = huisSetting.animnrled[lednr];
+      doc["animnrled"][lednr] = huisSetting.animnrled[lednr];
     }
-    for (int rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++) {
+    for (size_t rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++) {
       // Create a JsonObject for each RGB      
-      doc["animnr"][rgbnr] = huisSetting.animnrrgb[rgbnr];
+      doc["animnrrgb"][rgbnr] = huisSetting.animnrrgb[rgbnr];
     }
 
     // Serialize the JSON and write it to the file
@@ -29,6 +29,6 @@ String fileHuisSaveSettings() {
 
     writeFile(SPIFFS, filename, tmp);
 
-    msgAnswer = "LED settings saved";
+    msgAnswer = "Huis settings saved";
     return msgAnswer;
 }

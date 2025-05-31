@@ -1,8 +1,8 @@
 void cK05kringHue(){
     // Set HUE for Kring
-    int kringnr = commandParts.arg1.toInt();
-    int nr = commandParts.arg2.toInt();
-    int hue = commandParts.arg3.toInt();
+    size_t kringnr = commandParts.arg1.toInt();
+    size_t nr = commandParts.arg2.toInt();
+    size_t hue = commandParts.arg3.toInt();
     if (kringnr >= 0 && kringnr < RGB_NR_ITEMS) {
         switch (nr) {
             case 1:

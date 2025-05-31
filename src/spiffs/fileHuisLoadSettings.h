@@ -11,16 +11,16 @@ String  fileHuisLoadSettings() {
     huisSetting.desc = HUIS_DEFAULT.desc;
     huisSetting.image = HUIS_DEFAULT.image;
     huisSetting.huisnr = HUIS_DEFAULT.huisnr;
-    for(int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
+    for(size_t lednr=0; lednr<LED_NR_ITEMS; lednr++) {
       huisSetting.animnrled[lednr] = 0;
     }
-    for(int rgbnr=0; rgbnr<RGB_NR_ITEMS; rgbnr++) {
+    for(size_t rgbnr=0; rgbnr<RGB_NR_ITEMS; rgbnr++) {
       huisSetting.animnrrgb[rgbnr] = 0;
     }
   }
   else {
     String file_content = readFile(SPIFFS, filename);
-    int config_file_size = file_content.length();
+    size_t config_file_size = file_content.length();
     Println(" size: " + String(config_file_size));
 
     JsonDocument doc;
@@ -30,15 +30,16 @@ String  fileHuisLoadSettings() {
       msgAnswer ="Error interpreting config file Led";
     }
 
-    huisSetting.huisnr = doc["huisnr"].as<int>();
+    huisSetting.huisnr = doc["huisnr"].as<size_t>();
     huisSetting.desc   = doc["desc"].as<String>();
     huisSetting.image  = doc["image"].as<String>();
-    for (int lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-      huisSetting.animnrled[lednr] = doc["animnrled"][lednr].as<int>();
+    for (size_t lednr=0; lednr<LED_NR_ITEMS; lednr++) {
+      huisSetting.animnrled[lednr] = doc["animnrled"][lednr].as<size_t>();
     }
-    for (int rgbnr=0; rgbnr<RGB_NR_ITEMS; rgbnr++) {
-      huisSetting.animnrrgb[rgbnr] = doc["animnrrgb"][rgbnr].as<int>();
+    for (size_t rgbnr=0; rgbnr<RGB_NR_ITEMS; rgbnr++) {
+      huisSetting.animnrrgb[rgbnr] = doc["animnrrgb"][rgbnr].as<size_t>();
     }
+    msgAnswer = "Huissettings loaded";
   }
 
   return msgAnswer;

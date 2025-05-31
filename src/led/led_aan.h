@@ -1,6 +1,6 @@
 #pragma once
 
-void led_aan(int lednr) {
+void led_aan(size_t lednr) {
   unsigned long timeBezig;
 
   timeBezig = currentMillis - timer_led_aan[lednr];

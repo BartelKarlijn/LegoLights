@@ -1,6 +1,6 @@
 #pragma once
 
-void led_fire(int lednr) {
+void led_fire(size_t lednr) {
   unsigned long timeBezig;
 
   timeBezig  = currentMillis - timer_led_aan[lednr];

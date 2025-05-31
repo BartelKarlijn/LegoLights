@@ -1,6 +1,6 @@
 void cF01fpsShow(){
     // Show or stopshowing fps
-    int showint = commandParts.arg1.toInt();
+    size_t showint = commandParts.arg1.toInt();
     switch (showint) {
         case 0:
             flagShowFps = false;

@@ -1,7 +1,7 @@
 String huisValueGet(){
-    int lednr = huisRequest.lednr;
-    int rgbnr = huisRequest.rgbnr;
-    int veldnr = huisRequest.veld;
+    size_t lednr = huisRequest.lednr;
+    size_t rgbnr = huisRequest.rgbnr;
+    size_t veldnr = huisRequest.veld;
     
     String answertoSend = "";
     switch (veldnr)

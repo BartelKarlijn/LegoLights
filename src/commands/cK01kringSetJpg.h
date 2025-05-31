@@ -1,6 +1,6 @@
 void cK01kringSetJpg(){
     // Set JPEG for Kring
-    int kringnr = commandParts.arg1.toInt();
+    size_t kringnr = commandParts.arg1.toInt();
     String image = commandParts.arg2;
     if (kringnr >= 0 && kringnr < RGB_NR_ITEMS) {
         // Check if the JPEG file exists in SPIFFS

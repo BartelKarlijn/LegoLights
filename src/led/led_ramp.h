@@ -1,6 +1,6 @@
 #pragma once
 
-void led_ramp(int lednr) {
+void led_ramp(size_t lednr) {
   // Ramping up for timeEffect
   // Keeping on for timeOn
   // Ramping down for timeEffect

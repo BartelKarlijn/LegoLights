@@ -1,6 +1,6 @@
 #pragma once
 
-void led_glow(int lednr) {
+void led_glow(size_t lednr) {
   unsigned long timeBezig;
   unsigned long timeGlowBegin;
   uint8_t bri_glow;

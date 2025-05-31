@@ -5,7 +5,7 @@ void executeCommand() {
     }
 
     // dan commando uitvoeren
-    for (int i = 0; i < sizeof(validCommands); i++) {
+    for (size_t i = 0; i < sizeof(validCommands); i++) {
         if (commandParts.cmd == validCommands[i].cmd) {
             Println("cmd" + validCommands[i].cmd);
             validCommands[i].function();

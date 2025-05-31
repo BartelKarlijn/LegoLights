@@ -1,8 +1,8 @@
 #pragma once
 String rgbAnimApply() {
   // Apply RGB settings for given animatie
-  int rgbnr = rgbRequest.rgbnr;
-  int animnr = rgbRequest.animnr;
+  size_t rgbnr = rgbRequest.rgbnr;
+  size_t animnr = rgbRequest.animnr;
   if (rgbsettings[rgbnr].anim[animnr].animdesc == NULL) {
     Println("settingRgbApplyAnim: animatie niet gevonden");
   }

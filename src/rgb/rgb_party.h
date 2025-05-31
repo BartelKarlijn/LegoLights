@@ -1,9 +1,9 @@
 #pragma once
 
-void rgb_party(int kringnr) {
+void rgb_party(size_t kringnr) {
   unsigned long timeBezig;
   bool flag_on;
-  int partyhue, partysat, partybri;
+  size_t partyhue, partysat, partybri;
 
   timeBezig = currentMillis - timer_rgb_aan[kringnr];
   // bereken mode (uit, up, down)
@@ -56,7 +56,7 @@ default:
   break;
 }
 
-  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
+  for (size_t i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
     // aan of uit zetten?
     if (flag_on) {
       if( (i - kring[kringnr].startrgb) % ( 4 * kring[kringnr].every) == chaseRgbNr[kringnr][0] * kring[kringnr].every ) {

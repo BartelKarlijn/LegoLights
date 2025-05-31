@@ -1,7 +1,7 @@
 String ledValueSet(){
-    int lednr = ledRequest.lednr;
-    int animnr = ledRequest.animnr;
-    int veldnr = ledRequest.veld;
+    size_t lednr = ledRequest.lednr;
+    size_t animnr = ledRequest.animnr;
+    size_t veldnr = ledRequest.veld;
     String waardeString = ledRequest.waarde;
     String answertoSend;
     // get parameter led & veld & waarde http://192.168.68.205/maintain_strip?led=1&veld=hue1&waarde=56

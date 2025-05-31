@@ -1,6 +1,6 @@
 #pragma once
 
-void rgb_aan(int kringnr) {
+void rgb_aan(size_t kringnr) {
   bool fl_on;
   unsigned long timeBezig;
 
@@ -17,7 +17,7 @@ void rgb_aan(int kringnr) {
     fl_on = true;
   }
 
-  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)
+  for (size_t i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)
   {
     // aan of uit zetten?
     if (fl_on) {

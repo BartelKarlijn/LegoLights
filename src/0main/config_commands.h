@@ -2,7 +2,7 @@
 //////// command //////////
 struct struc_commandParts {
     bool isValidCommand;
-    int  huis;
+    size_t  huis;
     String  cmd;
     String arg1;
     String arg2;
@@ -11,32 +11,32 @@ struct struc_commandParts {
 struc_commandParts commandParts;
 
 //huis
-int huisMin = 1;
-int huisMax = 20;
+size_t huisMin = 1;
+size_t huisMax = 20;
 
 struct struc_huisRequest {
-    int huisnr;
-    int veld;
-    int lednr;
-    int rgbnr;
+    size_t huisnr;
+    size_t veld;
+    size_t lednr;
+    size_t rgbnr;
     String waarde;
 };
 struc_huisRequest huisRequest;
 
 // led
 struct struc_ledRequest {
-    int lednr;
-    int animnr;
-    int veld;
+    size_t lednr;
+    size_t animnr;
+    size_t veld;
     String waarde;
 };
 struc_ledRequest ledRequest;
 
 // rgb
 struct struc_rgbRequest {
-    int rgbnr;
-    int animnr;
-    int veld;
+    size_t rgbnr;
+    size_t animnr;
+    size_t veld;
     String waarde;
 };
 struc_rgbRequest rgbRequest;

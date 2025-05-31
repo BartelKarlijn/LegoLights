@@ -1,6 +1,6 @@
 String rgbValueGet(){
-    int rgbnr = rgbRequest.rgbnr;
-    int veldnr = rgbRequest.veld;
+    size_t rgbnr = rgbRequest.rgbnr;
+    size_t veldnr = rgbRequest.veld;
     String answertoSend = "";
     switch (veldnr)
       {

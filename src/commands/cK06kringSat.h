@@ -1,8 +1,8 @@
 void cK06kringSat(){
     // Set SAT for Kring
-    int kringnr = commandParts.arg1.toInt();
-    int nr = commandParts.arg2.toInt();
-    int sat = commandParts.arg3.toInt();
+    size_t kringnr = commandParts.arg1.toInt();
+    size_t nr = commandParts.arg2.toInt();
+    size_t sat = commandParts.arg3.toInt();
     if (kringnr >= 0 && kringnr < RGB_NR_ITEMS) {
         switch (nr) {
             case 1:

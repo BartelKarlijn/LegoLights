@@ -1,6 +1,6 @@
 #pragma once
 
-void led_rand(int lednr) {
+void led_rand(size_t lednr) {
   // Ramping up for timeEffect
   // Keeping on for timeOn
   // Ramping down for timeEffect

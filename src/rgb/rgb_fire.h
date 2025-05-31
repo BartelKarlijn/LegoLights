@@ -1,6 +1,6 @@
 #pragma once
 
-void rgb_fire(int kringnr) {
+void rgb_fire(size_t kringnr) {
   unsigned long timeBezig;
  
   timeBezig = currentMillis - timer_rgb_aan[kringnr];

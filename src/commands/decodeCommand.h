@@ -4,7 +4,7 @@ String decodeRestOfCommand (){
     // decode one part of the commandstring and returt the rest
     // restOfCommand is a global variable
     String returnArg;
-    int spaceIndex;
+    size_t spaceIndex;
 
     // Looking where command starts
     restOfCommand.trim();
@@ -31,7 +31,7 @@ struc_commandParts decodeCommand(String commandstring) {
     // Hxx cmd  arg1 arg2 arg3
     struc_commandParts returnMsg;
     bool isValidCommand = false;
-    int spaceIndex;
+    size_t spaceIndex;
 
     returnMsg.isValidCommand = true;
 

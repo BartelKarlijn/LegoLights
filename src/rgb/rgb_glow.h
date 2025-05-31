@@ -6,7 +6,7 @@ uint8_t rgb_glow_map(uint8_t val1, uint8_t val2, uint8_t amountOf2){
   return newvalue;
 }
 
-void rgb_glow(int kringnr) {
+void rgb_glow(size_t kringnr) {
   // TimeEff : up of down cycle.  4 cycles in totaal
   // seed    : <0 : col1/2/3/4, seed aantal lampjes, random
   //           =0 : col1/2/3/4, hele strip
@@ -17,7 +17,7 @@ void rgb_glow(int kringnr) {
   unsigned long timeEffect;
   uint8_t bri_glow;
   CHSV    oldColor, targetColor, newColor;
-  int hue, sat, bri;
+  size_t hue, sat, bri;
 
   timeBezig  = currentMillis - timer_rgb_aan[kringnr];
   timeGlow   = currentMillis - timer_rgb_effect[kringnr];
@@ -65,7 +65,7 @@ void rgb_glow(int kringnr) {
     newColor = CHSV(hue, sat, bri);
   }
 
-  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)
+  for (size_t i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)
   {
     // aan of uit zetten?
     if( ( (i - kring[kringnr].startrgb) % kring[kringnr].every ) == 0 ) {  // check every

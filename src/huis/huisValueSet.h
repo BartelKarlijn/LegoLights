@@ -1,12 +1,12 @@
 String huisValueSet(){
-    int lednr = huisRequest.lednr;
-    int rgbnr = huisRequest.rgbnr;
-    int veldnr = huisRequest.veld;
+    size_t lednr = huisRequest.lednr;
+    size_t rgbnr = huisRequest.rgbnr;
+    size_t veldnr = huisRequest.veld;
     String waardeString = huisRequest.waarde;
     String answertoSend;
     // get parameter led & veld & waarde http://192.168.68.205/maintain_strip?led=1&veld=hue1&waarde=56
     
-    Println("Huis,  veld: " + String(veldnr) + " led: " + lednr + " waarde: " + waardeString);
+    Println("Huis,  veld: " + String(veldnr) + " led: " + lednr + " rgb: "+ rgbnr + "waarde: " + waardeString);
     // verwerk de input
       switch (veldnr)
       {

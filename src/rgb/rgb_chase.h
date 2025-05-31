@@ -1,13 +1,13 @@
 #pragma once
 
-void rgb_chase(int kringnr) {
+void rgb_chase(size_t kringnr) {
   // seed: -4..-1 : 1..4 lichtjes die down gaan
   // seed: 0      : lichtje up en eentje down
   // seed: +1..+4 : 1..4 lichtjes up gaan
   unsigned long timeBezig;
   bool flag_on;
-  int  nr_leds =  kring[kringnr].stoprgb - kring[kringnr].startrgb + 1;
-  int  spacing;
+  size_t  nr_leds =  kring[kringnr].stoprgb - kring[kringnr].startrgb + 1;
+  size_t  spacing;
   
   if (kring[kringnr].seed = 0) {
     spacing = nr_leds;
@@ -40,7 +40,7 @@ void rgb_chase(int kringnr) {
     flag_on = true;
   }
 
-  for (int i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
+  for (size_t i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
     // aan of uit zetten?
     if (flag_on) {
 

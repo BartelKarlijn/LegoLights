@@ -18,11 +18,11 @@
 // ------------------ Huis -----------------------
 // -----------------------------------------------
 typedef struct {
-  int huisnr;
+  size_t huisnr;
   String desc;
   String image;
-  int    animnrled[LED_NR_ITEMS];
-  int    animnrrgb[RGB_NR_ITEMS];
+  size_t    animnrled[LED_NR_ITEMS];
+  size_t    animnrrgb[RGB_NR_ITEMS];
 } struc_huis;
 
 const struc_huis HUIS_DEFAULT {
@@ -45,18 +45,18 @@ struc_huis huisSetting;
 typedef struct {
   String        desc;
   String        image;
-  int           bri;    //4095 mogelijkheden
+  size_t           bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
   long          timeeffect;  //negatieve waarden toelaten
   uint8_t       effect;
-  int           animnr;
+  size_t           animnr;
   String        animatie;
 } struc_ledactive;
 
 typedef struct {
   String        animdesc;
-  int           bri;    //4095 mogelijkheden
+  size_t           bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
   long          timeeffect;  //negatieve waarden toelaten
@@ -97,8 +97,8 @@ uint8_t       effectledbri[LED_NR_ITEMS];
 typedef struct {
   String        desc;
   String        image;
-  int           startrgb;
-  int           stoprgb;
+  size_t           startrgb;
+  size_t           stoprgb;
   uint8_t       hue1;
   uint8_t       sat1;
   uint8_t       bri1;
@@ -117,7 +117,7 @@ typedef struct {
   unsigned long timeeffect;
   int8_t        seed;
   uint8_t       effect;
-  int           animnr;
+  size_t           animnr;
   String        animatie;
 } struc_rgbactive;
 
@@ -146,8 +146,8 @@ typedef struct {
 typedef struct {
   String        rgbdesc;
   String        rgbimage;
-  int           startrgb;
-  int           stoprgb;
+  size_t           startrgb;
+  size_t           stoprgb;
   struc_rgbanim anim[LED_NR_ANIM];
 } struc_rgbsettings;
 

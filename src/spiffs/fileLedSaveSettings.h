@@ -11,7 +11,7 @@ String fileLedSaveSettings() {
     JsonDocument doc; // Adjust size as needed
     JsonArray ledArr = doc.to<JsonArray>();
         
-    for (int lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
+    for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
         // Create a JsonObject for each LED
         JsonObject ledLine = ledArr.add<JsonObject>();
         ledLine["lednr"] = lednr;

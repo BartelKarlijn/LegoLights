@@ -1,8 +1,8 @@
 void cL09ledSetEffect(){
     // Set On Off time to Led
-    int lednr = commandParts.arg1.toInt();
-    int Effect = commandParts.arg2.toInt();  //aparently toInt also converts to long
-    int tEffect = commandParts.arg3.toInt();
+    size_t lednr = commandParts.arg1.toInt();
+    size_t Effect = commandParts.arg2.toInt();  //aparently toInt also converts to long
+    size_t tEffect = commandParts.arg3.toInt();
 
     Println("L09 Set Effect " + commandParts.arg1 + " Effect= " + commandParts.arg2 + ", timeEffect= " + commandParts.arg3);
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {

@@ -11,7 +11,7 @@ String fileRgbSaveSettings() {
     JsonDocument doc; // Adjust size as needed
     JsonArray rgbArr = doc.to<JsonArray>();
         
-    for (int rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++) {
+    for (size_t rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++) {
         // Create a JsonObject for each RGB
         JsonObject rgbLine = rgbArr.add<JsonObject>();
         rgbLine["rgbnr"] = rgbnr;
