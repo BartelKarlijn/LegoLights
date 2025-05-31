@@ -1,5 +1,5 @@
 #pragma once
-void rgbLoadAnim() {
+String rgbLoadAnim() {
   // Ini files zijn ingelezen, nog eens toepassen wat daar staat
   for (size_t rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++)
   {
@@ -7,4 +7,5 @@ void rgbLoadAnim() {
     rgbRequest.animnr = huisSetting.animnrrgb[rgbnr];
     rgbAnimApply();
   } 
+  return("rgbLoadAnim applied");
 }

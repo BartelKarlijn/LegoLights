@@ -97,8 +97,8 @@ uint8_t       effectledbri[LED_NR_ITEMS];
 typedef struct {
   String        desc;
   String        image;
-  size_t           startrgb;
-  size_t           stoprgb;
+  size_t        startrgb;
+  size_t        stoprgb;
   uint8_t       hue1;
   uint8_t       sat1;
   uint8_t       bri1;
@@ -117,7 +117,7 @@ typedef struct {
   unsigned long timeeffect;
   int8_t        seed;
   uint8_t       effect;
-  size_t           animnr;
+  size_t        animnr;
   String        animatie;
 } struc_rgbactive;
 
@@ -146,8 +146,8 @@ typedef struct {
 typedef struct {
   String        rgbdesc;
   String        rgbimage;
-  size_t           startrgb;
-  size_t           stoprgb;
+  size_t        startrgb;
+  size_t        stoprgb;
   struc_rgbanim anim[LED_NR_ANIM];
 } struc_rgbsettings;
 

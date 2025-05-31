@@ -76,6 +76,7 @@
 #include "rgb/rgbValueSet.h"
 #include "rgb/showrgb.h"
 #include "rgb/rgbAnimApply.h"
+#include "rgb/rgbAnimSaveMem.h"
 #include "rgb/rgbLoadAnim.h"
 #include "rgb/rgbListAnim.h"
 
