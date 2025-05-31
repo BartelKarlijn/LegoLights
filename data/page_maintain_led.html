@@ -86,6 +86,10 @@
         $('#57').val(lv_anim);
         $.get("/ledAnimApply"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); 
       };
+      function fileAnimSaveMem() {
+        lv_anim = $('#anim').val();
+        $.get("/ledAnimSaveMem", {led: lv_led, anim: lv_anim}, function(data) {$("#status").html(data);});
+      };
   </script>
 </head>
 
@@ -93,15 +97,18 @@
   <h1>Beheer effecten van leds</h1>
   <div class="row">
     <div class="column3"><a id="PrevLed" href="/" class='button button-center'></a></div>
-      <div class="column3"><h3>
-    	  <img id="file_img" name='jql' veld='56' src="" onchange="getImage();"></img><br>
-			  Image   <input     name='jql' veld='56' type='text' id="img" required/><br>
-			  Naam    <input     name='jql' veld='50' type='text'   required/><br>
-			  Animatie<input     name='jql' veld='57' type='text'   required/><br>
-        Anims   <select id="anim" type="text"><option value="default"></option></select><br>
-        <button onclick="fileLoadAnim()" class="button button-center">Reload</button>
-	    </h3></div>
+    <div class="column3"><h3>
+    	<img id="file_img" name='jql' veld='56' src="" onchange="getImage();"></img><br>
+			Image   <input     name='jql' veld='56' type='text' id="img" required/><br>
+			Naam    <input     name='jql' veld='50' type='text'   required/><br>
+			Animatie<input     name='jql' veld='57' type='text'   required/><br>
+	  </h3></div>
     <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
+  </div>
+  <div class="row">
+    <div class="column3"><button onclick="fileLoadAnim()" class="button button-center">Reload from Mem</button></div>
+    <div class="column3">Anims   <select id="anim" type="text"><option value="default"></option></select></div>
+    <div class="column3"><button onclick="fileAnimSaveMem()" class="button button-center">Save to Mem</button></div>
   </div>
   <div class="row">
       <div class="column2">Brighness(4095) <br><input name='jql' veld='51' type='number' min="0" max="4095"/></div>
