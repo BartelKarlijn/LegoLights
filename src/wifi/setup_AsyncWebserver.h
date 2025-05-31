@@ -67,6 +67,11 @@ void setup_AsyncWebserver(){
     decodeRequestLed(request);
     request->send(200, "text/plain", ledAnimApply());
   });
+  webserver.on("/ledAnimSaveMem", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("led Animatie actieve settings opslaan in geheugen");
+    decodeRequestLed(request);
+    request->send(200, "text/plain", ledAnimSaveMem());
+  });
   webserver.on("/ledListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("Led animaties tonen als option lijst");
     decodeRequestLed(request);
@@ -99,6 +104,11 @@ void setup_AsyncWebserver(){
     Println("Animatie toepassen voor rgb");
     decodeRequestRgb(request);
     request->send(200, "text/plain", rgbAnimApply());
+  });
+  webserver.on("/rgbAnimSaveMem", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("rgb Animatie actieve settings opslaan in geheugen");
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", rgbAnimSaveMem());
   });
   webserver.on("/rgbListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("Rgb animaties tonen als option lijst");
