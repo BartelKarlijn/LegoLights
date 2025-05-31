@@ -6,12 +6,12 @@
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
-      var lv_led = 0;
-      var lv_anim = 0;
+      let lv_led = "0";
+      let lv_anim = "0";
       $(document).ready(function() {
         // url parameters
         $.urlParam = function(name){
-          var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+          let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
           if (results==null) { return null; }
           return decodeURI(results[1]) || 0;
         }
@@ -20,9 +20,6 @@
         console.log("led="+lv_led + " animnr= "+lv_anim);
         getLedListAnims();    //Animaties ophalen, 
         getValuesJQL();        //dan pas alles ophalen voor jql
-			  setonchangeValuesJQL();  //onchange voor jql elementen
-			  getValuePrevLed();
-        getValueNextLed();
         setTimeout(getImage, 1000);
         getValuesJQH();        //dan pas alles ophalen voor jqh
   		});
@@ -37,57 +34,49 @@
          });
       };
       function getValuesJQL() {
+        // input initialiseren en onchange zetten
         $('input[name="jql"]').each(function(ind, element) {
 			    $(element).val(function(index, value){
 			      $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
 				      $(element).val(data);
 				    });
 				  });
+			    $(element).on("focusout", function(){
+  				  $.get("/ledValueSet", {led: lv_led, anim: lv_anim, veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
+			    });
+        });
+        // knoppen initialiseren en onclick zetten
+        $('a[name="jql"]').each(function(ind, element) {
+			    $(element).val(function(index, value){
+            let lv_ledoff = parseInt(lv_led) + parseInt( $(element).attr('offset') );
+            if (lv_ledoff < 0) { lv_ledoff = 15; }
+            let lv_ledoffStr = String(lv_ledoff);
+			      $.get("ledValueGet", {led: lv_ledoffStr, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
+				      $(element).text(lv_ledoffStr + ". " + data + ", anim " + lv_anim);
+              $(element).attr("href", "/page_maintain_led.html?led="+lv_ledoffStr+"&anim="+lv_anim);
+				    });
+				  });
         });
       };
-      function setonchangeValuesJQL(){
-			  $('input[name="jql"]').each(function(ind, element) {
-			    $(element).on("focusout", function(){
-				  $.get("/ledValueSet", {led: lv_led, anim: lv_anim, veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
-			    });
-		    });
-      };
-      function getImage() {
-        console.log("img refreshed " + $('#img').val() )
-        $('#file_img').attr( "src",  $('#img').val() );
-      };
+      function getImage() {$('#file_img').attr( "src",  $('#img').val() );};
       function getLedListAnims(){
         $.get("/ledListAnim", {led: lv_led}, function(data) {
-  		  var animsList = $("#anim");
+  		  let animsList = $("#anim");
 			  animsList.empty();
         animsList.append(data);
 			  });
       };
-		  function getValuePrevLed() {
-        var prevLed = parseInt(lv_led) - 1;
-        var prevDesc  = null;
-        $.get("ledValueGet", {led: prevLed, veld: "50", anim: lv_anim }, function(data){
-          document.getElementById("PrevLed").innerHTML = "Naar: " + data;
-          document.getElementById("PrevLed").href  = "/page_maintain_led.html?led="+prevLed+"&anim="+lv_anim;
-        });
-      };
-      function getValueNextLed() {
-        var nextLed = parseInt(lv_led) + 1;
-        var nextDesc  = null;
-        $.get("ledValueGet", {led: nextLed, veld: "50", anim: lv_anim }, function(data){
-          document.getElementById("NextLed").innerHTML = "Naar: " + data;
-          document.getElementById("NextLed").href  = "/page_maintain_led.html?led="+nextLed+"&anim="+lv_anim;
-        });
-      };
       function fileLedSaveSettings() { $.get("/ledSettingFileSave", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
       function fileLedLoadSettings() { $.get("/ledSettingFileLoad", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); };
       function fileLoadAnim()   {
-        lv_anim = $('#anim').val();
+        console.log("fileLoadAnim before"+ lv_anim);
+        let lv_anim = $('#anim').val();
+        console.log("fileLoadAnim after "+ lv_anim);
         $('#57').val(lv_anim);
         $.get("/ledAnimApply"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); 
       };
       function fileAnimSaveMem() {
-        lv_anim = $('#anim').val();
+        let lv_anim = $('#anim').val();
         $.get("/ledAnimSaveMem", {led: lv_led, anim: lv_anim}, function(data) {$("#status").html(data);});
       };
   </script>
@@ -96,23 +85,25 @@
 <body style="text-align:left;" id="body" >
   <h1>Beheer effecten van leds</h1>
   <div class="row">
-    <div class="column3"><a id="PrevLed" href="/" class='button button-center'></a></div>
+    <div class="column3"><a name='jql' veld='50' offset='-1' href="/" class='button button-center'></a></div>
     <div class="column3"><h3>
     	<img id="file_img" name='jql' veld='56' src="" onchange="getImage();"></img><br>
 			Image   <input     name='jql' veld='56' type='text' id="img" required/><br>
-			Naam    <input     name='jql' veld='50' type='text'   required/><br>
-			Animatie<input     name='jql' veld='57' type='text'   required/><br>
+			Naam    <input     name='jql' veld='50' type='text'   required/><br>	
 	  </h3></div>
-    <div class="column3"><a id="NextLed" href="/" class='button button-center'></a></div>
+    <div class="column3"><a name='jql' veld='50' offset='1' href="/" class='button button-center'></a></div>
   </div>
   <div class="row">
     <div class="column3"><button onclick="fileLoadAnim()" class="button button-center">Reload from Mem</button></div>
-    <div class="column3">Anims   <select id="anim" type="text"><option value="default"></option></select></div>
+    <div class="column3">
+      Anims   <select id="anim" type="text"><option value="default"></option></select><br>
+      <h3></h3>Rename Anim<input     name='jql' veld='57' type='text'   required/></h3><br>
+    </div>
     <div class="column3"><button onclick="fileAnimSaveMem()" class="button button-center">Save to Mem</button></div>
   </div>
   <div class="row">
-      <div class="column2">Brighness(4095) <br><input name='jql' veld='51' type='number' min="0" max="4095"/></div>
-      <div class="column2">Effect          <br><input name='jql' veld='52' type='number' min="10" max="13" /><br>10: aan; 11:fire, 12: glow, 13: uit</div>
+      <div class="column3">Brighness(4095) <br><input name='jql' veld='51' type='number' min="0" max="4095"/></div>
+      <div class="column3">Effect          <br><input name='jql' veld='52' type='number' min="10" max="13" /><br>10: aan; 11:fire, 12: glow, 13: uit</div>
   </div>
   <div class="row">
       <div class="column3">Time on    <br><input name='jql' veld='53' type='number' min="0" max="255"/><br></div>
