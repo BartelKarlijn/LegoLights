@@ -11,8 +11,8 @@ String ledValueSet(){
       switch (veldnr)
       {
       case 50:  //we beginnen bij 50, zodat 0 een fout geeft (strip is 1-50)
-        ledactive[lednr].desc     = waardeString;
-        ledsettings[lednr].anim[animnr].animdesc = waardeString;
+        ledactive[lednr].desc      = waardeString;
+        ledsettings[lednr].leddesc = waardeString;
         answertoSend = waardeString;
         break;
       case 51:
