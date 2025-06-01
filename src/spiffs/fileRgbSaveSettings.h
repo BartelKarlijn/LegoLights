@@ -44,10 +44,8 @@ String fileRgbSaveSettings() {
           animLine["seed"]       = rgbsettings[rgbnr].anim[animnr].seed;
           animLine["effect"]     = rgbsettings[rgbnr].anim[animnr].effect;
         }
-        serializeJson(animDoc, tmp);
 
-        rgbLine["anim"] = tmp;
-        
+        rgbLine["anim"] = animDoc.as<JsonArray>();
     }
 
     // Serialize the JSON and write it to the file

@@ -29,10 +29,7 @@ String fileLedSaveSettings() {
           animLine["timeeffect"] = ledsettings[lednr].anim[animnr].timeeffect;
           animLine["effect"]     = ledsettings[lednr].anim[animnr].effect;
         }
-        serializeJson(animDoc, tmp);
-
-        ledLine["anim"] = tmp;
-        
+        ledLine["anim"] = animDoc.as<JsonArray>();
     }
 
     // Serialize the JSON and write it to the file
