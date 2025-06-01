@@ -1,33 +1,42 @@
 String ledValueGet(){
     size_t lednr = ledRequest.lednr;
+    size_t animnr = ledRequest.animnr;
     size_t veldnr = ledRequest.veld;
     String answertoSend = "";
     // get parameter led & veld  http://192.168.68.205/maintain_strip?led=1?veld=hue1
       switch (veldnr)
       {
-        case 50:  //we beginnen bij 1, zodat 0 een fout geeft
-          answertoSend = ledactive[lednr].desc;
+      case 50:  //we beginnen bij 1, zodat 0 een fout geeft
+        answertoSend            = ledsettings[lednr].leddesc;
+        ledactive[lednr].desc   = ledsettings[lednr].leddesc;
         break;
       case 51:
-          answertoSend = ledactive[lednr].bri;
+        answertoSend            = ledsettings[lednr].anim[animnr].bri;
+        ledactive[lednr].bri    = ledsettings[lednr].anim[animnr].bri;
         break;
       case 52:
-        answertoSend = ledactive[lednr].effect;
+        answertoSend            = ledsettings[lednr].anim[animnr].effect;
+        ledactive[lednr].effect = ledsettings[lednr].anim[animnr].effect;
         break;
       case 53:
-        answertoSend = ledactive[lednr].timeon;
+        answertoSend            = ledsettings[lednr].anim[animnr].timeon;
+        ledactive[lednr].timeon = ledsettings[lednr].anim[animnr].timeon;
         break;
       case 54:
-        answertoSend = ledactive[lednr].timeoff;
+        answertoSend            = ledsettings[lednr].anim[animnr].timeoff;
+        ledactive[lednr].timeoff = ledsettings[lednr].anim[animnr].timeoff;
         break;
       case 55:
-        answertoSend = ledactive[lednr].timeeffect;
+        answertoSend            = ledsettings[lednr].anim[animnr].timeeffect;
+        ledactive[lednr].timeeffect = ledsettings[lednr].anim[animnr].timeeffect;
         break;
       case 56:
-        answertoSend = ledactive[lednr].image;
+        answertoSend            = ledsettings[lednr].ledimage;
+        ledactive[lednr].image  = ledsettings[lednr].ledimage;
         break;
       case 57:
-        answertoSend = ledactive[lednr].animatie;
+        answertoSend            = ledsettings[lednr].anim[animnr].animdesc;
+        ledactive[lednr].animatie = ledsettings[lednr].anim[animnr].animdesc;
         break;
       default:
         answertoSend = "error";

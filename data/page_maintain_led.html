@@ -27,7 +27,6 @@
         $('p[name="jqh"]').each(function(ind, element) {
 			    $(element).val(function(index, value){
             $.get("/showfirmware", {}, function(data) {
-      		  //$(element).empty();
               $(element).append(data);
 			      });
 		  	  });
@@ -68,15 +67,15 @@
       };
       function fileLedSaveSettings() { $.get("/ledSettingFileSave", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
       function fileLedLoadSettings() { $.get("/ledSettingFileLoad", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); };
-      function fileLoadAnim()   {
-        console.log("fileLoadAnim before"+ lv_anim);
-        let lv_anim = $('#anim').val();
-        console.log("fileLoadAnim after "+ lv_anim);
+      function ledAnimApply()   {
+        console.log("ledAnimApply before"+ lv_anim);
+        lv_anim = $('#anim').val();
+        console.log("ledAnimApply after "+ lv_anim);
         $('#57').val(lv_anim);
         $.get("/ledAnimApply"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); 
       };
       function fileAnimSaveMem() {
-        let lv_anim = $('#anim').val();
+        lv_anim = $('#anim').val();
         $.get("/ledAnimSaveMem", {led: lv_led, anim: lv_anim}, function(data) {$("#status").html(data);});
       };
   </script>
@@ -94,9 +93,9 @@
     <div class="column3"><a name='jql' veld='50' offset='1' href="/" class='button button-center'></a></div>
   </div>
   <div class="row">
-    <div class="column3"><button onclick="fileLoadAnim()" class="button button-center">Reload from Mem</button></div>
+    <div class="column3"><button onclick="ledAnimApply()" class="button button-center">Reload from Mem</button></div>
     <div class="column3">
-      Anims   <select id="anim" type="text"><option value="default"></option></select><br>
+      Anims   <select id="anim" type="text" onchange="ledAnimApply()"><option value="default"></option></select><br>
       <h3></h3>Rename Anim<input     name='jql' veld='57' type='text'   required/></h3><br>
     </div>
     <div class="column3"><button onclick="fileAnimSaveMem()" class="button button-center">Save to Mem</button></div>
