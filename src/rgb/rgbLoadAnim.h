@@ -4,7 +4,6 @@ String rgbLoadAnim() {
   for (size_t rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++)
   {
     rgbRequest.rgbnr = rgbnr;
-    rgbRequest.animnr = huisSetting.animnrhuis;
     rgbAnimApply();
   } 
   return("rgbLoadAnim applied");

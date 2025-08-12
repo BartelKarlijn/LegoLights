@@ -3,7 +3,6 @@ void decodeRequestLed(AsyncWebServerRequest *request){
     //decode the request into led, anim, veld, waarde
     String answertoSend;
     String ledString;
-    String animString;
     String veldString;
     String waardeString;
     if (request->hasParam("led")) {
@@ -12,14 +11,6 @@ void decodeRequestLed(AsyncWebServerRequest *request){
       }
       else {
         ledRequest.lednr = 255;
-      }
-  
-    if (request->hasParam("anim")) {
-        animString = request->getParam("anim")->value();
-        ledRequest.animnr = animString.toInt();
-      }
-      else {
-        ledRequest.animnr = 255;
       }
     if (request->hasParam("veld")) {
         veldString = request->getParam("veld")->value();

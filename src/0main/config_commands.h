@@ -27,7 +27,6 @@ struc_huisRequest huisRequest;
 // led
 struct struc_ledRequest {
     size_t lednr;
-    size_t animnr;
     size_t veld;
     String waarde;
 };
@@ -36,7 +35,6 @@ struc_ledRequest ledRequest;
 // rgb
 struct struc_rgbRequest {
     size_t rgbnr;
-    size_t animnr;
     size_t veld;
     String waarde;
 };
