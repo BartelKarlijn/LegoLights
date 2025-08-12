@@ -7,7 +7,7 @@ String ledAnimApply() {
     Println("settingLedApplyAnim: animatie niet gevonden");
   }
   else {
-    Println("settingLedApplyAnim: " + huisSetting.animdesc[animnr]);
+    Println("settingLedApplyAnim: " + String(animnr) + ", " + huisSetting.animdesc[animnr]);
     ledactive[lednr].desc       = ledsettings[lednr].leddesc;
     ledactive[lednr].bri        = ledsettings[lednr].anim[animnr].bri;
     ledactive[lednr].timeon     = ledsettings[lednr].anim[animnr].timeon;
@@ -15,8 +15,6 @@ String ledAnimApply() {
     ledactive[lednr].timeeffect = ledsettings[lednr].anim[animnr].timeeffect;
     ledactive[lednr].effect     = ledsettings[lednr].anim[animnr].effect;
     ledactive[lednr].image      = ledsettings[lednr].ledimage;
-    ledactive[lednr].animnr     = animnr;
-    ledactive[lednr].animatie   = ledsettings[lednr].anim[animnr].animdesc;
   }
   return "anim applied";
 }

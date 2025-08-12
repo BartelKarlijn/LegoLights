@@ -10,11 +10,11 @@ String huisListAnim() {
       msgAnswer += "'>";
       msgAnswer += i;
       msgAnswer += ". ";
-//      msgAnswer += huissettings[ledRequest.lednr].anim[i].animdesc;
+      msgAnswer += huisSetting.animdesc[i];
       msgAnswer += "</option>";
   }
   
-//  Println("List Anims for huis " + String(ledRequest.lednr));
+  Println("List Anims for huis " + String(huisRequest.huisnr) );
 
   return msgAnswer;
 }

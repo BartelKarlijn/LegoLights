@@ -7,7 +7,7 @@ String rgbAnimApply() {
     Println("settingRgbApplyAnim: animatie niet gevonden");
   }
   else {
-    Println("settingRgbApplyAnim: " + huisSetting.animdesc[animnr]);
+    Println("settingRgbApplyAnim: " + String(animnr) + ", " + huisSetting.animdesc[animnr]);
     rgbactive[rgbnr].desc = rgbsettings[rgbnr].rgbdesc;
     rgbactive[rgbnr].image = rgbsettings[rgbnr].rgbimage;
     rgbactive[rgbnr].startrgb = rgbsettings[rgbnr].startrgb;
@@ -30,8 +30,6 @@ String rgbAnimApply() {
     rgbactive[rgbnr].timeeffect = rgbsettings[rgbnr].anim[animnr].timeeffect;
     rgbactive[rgbnr].seed = rgbsettings[rgbnr].anim[animnr].seed;
     rgbactive[rgbnr].effect = rgbsettings[rgbnr].anim[animnr].effect;
-    rgbactive[rgbnr].animnr = animnr;
-    rgbactive[rgbnr].animatie = rgbsettings[rgbnr].anim[animnr].animdesc;
   }
   return "anim applied";
 }
