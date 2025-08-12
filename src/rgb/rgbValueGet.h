@@ -67,12 +67,6 @@ String rgbValueGet(){
       case 21:
         answertoSend = rgbactive[rgbnr].effect;
         break;
-      case 22:
-        answertoSend = rgbactive[rgbnr].animnr;
-        break;
-      case 23:
-        answertoSend = rgbactive[rgbnr].animatie;
-        break;
       case 24:
         answertoSend = rgbactive[rgbnr].image;
         break;

@@ -72,7 +72,7 @@
        $('select[name="jql"]').each(function(ind, element) {
 			  $(element).val(function(index, value){
           lv_led = $(element).attr('led');
-          $.get("/ledListAnim", {led: lv_led}, function(data) {
+          $.get("/huisListAnim", {led: lv_led}, function(data) {
       		  $(element).empty();
             $(element).append(data);
 			    });
@@ -106,7 +106,7 @@
        $('select[name="jqr"]').each(function(ind, element) {
 			  $(element).val(function(index, value){
           lv_rgb = $(element).attr('rgb');
-          $.get("/rgbListAnim", {rgb: lv_rgb}, function(data) {
+          $.get("/huisListAnim", {rgb: lv_rgb}, function(data) {
       		  $(element).empty();
             $(element).append(data);
 			    });

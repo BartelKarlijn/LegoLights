@@ -23,7 +23,7 @@ typedef struct {
   size_t huisnr;
   String desc;
   String image;
-  size_t animnrhuis;  // default anim
+  size_t animnrhuis;  // huidige anim
   String animdesc[HUIS_NR_ANIM];
 } struc_huis;
 
@@ -54,8 +54,6 @@ typedef struct {
   unsigned long timeoff;
   long          timeeffect;  //negatieve waarden toelaten
   uint8_t       effect;
-  size_t        animnr;
-  String        animatie;
 } struc_ledactive;
 
 typedef struct {
@@ -74,7 +72,7 @@ typedef struct {
 } struc_ledsettings;
 
 // default voor alle leds als er geen file is.
-const struc_ledactive LEDACTIVE_DEFAULT  {"led", IMG_OLIV , 4095,  1000,   1000,    150, EFFLED_AAN ,  0, "default" };
+const struc_ledactive LEDACTIVE_DEFAULT  {"led", IMG_OLIV , 4095,  1000,   1000,    150, EFFLED_AAN };
 
 struc_ledactive   ledactive[LED_NR_ITEMS];
 struc_ledsettings ledsettings[LED_NR_ITEMS];
@@ -121,8 +119,6 @@ typedef struct {
   unsigned long timeeffect;
   int8_t        seed;
   uint8_t       effect;
-  size_t        animnr;
-  String        animatie;
 } struc_rgbactive;
 
 typedef struct {

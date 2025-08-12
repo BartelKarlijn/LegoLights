@@ -34,10 +34,6 @@ String ledValueGet(){
         answertoSend            = ledsettings[lednr].ledimage;
         ledactive[lednr].image  = ledsettings[lednr].ledimage;
         break;
-      case 57:
-        answertoSend            = ledsettings[lednr].anim[animnr].animdesc;
-        ledactive[lednr].animatie = ledsettings[lednr].anim[animnr].animdesc;
-        break;
       default:
         answertoSend = "error";
         break;

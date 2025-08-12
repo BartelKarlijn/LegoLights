@@ -41,6 +41,11 @@ void setup_AsyncWebserver(){
   });
   //--------------------
   // -- huis management--
+  webserver.on("/huisListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
+    //Println("Huis animaties tonen als option lijst");
+    decodeRequestHuis(request);
+    request->send(200, "text/plain", huisListAnim());
+  });
   webserver.on("/huisSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Huis settings terug ophalen uit cfg file");
     decodeRequestHuis(request);
@@ -71,11 +76,6 @@ void setup_AsyncWebserver(){
     Println("led Animatie actieve settings opslaan in geheugen");
     decodeRequestLed(request);
     request->send(200, "text/plain", ledAnimSaveMem());
-  });
-  webserver.on("/ledListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("Led animaties tonen als option lijst");
-    decodeRequestLed(request);
-    request->send(200, "text/plain", ledListAnim());
   });
   webserver.on("/ledSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Led settings terug ophalen uit cfg file");
@@ -109,11 +109,6 @@ void setup_AsyncWebserver(){
     Println("rgb Animatie actieve settings opslaan in geheugen");
     decodeRequestRgb(request);
     request->send(200, "text/plain", rgbAnimSaveMem());
-  });
-  webserver.on("/rgbListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
-    //Println("Rgb animaties tonen als option lijst");
-    decodeRequestRgb(request);
-    request->send(200, "text/plain", rgbListAnim());
   });
   webserver.on("/rgbSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Rgb settings terug ophalen uit cfg file");

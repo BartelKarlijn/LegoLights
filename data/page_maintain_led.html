@@ -61,7 +61,7 @@
       };
       function getImage() {$('#file_img').attr( "src",  $('#img').val() );};
       function getLedListAnims(){
-        $.get("/ledListAnim", {led: lv_led}, function(data) {
+        $.get("/huisListAnim", {led: lv_led}, function(data) {
   		  let animsList = $("#anim");
 			  animsList.empty();
         animsList.append(data);

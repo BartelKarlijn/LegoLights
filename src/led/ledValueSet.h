@@ -1,6 +1,6 @@
 String ledValueSet(){
     size_t lednr = ledRequest.lednr;
-    size_t animnr = ledRequest.animnr;
+    size_t animnr = huisSetting.animnrhuis;
     size_t veldnr = ledRequest.veld;
     String waardeString = ledRequest.waarde;
     String answertoSend;
@@ -43,11 +43,6 @@ String ledValueSet(){
       case 56:
         ledactive[lednr].image = waardeString;
         ledsettings[lednr].ledimage = waardeString;
-        answertoSend = waardeString;
-        break;
-      case 57:
-        ledactive[lednr].animatie = waardeString;
-        ledsettings[lednr].anim[animnr].animdesc = waardeString;
         answertoSend = waardeString;
         break;
       default:

@@ -62,7 +62,7 @@
       };
       function getImage() {$('#file_img').attr( "src",  $('#img').val() );};
       function getRgbListAnims(){
-        $.get("/rgbListAnim", {rgb: lv_rgb}, function(data) {
+        $.get("/huisListAnim", {rgb: lv_rgb}, function(data) {
   		  let animsList = $("#anim");
 			  animsList.empty();
         animsList.append(data);

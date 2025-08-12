@@ -63,8 +63,6 @@
 #include "led/ledAnimApply.h"
 #include "led/ledAnimSaveMem.h"
 #include "led/ledLoadAnim.h"
-#include "led/ledListAnim.h"
-#
 
 //rgb
 #include "rgb/rgb_aan.h"
@@ -79,7 +77,6 @@
 #include "rgb/rgbAnimApply.h"
 #include "rgb/rgbAnimSaveMem.h"
 #include "rgb/rgbLoadAnim.h"
-#include "rgb/rgbListAnim.h"
 
 // Wifi Actions
 #include "wifi/decodeRequestHuis.h"

@@ -12,7 +12,6 @@ String  fileLedLoadSettings() {
     for(size_t lednr=0; lednr<LED_NR_ITEMS; lednr++) {
       ledsettings[lednr].leddesc          = LEDACTIVE_DEFAULT.desc + String(lednr);
       ledsettings[lednr].ledimage         = LEDACTIVE_DEFAULT.image;
-      ledsettings[lednr].anim[0].animdesc = LEDACTIVE_DEFAULT.animatie;
       ledsettings[lednr].anim[0].bri      = LEDACTIVE_DEFAULT.bri;
       ledsettings[lednr].anim[0].timeon   = LEDACTIVE_DEFAULT.timeon;
       ledsettings[lednr].anim[0].timeoff  = LEDACTIVE_DEFAULT.timeoff;
@@ -44,7 +43,6 @@ String  fileLedLoadSettings() {
       JsonArray janimarr = jledarr[lednr]["anim"].as<JsonArray>();
       Println(" aantal anims: " + String(janimarr.size()));
       for (size_t animnr=0; animnr<janimarr.size(); animnr++) {
-        ledsettings[lednr].anim[animnr].animdesc    = janimarr[animnr]["animdesc"].as<String>();
         ledsettings[lednr].anim[animnr].bri         = janimarr[animnr]["bri"].as<size_t>();
         ledsettings[lednr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<size_t>();
         ledsettings[lednr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<size_t>();

@@ -1,6 +1,6 @@
 String rgbValueSet(){
     size_t rgbnr = rgbRequest.rgbnr;
-    size_t animnr = rgbRequest.animnr;
+    size_t animnr = huisSetting.animnrhuis;
     size_t veldnr = rgbRequest.veld;
     String waardeString = rgbRequest.waarde;
     String answertoSend;
@@ -112,15 +112,6 @@ String rgbValueSet(){
       case 21:
         rgbactive[rgbnr].effect = waardeString.toInt();
         rgbsettings[rgbnr].anim[animnr].effect = waardeString.toInt();
-        answertoSend = waardeString;
-        break;
-      case 22:
-        rgbactive[rgbnr].animnr = waardeString.toInt();
-        answertoSend = waardeString;
-        break;
-      case 23:
-        rgbactive[rgbnr].animatie = waardeString;
-        rgbsettings[rgbnr].anim[animnr].animdesc = waardeString;
         answertoSend = waardeString;
         break;
       case 24:

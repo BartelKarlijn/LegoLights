@@ -2,7 +2,7 @@
 String rgbAnimSaveMem() {
   // Save active settings to memory
   size_t rgbnr = rgbRequest.rgbnr;
-  size_t animnr = rgbRequest.animnr;
+  size_t animnr = huisSetting.animnrhuis;
   String answertoSend;
 
 
@@ -10,7 +10,6 @@ String rgbAnimSaveMem() {
   rgbsettings[rgbnr].rgbimage               = rgbactive[rgbnr].image;
   rgbsettings[rgbnr].startrgb               = rgbactive[rgbnr].startrgb;
   rgbsettings[rgbnr].stoprgb                = rgbactive[rgbnr].stoprgb;
-  rgbsettings[rgbnr].anim[animnr].animdesc  = rgbactive[rgbnr].animatie;
   rgbsettings[rgbnr].anim[animnr].hue1      = rgbactive[rgbnr].hue1;
   rgbsettings[rgbnr].anim[animnr].sat1      = rgbactive[rgbnr].sat1;
   rgbsettings[rgbnr].anim[animnr].bri1      = rgbactive[rgbnr].bri1;
