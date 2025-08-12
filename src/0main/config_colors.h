@@ -158,8 +158,6 @@ const struc_rgbactive RGBACTIVE_DEFAULT  {"rgb", IMG_OLIV, 0  ,  10,   0,  10, 1
 struc_rgbactive   rgbactive[RGB_NR_ITEMS];
 struc_rgbsettings rgbsettings[RGB_NR_ITEMS];
 
-struc_rgbactive kring[RGB_NR_ITEMS];  //variabele om de waarden in bij te houden (default, uitlezen of aangepast)
-
 // rgbstrip 
 CRGB rgbstrip[RGB_NR_LEDS];
 

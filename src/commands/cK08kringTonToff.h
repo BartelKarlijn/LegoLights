@@ -1,12 +1,12 @@
 void cK08kringTonToff(){
     // Set effect and time effect for Kring
-    size_t kringnr = commandParts.arg1.toInt();
+    size_t rgbnr = commandParts.arg1.toInt();
     size_t effect = commandParts.arg2.toInt();
     unsigned long timeeffect = commandParts.arg3.toDouble();
-    if (kringnr >= 0 && kringnr < RGB_NR_ITEMS) {
-        kring[kringnr].effect = effect;
-        kring[kringnr].timeeffect = timeeffect;
+    if (rgbnr >= 0 && rgbnr < RGB_NR_ITEMS) {
+        rgbactive[rgbnr].effect = effect;
+        rgbactive[rgbnr].timeeffect = timeeffect;
     } else {
-        Println("Error: Invalid Kring number: " + String(kringnr));
+        Println("Error: Invalid Kring number: " + String(rgbnr));
     }
 }

@@ -1,31 +1,31 @@
 #pragma once
 
-void rgb_aan(size_t kringnr) {
+void rgb_aan(size_t rgbnr) {
   bool fl_on;
   unsigned long timeBezig;
 
-  timeBezig = currentMillis - timer_rgb_aan[kringnr];
+  timeBezig = currentMillis - timer_rgb_aan[rgbnr];
 
-  if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
+  if( timeBezig > (rgbactive[rgbnr].timeon + rgbactive[rgbnr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
     fl_on = true;
-    timer_rgb_aan[kringnr] = currentMillis; //reset timer
+    timer_rgb_aan[rgbnr] = currentMillis; //reset timer
   }
-  else  if (timeBezig > kring[kringnr].timeon) { // lang genoeg aan geweest
+  else  if (timeBezig > rgbactive[rgbnr].timeon) { // lang genoeg aan geweest
     fl_on = false;
   }
   else {     //laat nog maar tijdje aan.
     fl_on = true;
   }
 
-  for (size_t i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)
+  for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)
   {
     // aan of uit zetten?
     if (fl_on) {
-      if( ( (i - kring[kringnr].startrgb + kring[kringnr].seed + 30*kring[kringnr].every) % kring[kringnr].every ) == 0 ) {  // check every.  Aangezien negatieve waarden kunnen voorkomen, tellen we er 30 x every bij op om zeker positieve waarden te hebben
-        rgbstrip[i] = CHSV(kring[kringnr].hue1, kring[kringnr].sat1, kring[kringnr].bri1 );
+      if( ( (i - rgbactive[rgbnr].startrgb + rgbactive[rgbnr].seed + 30*rgbactive[rgbnr].every) % rgbactive[rgbnr].every ) == 0 ) {  // check every.  Aangezien negatieve waarden kunnen voorkomen, tellen we er 30 x every bij op om zeker positieve waarden te hebben
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue1, rgbactive[rgbnr].sat1, rgbactive[rgbnr].bri1 );
       }
       else {
-        rgbstrip[i] = CHSV(kring[kringnr].hue2, kring[kringnr].sat2, kring[kringnr].bri2 );
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, rgbactive[rgbnr].bri2 );
       }
     }
     else {

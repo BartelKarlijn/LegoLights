@@ -1,25 +1,25 @@
 #pragma once
 
-void rgb_party(size_t kringnr) {
+void rgb_party(size_t rgbnr) {
   unsigned long timeBezig;
   bool flag_on;
   size_t partyhue, partysat, partybri;
 
-  timeBezig = currentMillis - timer_rgb_aan[kringnr];
+  timeBezig = currentMillis - timer_rgb_aan[rgbnr];
   // bereken mode (uit, up, down)
-  if( timeBezig > (kring[kringnr].timeon + kring[kringnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
-    timer_rgb_aan[kringnr] = currentMillis;      //reset timers
-    timer_rgb_effect[kringnr] = currentMillis + kring[kringnr].timeeffect;
-    chaseRgbNr[kringnr][0] = 0;
+  if( timeBezig > (rgbactive[rgbnr].timeon + rgbactive[rgbnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
+    timer_rgb_aan[rgbnr] = currentMillis;      //reset timers
+    timer_rgb_effect[rgbnr] = currentMillis + rgbactive[rgbnr].timeeffect;
+    chaseRgbNr[rgbnr][0] = 0;
     flag_on = true;
   }
-  else  if (timeBezig > kring[kringnr].timeon) { // einde van aan
+  else  if (timeBezig > rgbactive[rgbnr].timeon) { // einde van aan
     flag_on = false;
   }
-  else  if(currentMillis >  timer_rgb_effect[kringnr]) {        //naar volgend spotje gaan
+  else  if(currentMillis >  timer_rgb_effect[rgbnr]) {        //naar volgend spotje gaan
     flag_on = true;
-    timer_rgb_effect[kringnr] = currentMillis + kring[kringnr].timeeffect ; //reset flikkertimer
-    chaseRgbNr[kringnr][0] = (chaseRgbNr[kringnr][0] + 1) % 4;           //kleur vd party
+    timer_rgb_effect[rgbnr] = currentMillis + rgbactive[rgbnr].timeeffect ; //reset flikkertimer
+    chaseRgbNr[rgbnr][0] = (chaseRgbNr[rgbnr][0] + 1) % 4;           //kleur vd party
   }
   else {
     // gewoon verder doen, laat lampje maar branden
@@ -27,27 +27,27 @@ void rgb_party(size_t kringnr) {
   }
 
 // bepaal kleur
-switch (chaseRgbNr[kringnr][0])
+switch (chaseRgbNr[rgbnr][0])
 {
 case 0:
-  partyhue    = kring[kringnr].hue1;
-  partysat    = kring[kringnr].sat1;
-  partybri = kring[kringnr].bri1;
+  partyhue    = rgbactive[rgbnr].hue1;
+  partysat    = rgbactive[rgbnr].sat1;
+  partybri = rgbactive[rgbnr].bri1;
   break;
 case 1:
-  partyhue    = kring[kringnr].hue2;
-  partysat    = kring[kringnr].sat2;
-  partybri = kring[kringnr].bri2;
+  partyhue    = rgbactive[rgbnr].hue2;
+  partysat    = rgbactive[rgbnr].sat2;
+  partybri = rgbactive[rgbnr].bri2;
   break;
 case 2:
-  partyhue    = kring[kringnr].hue3;
-  partysat    = kring[kringnr].sat3;
-  partybri = kring[kringnr].bri3;
+  partyhue    = rgbactive[rgbnr].hue3;
+  partysat    = rgbactive[rgbnr].sat3;
+  partybri = rgbactive[rgbnr].bri3;
   break;
 case 3:
-  partyhue    = kring[kringnr].hue4;
-  partysat    = kring[kringnr].sat4;
-  partybri = kring[kringnr].bri4;
+  partyhue    = rgbactive[rgbnr].hue4;
+  partysat    = rgbactive[rgbnr].sat4;
+  partybri = rgbactive[rgbnr].bri4;
   break;
 default:
   partyhue    = 0;
@@ -56,10 +56,10 @@ default:
   break;
 }
 
-  for (size_t i = kring[kringnr].startrgb; i <= kring[kringnr].stoprgb; i++)  {
+  for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
     // aan of uit zetten?
     if (flag_on) {
-      if( (i - kring[kringnr].startrgb) % ( 4 * kring[kringnr].every) == chaseRgbNr[kringnr][0] * kring[kringnr].every ) {
+      if( (i - rgbactive[rgbnr].startrgb) % ( 4 * rgbactive[rgbnr].every) == chaseRgbNr[rgbnr][0] * rgbactive[rgbnr].every ) {
         rgbstrip[i] = CHSV(partyhue, partysat, partybri);
       }
       else {
