@@ -57,7 +57,7 @@ typedef struct {
 } struc_ledactive;
 
 typedef struct {
-  String        animdesc;
+//  String        animdesc;
   size_t        bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
@@ -122,7 +122,7 @@ typedef struct {
 } struc_rgbactive;
 
 typedef struct {
-  String        animdesc;
+//  String        animdesc;
   uint8_t       hue1;
   uint8_t       sat1;
   uint8_t       bri1;

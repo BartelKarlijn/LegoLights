@@ -22,7 +22,6 @@ String fileLedSaveSettings() {
         JsonArray animArr = animDoc.to<JsonArray>();
         for (size_t animnr = 0; animnr < LED_NR_ANIM; animnr++){
           JsonObject animLine = animArr.add<JsonObject>();
-          animLine["animdesc"]   = ledsettings[lednr].anim[animnr].animdesc;
           animLine["bri"]        = ledsettings[lednr].anim[animnr].bri;
           animLine["timeon"]     = ledsettings[lednr].anim[animnr].timeon;
           animLine["timeoff"]    = ledsettings[lednr].anim[animnr].timeoff;

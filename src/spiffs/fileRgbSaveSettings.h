@@ -24,7 +24,6 @@ String fileRgbSaveSettings() {
         JsonArray animArr = animDoc.to<JsonArray>();
         for (size_t animnr = 0; animnr < RGB_NR_ANIM; animnr++){
           JsonObject animLine = animArr.add<JsonObject>();
-          animLine["animdesc"]   = rgbsettings[rgbnr].anim[animnr].animdesc;
           animLine["hue1"]       = rgbsettings[rgbnr].anim[animnr].hue1;
           animLine["sat1"]       = rgbsettings[rgbnr].anim[animnr].sat1;
           animLine["bri1"]       = rgbsettings[rgbnr].anim[animnr].bri1;

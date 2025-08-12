@@ -60,7 +60,6 @@ String  fileRgbLoadSettings() {
       JsonArray janimarr = jrgbarr[rgbnr]["anim"].as<JsonArray>();
       Println(" aantal anims: " + String(janimarr.size()));
       for (size_t animnr=0; animnr<janimarr.size(); animnr++) {
-        rgbsettings[rgbnr].anim[animnr].animdesc    = janimarr[animnr]["animdesc"].as<String>();
         rgbsettings[rgbnr].anim[animnr].hue1        = janimarr[animnr]["hue1"].as<size_t>();
         rgbsettings[rgbnr].anim[animnr].sat1        = janimarr[animnr]["sat1"].as<size_t>();
         rgbsettings[rgbnr].anim[animnr].bri1        = janimarr[animnr]["bri1"].as<size_t>();
