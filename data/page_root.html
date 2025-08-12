@@ -7,6 +7,7 @@
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
     $(document).ready(function() {
+      getHuisListAnim();    //Animaties ophalen, 
       ListLedDefaults();
       ListRgbDefaults();
       getValuesJQH();        //dan pas alles ophalen voor jqh
@@ -113,6 +114,13 @@
 			  });
        });
     };
+    function getHuisListAnim(){
+      $.get("/huisListAnim", {}, function(data) {
+		  let animsList = $("#anim");
+  	  animsList.empty();
+      animsList.append(data);
+		  });
+    };  
     function getImage() {
       console.log("img refreshed " + $('#img').val() )
       $('#file_img').attr( "src",  $('#img').val() );
@@ -160,7 +168,8 @@
       Image<input id="img" veld='41' name='jqh' type='text' led="0"  required/><br>
       Naam<input veld='40' name='jqh' type='text'  led="0" required/><br>
       HuisNr<input class = "input-small" veld='42' name='jqh' type='text' led="0"  required/><br>
-      Animatie<br>
+      Animatie<select id="anim" type="text"><option value="default"></option></select><br>
+      Rename Anim<input name='jqh' veld='46' type='text'   required/><br>
       </h3></div>
     <div class="column3">
       <a href="/restart"                  class="button button-right  button-large">/!\Reboot ESP32</a>
