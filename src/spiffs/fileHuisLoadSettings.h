@@ -11,11 +11,9 @@ String  fileHuisLoadSettings() {
     huisSetting.desc = HUIS_DEFAULT.desc;
     huisSetting.image = HUIS_DEFAULT.image;
     huisSetting.huisnr = HUIS_DEFAULT.huisnr;
-    for(size_t lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-      huisSetting.animnrled[lednr] = 0;
-    }
-    for(size_t rgbnr=0; rgbnr<RGB_NR_ITEMS; rgbnr++) {
-      huisSetting.animnrrgb[rgbnr] = 0;
+    huisSetting.animnrhuis = HUIS_DEFAULT.animnrhuis;
+    for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
+      huisSetting.animdesc[i] = HUIS_DEFAULT.animdesc[i];
     }
   }
   else {
@@ -33,12 +31,11 @@ String  fileHuisLoadSettings() {
     huisSetting.huisnr = doc["huisnr"].as<size_t>();
     huisSetting.desc   = doc["desc"].as<String>();
     huisSetting.image  = doc["image"].as<String>();
-    for (size_t lednr=0; lednr<LED_NR_ITEMS; lednr++) {
-      huisSetting.animnrled[lednr] = doc["animnrled"][lednr].as<size_t>();
+    huisSetting.animnrhuis = doc["animnrhuis"].as<size_t>();
+    for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
+      huisSetting.animdesc[i] = doc["animdesc"][i].as<String>();
     }
-    for (size_t rgbnr=0; rgbnr<RGB_NR_ITEMS; rgbnr++) {
-      huisSetting.animnrrgb[rgbnr] = doc["animnrrgb"][rgbnr].as<size_t>();
-    }
+
     msgAnswer = "Huissettings loaded";
   }
 

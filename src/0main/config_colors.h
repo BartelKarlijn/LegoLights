@@ -8,6 +8,8 @@
 #define FILE_LED  "/cfg_led.ini"
 #define FILE_RGB  "/cfg_rgb.ini"
 
+#define HUIS_NR_ANIM 5
+
 #define LED_NR_ITEMS 16
 #define LED_NR_ANIM 6
 
@@ -21,14 +23,16 @@ typedef struct {
   size_t huisnr;
   String desc;
   String image;
-  size_t animnrled[LED_NR_ITEMS];
-  size_t animnrrgb[RGB_NR_ITEMS];
+  size_t animnrhuis;  // default anim
+  String animdesc[HUIS_NR_ANIM];
 } struc_huis;
 
 const struc_huis HUIS_DEFAULT {
   0,
   "Huis",
-  "file_img_Huis.jpg"
+  "file_img_Huis.jpg",
+  0,
+  {"Anim 0", "Anim 1", "Anim 2", "Anim 3", "Anim 4"},
 };
 struc_huis huisSetting;
 

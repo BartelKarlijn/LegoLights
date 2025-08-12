@@ -48,6 +48,7 @@
 //huis
 #include "huis/huisValueGet.h"
 #include "huis/huisValueSet.h"
+#include "huis/huisListAnim.h"
 
 //led
 #include "led/led_aan.h"

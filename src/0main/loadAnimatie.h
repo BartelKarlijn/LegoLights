@@ -6,7 +6,7 @@ void loadAnimatie() {
   for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++)
   {
     ledRequest.lednr = lednr;
-    ledRequest.animnr = huisSetting.animnrled[lednr];
+    ledRequest.animnr = huisSetting.animnrhuis;
     ledAnimApply();
   }
   
@@ -14,7 +14,7 @@ void loadAnimatie() {
   for (size_t rgbnr = 0; rgbnr < RGB_NR_ITEMS; rgbnr++)
   {
     rgbRequest.rgbnr = rgbnr;
-    rgbRequest.animnr = huisSetting.animnrrgb[rgbnr];
+    rgbRequest.animnr = huisSetting.animnrhuis;
     rgbAnimApply();
   }
 }

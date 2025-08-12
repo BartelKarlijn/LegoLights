@@ -16,6 +16,7 @@ size_t huisMax = 20;
 
 struct struc_huisRequest {
     size_t huisnr;
+    size_t animnr;
     size_t veld;
     size_t lednr;
     size_t rgbnr;

@@ -2,12 +2,12 @@
 String ledAnimApply() {
   // Apply LED settings for given animatie
   size_t lednr = ledRequest.lednr;
-  size_t animnr = ledRequest.animnr;
-  if (ledsettings[lednr].anim[animnr].animdesc == NULL) {
+  size_t animnr = huisSetting.animnrhuis;
+  if (huisSetting.animdesc[animnr] == NULL) {
     Println("settingLedApplyAnim: animatie niet gevonden");
   }
   else {
-    Println("settingLedApplyAnim: " + ledsettings[lednr].anim[animnr].animdesc);
+    Println("settingLedApplyAnim: " + huisSetting.animdesc[animnr]);
     ledactive[lednr].desc       = ledsettings[lednr].leddesc;
     ledactive[lednr].bri        = ledsettings[lednr].anim[animnr].bri;
     ledactive[lednr].timeon     = ledsettings[lednr].anim[animnr].timeon;

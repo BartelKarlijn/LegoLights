@@ -1,7 +1,6 @@
 String huisValueGet(){
-    size_t lednr = huisRequest.lednr;
-    size_t rgbnr = huisRequest.rgbnr;
-    size_t veldnr = huisRequest.veld;
+  size_t animnr = huisRequest.animnr; 
+  size_t veldnr = huisRequest.veld;
     
     String answertoSend = "";
     switch (veldnr)
@@ -15,11 +14,11 @@ String huisValueGet(){
       case 42:
         answertoSend = huisSetting.huisnr;
         break;
-      case 43:
-        answertoSend = huisSetting.animnrled[lednr];
+      case 45:
+        answertoSend = huisSetting.animnrhuis;
         break;
-      case 44:
-        answertoSend = huisSetting.animnrrgb[rgbnr];
+      case 46:
+        answertoSend = huisSetting.animdesc[animnr];
         break;
       default:
         answertoSend = "error";

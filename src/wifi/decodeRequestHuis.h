@@ -2,25 +2,16 @@
 void decodeRequestHuis(AsyncWebServerRequest *request){
     //decode the request into led, anim, veld, waarde
     String answertoSend;
-    String ledString;
+    String animString;
     String veldString;
     String waardeString;
-    if (request->hasParam("led")) {
-        ledString = request->getParam("led")->value();
-        huisRequest.lednr = ledString.toInt();
+    if (request->hasParam("anim")) {
+        animString = request->getParam("anim")->value();
+        huisRequest.animnr = animString.toInt();
       }
       else {
-        huisRequest.lednr = 255;
+        huisRequest.animnr = 255;
       }
-  
-    if (request->hasParam("rgb")) {
-        ledString = request->getParam("rgb")->value();
-        huisRequest.rgbnr = ledString.toInt();
-      }
-      else {
-        huisRequest.rgbnr = 255;
-      }
-
     if (request->hasParam("veld")) {
         veldString = request->getParam("veld")->value();
         huisRequest.veld = veldString.toInt();
