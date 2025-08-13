@@ -17,6 +17,8 @@
       }
       lv_led = $.urlParam('led');
       lv_anim = $.urlParam('anim');
+      if (lv_anim == null || lv_anim == "") { lv_anim = "0"; }
+
       console.log("led="+lv_led + " animnr= "+lv_anim);
       getHuisListAnim();    //Animaties ophalen, 
       getValuesJQL();        //dan pas alles ophalen voor jql

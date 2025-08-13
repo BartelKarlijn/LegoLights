@@ -6,14 +6,15 @@
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
-    var gv_anim = "1";
+    var lv_anim = "1";
     $(document).ready(function() {
       $.urlParam = function(name){  // url parameters
         let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (results==null) { return null; }
         return decodeURI(results[1]) || 0;
       }
-      gv_anim = $.urlParam('anim');
+      lv_anim = $.urlParam('anim');
+      if (lv_anim == null || lv_anim == "") { lv_anim = "0"; }
       getHuisListAnim();    //Animaties ophalen, 
       getValuesJQH();        //dan pas alles ophalen voor jqh
       ListLedRgbButtons();
@@ -26,20 +27,20 @@
 		  let animsList = $("#anim");
   	  animsList.empty();
       animsList.append(data);
-      $('#anim').val(gv_anim);   // zet de animatie volgens url
+      $('#anim').val(lv_anim);   // zet de animatie volgens url
 		  });
     };
     function huisAnimApply() {
-      gv_anim = $('#anim').val();
-      console.log("huisAnimApply animnr= "+gv_anim);
-      $('#46').val(gv_anim);
-      $.get("/huisAnimApply", {anim: gv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); getValuesJQR();
+      lv_anim = $('#anim').val();
+      console.log("huisAnimApply animnr= "+lv_anim);
+      $('#46').val(lv_anim);
+      $.get("/huisAnimApply", {anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); getValuesJQR();
     };
     function ListLedRgbButtons(){
       for (let i=0; i<16; i++){
         var ledlist = $("<div class='row'>"
-                      + "<div class='column2'><a name='jql' veld='50' led='"+i+"' anim='"+ gv_anim + "' href='/'' class='button button-left'>naar</a></div>"
-                      + "<div class='column3'><a name='jqr' veld='1'  rgb='"+i+"' anim='"+ gv_anim + "' href='/'' class='button button-left'>naar</a></div>"
+                      + "<div class='column2'><a name='jql' veld='50' led='"+i+"' anim='"+ lv_anim + "' href='/'' class='button button-left'>naar</a></div>"
+                      + "<div class='column3'><a name='jqr' veld='1'  rgb='"+i+"' anim='"+ lv_anim + "' href='/'' class='button button-left'>naar</a></div>"
                       + "</div>"
                     );
         ledlist.appendTo("#ListLedRgb");
@@ -56,7 +57,7 @@
 			  $(element).on("focusout", function(){  //onchange
           lv_veld = $(element).attr('veld');
           lv_waarde = $(element).val();
-  				$.get("/huisValueSet", {veld: lv_veld, anim: gv_anim, waarde: lv_waarde}, function(data) {});
+  				$.get("/huisValueSet", {veld: lv_veld, anim: lv_anim, waarde: lv_waarde}, function(data) {});
 			  });
       });
       $('p[name="jqh"]').each(function(ind, element) {
@@ -72,10 +73,10 @@
 			  $(element).val(function(index, value){
           lv_led = $(element).attr('led');
           lv_veld = $(element).attr('veld');
-			    $.get("ledValueGet", {led: lv_led, anim: gv_anim, veld: lv_veld}, function(data) {
+			    $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
             lv_led = $(element).attr('led');
             $(element).text(lv_led + ". "+data);
-            $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+gv_anim);
+            $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
 			    });
 			  });
        });
@@ -85,10 +86,10 @@
 			  $(element).val(function(index, value){
           lv_rgb = $(element).attr('rgb');
           lv_veld = $(element).attr('veld');
-			    $.get("rgbValueGet", {rgb: lv_rgb, anim: gv_anim, veld: lv_veld}, function(data) {
+			    $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: lv_veld}, function(data) {
             lv_rgb = $(element).attr('rgb');
             $(element).text(lv_rgb + ". "+data);
-            $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgb+"&anim="+gv_anim);
+            $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgb+"&anim="+lv_anim);
 			    });
 			  });
        });
@@ -98,7 +99,7 @@
       $('#file_img').attr( "src",  $('#img').val() );
     };
     function fileHuisSaveSettings() { $.get("/huisSettingFileSave", {} , function(data) {$("#status").html(data);}); };
-    function fileHuisLoadSettings() { $.get("/huisSettingFileLoad", {gv_anim} , function(data) {$("#status").html(data);}); getValuesJQH(); getValuesJQL(); getValuesJQH();};
+    function fileHuisLoadSettings() { $.get("/huisSettingFileLoad", {lv_anim} , function(data) {$("#status").html(data);}); getValuesJQH(); getValuesJQL(); getValuesJQH();};
   </script>
 
 </head>
