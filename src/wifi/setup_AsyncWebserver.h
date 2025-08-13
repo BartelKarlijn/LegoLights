@@ -41,6 +41,11 @@ void setup_AsyncWebserver(){
   });
   //--------------------
   // -- huis management--
+  webserver.on("/huisAnimApply", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Animatie toepassen voor huis");
+    decodeRequestHuis(request);
+    request->send(200, "text/plain", huisAnimApply());
+  });
   webserver.on("/huisListAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
     //Println("Huis animaties tonen als option lijst");
     decodeRequestHuis(request);

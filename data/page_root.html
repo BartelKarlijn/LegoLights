@@ -6,23 +6,33 @@
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
+    var gv_anim = "1";
     $(document).ready(function() {
+      // url parameters
+      $.urlParam = function(name){
+        let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null) { return null; }
+        return decodeURI(results[1]) || 0;
+      }
+      gv_anim = $.urlParam('anim');
+      console.log(" animnr= " + gv_anim);
+
       getHuisListAnim();    //Animaties ophalen, 
-      ListLedDefaults();
-      ListRgbDefaults();
+      console.log("anims opgehaald");
       getValuesJQH();        //dan pas alles ophalen voor jqh
+      ListLedRgbButtons();
       getValuesJQL();
       getValuesJQR();
-			setonchangeValuesJQH();  //onchange voor jq elementen
+			console.log("JQH");
+      setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
 		});
     function getValuesJQH() {
+      console.log("getValuesJQH animnr= "+gv_anim);
       $('input[name="jqh"]').each(function(ind, element) {
 		  	$(element).val(function(index, value){
-          lv_led = $(element).attr('led');
-          lv_rgb = $(element).attr('rgb');
           lv_veld = $(element).attr('veld');
-  		    $.get("huisValueGet", {led: $(element).attr('led'), rgb: $(element).attr('rgb'), veld: $(element).attr('veld')}, function(data) {
+  		    $.get("huisValueGet", {veld: $(element).attr('veld')}, function(data) {
 	  	      $(element).val(data);
 			    });
 			  });
@@ -34,15 +44,14 @@
             $(element).append(data);
 			    });
 			  });
-       });
+      });
     };
     function setonchangeValuesJQH(anim){
 		  $('input[name="jqh"]').each(function(ind, element) {
 			  $(element).on("focusout", function(){
-          lv_led = $(element).attr('led');
           lv_veld = $(element).attr('veld');
           lv_waarde = $(element).val();
-  				$.get("/huisValueSet", {led: lv_led, veld: lv_veld, waarde: lv_waarde}, function(data) {});
+  				$.get("/huisValueSet", {veld: lv_veld, anim: gv_anim, waarde: lv_waarde}, function(data) {});
 			  });
 		  });
     };
@@ -50,9 +59,8 @@
       $('label[name="jql"]').each(function(ind, element) {
 		   $(element).val(function(index, value){
           lv_led = $(element).attr('led');
-          lv_anim = $(element).attr('anim');
           lv_veld = $(element).attr('veld');
-		      $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
+		      $.get("ledValueGet", {led: lv_led, anim: gv_anim, veld: lv_veld}, function(data) {
 				    $(element).text(lv_led + ". "+data);
 				  });
 				});
@@ -60,13 +68,11 @@
       $('a[name="jql"]').each(function(ind, element) {
 			  $(element).val(function(index, value){
           lv_led = $(element).attr('led');
-          lv_anim = $(element).attr('anim');
           lv_veld = $(element).attr('veld');
-			    $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: lv_veld}, function(data) {
+			    $.get("ledValueGet", {led: lv_led, anim: gv_anim, veld: lv_veld}, function(data) {
             lv_led = $(element).attr('led');
-            lv_anim = 0;
             $(element).text(lv_led + ". "+data);
-            $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
+            $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+gv_anim);
 			    });
 			  });
        });
@@ -84,9 +90,8 @@
       $('label[name="jqr"]').each(function(ind, element) {
 		   $(element).val(function(index, value){
           lv_rgb = $(element).attr('rgb');
-          lv_anim = $(element).attr('anim');
           lv_veld = $(element).attr('veld');
-		      $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: lv_veld}, function(data) {
+		      $.get("rgbValueGet", {rgb: lv_rgb, anim: gv_anim, veld: lv_veld}, function(data) {
 				    $(element).text(lv_rgb + ". "+data);
 				  });
 				});
@@ -94,13 +99,11 @@
       $('a[name="jqr"]').each(function(ind, element) {
 			  $(element).val(function(index, value){
           lv_rgb = $(element).attr('rgb');
-          lv_anim = $(element).attr('anim');
           lv_veld = $(element).attr('veld');
-			    $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: lv_veld}, function(data) {
+			    $.get("rgbValueGet", {rgb: lv_rgb, anim: gv_anim, veld: lv_veld}, function(data) {
             lv_rgb = $(element).attr('rgb');
-            lv_anim = 0;
             $(element).text(lv_rgb + ". "+data);
-            $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgb+"&anim="+lv_anim);
+            $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgb+"&anim="+gv_anim);
 			    });
 			  });
        });
@@ -119,36 +122,31 @@
 		  let animsList = $("#anim");
   	  animsList.empty();
       animsList.append(data);
+      $('#anim').val(gv_anim);   // zet de animatie volgens url
 		  });
-    };  
+    };
+    function huisAnimApply() {
+      gv_anim = $('#anim').val();
+      console.log("huisAnimApply animnr= "+gv_anim);
+      $('#46').val(gv_anim);
+      $.get("/huisAnimApply", {anim: gv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); getValuesJQR();
+    };
     function getImage() {
       console.log("img refreshed " + $('#img').val() )
       $('#file_img').attr( "src",  $('#img').val() );
     };
-    function ListLedDefaults(){
+    function ListLedRgbButtons(){
       for (let i=0; i<16; i++){
         var ledlist = $("<div class='row'>"
-                      + "<div class='column3'><a      name='jql' veld='50' led='"+i+"' anim='0' href='/'' class='button button-left'>naar</a></div>"
-                      + "<div class='column3'><select name='jql'           led='"+i+"' list='ledanim' type='text' ><option value='default'></option></select></div>"
-                      + "<div class='column3'><input  name='jqh' veld='43' led='"+i+"' class='input-small'></input></div>"
+                      + "<div class='column2'><a name='jql' veld='50' led='"+i+"' anim='"+ gv_anim + "' href='/'' class='button button-left'>naar</a></div>"
+                      + "<div class='column3'><a name='jqr' veld='1'  rgb='"+i+"' anim='"+ gv_anim + "' href='/'' class='button button-left'>naar</a></div>"
                       + "</div>"
                     );
-        ledlist.appendTo("#ListLed");
-      };
-    };
-    function ListRgbDefaults(){
-      for (let i=0; i<16; i++){
-        var ledlist = $("<div class='row'>"
-                      + "<div class='column3'><a      name='jqr' veld='1'  rgb='"+i+"' anim='0' href='/'' class='button button-left'>naar</a></div>"
-                      + "<div class='column3'><select name='jqr'           rgb='"+i+"' list='rgbanim' type='text' ><option value='default'></option></select></div>"
-                      + "<div class='column3'><input  name='jqh' veld='44' rgb='"+i+"' class='input-small'></input></div>"
-                      + "</div>"
-                    );
-        ledlist.appendTo("#ListRgb");
+        ledlist.appendTo("#ListLedRgb");
       };
     };
     function fileHuisSaveSettings() { $.get("/huisSettingFileSave", {} , function(data) {$("#status").html(data);}); };
-    function fileHuisLoadSettings() { $.get("/huisSettingFileLoad", {lv_anim} , function(data) {$("#status").html(data);}); getValuesJQH(); getValuesJQL(); };
+    function fileHuisLoadSettings() { $.get("/huisSettingFileLoad", {gv_anim} , function(data) {$("#status").html(data);}); getValuesJQH(); getValuesJQL(); getValuesJQH();};
   </script>
 
 </head>
@@ -165,34 +163,26 @@
     </div>
     <div class="column3"><h3>
       <img id="file_img"  src="" onchange="getImage();"></img><br>
-      Image<input id="img" veld='41' name='jqh' type='text' led="0"  required/><br>
-      Naam<input veld='40' name='jqh' type='text'  led="0" required/><br>
-      HuisNr<input class = "input-small" veld='42' name='jqh' type='text' led="0"  required/><br>
-      Animatie<select id="anim" type="text"><option value="default"></option></select><br>
-      Rename Anim<input name='jqh' veld='46' type='text'   required/><br>
+      Image<input       veld='41' name='jqh' type='text' id="img"             required/><br>
+      Naam<input        veld='40' name='jqh' type='text'                      required/><br>
+      HuisNr<input      veld='42' name='jqh' type='text' class="input-small"  required/><br>
+      Animatie<select   id="anim"            type="text" onchange="huisAnimApply()"><option value="default"></option></select><br>
+      Rename Anim<input veld='46' name='jqh' type='text'   required/><br>
       </h3></div>
     <div class="column3">
-      <a href="/restart"                  class="button button-right  button-large">/!\Reboot ESP32</a>
-      <a href="/update"                   class="button button-right  button-large">Firmware Update</a>
+      <a href="/restart" class="button button-right  button-large">/!\Reboot ESP32</a>
+      <a href="/update"  class="button button-right  button-large">Firmware Update</a>
     </div>
   </div>
   <div class="row"><h2>
-    <div class="column3"><label>Led</label></div>
-    <div class="column3"><label>Animaties</label></div>
-    <div class="column3"><label>Default animatie</label></div>
+    <div class="column2"><label>Led</label></div>
+    <div class="column2"><label>Rgb</label></div>
   </h2></div>
-  <div id="ListLed"></div>
+  <div id="ListLedRgb"></div>
   <div class="row"><h2>
     <div class="column2"><button onclick="fileHuisSaveSettings();" class="button button-right button-large">Save settings</button></div>
     <div class="column2"><button onclick="fileHuisLoadSettings();" class="button button-right button-large">Load from last save</button></div>
   </div>
-  <br>
-  <div class="row"><h2>
-    <div class="column3"><label>Rgb</label></div>
-    <div class="column3"><label>Animaties</label></div>
-    <div class="column3"><label>Default animatie</label></div>
-  </h2></div>
-  <div id="ListRgb"></div>
   
   <p name='jqh'>Firmware status: </p>
 </body>

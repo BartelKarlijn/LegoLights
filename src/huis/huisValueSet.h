@@ -1,11 +1,11 @@
 String huisValueSet(){
-    size_t animnr = huisSetting.animnrhuis; 
-    size_t veldnr = huisRequest.veld;
+    size_t animnr       = huisRequest.animnr; 
+    size_t veldnr       = huisRequest.veld;
     String waardeString = huisRequest.waarde;
     String answertoSend;
     // get parameter led & veld & waarde http://192.168.68.205/maintain_strip?led=1&veld=hue1&waarde=56
     
-    Println("Huis,  veld: " + String(veldnr) + " anim: " + animnr + "waarde: " + waardeString);
+    Println("Huis,  veld: " + String(veldnr) + ", anim: " + animnr + ", waarde: " + waardeString);
     // verwerk de input
       switch (veldnr)
       {

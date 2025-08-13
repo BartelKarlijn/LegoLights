@@ -78,6 +78,9 @@
 #include "rgb/rgbAnimSaveMem.h"
 #include "rgb/rgbLoadAnim.h"
 
+//huis deel2
+#include "huis/huisAnimApply.h"
+
 // Wifi Actions
 #include "wifi/decodeRequestHuis.h"
 #include "wifi/decodeRequestLed.h"
