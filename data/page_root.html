@@ -8,115 +8,19 @@
   <script>
     var gv_anim = "1";
     $(document).ready(function() {
-      // url parameters
-      $.urlParam = function(name){
+      $.urlParam = function(name){  // url parameters
         let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (results==null) { return null; }
         return decodeURI(results[1]) || 0;
       }
       gv_anim = $.urlParam('anim');
-      console.log(" animnr= " + gv_anim);
-
       getHuisListAnim();    //Animaties ophalen, 
-      console.log("anims opgehaald");
       getValuesJQH();        //dan pas alles ophalen voor jqh
       ListLedRgbButtons();
       getValuesJQL();
       getValuesJQR();
-			console.log("JQH");
-      setonchangeValuesJQH();  //onchange voor jq elementen
       setTimeout(getImage, 1000);
 		});
-    function getValuesJQH() {
-      console.log("getValuesJQH animnr= "+gv_anim);
-      $('input[name="jqh"]').each(function(ind, element) {
-		  	$(element).val(function(index, value){
-          lv_veld = $(element).attr('veld');
-  		    $.get("huisValueGet", {veld: $(element).attr('veld')}, function(data) {
-	  	      $(element).val(data);
-			    });
-			  });
-      });
-      $('p[name="jqh"]').each(function(ind, element) {
-			  $(element).val(function(index, value){
-          $.get("/showfirmware", {}, function(data) {
-      		  //$(element).empty();
-            $(element).append(data);
-			    });
-			  });
-      });
-    };
-    function setonchangeValuesJQH(anim){
-		  $('input[name="jqh"]').each(function(ind, element) {
-			  $(element).on("focusout", function(){
-          lv_veld = $(element).attr('veld');
-          lv_waarde = $(element).val();
-  				$.get("/huisValueSet", {veld: lv_veld, anim: gv_anim, waarde: lv_waarde}, function(data) {});
-			  });
-		  });
-    };
-    function getValuesJQL() {
-      $('label[name="jql"]').each(function(ind, element) {
-		   $(element).val(function(index, value){
-          lv_led = $(element).attr('led');
-          lv_veld = $(element).attr('veld');
-		      $.get("ledValueGet", {led: lv_led, anim: gv_anim, veld: lv_veld}, function(data) {
-				    $(element).text(lv_led + ". "+data);
-				  });
-				});
-      });
-      $('a[name="jql"]').each(function(ind, element) {
-			  $(element).val(function(index, value){
-          lv_led = $(element).attr('led');
-          lv_veld = $(element).attr('veld');
-			    $.get("ledValueGet", {led: lv_led, anim: gv_anim, veld: lv_veld}, function(data) {
-            lv_led = $(element).attr('led');
-            $(element).text(lv_led + ". "+data);
-            $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+gv_anim);
-			    });
-			  });
-       });
-       $('select[name="jql"]').each(function(ind, element) {
-			  $(element).val(function(index, value){
-          lv_led = $(element).attr('led');
-          $.get("/huisListAnim", {led: lv_led}, function(data) {
-      		  $(element).empty();
-            $(element).append(data);
-			    });
-			  });
-       });
-    };
-    function getValuesJQR() {
-      $('label[name="jqr"]').each(function(ind, element) {
-		   $(element).val(function(index, value){
-          lv_rgb = $(element).attr('rgb');
-          lv_veld = $(element).attr('veld');
-		      $.get("rgbValueGet", {rgb: lv_rgb, anim: gv_anim, veld: lv_veld}, function(data) {
-				    $(element).text(lv_rgb + ". "+data);
-				  });
-				});
-      });
-      $('a[name="jqr"]').each(function(ind, element) {
-			  $(element).val(function(index, value){
-          lv_rgb = $(element).attr('rgb');
-          lv_veld = $(element).attr('veld');
-			    $.get("rgbValueGet", {rgb: lv_rgb, anim: gv_anim, veld: lv_veld}, function(data) {
-            lv_rgb = $(element).attr('rgb');
-            $(element).text(lv_rgb + ". "+data);
-            $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgb+"&anim="+gv_anim);
-			    });
-			  });
-       });
-       $('select[name="jqr"]').each(function(ind, element) {
-			  $(element).val(function(index, value){
-          lv_rgb = $(element).attr('rgb');
-          $.get("/huisListAnim", {rgb: lv_rgb}, function(data) {
-      		  $(element).empty();
-            $(element).append(data);
-			    });
-			  });
-       });
-    };
     function getHuisListAnim(){
       $.get("/huisListAnim", {}, function(data) {
 		  let animsList = $("#anim");
@@ -131,10 +35,6 @@
       $('#46').val(gv_anim);
       $.get("/huisAnimApply", {anim: gv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); getValuesJQR();
     };
-    function getImage() {
-      console.log("img refreshed " + $('#img').val() )
-      $('#file_img').attr( "src",  $('#img').val() );
-    };
     function ListLedRgbButtons(){
       for (let i=0; i<16; i++){
         var ledlist = $("<div class='row'>"
@@ -144,6 +44,58 @@
                     );
         ledlist.appendTo("#ListLedRgb");
       };
+    };
+    function getValuesJQH() {
+      $('input[name="jqh"]').each(function(ind, element) {
+		  	$(element).val(function(index, value){  //waardes ophalen
+          lv_veld = $(element).attr('veld');
+  		    $.get("huisValueGet", {veld: $(element).attr('veld')}, function(data) {
+	  	      $(element).val(data);
+			    });
+        });
+			  $(element).on("focusout", function(){  //onchange
+          lv_veld = $(element).attr('veld');
+          lv_waarde = $(element).val();
+  				$.get("/huisValueSet", {veld: lv_veld, anim: gv_anim, waarde: lv_waarde}, function(data) {});
+			  });
+      });
+      $('p[name="jqh"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          $.get("/showfirmware", {}, function(data) {
+            $(element).append(data);
+			    });
+			  });
+      });
+    };
+    function getValuesJQL() {
+      $('a[name="jql"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          lv_led = $(element).attr('led');
+          lv_veld = $(element).attr('veld');
+			    $.get("ledValueGet", {led: lv_led, anim: gv_anim, veld: lv_veld}, function(data) {
+            lv_led = $(element).attr('led');
+            $(element).text(lv_led + ". "+data);
+            $(element).attr("href", "/page_maintain_led.html?led="+lv_led+"&anim="+gv_anim);
+			    });
+			  });
+       });
+    };
+    function getValuesJQR() {
+      $('a[name="jqr"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          lv_rgb = $(element).attr('rgb');
+          lv_veld = $(element).attr('veld');
+			    $.get("rgbValueGet", {rgb: lv_rgb, anim: gv_anim, veld: lv_veld}, function(data) {
+            lv_rgb = $(element).attr('rgb');
+            $(element).text(lv_rgb + ". "+data);
+            $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgb+"&anim="+gv_anim);
+			    });
+			  });
+       });
+    };
+    function getImage() {
+      console.log("img refreshed " + $('#img').val() )
+      $('#file_img').attr( "src",  $('#img').val() );
     };
     function fileHuisSaveSettings() { $.get("/huisSettingFileSave", {} , function(data) {$("#status").html(data);}); };
     function fileHuisLoadSettings() { $.get("/huisSettingFileLoad", {gv_anim} , function(data) {$("#status").html(data);}); getValuesJQH(); getValuesJQL(); getValuesJQH();};
