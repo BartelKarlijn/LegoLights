@@ -6,74 +6,77 @@
   <link rel="stylesheet" type="text/css" href="file_style.css">
   <script src="file_jquery-3.7.0.min.js"></script>
   <script>
-      let lv_led = "0";
-      let lv_anim = "0";
-      $(document).ready(function() {
-        // url parameters
-        $.urlParam = function(name){
-          let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-          if (results==null) { return null; }
-          return decodeURI(results[1]) || 0;
-        }
-        lv_led = $.urlParam('led');
-        lv_anim = $.urlParam('anim');
-        console.log("led="+lv_led + " animnr= "+lv_anim);
-        getLedListAnims();    //Animaties ophalen, 
-        getValuesJQL();        //dan pas alles ophalen voor jql
-        setTimeout(getImage, 1000);
+    var lv_anim = "1";
+    var lv_led = "0";
+    $(document).ready(function() {
+      // url parameters
+      $.urlParam = function(name){
+        let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null) { return null; }
+        return decodeURI(results[1]) || 0;
+      }
+      lv_led = $.urlParam('led');
+      lv_anim = $.urlParam('anim');
+      console.log("led="+lv_led + " animnr= "+lv_anim);
+      getHuisListAnim();    //Animaties ophalen, 
+      getValuesJQL();        //dan pas alles ophalen voor jql
+      setTimeout(getImage, 1000);
         getValuesJQH();        //dan pas alles ophalen voor jqh
   		});
-      function getValuesJQH() {
-        $('p[name="jqh"]').each(function(ind, element) {
-			    $(element).val(function(index, value){
-            $.get("/showfirmware", {}, function(data) {
-              $(element).append(data);
-			      });
-		  	  });
-         });
-      };
-      function getValuesJQL() {
-        // input initialiseren en onchange zetten
-        $('input[name="jql"]').each(function(ind, element) {
-				  $(element).empty();			    //nodig, anders krijgen we meerdere calls
-          $(element).val(function(index, value){
-			      $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
-              $(element).val(data);
-				    });
+    function getHuisListAnim(){
+      $.get("/huisListAnim", {}, function(data) {
+		  let animsList = $("#anim");
+  	  animsList.empty();
+      animsList.append(data);
+      $('#anim').val(lv_anim);   // zet de animatie volgens url
+		  });
+    };
+    function huisAnimApply() {
+      lv_anim = $('#anim').val();
+      console.log("huisAnimApply animnr= "+lv_anim);
+      $('#46').val(lv_anim);
+      $.get("/huisAnimApply", {anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL();
+    };
+    function getValuesJQH() {
+      $('p[name="jqh"]').each(function(ind, element) {
+		    $(element).val(function(index, value){
+          $.get("/showfirmware", {}, function(data) {
+            $(element).append(data);
+		      });
+	  	  });
+      });
+     };
+    function getValuesJQL() {
+      // input initialiseren en onchange zetten
+      $('input[name="jql"]').each(function(ind, element) {
+				$(element).empty();			    //nodig, anders krijgen we meerdere calls
+        $(element).val(function(index, value){
+			    $.get("ledValueGet", {led: lv_led, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
+            $(element).val(data);
 				  });
-			    $(element).on("focusout", function(){
-  				  $.get("/ledValueSet", {led: lv_led, anim: lv_anim, veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
-			    });
-        });
-        // knoppen initialiseren en onclick zetten
-        $('a[name="jql"]').each(function(ind, element) {
-			    $(element).val(function(index, value){
-            let lv_ledoff = parseInt(lv_led) + parseInt( $(element).attr('offset') );
-            if (lv_ledoff < 0) { lv_ledoff = 15; }
-            let lv_ledoffStr = String(lv_ledoff);
-			      $.get("ledValueGet", {led: lv_ledoffStr, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
-				      $(element).text(lv_ledoffStr + ". " + data + ", anim " + lv_anim);
-              $(element).attr("href", "/page_maintain_led.html?led="+lv_ledoffStr+"&anim="+lv_anim);
-				    });
-				  });
-        });
-        $('anim').val(lv_anim);
-      };
-      function getImage() {$('#file_img').attr( "src",  $('#img').val() );};
-      function getLedListAnims(){
-        $.get("/huisListAnim", {led: lv_led}, function(data) {
-  		  let animsList = $("#anim");
-			  animsList.empty();
-        animsList.append(data);
+				});
+			  $(element).on("focusout", function(){
+  			  $.get("/ledValueSet", {led: lv_led, anim: lv_anim, veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
 			  });
-      };
-      function fileLedSaveSettings() { $.get("/ledSettingFileSave", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
-      function fileLedLoadSettings() { $.get("/ledSettingFileLoad", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); };
-      function ledAnimApply()   {
-        lv_anim = $('#anim').val();
-        $('#57').val(lv_anim);
-        $.get("/ledAnimApply"    , {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); 
-      };
+      });
+      // knoppen initialiseren en onclick zetten
+      $('a[name="jql"]').each(function(ind, element) {
+			  $(element).val(function(index, value){
+          let lv_ledoff = parseInt(lv_led) + parseInt( $(element).attr('offset') );
+          if (lv_ledoff < 0) { lv_ledoff = 15; }
+          if (lv_ledoff > 15) { lv_ledoff = 0; }
+          let lv_ledoffStr = String(lv_ledoff);
+			    $.get("ledValueGet", {led: lv_ledoffStr, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
+			      $(element).text(lv_ledoffStr + ". " + data + ", anim " + lv_anim);
+            $(element).attr("href", "/page_maintain_led.html?led="+lv_ledoffStr+"&anim="+lv_anim);
+			    });
+			  });
+      });
+       $('anim').val(lv_anim);
+    };
+    function getImage() {$('#file_img').attr( "src",  $('#img').val() );};
+    function fileLedSaveSettings() { $.get("/ledSettingFileSave", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); };
+    function fileLedLoadSettings() { $.get("/ledSettingFileLoad", {led: lv_led, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); };
   </script>
 </head>
 
@@ -84,15 +87,12 @@
     <div class="column3"><h3>
     	<img id="file_img" name='jql' veld='56' src="" onchange="getImage();"></img><br>
 			Image   <input     name='jql' veld='56' type='text' id="img" required/><br>
-			Naam    <input     name='jql' veld='50' type='text'   required/><br>	
+			Naam    <input     name='jql' veld='50' type='text'   required/><br>
+      Animatie<select   id="anim"             type="text" onchange="huisAnimApply()"><option value="default"></option></select><br>
 	  </h3></div>
     <div class="column3"><a name='jql' veld='50' offset='1' href="/" class='button button-center'></a></div>
   </div>
   <div class="row">
-    <div class="column3">
-      Anims <select id="anim" type="text" onchange="ledAnimApply()"><option value="default"></option></select><br>
-      <h3></h3>Rename Anim<input     name='jql' veld='57' type='text'   required/></h3><br>
-    </div>
     <div class="column3">Brighness(4095) <br><input name='jql' veld='51' type='number' min="0" max="4095"/></div>
     <div class="column3">Effect          <br><input name='jql' veld='52' type='number' min="10" max="13" /><br>10: aan; 11:fire, 12: glow, 13: ramp, 14: rand, 15: uit</div>
   </div>
