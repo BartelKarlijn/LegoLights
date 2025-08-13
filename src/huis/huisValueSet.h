@@ -1,5 +1,5 @@
 String huisValueSet(){
-    size_t animnr = huisRequest.animnr; 
+    size_t animnr = huisSetting.animnrhuis; 
     size_t veldnr = huisRequest.veld;
     String waardeString = huisRequest.waarde;
     String answertoSend;
