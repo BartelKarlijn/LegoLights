@@ -6,7 +6,7 @@ String huisAnimApply() {
     Println("huisApplyAnim: animatie niet gevonden");
   }
   else {
-    Println("huisApplyAnim: " + String(animnr) + ", " + huisSetting.animdesc[animnr]);
+    Println("huisApplyAnim: " + String(animnr) + ", desc= " + huisSetting.animdesc[animnr]);
     // Apply anim to huisSetting
     huisSetting.animnrhuis = animnr;
     // Apply the animation to all leds
