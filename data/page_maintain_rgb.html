@@ -1,81 +1,83 @@
 <!DOCTYPE html> <html>
 <head>
-  <title>rgb</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
-  <link rel="icon" href="/file_favicon.ico">
-  <link rel="stylesheet" type="text/css" href="file_style.css">
-  <script src="file_jquery-3.7.0.min.js"></script>
-  <script>
-      let lv_rgb = 0;
-      let lv_anim = 0;
-      $(document).ready(function() {
-        // url parameters
-        $.urlParam = function(name){
-          var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-          if (results==null) { return null; }
-          return decodeURI(results[1]) || 0;
-        }
-        lv_rgb = $.urlParam('rgb');
-        lv_anim = $.urlParam('anim');
-        console.log("rgb="+lv_rgb + " animnr= "+lv_anim);
-        getRgbListAnims();    //Animaties ophalen, 
-        getValuesJQR();        //dan pas alles ophalen voor jqr
-        setTimeout(getImage, 1000);
-        getValuesJQH();        //dan pas alles ophalen voor jqh
-  		});
-      function getValuesJQH() {
-        $('p[name="jqh"]').each(function(ind, element) {
-			    $(element).val(function(index, value){
-            $.get("/showfirmware", {}, function(data) {
-      		  //$(element).empty();
-              $(element).append(data);
-			      });
-		  	  });
-         });
-      };
-      function getValuesJQR() {
-        // input initialiseren en onchange zetten
-        $('input[name="jqr"]').each(function(ind, element) {
-				  $(element).empty();			    //nodig, anders krijgen we meerdere calls
-          $(element).val(function(index, value){
-			      $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
-				      $(element).val(data);
-				    });
-				  });
-          $(element).on("focusout", function(){
-   				  $.get("/rgbValueSet", {rgb: lv_rgb, anim: lv_anim, veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
-          });
+<title>rgb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
+<link rel="icon" href="/file_favicon.ico">
+<link rel="stylesheet" type="text/css" href="file_style.css">
+<script src="file_jquery-3.7.0.min.js"></script>
+<script>
+  var lv_anim = 1;
+  var lv_rgb = 0;
+  $(document).ready(function() {
+    // url parameters
+    $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results==null) { return null; }
+      return decodeURI(results[1]) || 0;
+    }
+    lv_rgb = $.urlParam('rgb');
+    lv_anim = $.urlParam('anim');
+    if (lv_anim == null || lv_anim == "") { lv_anim = "0"; }
+
+    console.log("rgb="+lv_rgb + " animnr= "+lv_anim);
+    getHuisListAnim();    //Animaties ophalen, 
+    getValuesJQR();        //dan pas alles ophalen voor jqr
+    setTimeout(getImage, 1000);
+    getValuesJQH();        //dan pas alles ophalen voor jqh
+  });
+  function getHuisListAnim(){
+    $.get("/huisListAnim", {}, function(data) {
+    let animsList = $("#anim");
+    animsList.empty();
+    animsList.append(data);
+    $('#anim').val(lv_anim);   // zet de animatie volgens url
+	  });
+  };
+  function huisAnimApply() {
+    lv_anim = $('#anim').val();
+    console.log("huisAnimApply animnr= "+lv_anim);
+    $.get("/huisAnimApply", {anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQR();
+  };
+  function getValuesJQH() {
+    $('p[name="jqh"]').each(function(ind, element) {
+      $(element).val(function(index, value){
+        $.get("/showfirmware", {}, function(data) {
+        $(element).append(data);
+		    });
+	  	});
+    });
+  };
+  function getValuesJQR() {
+    // input initialiseren en onchange zetten
+    $('input[name="jqr"]').each(function(ind, element) {
+		  $(element).empty();			    //nodig, anders krijgen we meerdere calls
+      $(element).val(function(index, value){
+		    $.get("rgbValueGet", {rgb: lv_rgb, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
+		      $(element).val(data);
+				});
+		  });
+      $(element).on("focusout", function(){
+   	    $.get("/rgbValueSet", {rgb: lv_rgb, anim: lv_anim, veld: $(element).attr('veld'), waarde: $(element).val()}, function(data) {});
       });
-        // knoppen initialiseren en onclick zetten
-        $('a[name="jqr"]').each(function(ind, element) {
-          $(element).val(function(index, value){
-            let lv_rgboff = parseInt(lv_rgb) + parseInt( $(element).attr('offset') );
-            if (lv_rgboff < 0) { lv_rgboff = 15; }
-            let lv_rgboffStr = String(lv_rgboff);
-            $.get("rgbValueGet", {rgb: lv_rgboffStr, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
-              $(element).text(lv_rgboffStr + ". " + data + ", anim " + lv_anim);
-              $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgboffStr+"&anim="+lv_anim);
-            });
-          });
+    });
+    // knoppen initialiseren en onclick zetten
+    $('a[name="jqr"]').each(function(ind, element) {
+      $(element).val(function(index, value){
+        let lv_rgboff = parseInt(lv_rgb) + parseInt( $(element).attr('offset') );
+        if (lv_rgboff < 0) { lv_rgboff = 15; }
+        if (lv_rgboff > 15) { lv_rgboff = 0; }
+        let lv_rgboffStr = String(lv_rgboff);
+        $.get("rgbValueGet", {rgb: lv_rgboffStr, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
+          $(element).text(lv_rgboffStr + ". " + data + ", anim " + lv_anim);
+          $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgboffStr+"&anim="+lv_anim);
         });
-        $('#anim').val(lv_anim);
-      };
-      function getImage() {$('#file_img').attr( "src",  $('#img').val() );};
-      function getRgbListAnims(){
-        $.get("/huisListAnim", {rgb: lv_rgb}, function(data) {
-  		  let animsList = $("#anim");
-			  animsList.empty();
-        animsList.append(data);
-			  });
-      };
-      function fileRgbSaveSettings() { $.get("/rgbSettingFileSave", {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); };
-      function fileRgbLoadSettings() { $.get("/rgbSettingFileLoad", {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQR(); };
-      function fileLoadAnim()   {
-        lv_anim = $('#anim').val();
-        $('#57').val(lv_anim);
-        $.get("/rgbAnimApply"    , {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQR(); 
-      };
-  </script>
+      });
+    });
+  };
+  function getImage() {$('#file_img').attr( "src",  $('#img').val() );};
+  function fileRgbSaveSettings() { $.get("/rgbSettingFileSave", {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); };
+  function fileRgbLoadSettings() { $.get("/rgbSettingFileLoad", {rgb: lv_rgb, anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQR(); };
+</script>
 </head>
 
 <body style="text-align:left;" id="body" >
@@ -86,18 +88,13 @@
       <img id="file_img" name='jqr' veld='24' src="" onchange="getImage();"></img><br>
 			Image   <input     name='jqr' veld='24' type='text' id="img" required/><br>
 			Naam    <input     name='jqr' veld='01' type='text'   required/><br>
+      Animatie<select   id="anim"             type="text" onchange="huisAnimApply()"><option value="default"></option></select><br>
 	  </h3></div>
     <div class="column3"><a name='jqr' veld='50' offset='1' href="/" class='button button-center'></a></div>
   </div>
   <div class="row">
     <div class="column3">Start led  <br><input name='jqr' veld='02' type='number' min="0" max="500"/></div>
     <div class="column3">Stop led   <br><input name='jqr' veld='03' type='number' min="0" max="500"/></div>
-  </div>
-  <div class="row">
-    <div class="column3"><h3>
-    	Anims   <select id="anim" type="text"><option value="default"></option></select><br>
-			Rename Anim<input     name='jqr' veld='23' type='text'   required/><br>
-    </h3></div>
   </div>
   <div class="row">
     <div class="column3">Every      <br><input name='jqr' veld='16' type='number' min="0" max="10"/></div>
