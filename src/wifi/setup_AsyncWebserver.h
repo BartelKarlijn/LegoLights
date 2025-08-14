@@ -82,6 +82,11 @@ void setup_AsyncWebserver(){
     decodeRequestLed(request);
     request->send(200, "text/plain", ledAnimSaveMem());
   });
+  webserver.on("/ledCopyFirstToAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Copy default to animatie to all leds");
+    decodeRequestLed(request);
+    request->send(200, "text/plain", ledCopyFirstToAnim());
+  });
   webserver.on("/ledSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Led settings terug ophalen uit cfg file");
     decodeRequestLed(request);

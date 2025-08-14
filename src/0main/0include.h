@@ -62,6 +62,7 @@
 #include "led/showled.h"
 #include "led/ledAnimApply.h"
 #include "led/ledAnimSaveMem.h"
+#include "led/ledCopyFirstToAnim.h"
 #include "led/ledLoadAnim.h"
 
 //rgb

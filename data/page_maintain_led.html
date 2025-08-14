@@ -38,6 +38,12 @@
     console.log("huisAnimApply animnr= "+lv_anim);
     window.location.assign("/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
   };
+  function ledCopyFirstToAnim() {
+    $.get("/ledCopyFirstToAnim", {led: lv_led, anim: lv_anim}, function(data) {
+      $("#status").html(data);
+      huisAnimApply();  //reload de pagina met de nieuwe animatie
+    });
+  };
   function getValuesJQH() {
     $('p[name="jqh"]').each(function(ind, element) {
 	    $(element).val(function(index, value){
@@ -89,6 +95,7 @@
 			Image   <input     name='jql' veld='56' type='text' id="img" required/><br>
 			Naam    <input     name='jql' veld='50' type='text'   required/><br>
       Animatie<select   id="anim"             type="text" onchange="huisAnimApply()"><option value="default"></option></select><br>
+      <button class="button button-center" onclick="ledCopyFirstToAnim();">Copy Settings from 0</button>
 	  </h3></div>
     <div class="column3"><a name='jql' veld='50' offset='1' href="/" class='button button-center'></a></div>
   </div>
