@@ -36,7 +36,7 @@
   function huisAnimApply() {
     lv_anim = $('#anim').val();
     console.log("huisAnimApply animnr= "+lv_anim);
-    $.get("/huisAnimApply", {anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL();
+    window.location.assign("/page_maintain_led.html?led="+lv_led+"&anim="+lv_anim);
   };
   function getValuesJQH() {
     $('p[name="jqh"]').each(function(ind, element) {

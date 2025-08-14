@@ -33,7 +33,6 @@
     function huisAnimApply() {
       lv_anim = $('#anim').val();
       console.log("huisAnimApply animnr= "+lv_anim);
-      $('#46').val(lv_anim);
       $.get("/huisAnimApply", {anim: lv_anim} , function(data) {$("#status").html(data);}); getValuesJQL(); getValuesJQR();
     };
     function ListLedRgbButtons(){
