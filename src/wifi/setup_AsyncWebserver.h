@@ -120,6 +120,11 @@ void setup_AsyncWebserver(){
     decodeRequestRgb(request);
     request->send(200, "text/plain", rgbAnimSaveMem());
   });
+  webserver.on("/rgbCopyFirstToAnim", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Copy default to animatie to current anim");
+    decodeRequestRgb(request);
+    request->send(200, "text/plain", rgbCopyFirstToAnim());
+  });
   webserver.on("/rgbSettingFileLoad", HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Alle Rgb settings terug ophalen uit cfg file");
     decodeRequestRgb(request);

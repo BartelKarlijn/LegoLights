@@ -77,6 +77,7 @@
 #include "rgb/showrgb.h"
 #include "rgb/rgbAnimApply.h"
 #include "rgb/rgbAnimSaveMem.h"
+#include "rgb/rgbCopyFirstToAnim.h"
 #include "rgb/rgbLoadAnim.h"
 
 //huis deel2
