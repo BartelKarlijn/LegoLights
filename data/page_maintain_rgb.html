@@ -74,7 +74,7 @@
         if (lv_rgboff > 15) { lv_rgboff = 0; }
         let lv_rgboffStr = String(lv_rgboff);
         $.get("rgbValueGet", {rgb: lv_rgboffStr, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
-          $(element).text(lv_rgboffStr + ". " + data + ", anim " + lv_anim);
+          $(element).text(lv_rgboffStr + ". " + data);
           $(element).attr("href", "/page_maintain_rgb.html?rgb="+lv_rgboffStr+"&anim="+lv_anim);
         });
       });
@@ -89,7 +89,7 @@
 <body style="text-align:left;" id="body" >
   <h1>Beheer effecten van rgb</h1>
   <div class="row">
-    <div class="column3"><a name='jqr' veld='50' offset='-1' href="/" class='button button-center'></a></div>
+    <div class="column3"><a name='jqr' veld='1' offset='-1' href="/" class='button button-center'></a></div>
     <div class="column3"><h3>
       <img id="file_img" name='jqr' veld='24' src="" onchange="getImage();"></img><br>
 			Image   <input     name='jqr' veld='24' type='text' id="img" required/><br>
@@ -97,7 +97,7 @@
       Animatie<select   id="anim"             type="text" onchange="huisAnimApply()"><option value="default"></option></select><br>
       <button class="button button-center" onclick="rgbCopyFirstToAnim();">Copy Settings from 0</button>
 	  </h3></div>
-    <div class="column3"><a name='jqr' veld='50' offset='1' href="/" class='button button-center'></a></div>
+    <div class="column3"><a name='jqr' veld='1' offset='1' href="/" class='button button-center'></a></div>
   </div>
   <div class="row">
     <div class="column3">Start led  <br><input name='jqr' veld='02' type='number' min="0" max="500"/></div>

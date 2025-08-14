@@ -74,7 +74,7 @@
         if (lv_ledoff > 15) { lv_ledoff = 0; }
         let lv_ledoffStr = String(lv_ledoff);
 		    $.get("ledValueGet", {led: lv_ledoffStr, anim: lv_anim, veld: $(element).attr('veld')}, function(data) {
-		      $(element).text(lv_ledoffStr + ". " + data + ", anim " + lv_anim);
+		      $(element).text(lv_ledoffStr + ". " + data);
           $(element).attr("href", "/page_maintain_led.html?led="+lv_ledoffStr+"&anim="+lv_anim);
 		    });
 		  });
