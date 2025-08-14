@@ -8,7 +8,7 @@ void led_fire(size_t lednr) {
   if( timeBezig > (ledactive[lednr].timeon + ledactive[lednr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
     timer_led_aan[lednr]  = currentMillis; //reset timer
     time_led_eff[lednr]  = random(ledactive[lednr].timeeffect); //reset timer
-    effectledbri[lednr] = random(ledactive[lednr].bri);      //intensiteit
+    effectledbri[lednr] = ledactive[lednr].bri / 3 + random(ledactive[lednr].bri);      //intensiteit
 
     ledPCA9685.setPWM(lednr, 0, effectledbri[lednr]);
   }
@@ -17,7 +17,8 @@ void led_fire(size_t lednr) {
   }
   else if (timeBezig > time_led_eff[lednr] ) { // ander vlammetje
     time_led_eff[lednr]  += random(ledactive[lednr].timeeffect); //Vergroot timer naar eind volgend vlammetje
-    effectledbri[lednr]   = random(ledactive[lednr].bri);      //intensiteit
+    effectledbri[lednr]   = ledactive[lednr].bri / 3 + random(ledactive[lednr].bri);      //intensiteit
+
     ledPCA9685.setPWM(lednr, 0, effectledbri[lednr]);
   }
   else {     //laat nog maar tijdje aan.
