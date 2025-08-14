@@ -22,7 +22,7 @@
 ///////////////// ledstrip  //////////////////////////////
 // gegevens over de ledstrip
 #define RGB_PIN 4
-#define RGB_BRIGHTNESS 125
+#define RGB_BRIGHTNESS 255
 
 ///////////////// PCA9865  //////////////////////////////
 // I2C pins zelf definieren
