@@ -4,10 +4,9 @@ String ledAnimApply() {
   size_t lednr = ledRequest.lednr;
   size_t animnr = ledRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
-    Println("ledAnimApply: animatie niet gevonden");
+    Println("ledAnimApply: animatie niet gevonden nr " + String(animnr));
   }
   else {
-    Println("ledAnimApply: led=" + String(lednr) + ", anim= " + String(animnr) );
     ledactive[lednr].desc       = ledsettings[lednr].leddesc;
     ledactive[lednr].bri        = ledsettings[lednr].anim[animnr].bri;
     ledactive[lednr].timeon     = ledsettings[lednr].anim[animnr].timeon;

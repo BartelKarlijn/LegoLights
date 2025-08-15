@@ -4,10 +4,9 @@ String rgbAnimApply() {
   size_t rgbnr = rgbRequest.rgbnr;
   size_t animnr = rgbRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
-    Println("rgbAnimApply: animatie niet gevonden");
+    Println("rgbAnimApply: animatie niet gevonden nr " + String(animnr));
   }
   else {
-    Println("rgbAnimApply: rgb= " + String(rgbnr) + ", anim= " + String(animnr));
     rgbactive[rgbnr].desc       = rgbsettings[rgbnr].rgbdesc;
     rgbactive[rgbnr].image      = rgbsettings[rgbnr].rgbimage;
     rgbactive[rgbnr].startrgb   = rgbsettings[rgbnr].startrgb;
