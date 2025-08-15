@@ -1,6 +1,6 @@
 String ledValueSet(){
     size_t lednr = ledRequest.lednr;
-    size_t animnr = huisSetting.animnrhuis;
+    size_t animnr = ledRequest.animnr;
     size_t veldnr = ledRequest.veld;
     String waardeString = ledRequest.waarde;
     String answertoSend;

@@ -1,6 +1,6 @@
 String rgbValueSet(){
     size_t rgbnr = rgbRequest.rgbnr;
-    size_t animnr = huisSetting.animnrhuis;
+    size_t animnr = rgbRequest.animnr;
     size_t veldnr = rgbRequest.veld;
     String waardeString = rgbRequest.waarde;
     String answertoSend;

@@ -2,7 +2,7 @@
 String rgbAnimApply() {
   // Apply RGB settings for given animatie
   size_t rgbnr = rgbRequest.rgbnr;
-  size_t animnr = huisSetting.animnrhuis;
+  size_t animnr = rgbRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
     Println("rgbAnimApply: animatie niet gevonden");
   }

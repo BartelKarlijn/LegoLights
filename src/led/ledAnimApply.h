@@ -2,7 +2,7 @@
 String ledAnimApply() {
   // Apply LED settings for given animatie
   size_t lednr = ledRequest.lednr;
-  size_t animnr = huisSetting.animnrhuis;
+  size_t animnr = ledRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
     Println("ledAnimApply: animatie niet gevonden");
   }

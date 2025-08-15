@@ -2,7 +2,7 @@
 String ledAnimSaveMem() {
   // Save active settings to memory
   size_t lednr = ledRequest.lednr;
-  size_t animnr = huisSetting.animnrhuis; 
+  size_t animnr = ledRequest.animnr;
   String answertoSend;
 
   ledsettings[lednr].leddesc                = ledactive[lednr].desc;

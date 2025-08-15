@@ -12,11 +12,13 @@ String huisAnimApply() {
     // Apply the animation to all leds
     for (size_t i = 0; i < LED_NR_ITEMS; i++) {
       ledRequest.lednr = i;
+      ledRequest.animnr = animnr;
       ledAnimApply();
     }
     // Apply the animation to all rgb
     for (size_t i = 0; i < RGB_NR_ITEMS; i++) {
       rgbRequest.rgbnr = i;
+      rgbRequest.animnr = animnr;
       rgbAnimApply();
     }
   }

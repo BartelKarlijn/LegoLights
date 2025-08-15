@@ -1,6 +1,6 @@
 String ledValueGet(){
     size_t lednr = ledRequest.lednr;
-    size_t animnr = huisSetting.animnrhuis;
+    size_t animnr = ledRequest.animnr;
     size_t veldnr = ledRequest.veld;
     String answertoSend = "";
     // get parameter led & veld  http://192.168.68.205/maintain_strip?led=1?veld=hue1

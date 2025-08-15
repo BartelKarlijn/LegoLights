@@ -1,5 +1,6 @@
 String rgbValueGet(){
     size_t rgbnr = rgbRequest.rgbnr;
+    size_t animnr = rgbRequest.animnr;
     size_t veldnr = rgbRequest.veld;
     String answertoSend = "";
     switch (veldnr)
