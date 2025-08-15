@@ -4,7 +4,7 @@ String ledLoadAnim() {
   for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++)
   {
     ledRequest.lednr  = lednr;
-    ledRequest.animnr = huisSetting.animnrhuis;
+    ledRequest.animnr = huisSetting.animdefault;
     ledAnimApply();
   }
   return("ledLoadAnim applied");

@@ -29,6 +29,10 @@ String huisValueSet(){
         huisSetting.animdesc[animnr] = waardeString;
         answertoSend = waardeString;
         break;
+      case 47:
+        huisSetting.animdefault = waardeString.toInt();
+        answertoSend = waardeString;
+        break;
       default:
         answertoSend = "error";
         break;

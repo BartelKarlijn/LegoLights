@@ -8,10 +8,11 @@ String  fileHuisLoadSettings() {
 
   if (!SPIFFS.exists(filename)) {
     msgAnswer = "Huis config file does not exist, using defaults";
-    huisSetting.desc = HUIS_DEFAULT.desc;
-    huisSetting.image = HUIS_DEFAULT.image;
-    huisSetting.huisnr = HUIS_DEFAULT.huisnr;
-    huisSetting.animnrhuis = HUIS_DEFAULT.animnrhuis;
+    huisSetting.desc        = HUIS_DEFAULT.desc;
+    huisSetting.image       = HUIS_DEFAULT.image;
+    huisSetting.huisnr      = HUIS_DEFAULT.huisnr;
+    huisSetting.animnrhuis  = HUIS_DEFAULT.animnrhuis;
+    huisSetting.animdefault = HUIS_DEFAULT.animdefault;
     for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
       huisSetting.animdesc[i] = HUIS_DEFAULT.animdesc[i];
     }
@@ -28,10 +29,11 @@ String  fileHuisLoadSettings() {
       msgAnswer ="Error interpreting config file Led";
     }
 
-    huisSetting.huisnr = doc["huisnr"].as<size_t>();
-    huisSetting.desc   = doc["desc"].as<String>();
-    huisSetting.image  = doc["image"].as<String>();
-    huisSetting.animnrhuis = doc["animnrhuis"].as<size_t>();
+    huisSetting.huisnr      = doc["huisnr"].as<size_t>();
+    huisSetting.desc        = doc["desc"].as<String>();
+    huisSetting.image       = doc["image"].as<String>();
+    huisSetting.animnrhuis  = doc["animnrhuis"].as<size_t>();
+    huisSetting.animdefault = doc["animdefault"].as<size_t>();
     for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
       huisSetting.animdesc[i] = doc["animdesc"][i].as<String>();
     }

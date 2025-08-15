@@ -7,14 +7,15 @@ void setup() {
   setupSerial();
   delay(100);
   setupRgb();        // voornamelijk leds afzetten
+  setupLed();
   startWifi();
   setup_AsyncWebserver();
   setupSpiffs();          // van het ESP32 file systeem lezen
-  setupLed();
   fileHuisLoadSettings(); // huisSettings inlezen
   fileLedLoadSettings(); // ledsettings inlezen
+  fileRgbLoadSettings(); // rgbsettings inlezen
   ledLoadAnim();         // led animatie toepassen
-  //loadAnimatie();         // ini file, terugvallen naar default
+  rgbLoadAnim();         // rgb animatie toepassen
   SetupFinished();
 }
 void loop() {

@@ -23,6 +23,7 @@ typedef struct {
   size_t huisnr;
   String desc;
   String image;
+  size_t animdefault;  // bij opstarten
   size_t animnrhuis;  // huidige anim
   String animdesc[HUIS_NR_ANIM];
 } struc_huis;
@@ -31,6 +32,7 @@ const struc_huis HUIS_DEFAULT {
   0,
   "Huis",
   "file_img_Huis.jpg",
+  0,
   0,
   {"Anim 0", "Anim 1", "Anim 2", "Anim 3", "Anim 4"},
 };

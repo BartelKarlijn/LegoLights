@@ -10,10 +10,11 @@ String fileHuisSaveSettings() {
 
     JsonDocument doc; // Adjust size as needed
 
-    doc["huisnr"] = huisSetting.huisnr;
-    doc["desc"] = huisSetting.desc;
-    doc["image"] = huisSetting.image;
-    doc["animnrhuis"] = huisSetting.animnrhuis;
+    doc["huisnr"]      = huisSetting.huisnr;
+    doc["desc"]        = huisSetting.desc;
+    doc["image"]       = huisSetting.image;
+    doc["animnrhuis"]  = huisSetting.animnrhuis;
+    doc["animdefault"] = huisSetting.animdefault;
     for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
       // Create a JsonObject for each animation description
       doc["animdesc"][i] = huisSetting.animdesc[i];
