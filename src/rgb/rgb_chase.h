@@ -1,6 +1,11 @@
 #pragma once
 
 void rgb_chase(size_t rgbnr) {
+  // we gebruiken 2 kleuren: kleur beweegt, terwijl kleur 2 de achtergrond blijft
+  // timeeffect geeft aan hoe snel kleur1 beweegt.
+  // dit blijft doorgaan tot timeon afgelopen is, dan weer uit.
+  // voorlopig doen we niets met seed en every.
+  
   // seed: -4..-1 : 1..4 lichtjes die down gaan
   // seed: 0      : lichtje up en eentje down
   // seed: +1..+4 : 1..4 lichtjes up gaan
@@ -9,7 +14,7 @@ void rgb_chase(size_t rgbnr) {
   size_t  nr_leds =  rgbactive[rgbnr].stoprgb - rgbactive[rgbnr].startrgb + 1;
   size_t  spacing;
   
-  if (rgbactive[rgbnr].seed = 0) {
+  if (rgbactive[rgbnr].seed = 0) {  //voorlopig? doen we niets met spacing, seed of every...
     spacing = nr_leds;
   } else {
     spacing = nr_leds / abs(rgbactive[rgbnr].seed);

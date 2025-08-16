@@ -1,6 +1,10 @@
 #pragma once
 
 void rgb_aan(size_t rgbnr) {
+  // Aan/uit zetten van RGB strip
+  // We gebruiken 2 kleuren.  kleur1 begint, en komt elke every terug.  Daartussen kleur2.
+  // seed geeft aan waar de eerste kleur begint.  Kan positief of negatief zijn.
+
   bool fl_on;
   unsigned long timeBezig;
 

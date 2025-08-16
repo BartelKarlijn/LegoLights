@@ -7,6 +7,11 @@ uint8_t rgb_glow_map(uint8_t val1, uint8_t val2, uint8_t amountOf2){
 }
 
 void rgb_glow(size_t rgbnr) {
+  // Er wordt doorheen de 4 kleuren van de glow gelopen.
+  // seed wordt voorlopig? niet gebruikt
+  // every geeft aan om de hoeveel lampjes er eentje aan gaat.
+
+
   // TimeEff : up of down cycle.  4 cycles in totaal
   // seed    : <0 : col1/2/3/4, seed aantal lampjes, random
   //           =0 : col1/2/3/4, hele strip

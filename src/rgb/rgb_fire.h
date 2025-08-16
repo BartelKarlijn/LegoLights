@@ -2,6 +2,10 @@
 
 void rgb_fire(size_t rgbnr) {
   unsigned long timeBezig;
+  // we gebruiken 4 kleuren en het vlammetje flikkert in deze kleuren.
+  // time effect geeft aan hoe snel het vlammetje flikkert, al zit er een randomizer op.  ~80ms is een goed beginpunt.
+  // seed wordt niet gebruikt
+  // Enkel everr X wordt een vlammetje getoond.  Daartussen is het uit.
  
   timeBezig = currentMillis - timer_rgb_aan[rgbnr];
   // bereken mode (uit, aan, flikker)
