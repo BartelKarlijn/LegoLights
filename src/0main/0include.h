@@ -93,6 +93,7 @@
 #include "wifi/on_wifisave.h"
 
 // commands
+#include "commands/cA01applyAnim.h"
 #include "commands/cF01fpsShow.h"
 #include "commands/cK01kringSetJpg.h"
 #include "commands/cK02kringSetName.h"

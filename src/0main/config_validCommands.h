@@ -12,6 +12,7 @@ void cC00Help();  // forward declaration
 
 struc_command validCommands[] = {// arg1 arg2 arg3       desc
     {"C00", cC00Help            , "-    -    -    " , "show this table" },
+    {"A01", cA01applyAnim       , "0..5 -    -    " , "apply anim" },
     {"F01", cF01fpsShow         , "0/1  -    -    " , "stop/show fps from now on" },
     {"K01", cK01kringSetJpg     , "krng jpeg -    " , "set jpeg for krng" },
     {"K02", cK02kringSetName    , "krng name -   " , "set name for krng" },
