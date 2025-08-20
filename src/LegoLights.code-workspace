@@ -3,6 +3,10 @@
 		{
 			"name": "LegoLights",
 			"path": ".."
+		},
+		{
+			"name": "LegoLightsController",
+			"path": "../../LegoLightsController"
 		}
 	],
 	"settings": {}
