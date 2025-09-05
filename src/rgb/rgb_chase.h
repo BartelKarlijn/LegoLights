@@ -1,7 +1,10 @@
 #pragma once
 
 void rgb_chase(size_t rgbnr) {
-  // we gebruiken 2 kleuren: kleur beweegt, terwijl kleur 2 de achtergrond blijft
+  // we gebruiken 3 kleuren: 
+  //  - kleur1 = beweegt, 
+  //  - kleur2 = achtergrond (als we aan nieuwe iteratie beginnen)
+  //  - kleur3 = kleur die gezet wordt nadat kleur1 dat ledje gepasseerd is. (vooral nuttig voor een pinker)
   // timeeffect geeft aan hoe snel kleur1 beweegt.
   // dit blijft doorgaan tot timeon afgelopen is, dan weer uit.
   // voorlopig doen we niets met seed en every.
