@@ -13,6 +13,7 @@ String  fileHuisLoadSettings() {
     huisSetting.huisnr      = HUIS_DEFAULT.huisnr;
     huisSetting.animnrhuis  = HUIS_DEFAULT.animnrhuis;
     huisSetting.animdefault = HUIS_DEFAULT.animdefault;
+    huisSetting.newMACadress = HUIS_DEFAULT.newMACadress;
     for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
       huisSetting.animdesc[i] = HUIS_DEFAULT.animdesc[i];
     }
@@ -34,6 +35,7 @@ String  fileHuisLoadSettings() {
     huisSetting.image       = doc["image"].as<String>();
     huisSetting.animnrhuis  = doc["animnrhuis"].as<size_t>();
     huisSetting.animdefault = doc["animdefault"].as<size_t>();
+    huisSetting.newMACadress = doc["newMACadress"].as<String>();
     for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
       huisSetting.animdesc[i] = doc["animdesc"][i].as<String>();
     }

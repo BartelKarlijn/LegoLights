@@ -33,6 +33,10 @@ String huisValueSet(){
         huisSetting.animdefault = waardeString.toInt();
         answertoSend = waardeString;
         break;
+      case 48: 
+        huisSetting.newMACadress = waardeString;
+        answertoSend = waardeString;
+        break;
       default:
         answertoSend = "error";
         break;

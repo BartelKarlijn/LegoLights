@@ -46,6 +46,7 @@
 #include "spiffs/fileRgbSaveSettings.h"
 
 //huis
+#include "huis/huisConvertString2Hex.h"
 #include "huis/huisValueGet.h"
 #include "huis/huisValueSet.h"
 #include "huis/huisListAnim.h"

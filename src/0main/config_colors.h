@@ -25,6 +25,7 @@ typedef struct {
   String image;
   size_t animdefault;  // bij opstarten
   size_t animnrhuis;  // huidige anim
+  String newMACadress; // New MAC adress to use for this huis, if 00:00:00:00:00:00 then use default MAC
   String animdesc[HUIS_NR_ANIM];
 } struc_huis;
 
@@ -34,6 +35,7 @@ const struc_huis HUIS_DEFAULT {
   "file_img_Huis.jpg",
   0,
   0,
+  "35:F3:2C:1E:D0:00",
   {"Anim 0", "Anim 1", "Anim 2", "Anim 3", "Anim 4"},
 };
 struc_huis huisSetting;

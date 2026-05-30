@@ -23,6 +23,9 @@ String huisValueGet(){
       case 47:
         answertoSend = huisSetting.animdefault;
         break;
+      case 48:
+        answertoSend = huisSetting.newMACadress;
+        break;
       default:
         answertoSend = "error";
         break;
