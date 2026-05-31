@@ -8,10 +8,10 @@ void setup() {
   delay(100);
   setupRgb();        // voornamelijk leds afzetten
   setupLed();
-  startWifi();
+  fileHuisLoadSettings(); // huisSettings inlezen, oa MAC adres.
+  startWifi(huisSetting.newMACadress); // wifi starten, en eventueel MAC adres aanpassen
   setup_AsyncWebserver();
   setupSpiffs();          // van het ESP32 file systeem lezen
-  fileHuisLoadSettings(); // huisSettings inlezen
   fileLedLoadSettings(); // ledsettings inlezen
   fileRgbLoadSettings(); // rgbsettings inlezen
   ledLoadAnim();         // led animatie toepassen

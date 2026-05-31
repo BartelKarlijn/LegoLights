@@ -9,6 +9,7 @@
 
 // Wifi
 #include <WiFi.h>           //
+#include <esp_wifi.h>       // Om MAC Adress te kunnen veranderen
 #include <AsyncTCP.h>       // nodig voor de ESPAyncWebserver
 #include <ESPAsyncWebServer.h>
 #include <ElegantOTA.h>
@@ -46,7 +47,6 @@
 #include "spiffs/fileRgbSaveSettings.h"
 
 //huis
-#include "huis/huisConvertString2Hex.h"
 #include "huis/huisValueGet.h"
 #include "huis/huisValueSet.h"
 #include "huis/huisListAnim.h"
