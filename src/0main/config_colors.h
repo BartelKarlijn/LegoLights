@@ -1,9 +1,4 @@
-//jpeg files
-#define IMG_OLIV "file_img_Olivander.jpg"
-#define IMG_QUID "file_img_Quiddich.jpg"
-#define IMG_FLOU "file_img_Flourish.jpg"
-#define IMG_WEAS "file_img_Weasley.jpg"
-
+// files
 #define FILE_HUIS "/cfg_huis.ini"
 #define FILE_LED  "/cfg_led.ini"
 #define FILE_RGB  "/cfg_rgb.ini"
@@ -31,11 +26,11 @@ typedef struct {
 
 const struc_huis HUIS_DEFAULT {
   0,
-  "Huis",
+  "Default huis loaded",
   "file_img_Huis.jpg",
   0,
   0,
-  "23:5F:32:C1:ED:00",
+  "00:00:00:00:00:00",
   {"Anim 0", "Anim 1", "Anim 2", "Anim 3", "Anim 4"},
 };
 struc_huis huisSetting;
@@ -76,7 +71,7 @@ typedef struct {
 } struc_ledsettings;
 
 // default voor alle leds als er geen file is.
-const struc_ledactive LEDACTIVE_DEFAULT  {"led", IMG_OLIV , 4095,  1000,   1000,    150, EFFLED_AAN };
+const struc_ledactive LEDACTIVE_DEFAULT  {"led", "no_image.jpg" , 4095,  1000,   1000,    150, EFFLED_AAN };
 
 struc_ledactive   ledactive[LED_NR_ITEMS];
 struc_ledsettings ledsettings[LED_NR_ITEMS];
@@ -157,7 +152,7 @@ typedef struct {
 
 // default voor alle leds als er geen file is.
 //                                        desc, img      ,star,stop,hue1,sat1,bri1,hue2,sat2,bri2,hue3,sat3,bri3,hue4,sat4,bri4,every,timeon,timeoff,timeeff,seed,eff
-const struc_rgbactive RGBACTIVE_DEFAULT  {"rgb", IMG_OLIV, 0  ,  10,   0,  10, 150, 255, 255, 255, 255, 255, 255, 255, 255, 255,    0,  1000,    150, 500, 0, EFFRGB_AAN };
+const struc_rgbactive RGBACTIVE_DEFAULT  {"rgb", "no_image.jpg", 0  ,  10,   0,  10, 150, 255, 255, 255, 255, 255, 255, 255, 255, 255,    0,  1000,    150, 500, 0, EFFRGB_AAN };
 
 struc_rgbactive   rgbactive[RGB_NR_ITEMS];
 struc_rgbsettings rgbsettings[RGB_NR_ITEMS];

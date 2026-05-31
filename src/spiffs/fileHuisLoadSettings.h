@@ -4,7 +4,7 @@ String  fileHuisLoadSettings() {
   char filename[18] = FILE_HUIS;
   String msgAnswer;
 
-  Print(String(filename));
+  Println(String(filename));
 
   if (!SPIFFS.exists(filename)) {
     msgAnswer = "Huis config file does not exist, using defaults";
@@ -40,8 +40,9 @@ String  fileHuisLoadSettings() {
       huisSetting.animdesc[i] = doc["animdesc"][i].as<String>();
     }
 
-    msgAnswer = "Huissettings loaded";
+    msgAnswer = "Huissettings loaded for H" + String(huisSetting.huisnr) + " " + huisSetting.desc;
   }
 
+  Println(msgAnswer);
   return msgAnswer;
 }

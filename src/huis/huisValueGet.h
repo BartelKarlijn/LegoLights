@@ -18,7 +18,7 @@ String huisValueGet(){
         answertoSend = huisSetting.animnrhuis;
         break;
       case 46:
-        answertoSend = huisSetting.animdesc[animnr];
+        answertoSend = "";
         break;
       case 47:
         answertoSend = huisSetting.animdefault;
