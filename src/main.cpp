@@ -11,7 +11,7 @@ void setup() {
   setupSpiffs();          // van het ESP32 file systeem lezen
   delay(2000); 
   fileHuisLoadSettings(); // huisSettings inlezen, oa MAC adres.
-  startWifi(huisSetting.newMACadress); // wifi starten, en eventueel MAC adres aanpassen
+  startWifi(huisSetting.newMACadress, "esp32c3-h" + String(huisSetting.huisnr)); // wifi starten, en eventueel MAC adres aanpassen
   setup_AsyncWebserver();
   fileLedLoadSettings(); // ledsettings inlezen
   fileRgbLoadSettings(); // rgbsettings inlezen
