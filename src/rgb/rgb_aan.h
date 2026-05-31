@@ -5,9 +5,9 @@ void rgb_aan(size_t rgbnr) {
   // We gebruiken 2 kleuren.  kleur1 begint, en komt elke every terug.  Daartussen kleur2.
   // seed geeft aan waar de eerste kleur begint.  Kan positief of negatief zijn.
 
-  bool fl_on;
   unsigned long timeBezig;
   uint16_t bri1, bri2;
+  uint8_t fase = 0;
 
   timeBezig = currentMillis - timer_rgb_aan[rgbnr];
   #define RGB_AAN_FASE_NEWCYCLE   0
@@ -15,7 +15,6 @@ void rgb_aan(size_t rgbnr) {
   #define RGB_AAN_FASE_FULLON     2
   #define RGB_AAN_FASE_RAMPDOWN   3
   #define RGB_AAN_FASE_OFF        4
-  uint8_t fase = 0;
 
   // bepaal fase; dit moet van achter naar voor gebeuren
   if( timeBezig > (rgbactive[rgbnr].timeon + rgbactive[rgbnr].timeoff) ) {   // lang genoeg uit geweest.  Nu aanzetten
