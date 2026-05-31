@@ -46,7 +46,7 @@ struc_commandParts decodeCommand(String commandstring) {
 //    }
     if (commandstring[0] != 'H' && commandstring[0] != 'h') {
         returnMsg.isValidCommand = false;
-        Println("Invalid command");
+        Println("Invalid command: not Hxx at start");
         return returnMsg;  //stop
     }
 
