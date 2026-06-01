@@ -13,54 +13,84 @@ void rgb_chase(size_t rgbnr) {
   // seed: 0      : lichtje up en eentje down
   // seed: +1..+4 : 1..4 lichtjes up gaan
   unsigned long timeBezig;
-  bool flag_on;
+  uint16_t bri1, bri2, bri3;
   size_t  nr_leds =  rgbactive[rgbnr].stoprgb - rgbactive[rgbnr].startrgb + 1;
-  size_t  spacing;
-  
-  if (rgbactive[rgbnr].seed = 0) {  //voorlopig? doen we niets met spacing, seed of every...
-    spacing = nr_leds;
-  } else {
-    spacing = nr_leds / abs(rgbactive[rgbnr].seed);
-  }
-  timeBezig = currentMillis - timer_rgb_aan[rgbnr];
-  
+  uint8_t fase = 0;
 
-  // bereken mode (uit, up, down)
+  timeBezig = currentMillis - timer_rgb_aan[rgbnr];
+  #define RGB_CHASE_FASE_NEWCYCLE   0
+  #define RGB_CHASE_FASE_NEWLED     1
+  #define RGB_CHASE_FASE_SAMELED    2
+  #define RGB_CHASE_FASE_OFF        3
+
+  // bereken fase
   if( timeBezig > (rgbactive[rgbnr].timeon + rgbactive[rgbnr].timeoff) ) {   // aan+uit = lang genoeg uit geweest.  Nu aanzetten
-    timer_rgb_aan[rgbnr] = currentMillis;      //reset timers
-    timer_rgb_effect[rgbnr] = currentMillis + rgbactive[rgbnr].timeeffect;
-    chaseRgbNr[rgbnr][0] = rgbactive[rgbnr].startrgb;
-    flag_on = true;
+    fase = RGB_CHASE_FASE_NEWCYCLE;
   }
   else  if (timeBezig > rgbactive[rgbnr].timeon) { // einde van aan
-    flag_on = false;
+    fase = RGB_CHASE_FASE_OFF;
   }
   else  if(currentMillis >  timer_rgb_effect[rgbnr]) {        //naar volgend spotje gaan
-    flag_on = true;
-    timer_rgb_effect[rgbnr] = currentMillis + rgbactive[rgbnr].timeeffect ; //reset flikkertimer
-    chaseRgbNr[rgbnr][0]++;
-    if (chaseRgbNr[rgbnr][0] > rgbactive[rgbnr].stoprgb) {
-      chaseRgbNr[rgbnr][0] = rgbactive[rgbnr].startrgb;
-    }
+    fase = RGB_CHASE_FASE_NEWLED;
   }
   else {
     // gewoon verder doen, laat lampje maar branden
-    flag_on = true;
+    fase = RGB_CHASE_FASE_SAMELED;
   }
 
-  for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
-    // aan of uit zetten?
-    if (flag_on) {
+  switch (fase) { 
+    case RGB_CHASE_FASE_NEWCYCLE:
+      timer_rgb_aan[rgbnr] = currentMillis; //reset timer
+      timer_rgb_effect[rgbnr] = currentMillis + rgbactive[rgbnr].timeeffect;
+      effectRgbNr[rgbnr] = 0;
+      bri1 = rgbactive[rgbnr].bri1;
+      bri2 = rgbactive[rgbnr].bri2;
+      bri3 = rgbactive[rgbnr].bri3;
+      break;
+    case RGB_CHASE_FASE_OFF:
+      bri1 = 0;
+      bri2 = 0;
+      bri3 = 0;
+      break;
+    case RGB_CHASE_FASE_SAMELED:
+      bri1 = rgbactive[rgbnr].bri1;
+      bri2 = rgbactive[rgbnr].bri2;
+      bri3 = rgbactive[rgbnr].bri3;
+      break;
+    case RGB_CHASE_FASE_NEWLED:
+      timer_rgb_effect[rgbnr] = currentMillis + rgbactive[rgbnr].timeeffect;  
+      effectRgbNr[rgbnr] = effectRgbNr[rgbnr] + 1;
+      bri1 = rgbactive[rgbnr].bri1;
+      bri2 = rgbactive[rgbnr].bri2;
+      bri3 = rgbactive[rgbnr].bri3;
+      break;
+    default:
+      break;
+  }
 
-      if( i == chaseRgbNr[rgbnr][0] ) {
-        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue1, rgbactive[rgbnr].sat1, rgbactive[rgbnr].bri1);
+  // Pas juiste kleur toe
+  for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
+    if (rgbactive[rgbnr].seed >= 0) {  // up
+      if ( i < rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] ) {  // effect is al gepasseerd, dus kleur3
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue3, rgbactive[rgbnr].sat3, bri3);
       }
-      else {
-        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, rgbactive[rgbnr].bri2);
+      else if( i == rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] ) { // effect is op dit ledje, dus kleur1
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue1, rgbactive[rgbnr].sat1, bri1);
+      }
+      else {                               // effect moet nog komen, dus kleur2
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, bri2);
       }
     }
-    else {
-      rgbstrip[i] = CRGB::Black;
+    else if (rgbactive[rgbnr].seed < 0) {  // down
+      if ( i < rgbactive[rgbnr].stoprgb - effectRgbNr[rgbnr] ) {  // effect moet nog komen, dus kleur2
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, bri2);
+      }
+      else if( i == rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] ) { // effect is op dit ledje, dus kleur1
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue1, rgbactive[rgbnr].sat1, bri1);
+      }
+      else {                               // effect is al gepasseerd, dus kleur3
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue3, rgbactive[rgbnr].sat3, bri3);
+      }
     }
   }
 }

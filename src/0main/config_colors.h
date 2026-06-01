@@ -167,4 +167,5 @@ uint8_t effectrgbhueidx[RGB_NR_ITEMS][4];
 uint8_t effectrgbhue[RGB_NR_ITEMS][4];
 uint8_t effectrgbsat[RGB_NR_ITEMS][4];
 uint8_t effectrgbbri[RGB_NR_ITEMS][4];
+uint8_t effectRgbNr[RGB_NR_ITEMS];          // Aan het hoeveelste ledje zit het effect?
 uint8_t chaseRgbNr[RGB_NR_ITEMS][4];
