@@ -8,7 +8,6 @@ void show_fps() {
       Println(wifi_ssid + " " + wifi_ip + " fps " + String(fps));
     };
     cntfps = 1;  // we willen geen 0 om eventuele delingen door 0 te vermijden
-
   }
   else {
     cntfps++;

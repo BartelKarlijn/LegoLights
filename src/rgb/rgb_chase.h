@@ -69,8 +69,8 @@ void rgb_chase(size_t rgbnr) {
   }
 
   // Pas juiste kleur toe
-  for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
-    if (rgbactive[rgbnr].seed >= 0) {  // up
+  if (rgbactive[rgbnr].seed > 0) {  // up
+    for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
       if ( i < rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] ) {  // effect is al gepasseerd, dus kleur3
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue3, rgbactive[rgbnr].sat3, bri3);
       }
@@ -81,15 +81,28 @@ void rgb_chase(size_t rgbnr) {
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, bri2);
       }
     }
-    else if (rgbactive[rgbnr].seed < 0) {  // down
+  }
+  else if (rgbactive[rgbnr].seed < 0) {  // down
+    for (size_t i = rgbactive[rgbnr].stoprgb; i >= rgbactive[rgbnr].startrgb; i--)  {
       if ( i < rgbactive[rgbnr].stoprgb - effectRgbNr[rgbnr] ) {  // effect moet nog komen, dus kleur2
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, bri2);
       }
-      else if( i == rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] ) { // effect is op dit ledje, dus kleur1
+      else if( i == rgbactive[rgbnr].stoprgb - effectRgbNr[rgbnr] ) { // effect is op dit ledje, dus kleur1
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue1, rgbactive[rgbnr].sat1, bri1);
       }
       else {                               // effect is al gepasseerd, dus kleur3
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue3, rgbactive[rgbnr].sat3, bri3);
+      }
+    }
+  }
+  else { // up en down tegelijk.  we houden enkel rekening met kleur1 & 2
+    for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
+      if (( i == rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] )
+       or ( i == rgbactive[rgbnr].stoprgb - effectRgbNr[rgbnr] )) {  // effect is op dit ledje, dus kleur1
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue1, rgbactive[rgbnr].sat1, bri1);
+      }
+      else {                               // effect moet nog komen, dus kleur2
+        rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, bri2);
       }
     }
   }
