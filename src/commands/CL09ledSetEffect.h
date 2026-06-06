@@ -25,6 +25,9 @@ void cL09ledSetEffect(){
         case EFFLED_UIT:
             ledactive[lednr].effect = EFFLED_UIT;
             break;
+        case EFFLED_DELAY:
+            ledactive[lednr].effect = EFFLED_DELAY;
+            break;
         default:
             Println("Invalid effect value");
             break;

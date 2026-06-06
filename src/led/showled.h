@@ -22,6 +22,9 @@ void showled() {
     case EFFLED_UIT:
         led_uit(i);
         break;
+    case EFFLED_DELAY:
+        led_delay(i);
+        break;
     default:
         break;
     }

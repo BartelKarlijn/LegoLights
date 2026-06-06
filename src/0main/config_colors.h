@@ -44,6 +44,7 @@ struc_huis huisSetting;
 #define EFFLED_RAMP    13
 #define EFFLED_RAND    14
 #define EFFLED_UIT     15
+#define EFFLED_DELAY   16
 
 typedef struct {
   String        desc;

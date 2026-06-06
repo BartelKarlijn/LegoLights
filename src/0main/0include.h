@@ -58,6 +58,7 @@
 #include "led/led_ramp.h"
 #include "led/led_rand.h"
 #include "led/led_uit.h"
+#include "led/led_delay.h"
 #include "led/ledValueGet.h"
 #include "led/ledValueSet.h"
 #include "led/showled.h"
