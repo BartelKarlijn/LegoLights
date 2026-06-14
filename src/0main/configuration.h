@@ -21,7 +21,7 @@
 
 ///////////////// ledstrip  //////////////////////////////
 // gegevens over de ledstrip
-#define RGB_PIN 4
+#define RGB_PIN 4      // 220K is de weerstand die ik gebruik tussen data pin en 5V, om de data lijn te beschermen tegen piekspanningen. Deze weerstand is niet verplicht, maar wordt wel aanbevolen.
 #define RGB_BRIGHTNESS 255
 
 ///////////////// PCA9865  //////////////////////////////
