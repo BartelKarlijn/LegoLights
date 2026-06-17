@@ -1,5 +1,5 @@
-void cK06kringSat(){
-    // Set SAT for Kring
+void cR06rgbSat(){
+    // Set SAT for rgb
     size_t rgbnr = commandParts.arg1.toInt();
     size_t nr = commandParts.arg2.toInt();
     size_t sat = commandParts.arg3.toInt();
@@ -21,6 +21,6 @@ void cK06kringSat(){
                 Println("Error: Invalid sat number: " + String(nr));
         }       
     } else {
-        Println("Error: Invalid Kring number: " + String(rgbnr));
+        Println("Error: Invalid rgb number: " + String(rgbnr));
     }
 }

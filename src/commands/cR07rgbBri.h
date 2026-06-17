@@ -1,5 +1,5 @@
-void cK07kringBri(){
-    // Set BRI for Kring
+void cR07rgbBri(){
+    // Set BRI for rgb
     size_t rgbnr = commandParts.arg1.toInt();
     size_t nr = commandParts.arg2.toInt();
     size_t bri = commandParts.arg3.toInt();
@@ -21,7 +21,7 @@ void cK07kringBri(){
                 Println("Error: Invalid bri number: " + String(nr));
         }       
     } else {
-        Println("Error: Invalid Kring number: " + String(rgbnr));
+        Println("Error: Invalid rgb number: " + String(rgbnr));
     }
 
 }

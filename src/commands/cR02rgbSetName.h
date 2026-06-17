@@ -1,10 +1,10 @@
-void cK02kringSetName(){
-    // Set DESC for Kring
+void cR02rgbSetName(){
+    // Set DESC for rgb
     size_t rgbnr = commandParts.arg1.toInt();
     String name = commandParts.arg2;
     if (rgbnr >= 0 && rgbnr < RGB_NR_ITEMS) {
         rgbactive[rgbnr].desc = name;
     } else {
-        Println("Error: Invalid Kring number: " + String(rgbnr));
+        Println("Error: Invalid rgb number: " + String(rgbnr));
     }
 }

@@ -1,5 +1,5 @@
-void cK05kringHue(){
-    // Set HUE for Kring
+void cR05rgbHue(){
+    // Set HUE for rgb
     size_t rgbnr = commandParts.arg1.toInt();
     size_t nr = commandParts.arg2.toInt();
     size_t hue = commandParts.arg3.toInt();
@@ -21,6 +21,6 @@ void cK05kringHue(){
                 Println("Error: Invalid hue number: " + String(nr));
         }       
     } else {
-        Println("Error: Invalid Kring number: " + String(rgbnr));
+        Println("Error: Invalid rgb number: " + String(rgbnr));
     }
 }

@@ -10,7 +10,7 @@
 
 #define RGB_NR_ITEMS 16
 #define RGB_NR_ANIM 5
-#define RGB_NR_LEDS 100 
+#define RGB_NR_LEDS 200 
 
 // ------------------ Huis -----------------------
 // -----------------------------------------------
