@@ -1,8 +1,8 @@
 void cR06rgbSat(){
     // Set SAT for rgb
-    size_t rgbnr = commandParts.arg1.toInt();
-    size_t nr = commandParts.arg2.toInt();
-    size_t sat = commandParts.arg3.toInt();
+    uint8_t rgbnr = commandParts.arg1.toInt();
+    uint8_t nr = commandParts.arg2.toInt();
+    uint8_t sat = commandParts.arg3.toInt();
     if (rgbnr >= 0 && rgbnr < RGB_NR_ITEMS) {
         switch (nr) {
             case 1:

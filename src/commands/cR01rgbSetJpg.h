@@ -1,6 +1,6 @@
 void cR01rgbSetJpg(){
     // Set JPEG for rgb
-    size_t rgbnr = commandParts.arg1.toInt();
+    uint8_t rgbnr = commandParts.arg1.toInt();
     String image = commandParts.arg2;
     if (rgbnr >= 0 && rgbnr < RGB_NR_ITEMS) {
         // Check if the JPEG file exists in SPIFFS

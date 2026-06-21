@@ -11,7 +11,7 @@ String fileLedSaveSettings() {
     JsonDocument doc; // Adjust size as needed
     JsonArray ledArr = doc.to<JsonArray>();
         
-    for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
+    for (uint8_t lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
         // Create a JsonObject for each LED
         JsonObject ledLine = ledArr.add<JsonObject>();
         ledLine["lednr"] = lednr;
@@ -20,7 +20,7 @@ String fileLedSaveSettings() {
 
         JsonDocument animDoc;
         JsonArray animArr = animDoc.to<JsonArray>();
-        for (size_t animnr = 0; animnr < LED_NR_ANIM; animnr++){
+        for (uint8_t animnr = 0; animnr < LED_NR_ANIM; animnr++){
           JsonObject animLine = animArr.add<JsonObject>();
           animLine["bri"]        = ledsettings[lednr].anim[animnr].bri;
           animLine["timeon"]     = ledsettings[lednr].anim[animnr].timeon;

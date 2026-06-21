@@ -1,8 +1,8 @@
 #pragma once
 String rgbCopyFirstToAnim() {
   // Copy RGB settings from first animation (default) to the current animation
-  size_t rgbnr = rgbRequest.rgbnr;
-  size_t animnr = rgbRequest.animnr;
+  uint8_t rgbnr = rgbRequest.rgbnr;
+  uint8_t animnr = rgbRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
     Println("rgbCopyFirstToAnim: animatie niet gevonden");
   }

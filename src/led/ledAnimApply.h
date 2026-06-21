@@ -1,8 +1,8 @@
 #pragma once
 String ledAnimApply() {
   // Apply LED settings for given animatie
-  size_t lednr = ledRequest.lednr;
-  size_t animnr = ledRequest.animnr;
+  uint8_t lednr = ledRequest.lednr;
+  uint8_t animnr = ledRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
     Println("ledAnimApply: animatie niet gevonden nr " + String(animnr));
   }

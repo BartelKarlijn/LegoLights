@@ -3,7 +3,7 @@ String huisListAnim() {
   // List the animations in the settings for a huis
   String msgAnswer="";
 
-  for (size_t i = 0; i < HUIS_NR_ANIM; i++)
+  for (uint8_t i = 0; i < HUIS_NR_ANIM; i++)
   {
       msgAnswer += "<option value='";
       msgAnswer += i;

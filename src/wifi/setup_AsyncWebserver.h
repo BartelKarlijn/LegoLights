@@ -173,7 +173,7 @@ void setup_AsyncWebserver(){
     String RequestStr= request->url();
     String FileName = RequestStr.substring(0, RequestStr.indexOf("?"));
 
-    for (size_t i = 0; i < MAX_WIFI_REQUEST; i++) {
+    for (uint8_t i = 0; i < MAX_WIFI_REQUEST; i++) {
       // checking if it's a valid file
       if (FileName.startsWith(validWifiRequest[i].reqPrefix) && FileName.endsWith(validWifiRequest[i].reqExt)) {
         if (validWifiRequest[i].iscmd) {

@@ -31,6 +31,7 @@
 
 // Own subroutines
 //   main
+#include "0main/map_brightness.h"
 #include "0main/setupSerial.h"
 #include <PrintAnyFormat.h>
 //#include <ESPtools.h>

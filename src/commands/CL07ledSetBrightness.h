@@ -1,7 +1,7 @@
 void cL07ledSetBrightness(){
     // Set brightness to Led
-    size_t lednr = commandParts.arg1.toInt();
-    size_t bri = commandParts.arg2.toInt();
+    uint8_t lednr = commandParts.arg1.toInt();
+    uint16_t bri = commandParts.arg2.toInt();
 
     Println("L02 Set brightness of " + commandParts.arg1 + " to " + commandParts.arg2);
     if (lednr >= 0 && lednr < LED_NR_ITEMS) {

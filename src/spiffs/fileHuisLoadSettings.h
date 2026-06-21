@@ -14,7 +14,7 @@ String  fileHuisLoadSettings() {
     huisSetting.animnrhuis  = HUIS_DEFAULT.animnrhuis;
     huisSetting.animdefault = HUIS_DEFAULT.animdefault;
     huisSetting.newMACadress = HUIS_DEFAULT.newMACadress;
-    for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
+    for (uint8_t i = 0; i < HUIS_NR_ANIM; i++) {
       huisSetting.animdesc[i] = HUIS_DEFAULT.animdesc[i];
     }
   }
@@ -30,13 +30,13 @@ String  fileHuisLoadSettings() {
       msgAnswer ="Error interpreting config file Led";
     }
 
-    huisSetting.huisnr      = doc["huisnr"].as<size_t>();
+    huisSetting.huisnr      = doc["huisnr"].as<uint8_t>();
     huisSetting.desc        = doc["desc"].as<String>();
     huisSetting.image       = doc["image"].as<String>();
-    huisSetting.animnrhuis  = doc["animnrhuis"].as<size_t>();
-    huisSetting.animdefault = doc["animdefault"].as<size_t>();
+    huisSetting.animnrhuis  = doc["animnrhuis"].as<uint8_t>();
+    huisSetting.animdefault = doc["animdefault"].as<uint8_t>();
     huisSetting.newMACadress = doc["newMACadress"].as<String>();
-    for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
+    for (uint8_t i = 0; i < HUIS_NR_ANIM; i++) {
       huisSetting.animdesc[i] = doc["animdesc"][i].as<String>();
     }
 

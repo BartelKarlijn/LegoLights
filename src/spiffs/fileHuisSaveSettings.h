@@ -16,7 +16,7 @@ String fileHuisSaveSettings() {
     doc["animnrhuis"]  = huisSetting.animnrhuis;
     doc["animdefault"] = huisSetting.animdefault;
     doc["newMACadress"] = huisSetting.newMACadress;
-    for (size_t i = 0; i < HUIS_NR_ANIM; i++) {
+    for (uint8_t i = 0; i < HUIS_NR_ANIM; i++) {
       // Create a JsonObject for each animation description
       doc["animdesc"][i] = huisSetting.animdesc[i];
     }

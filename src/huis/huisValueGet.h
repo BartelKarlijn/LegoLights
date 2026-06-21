@@ -1,6 +1,6 @@
 String huisValueGet(){
-  size_t animnr = huisRequest.animnr; 
-  size_t veldnr = huisRequest.veld;
+  uint8_t animnr = huisRequest.animnr; 
+  uint8_t veldnr = huisRequest.veld;
     
     String answertoSend = "";
     switch (veldnr)

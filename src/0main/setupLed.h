@@ -6,7 +6,7 @@ void setupLed() {
   ledPCA9685.setPWMFreq(PCA9685_FREQUENCY); // This is the maximum PWM frequency and suited to LED's
 
   // leds initialiseren met default
-  for (size_t lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
+  for (uint8_t lednr = 0; lednr < LED_NR_ITEMS; lednr++) {
     ledPCA9685.setPWM(lednr, 0, 0);     // alles uitzetten
   }
   Println("Single leds setup done");

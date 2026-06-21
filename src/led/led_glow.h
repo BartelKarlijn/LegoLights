@@ -1,6 +1,6 @@
 #pragma once
 
-void led_glow(size_t lednr) {
+void led_glow(uint8_t lednr) {
   unsigned long timeBezig;
   unsigned long timeGlowBegin;
   uint8_t bri_glow;
@@ -22,11 +22,11 @@ void led_glow(size_t lednr) {
     ledPCA9685.setPWM(lednr, 0, 0);         //glow begint aan 0
   }
   else if (timeBezig > (timeGlowBegin + ledactive[lednr].timeeffect / 2 ) ) { // we zijn in de down fase
-    bri_glow = map(timeBezig,  timeGlowBegin + ledactive[lednr].timeeffect / 2, timeGlowBegin + ledactive[lednr].timeeffect, ledactive[lednr].bri, 0);
+    bri_glow = map_brightness(timeBezig,  timeGlowBegin + ledactive[lednr].timeeffect / 2, timeGlowBegin + ledactive[lednr].timeeffect, ledactive[lednr].bri, 0);
     ledPCA9685.setPWM(lednr, 0, bri_glow);
   }
   else  { // we zijn in de up fase
-    bri_glow = map(timeBezig,  timeGlowBegin, timeGlowBegin + ledactive[lednr].timeeffect / 2, 0, ledactive[lednr].bri);
+    bri_glow = map_brightness(timeBezig,  timeGlowBegin, timeGlowBegin + ledactive[lednr].timeeffect / 2, 0, ledactive[lednr].bri);
     ledPCA9685.setPWM(lednr, 0, bri_glow);
   }
 }

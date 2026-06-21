@@ -1,6 +1,6 @@
 #pragma once
 
-void led_rand(size_t lednr) {
+void led_rand(uint8_t lednr) {
   // Ramping up for timeEffect
   // Keeping on for timeOn
   // Ramping down for timeEffect
@@ -36,13 +36,13 @@ void led_rand(size_t lednr) {
   switch (fase[lednr])
   {
   case 1: // up
-    bri_glow = map(timeBezig, 0,  timeEffect, 0, ledactive[lednr].bri);
+    bri_glow = map_brightness(timeBezig, 0,  timeEffect, 0, ledactive[lednr].bri);
     break;
   case 2: // on
     bri_glow = ledactive[lednr].bri;
     break;
   case 3: // down
-    bri_glow = map(timeBezig, 0, timeEffect, ledactive[lednr].bri, 0);
+    bri_glow = map_brightness(timeBezig, 0, timeEffect, ledactive[lednr].bri, 0);
     break;
   case 4: // off
     bri_glow = 0;

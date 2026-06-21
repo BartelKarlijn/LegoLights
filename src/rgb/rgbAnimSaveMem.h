@@ -1,8 +1,8 @@
 #pragma once
 String rgbAnimSaveMem() {
   // Save active settings to memory
-  size_t rgbnr = rgbRequest.rgbnr;
-  size_t animnr = rgbRequest.animnr;
+  uint8_t rgbnr = rgbRequest.rgbnr;
+  uint8_t animnr = rgbRequest.animnr;
   String answertoSend;
 
   rgbsettings[rgbnr].rgbdesc                = rgbactive[rgbnr].desc;

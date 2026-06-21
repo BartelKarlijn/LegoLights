@@ -1,6 +1,6 @@
 #pragma once
 
-void rgb_chase(size_t rgbnr) {
+void rgb_chase(uint8_t rgbnr) {
   // we gebruiken 3 kleuren: 
   //  - kleur1 = beweegt, 
   //  - kleur2 = achtergrond (als we aan nieuwe iteratie beginnen)
@@ -14,7 +14,7 @@ void rgb_chase(size_t rgbnr) {
   // seed: +1..+4 : 1..4 lichtjes up gaan
   unsigned long timeBezig;
   uint16_t bri1, bri2, bri3;
-  size_t  nr_leds =  rgbactive[rgbnr].stoprgb - rgbactive[rgbnr].startrgb + 1;
+  uint8_t  nr_leds =  rgbactive[rgbnr].stoprgb - rgbactive[rgbnr].startrgb + 1;
   uint8_t fase = 0;
 
   timeBezig = currentMillis - timer_rgb_aan[rgbnr];
@@ -70,7 +70,7 @@ void rgb_chase(size_t rgbnr) {
 
   // Pas juiste kleur toe
   if (rgbactive[rgbnr].seed > 0) {  // up
-    for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
+    for (uint8_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
       if ( i < rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] ) {  // effect is al gepasseerd, dus kleur3
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue3, rgbactive[rgbnr].sat3, bri3);
       }
@@ -83,7 +83,7 @@ void rgb_chase(size_t rgbnr) {
     }
   }
   else if (rgbactive[rgbnr].seed < 0) {  // down
-    for (size_t i = rgbactive[rgbnr].stoprgb; i >= rgbactive[rgbnr].startrgb; i--)  {
+    for (uint8_t i = rgbactive[rgbnr].stoprgb; i >= rgbactive[rgbnr].startrgb; i--)  {
       if ( i < rgbactive[rgbnr].stoprgb - effectRgbNr[rgbnr] ) {  // effect moet nog komen, dus kleur2
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue2, rgbactive[rgbnr].sat2, bri2);
       }
@@ -96,7 +96,7 @@ void rgb_chase(size_t rgbnr) {
     }
   }
   else { // up en down tegelijk.  we houden enkel rekening met kleur1 & 2
-    for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
+    for (uint8_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
       if (( i == rgbactive[rgbnr].startrgb + effectRgbNr[rgbnr] )
        or ( i == rgbactive[rgbnr].stoprgb - effectRgbNr[rgbnr] )) {  // effect is op dit ledje, dus kleur1
         rgbstrip[i] = CHSV(rgbactive[rgbnr].hue1, rgbactive[rgbnr].sat1, bri1);

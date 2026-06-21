@@ -9,7 +9,7 @@ String  fileLedLoadSettings() {
 
   if (!SPIFFS.exists(filename)) {
     msgAnswer = "Led config file does not exist, using defaults";
-    for(size_t lednr=0; lednr<LED_NR_ITEMS; lednr++) {
+    for(uint8_t lednr=0; lednr<LED_NR_ITEMS; lednr++) {
       ledsettings[lednr].leddesc          = LEDACTIVE_DEFAULT.desc + String(lednr);
       ledsettings[lednr].ledimage         = LEDACTIVE_DEFAULT.image;
       ledsettings[lednr].anim[0].bri      = LEDACTIVE_DEFAULT.bri;
@@ -35,19 +35,19 @@ String  fileLedLoadSettings() {
     size_t regelcounter = 0;
     JsonArray jledarr = doc.as<JsonArray>();
     Println("aantal leds: " + String(jledarr.size()));
-    for (size_t lednr=0; lednr<jledarr.size(); lednr++) {
+    for (uint8_t lednr=0; lednr<jledarr.size(); lednr++) {
       ledsettings[lednr].leddesc          = jledarr[lednr]["leddesc"].as<String>();
       ledsettings[lednr].ledimage         = jledarr[lednr]["ledimage"].as<String>();
       Print(String(lednr)+" desc: " + jledarr[lednr]["leddesc"].as<String>());
 
       JsonArray janimarr = jledarr[lednr]["anim"].as<JsonArray>();
       Println(" aantal anims: " + String(janimarr.size()));
-      for (size_t animnr=0; animnr<janimarr.size(); animnr++) {
-        ledsettings[lednr].anim[animnr].bri         = janimarr[animnr]["bri"].as<size_t>();
-        ledsettings[lednr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<size_t>();
-        ledsettings[lednr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<size_t>();
-        ledsettings[lednr].anim[animnr].timeeffect  = janimarr[animnr]["timeeffect"].as<size_t>();
-        ledsettings[lednr].anim[animnr].effect      = janimarr[animnr]["effect"].as<size_t>();
+      for (uint8_t animnr=0; animnr<janimarr.size(); animnr++) {
+        ledsettings[lednr].anim[animnr].bri         = janimarr[animnr]["bri"].as<uint16_t>();
+        ledsettings[lednr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<uint16_t>();
+        ledsettings[lednr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<uint16_t>();
+        ledsettings[lednr].anim[animnr].timeeffect  = janimarr[animnr]["timeeffect"].as<uint16_t>();
+        ledsettings[lednr].anim[animnr].effect      = janimarr[animnr]["effect"].as<uint8_t>();
         regelcounter++; 
       }
 

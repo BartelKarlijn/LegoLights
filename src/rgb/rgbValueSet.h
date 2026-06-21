@@ -1,7 +1,7 @@
 String rgbValueSet(){
-    size_t rgbnr = rgbRequest.rgbnr;
-    size_t animnr = rgbRequest.animnr;
-    size_t veldnr = rgbRequest.veld;
+    uint8_t rgbnr = rgbRequest.rgbnr;
+    uint8_t animnr = rgbRequest.animnr;
+    uint8_t veldnr = rgbRequest.veld;
     String waardeString = rgbRequest.waarde;
     String answertoSend;
     

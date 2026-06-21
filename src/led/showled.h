@@ -1,7 +1,7 @@
 #pragma once
 
 void showled() {
-  for (size_t i = 0; i < LED_NR_ITEMS; i++) {
+  for (uint8_t i = 0; i < LED_NR_ITEMS; i++) {
     switch (ledactive[i].effect)
     {
     case EFFLED_AAN:

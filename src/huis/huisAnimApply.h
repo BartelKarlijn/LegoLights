@@ -1,7 +1,7 @@
 #pragma once
 String huisAnimApply() {
   // Apply Huis settings for given animatie
-  size_t animnr = huisRequest.animnr;
+  uint8_t animnr = huisRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
     Println("huisApplyAnim: animatie niet gevonden");
   }
@@ -10,13 +10,13 @@ String huisAnimApply() {
     // Apply anim to huisSetting
     huisSetting.animnrhuis = animnr;
     // Apply the animation to all leds
-    for (size_t i = 0; i < LED_NR_ITEMS; i++) {
+    for (uint8_t i = 0; i < LED_NR_ITEMS; i++) {
       ledRequest.lednr = i;
       ledRequest.animnr = animnr;
       ledAnimApply();
     }
     // Apply the animation to all rgb
-    for (size_t i = 0; i < RGB_NR_ITEMS; i++) {
+    for (uint8_t i = 0; i < RGB_NR_ITEMS; i++) {
       rgbRequest.rgbnr = i;
       rgbRequest.animnr = animnr;
       rgbAnimApply();

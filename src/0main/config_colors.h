@@ -15,11 +15,11 @@
 // ------------------ Huis -----------------------
 // -----------------------------------------------
 typedef struct {
-  size_t huisnr;
+  uint8_t huisnr;
   String desc;
   String image;
-  size_t animdefault;  // bij opstarten
-  size_t animnrhuis;  // huidige anim
+  uint8_t animdefault;  // bij opstarten
+  uint8_t animnrhuis;  // huidige anim
   String newMACadress; // New MAC adress to use for this huis, if 00:00:00:00:00:00 then use default MAC
   String animdesc[HUIS_NR_ANIM];
 } struc_huis;
@@ -49,7 +49,7 @@ struc_huis huisSetting;
 typedef struct {
   String        desc;
   String        image;
-  size_t        bri;    //4095 mogelijkheden
+  uint16_t      bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
   long          timeeffect;  //negatieve waarden toelaten
@@ -58,7 +58,7 @@ typedef struct {
 
 typedef struct {
 //  String        animdesc;
-  size_t        bri;    //4095 mogelijkheden
+  uint16_t      bri;    //4095 mogelijkheden
   unsigned long timeon;
   unsigned long timeoff;
   long          timeeffect;  //negatieve waarden toelaten
@@ -99,8 +99,8 @@ uint8_t       effectledbri[LED_NR_ITEMS];
 typedef struct {
   String        desc;
   String        image;
-  size_t        startrgb;
-  size_t        stoprgb;
+  uint8_t        startrgb;
+  uint8_t        stoprgb;
   uint8_t       hue1;
   uint8_t       sat1;
   uint8_t       bri1;
@@ -146,8 +146,8 @@ typedef struct {
 typedef struct {
   String        rgbdesc;
   String        rgbimage;
-  size_t        startrgb;
-  size_t        stoprgb;
+  uint8_t        startrgb;
+  uint8_t        stoprgb;
   struc_rgbanim anim[LED_NR_ANIM];
 } struc_rgbsettings;
 

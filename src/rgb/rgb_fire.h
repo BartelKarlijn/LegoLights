@@ -1,6 +1,6 @@
 #pragma once
 
-void rgb_fire(size_t rgbnr) {
+void rgb_fire(uint8_t rgbnr) {
   unsigned long timeBezig;
   // we gebruiken 4 kleuren en het vlammetje flikkert in deze kleuren.
   // time effect geeft aan hoe snel het vlammetje flikkert, al zit er een randomizer op.  ~80ms is een goed beginpunt.
@@ -52,7 +52,7 @@ void rgb_fire(size_t rgbnr) {
     break;
    }
 
-  for (size_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
+  for (uint8_t i = rgbactive[rgbnr].startrgb; i <= rgbactive[rgbnr].stoprgb; i++)  {
     // aan of uit zetten?
     if( ( (i - rgbactive[rgbnr].startrgb) % rgbactive[rgbnr].every ) == 0 ) {  // check every
       rgbstrip[i] = CHSV(effectrgbhue[rgbnr][0], effectrgbsat[rgbnr][0], effectrgbbri[rgbnr][0]);

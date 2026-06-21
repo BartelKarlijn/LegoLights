@@ -1,7 +1,7 @@
 #pragma once
 
 void showrgb() {
-  for (size_t i = 0; i < RGB_NR_ITEMS; i++) {
+  for (uint8_t i = 0; i < RGB_NR_ITEMS; i++) {
     switch (rgbactive[i].effect)
     {
     case EFFRGB_AAN:

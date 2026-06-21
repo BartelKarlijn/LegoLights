@@ -1,8 +1,8 @@
 #pragma once
 String ledCopyFirstToAnim() {
   // Copy LED settings from first animation (default) to the current animation
-  size_t lednr = ledRequest.lednr;
-  size_t animnr = ledRequest.animnr;
+  uint8_t lednr = ledRequest.lednr;
+  uint8_t animnr = ledRequest.animnr;
   if (huisSetting.animdesc[animnr] == NULL) {
     Println("ledCopyFirstToAnim: animatie niet gevonden");
   }

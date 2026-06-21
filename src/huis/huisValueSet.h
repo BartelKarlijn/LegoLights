@@ -1,6 +1,6 @@
 String huisValueSet(){
-    size_t animnr       = huisRequest.animnr; 
-    size_t veldnr       = huisRequest.veld;
+    uint8_t animnr       = huisRequest.animnr; 
+    uint8_t veldnr       = huisRequest.veld;
     String waardeString = huisRequest.waarde;
     String answertoSend;
     // get parameter led & veld & waarde http://192.168.68.205/maintain_strip?led=1&veld=hue1&waarde=56

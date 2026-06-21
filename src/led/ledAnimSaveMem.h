@@ -1,8 +1,8 @@
 #pragma once
 String ledAnimSaveMem() {
   // Save active settings to memory
-  size_t lednr = ledRequest.lednr;
-  size_t animnr = ledRequest.animnr;
+  uint8_t lednr = ledRequest.lednr;
+  uint8_t animnr = ledRequest.animnr;
   String answertoSend;
 
   ledsettings[lednr].leddesc                = ledactive[lednr].desc;
