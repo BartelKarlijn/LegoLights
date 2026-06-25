@@ -44,9 +44,9 @@ String  fileLedLoadSettings() {
       Println(" aantal anims: " + String(janimarr.size()));
       for (uint8_t animnr=0; animnr<janimarr.size(); animnr++) {
         ledsettings[lednr].anim[animnr].bri         = janimarr[animnr]["bri"].as<uint16_t>();
-        ledsettings[lednr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<uint16_t>();
-        ledsettings[lednr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<uint16_t>();
-        ledsettings[lednr].anim[animnr].timeeffect  = janimarr[animnr]["timeeffect"].as<uint16_t>();
+        ledsettings[lednr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<unsigned long>();
+        ledsettings[lednr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<unsigned long>();
+        ledsettings[lednr].anim[animnr].timeeffect  = janimarr[animnr]["timeeffect"].as<long>();
         ledsettings[lednr].anim[animnr].effect      = janimarr[animnr]["effect"].as<uint8_t>();
         regelcounter++; 
       }

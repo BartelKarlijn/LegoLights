@@ -73,9 +73,9 @@ String  fileRgbLoadSettings() {
         rgbsettings[rgbnr].anim[animnr].sat4        = janimarr[animnr]["sat4"].as<uint8_t>();
         rgbsettings[rgbnr].anim[animnr].bri4        = janimarr[animnr]["bri4"].as<uint8_t>();
         rgbsettings[rgbnr].anim[animnr].every       = janimarr[animnr]["every"].as<uint8_t>();
-        rgbsettings[rgbnr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<uint8_t>();
-        rgbsettings[rgbnr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<uint8_t>();
-        rgbsettings[rgbnr].anim[animnr].timeeffect  = janimarr[animnr]["timeeffect"].as<uint8_t>();
+        rgbsettings[rgbnr].anim[animnr].timeon      = janimarr[animnr]["timeon"].as<unsigned long>();
+        rgbsettings[rgbnr].anim[animnr].timeoff     = janimarr[animnr]["timeoff"].as<unsigned long>();
+        rgbsettings[rgbnr].anim[animnr].timeeffect  = janimarr[animnr]["timeeffect"].as<long>();
         rgbsettings[rgbnr].anim[animnr].seed        = janimarr[animnr]["seed"].as<int8_t>();      //accepting negative values
         rgbsettings[rgbnr].anim[animnr].effect      = janimarr[animnr]["effect"].as<uint8_t>();
         regelcounter++; 
