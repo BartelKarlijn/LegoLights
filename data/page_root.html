@@ -99,7 +99,7 @@
     };
     function fileHuisSaveSettings() { $.get("/huisSettingFileSave", {} , function(data) {$("#status").html(data);}); };
     function fileHuisLoadSettings() { $.get("/huisSettingFileLoad", {lv_anim} , function(data) {$("#status").html(data);}); getValuesJQH(); getValuesJQL(); getValuesJQH();};
-    function rebootESP32() { $.get("/restart", {} , function(data) {setTimeout(function() { window.location.reload(); }, 5000);}); };
+    function rebootESP32() { $.get("/restart", {} , function(data) {setTimeout(function() { window.location.reload(); }, 10000);}); };
   </script>
 
 </head>
@@ -126,7 +126,7 @@
       Default Anim<input veld='47' name='jqh' type='text'   required/><br>
       </h3></div>
     <div class="column3">
-      <a href="#" onclick="rebootESP32();" class="button button-right  button-large">/!\Reboot ESP32</a>
+      <a href="/page_root.html" onclick="rebootESP32();" class="button button-right  button-large">/!\Reboot ESP32</a>
       <a href="/update"  class="button button-right  button-large">Firmware Update</a>
     </div>
   </div>
